@@ -1,0 +1,7 @@
+# macOS
+.DS_Store
+
+# KiCad local/generated files
+.history/
+*.kicad_prl
+*.lck
