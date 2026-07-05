@@ -10955,7 +10955,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Elec_Radial_6.3mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 205.74 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -12536,7 +12536,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Elec_Radial_6.3mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 198.12 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -12853,7 +12853,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Elec_Radial_6.3mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 152.4 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -12933,7 +12933,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Elec_Radial_6.3mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 182.88 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -13618,7 +13618,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Elec_Radial_6.3mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 137.16 100.33 0)
 			(hide yes)
 			(show_name no)
