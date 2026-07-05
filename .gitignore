@@ -5,3 +5,4 @@
 .history/
 *.kicad_prl
 *.lck
+KiCad/.mcp-backups/
