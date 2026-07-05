@@ -16387,7 +16387,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_SIL10"
+		(property "Footprint" "Resistor_THT:R_Array_SIP10"
 			(at 233.045 25.4 90)
 			(hide yes)
 			(show_name no)
