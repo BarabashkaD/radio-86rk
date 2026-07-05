@@ -16694,7 +16694,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Transistor_TO92_EBC_254"
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline_Wide"
 			(at 17.78 58.42 0)
 			(hide yes)
 			(show_name no)
