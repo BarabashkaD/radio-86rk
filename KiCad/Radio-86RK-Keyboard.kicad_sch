@@ -16108,7 +16108,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_SIL6"
+		(property "Footprint" "Resistor_THT:R_Array_SIP6"
 			(at 256.54 151.765 90)
 			(hide yes)
 			(show_name no)
@@ -16274,7 +16274,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_SIL6"
+		(property "Footprint" "Resistor_THT:R_Array_SIP6"
 			(at 212.09 164.465 90)
 			(hide yes)
 			(show_name no)
@@ -16364,7 +16364,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_SIL6"
+		(property "Footprint" "Resistor_THT:R_Array_SIP6"
 			(at 256.54 128.905 90)
 			(hide yes)
 			(show_name no)
