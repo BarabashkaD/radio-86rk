@@ -14857,7 +14857,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -14934,7 +14934,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -15011,7 +15011,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -15495,7 +15495,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 17.78 0)
 			(hide yes)
 			(show_name no)
@@ -15572,7 +15572,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -15649,7 +15649,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -15726,7 +15726,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -15803,7 +15803,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 115.57 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -17229,7 +17229,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Diode_762"
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
 			(at 149.86 186.69 0)
 			(hide yes)
 			(show_name no)
