@@ -15088,7 +15088,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:LED_3mm"
+		(property "Footprint" "LED_THT:LED_D3.0mm"
 			(at 62.23 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -15165,7 +15165,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:LED_3mm"
+		(property "Footprint" "LED_THT:LED_D3.0mm"
 			(at 62.23 50.8 0)
 			(hide yes)
 			(show_name no)
