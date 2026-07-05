@@ -15648,7 +15648,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Cap_Cer_508"
+		(property "Footprint" "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm"
 			(at 254 143.8148 0)
 			(hide yes)
 			(show_name no)
