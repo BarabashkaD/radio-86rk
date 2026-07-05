@@ -1,4 +1,5 @@
 (fp_lib_table
 	(version 7)
 	(lib (name "Cherry_MX") (type "KiCad") (uri "${KICAD10_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty") (options "") (descr "Cherry MX keyswitch PCB footprints (perigoso/keyswitch-kicad-library, installed via PCM)"))
+	(lib (name "Cherry_MX_Custom") (type "KiCad") (uri "${KIPRJMOD}/Cherry_MX_Custom.pretty") (options "") (descr "Custom Cherry MX Enter/Space footprints with hand-built leveling-kit stabilizer holes (Mouser 540-G99-0742 + 540-G99-0226), no official library equivalent exists"))
 )
