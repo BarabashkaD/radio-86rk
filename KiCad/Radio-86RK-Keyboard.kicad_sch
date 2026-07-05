@@ -15242,7 +15242,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 80.01 49.022 90)
 			(hide yes)
 			(show_name no)
@@ -15319,7 +15319,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 80.01 38.862 90)
 			(hide yes)
 			(show_name no)
@@ -16533,7 +16533,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 43.18 181.102 90)
 			(hide yes)
 			(show_name no)
@@ -16610,7 +16610,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 54.102 189.23 90)
 			(hide yes)
 			(show_name no)
@@ -16997,7 +16997,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 94.742 189.23 90)
 			(hide yes)
 			(show_name no)
@@ -17074,7 +17074,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 112.522 189.23 90)
 			(hide yes)
 			(show_name no)
@@ -17151,7 +17151,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 143.51 178.562 90)
 			(hide yes)
 			(show_name no)

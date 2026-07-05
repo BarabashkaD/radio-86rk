@@ -15234,7 +15234,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 160.782 146.05 90)
 			(hide yes)
 			(show_name no)
@@ -15543,7 +15543,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Res_762"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 174.498 140.97 90)
 			(hide yes)
 			(show_name no)
