@@ -13085,7 +13085,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -13159,7 +13159,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -13233,7 +13233,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -13307,7 +13307,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -16036,7 +16036,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -16110,7 +16110,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -16184,7 +16184,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Hole_3mm"
+		(property "Footprint" "MountingHole_Custom:Hole_3mm"
 			(at 262.89 106.68 0)
 			(hide yes)
 			(show_name no)

@@ -2,4 +2,5 @@
 	(version 7)
 	(lib (name "Cherry_MX") (type "KiCad") (uri "${KICAD10_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty") (options "") (descr "Cherry MX keyswitch PCB footprints (perigoso/keyswitch-kicad-library, installed via PCM)"))
 	(lib (name "Cherry_MX_Custom") (type "KiCad") (uri "${KIPRJMOD}/Cherry_MX_Custom.pretty") (options "") (descr "Custom Cherry MX Enter/Space footprints with hand-built leveling-kit stabilizer holes (Mouser 540-G99-0742 + 540-G99-0226), no official library equivalent exists"))
+	(lib (name "MountingHole_Custom") (type "KiCad") (uri "${KIPRJMOD}/MountingHole_Custom.pretty") (options "") (descr "Materialized grounded M3 mounting hole (3.048mm drill / 4.064mm pad) matching the project's exact original geometry - no official KiCad MountingHole variant offers a pad this small at this drill size"))
 )
