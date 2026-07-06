@@ -14627,7 +14627,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP14_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-14_W7.62mm_Socketed"
 			(at 172.72 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -14741,7 +14741,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP14_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-14_W7.62mm_Socketed"
 			(at 187.96 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -14855,7 +14855,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP14_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-14_W7.62mm_Socketed"
 			(at 157.48 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -15121,7 +15121,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP14_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-14_W7.62mm_Socketed"
 			(at 127 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -15691,7 +15691,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP14_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-14_W7.62mm_Socketed"
 			(at 142.24 142.24 0)
 			(hide yes)
 			(show_name no)
