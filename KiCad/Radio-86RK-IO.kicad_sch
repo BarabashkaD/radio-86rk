@@ -13672,7 +13672,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_Pin_Header_13x2_2.54mm_Shrouded"
+		(property "Footprint" "Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical"
 			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
