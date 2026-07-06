@@ -15396,7 +15396,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_DIN_8pin"
+		(property "Footprint" "Conn_DIN_Custom:SDF-80J"
 			(at 81.28 185.42 0)
 			(hide yes)
 			(show_name no)
