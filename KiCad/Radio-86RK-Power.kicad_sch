@@ -9949,7 +9949,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_Power_Jack_Circular_Pads"
+		(property "Footprint" "Conn_DCJack_Custom:KLDX-0202-A"
 			(at 29.21 110.236 0)
 			(hide yes)
 			(show_name no)
