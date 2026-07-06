@@ -16260,7 +16260,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_Pin_Header_20x1_2.54mm"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical"
 			(at 40.64 55.88 0)
 			(hide yes)
 			(show_name no)
