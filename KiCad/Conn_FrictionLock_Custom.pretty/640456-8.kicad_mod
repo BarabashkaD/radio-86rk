@@ -1,0 +1,75 @@
+(footprint "640456-8"
+	(layer "F.Cu")
+	(descr "8-position friction-lock header, straight PCB pins, 2.54mm pitch (TE Connectivity/AMP 640456-8, MTA-100 series, Mouser 571-6404568). No official KiCad footprint exists for this shrouded friction-lock part specifically; geometry sourced from the manufacturer's own KiCad library export (SamacSys/Ultra Librarian). Includes the manufacturer's STEP 3D model.")
+	(tags "Connector friction lock MTA-100 header TE 640456-8")
+	(property "Reference" "REF**"
+		(at 0 -3.42 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "640456-8"
+		(at 0 -3.42 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line (start 1.77 3.42) (end -19.05 3.42) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start -19.05 3.42) (end -19.05 -3.049) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start -19.05 -3.049) (end 1.77 -3.049) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start 1.77 -3.049) (end 1.77 3.42) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start 1.52 3.17) (end -18.8 3.17) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start -18.8 3.17) (end -18.8 -2.799) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start -18.8 -2.799) (end 1.52 -2.799) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start 1.52 -2.799) (end 1.52 3.17) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start 0 3.17) (end -18.8 3.17) (stroke (width 0.2) (type solid)) (layer "F.SilkS"))
+	(fp_line (start -18.8 3.17) (end -18.8 -2.799) (stroke (width 0.2) (type solid)) (layer "F.SilkS"))
+	(fp_line (start -18.8 -2.799) (end 1.52 -2.799) (stroke (width 0.2) (type solid)) (layer "F.SilkS"))
+	(fp_line (start 1.52 -2.799) (end 1.52 0) (stroke (width 0.2) (type solid)) (layer "F.SilkS"))
+	(pad "1" thru_hole rect (at 0 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "2" thru_hole circle (at -2.54 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "3" thru_hole circle (at -5.08 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "4" thru_hole circle (at -7.62 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "5" thru_hole circle (at -10.16 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "6" thru_hole circle (at -12.7 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "7" thru_hole circle (at -15.24 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(pad "8" thru_hole circle (at -17.78 0) (size 1.725 1.725) (drill 1.15) (layers "*.Cu" "*.Mask"))
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Conn_FrictionLock_Custom.pretty/640456-8.step"
+		(offset (xyz -8.87 0.46 2.54))
+		(scale (xyz 1 1 1))
+		(rotate (xyz 0 0 0))
+	)
+)

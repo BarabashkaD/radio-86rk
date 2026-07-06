@@ -9853,7 +9853,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_Friction_Lock_8P_2.54mm"
+		(property "Footprint" "Conn_FrictionLock_Custom:640456-8"
 			(at 55.88 104.14 0)
 			(hide yes)
 			(show_name no)
