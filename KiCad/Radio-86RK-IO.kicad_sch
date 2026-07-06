@@ -5828,7 +5828,7 @@
 							)
 						)
 					)
-					(number "0"
+					(number "SH"
 						(effects
 							(font
 								(size 1.524 1.524)
@@ -15131,7 +15131,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_Dsub_DE9M"
+		(property "Footprint" "Connector_Dsub:DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm"
 			(at 264.16 35.56 0)
 			(hide yes)
 			(show_name no)
