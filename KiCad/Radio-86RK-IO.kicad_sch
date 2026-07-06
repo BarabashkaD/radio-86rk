@@ -15466,7 +15466,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Speaker_12mm"
+		(property "Footprint" "Speaker_Custom:AT-1224-TWT-R"
 			(at 180.34 134.62 0)
 			(hide yes)
 			(show_name no)
