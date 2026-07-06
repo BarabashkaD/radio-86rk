@@ -14203,7 +14203,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP8_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-8_W7.62mm_Socketed"
 			(at 208.28 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -14300,7 +14300,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP8_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-8_W7.62mm_Socketed"
 			(at 208.28 83.82 0)
 			(hide yes)
 			(show_name no)
