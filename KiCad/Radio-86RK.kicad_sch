@@ -18838,7 +18838,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Crystal_HC-49U_Vert"
+		(property "Footprint" "Crystal:Crystal_HC49-U_Vertical"
 			(at 41.91 27.94 0)
 			(hide yes)
 			(show_name no)
