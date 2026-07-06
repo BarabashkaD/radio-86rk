@@ -15419,7 +15419,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:Switch_Tactile_6mm_Right"
+		(property "Footprint" "Switch_Tactile_Custom:B3F-3152"
 			(at 22.86 60.96 0)
 			(hide yes)
 			(show_name no)
