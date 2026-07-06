@@ -16231,7 +16231,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:Conn_RCA_Right"
+		(property "Footprint" "Conn_RCA_Custom:RCJ-014"
 			(at 264.16 149.86 0)
 			(hide yes)
 			(show_name no)
