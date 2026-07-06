@@ -15882,7 +15882,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP40_600"
+		(property "Footprint" "IC_Socket_Custom:DIP-40_W15.24mm_Socketed"
 			(at 127 74.93 0)
 			(hide yes)
 			(show_name no)
