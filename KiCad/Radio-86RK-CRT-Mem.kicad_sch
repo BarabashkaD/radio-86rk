@@ -14542,7 +14542,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP28_600"
+		(property "Footprint" "IC_Socket_Custom:DIP-28_W15.24mm_Socketed"
 			(at 68.58 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -14699,7 +14699,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP28_600"
+		(property "Footprint" "IC_Socket_Custom:DIP-28_W15.24mm_Socketed"
 			(at 68.58 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -17467,7 +17467,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP28_600"
+		(property "Footprint" "IC_Socket_Custom:DIP-28_W15.24mm_Socketed"
 			(at 190.5 77.47 0)
 			(hide yes)
 			(show_name no)
