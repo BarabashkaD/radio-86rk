@@ -13455,7 +13455,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_TO220-3_Vert"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
 			(at 152.4 111.76 0)
 			(hide yes)
 			(show_name no)
