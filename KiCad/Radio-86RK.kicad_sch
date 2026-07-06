@@ -15105,7 +15105,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP16_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-16_W7.62mm_Socketed"
 			(at 66.04 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -18412,7 +18412,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:IC_DIP16_300"
+		(property "Footprint" "IC_Socket_Custom:DIP-16_W7.62mm_Socketed"
 			(at 185.42 35.56 0)
 			(hide yes)
 			(show_name no)
