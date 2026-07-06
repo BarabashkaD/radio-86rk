@@ -10482,7 +10482,7 @@
 				)
 			)
 		)
-		(property "Footprint" "My_Components:DC-DC_SIP8"
+		(property "Footprint" "DCDC_Custom:IZ0512S"
 			(at 66.04 153.67 0)
 			(hide yes)
 			(show_name no)

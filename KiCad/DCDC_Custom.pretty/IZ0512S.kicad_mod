@@ -1,0 +1,74 @@
+(footprint "IZ0512S"
+	(layer "F.Cu")
+	(descr "3W isolated DC-DC converter, dual +/-12V output, SIP8 package with pin4 physically omitted (7 leads) (XP Power IZ0512S, Mouser 209-IZ0512S). Pad layout (2.54mm pitch, pins 1,2,3,5,6,7,8, 17.78mm span) verified pad-for-pad against the manufacturer's own datasheet mechanical drawing (xppower.com/portals/0/pdfs/SF_IZ.pdf). No manufacturer or official KiCad 3D model exists for this exact part; the 3D model is the manufacturer's own STEP model for the related sibling part IA0512S (same SIP potted-module construction family), anisotropically scaled (1.1321 x, 1.0990 y, 1.5333 z) from the IA0512S's real body dimensions (19.3 x 10.1 x 6.0mm per SF_IA.pdf) to the IZ0512S's real body dimensions (21.85 x 11.10 x 9.20mm per SF_IZ.pdf). This is an approximation, not an exact manufacturer model.")
+	(tags "DCDC Converter SIP8 IZ0512S XP Power")
+	(property "Reference" "REF**"
+		(at 8.89 -4.2 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "IZ0512S"
+		(at 8.89 7.2 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.xppower.com/portals/0/pdfs/SF_IZ.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line (start -2.01 -3.2) (end 19.79 -3.2) (stroke (width 0.12) (type solid)) (layer "F.SilkS"))
+	(fp_line (start -2.01 6) (end -2.01 -3.2) (stroke (width 0.12) (type solid)) (layer "F.SilkS"))
+	(fp_line (start 19.79 -3.2) (end 19.79 6) (stroke (width 0.12) (type solid)) (layer "F.SilkS"))
+	(fp_line (start 19.79 6) (end -2.01 6) (stroke (width 0.12) (type solid)) (layer "F.SilkS"))
+	(fp_line (start -2.01 -3.2) (end 19.79 -3.2) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start -2.01 6) (end -2.01 -3.2) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start 19.79 -3.2) (end 19.79 6) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start 19.79 6) (end -2.01 6) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_line (start -2.51 -3.7) (end 20.29 -3.7) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start -2.51 6.5) (end -2.51 -3.7) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start 20.29 -3.7) (end 20.29 6.5) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(fp_line (start 20.29 6.5) (end -2.51 6.5) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(pad "1" thru_hole rect (at 0 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "2" thru_hole circle (at 2.54 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "3" thru_hole circle (at 5.08 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "5" thru_hole circle (at 10.16 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "6" thru_hole circle (at 12.7 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "7" thru_hole circle (at 15.24 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(pad "8" thru_hole circle (at 17.78 0) (size 1.9 1.9) (drill 1) (layers "*.Cu" "*.Mask"))
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/DCDC_Custom.pretty/IZ0512S.step"
+		(offset (xyz 0 0 0))
+		(scale (xyz 1.1321 1.0990 1.5333))
+		(rotate (xyz 0 0 0))
+	)
+)
