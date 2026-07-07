@@ -241,7 +241,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -451,7 +451,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -661,7 +661,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -871,7 +871,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1673,7 +1673,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1883,7 +1883,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2093,7 +2093,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2303,7 +2303,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3332,7 +3332,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74hc_hct74.pdf"
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3725,7 +3725,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74ls86.pdf"
+			(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3842,7 +3842,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -4010,7 +4010,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -4178,7 +4178,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -4346,7 +4346,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -4965,15 +4965,12 @@
 			(embedded_fonts no)
 		)
 		(symbol "Graphic:Logo_Open_Hardware_Small"
-			(pin_names
-				(offset 1.016)
-			)
 			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
+			(in_bom no)
+			(on_board no)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#LOGO"
+			(property "Reference" "#SYM"
 				(at 0 6.985 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5018,6 +5015,17 @@
 				)
 			)
 			(property "Description" "Open Hardware logo, small"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Enable" "0"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7471,8 +7479,12 @@
 		)
 		(symbol "power:+12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7533,7 +7545,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7586,8 +7598,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "+12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7607,8 +7618,12 @@
 		)
 		(symbol "power:-5V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7616,7 +7631,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -7627,7 +7642,7 @@
 				)
 			)
 			(property "Value" "-5V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -7669,7 +7684,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7684,8 +7699,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-5V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7719,8 +7733,12 @@
 		)
 		(symbol "power:GND"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7781,7 +7799,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7810,8 +7828,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
-					(hide yes)
-					(name "GND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7831,8 +7848,12 @@
 		)
 		(symbol "power:VCC"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7851,7 +7872,7 @@
 				)
 			)
 			(property "Value" "VCC"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -7893,7 +7914,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7946,8 +7967,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -15520,7 +15540,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 44.45 50.8 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15599,7 +15619,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 30.48 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16316,7 +16336,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 91.44 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16506,7 +16526,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "8-bit Latch, 3-state outputs"
 			(at 129.54 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17328,7 +17348,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 41.91 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17396,7 +17416,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74ls86.pdf"
+		(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 			(at 124.46 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -17407,7 +17427,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad 2-input XOR"
 			(at 124.46 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17521,7 +17541,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad And2"
 			(at 124.46 190.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17624,7 +17644,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74hc_hct74.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 			(at 203.2 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -17635,7 +17655,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual D Flip-flop, Set & Reset"
 			(at 203.2 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17749,7 +17769,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad And2"
 			(at 233.68 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17863,7 +17883,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad And2"
 			(at 213.36 50.8 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17977,7 +17997,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 182.88 88.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18091,7 +18111,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 213.36 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18206,7 +18226,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "quad 2-input NAND gate"
 			(at 182.88 71.12 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18320,7 +18340,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "quad 2-input NAND gate"
 			(at 233.68 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18434,7 +18454,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Decoder 3 to 8 active low outputs"
 			(at 185.42 35.56 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18860,7 +18880,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Two pin crystal, small symbol"
 			(at 41.91 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19018,8 +19038,19 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Open Hardware logo, small"
 			(at 260.35 177.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Enable" "0"
+			(at 260.35 177.8 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

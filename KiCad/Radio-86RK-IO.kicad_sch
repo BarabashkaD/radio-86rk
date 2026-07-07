@@ -241,7 +241,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -451,7 +451,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -661,7 +661,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -871,7 +871,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1043,7 +1043,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74ls86.pdf"
+			(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1160,7 +1160,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1328,7 +1328,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1496,7 +1496,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1664,7 +1664,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -5819,24 +5819,6 @@
 			)
 			(symbol "DE9_1_1"
 				(pin passive line
-					(at -10.16 -15.24 0)
-					(length 6.35)
-					(name "GND"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-					(number "SH"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at -10.16 -10.16 0)
 					(length 5.08)
 					(name "1"
@@ -5991,6 +5973,24 @@
 						)
 					)
 					(number "9"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 -15.24 0)
+					(length 6.35)
+					(name "GND"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "SH"
 						(effects
 							(font
 								(size 1.524 1.524)
@@ -6640,8 +6640,12 @@
 		)
 		(symbol "power:+12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6702,7 +6706,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6755,8 +6759,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "+12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6776,8 +6779,12 @@
 		)
 		(symbol "power:-12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6785,7 +6792,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -6796,7 +6803,7 @@
 				)
 			)
 			(property "Value" "-12V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6838,7 +6845,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6853,8 +6860,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6888,8 +6894,12 @@
 		)
 		(symbol "power:GND"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6950,7 +6960,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6979,8 +6989,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
-					(hide yes)
-					(name "GND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7000,8 +7009,12 @@
 		)
 		(symbol "power:VCC"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7020,7 +7033,7 @@
 				)
 			)
 			(property "Value" "VCC"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -7062,7 +7075,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7115,8 +7128,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -12880,7 +12892,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient, small symbol"
 			(at 134.62 193.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12947,7 +12959,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74ls86.pdf"
+		(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 			(at 149.86 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -12958,7 +12970,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad 2-input XOR"
 			(at 149.86 99.06 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13233,7 +13245,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 180.34 153.67 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13694,7 +13706,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, double row, 02x13, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 116.84 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15162,7 +15174,7 @@
 				)
 			)
 		)
-		(pin "0"
+		(pin "SH"
 			(uuid "2764006c-3847-4807-a806-dce63aa294b3")
 		)
 		(pin "1"
@@ -15256,7 +15268,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 162.56 146.05 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15487,7 +15499,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Speaker"
 			(at 180.34 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15564,7 +15576,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 172.72 140.97 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15642,7 +15654,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "quad 2-input NAND gate"
 			(at 129.54 86.36 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15757,7 +15769,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "quad 2-input NAND gate"
 			(at 129.54 101.6 0)
 			(show_name no)
 			(do_not_autoplace no)

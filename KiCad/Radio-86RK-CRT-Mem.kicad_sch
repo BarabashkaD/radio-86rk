@@ -685,7 +685,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -895,7 +895,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1105,7 +1105,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1315,7 +1315,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1487,7 +1487,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74hc_hct74.pdf"
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1880,7 +1880,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74ls86.pdf"
+			(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1997,7 +1997,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2165,7 +2165,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2333,7 +2333,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2501,7 +2501,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2991,7 +2991,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "~"
+			(property "Datasheet" ""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3013,7 +3013,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA"
+			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA MCX MMCX U.FL UMRF"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3024,7 +3024,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO*"
+			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3049,9 +3049,9 @@
 					)
 				)
 				(arc
-					(start -1.778 0.508)
-					(mid 0.222 1.8083)
-					(end 1.778 0)
+					(start 1.778 0)
+					(mid 0.222 -1.8079)
+					(end -1.778 -0.508)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -3061,9 +3061,9 @@
 					)
 				)
 				(arc
-					(start 1.778 0)
-					(mid 0.222 -1.808)
-					(end -1.778 -0.508)
+					(start -1.778 0.508)
+					(mid 0.2221 1.8084)
+					(end 1.778 0)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -7261,8 +7261,12 @@
 		)
 		(symbol "power:GND"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7323,7 +7327,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7352,8 +7356,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
-					(hide yes)
-					(name "GND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7373,8 +7376,12 @@
 		)
 		(symbol "power:VCC"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7393,7 +7400,7 @@
 				)
 			)
 			(property "Value" "VCC"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -7435,7 +7442,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -7488,8 +7495,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -14865,7 +14871,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74ls86.pdf"
+		(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 			(at 213.36 134.62 0)
 			(hide yes)
 			(show_name no)
@@ -14876,7 +14882,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad 2-input XOR"
 			(at 213.36 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15208,7 +15214,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 227.33 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15285,7 +15291,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 227.33 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15362,7 +15368,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 233.68 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15513,7 +15519,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 243.84 138.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15590,7 +15596,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 243.84 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15669,7 +15675,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 250.19 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15750,7 +15756,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 250.19 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16253,7 +16259,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
 			(at 264.16 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16409,7 +16415,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "9 resistor network, star topology, bussed resistors, small symbol"
 			(at 218.44 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16501,7 +16507,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74ls86.pdf"
+		(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 			(at 175.26 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -16512,7 +16518,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad 2-input XOR"
 			(at 175.26 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16626,7 +16632,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 213.36 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16740,7 +16746,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 213.36 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16854,7 +16860,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Divide by 12 counter"
 			(at 124.46 157.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17109,7 +17115,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad And2"
 			(at 152.4 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17212,7 +17218,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74hc_hct74.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 			(at 175.26 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -17223,7 +17229,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual D Flip-flop, Set & Reset"
 			(at 175.26 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17796,7 +17802,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 20.32 157.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18032,7 +18038,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 162.56 114.3 0)
 			(show_name no)
 			(do_not_autoplace no)

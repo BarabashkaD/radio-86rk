@@ -241,7 +241,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -451,7 +451,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -661,7 +661,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -871,7 +871,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1673,7 +1673,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1883,7 +1883,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2093,7 +2093,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2303,7 +2303,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2475,7 +2475,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74hc_hct74.pdf"
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2868,7 +2868,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74ls86.pdf"
+			(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2985,7 +2985,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3153,7 +3153,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3321,7 +3321,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3489,7 +3489,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3757,7 +3757,7 @@
 				)
 				(arc
 					(start -3.302 1.905)
-					(mid -3.9342 2.54)
+					(mid -3.9343 2.54)
 					(end -3.302 3.175)
 					(stroke
 						(width 0.254)
@@ -3769,7 +3769,7 @@
 				)
 				(arc
 					(start -3.302 1.905)
-					(mid -3.9342 2.54)
+					(mid -3.9343 2.54)
 					(end -3.302 3.175)
 					(stroke
 						(width 0.254)
@@ -5874,8 +5874,12 @@
 		)
 		(symbol "power:+12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5936,7 +5940,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5989,8 +5993,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "+12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6010,8 +6013,12 @@
 		)
 		(symbol "power:-12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6019,7 +6026,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -6030,7 +6037,7 @@
 				)
 			)
 			(property "Value" "-12V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6072,7 +6079,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6087,8 +6094,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6122,8 +6128,12 @@
 		)
 		(symbol "power:-5V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6131,7 +6141,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -6142,7 +6152,7 @@
 				)
 			)
 			(property "Value" "-5V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6184,7 +6194,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6199,8 +6209,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-5V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6234,8 +6243,12 @@
 		)
 		(symbol "power:GND"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6296,7 +6309,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6325,8 +6338,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
-					(hide yes)
-					(name "GND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6412,7 +6424,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "flag power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6427,7 +6439,7 @@
 				(pin power_out line
 					(at 0 0 90)
 					(length 0)
-					(name "pwr"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6461,8 +6473,12 @@
 		)
 		(symbol "power:VCC"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6481,7 +6497,7 @@
 				)
 			)
 			(property "Value" "VCC"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6523,7 +6539,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6576,8 +6592,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -9875,7 +9890,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 55.88 104.14 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9971,7 +9986,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC Barrel Jack with an internal switch"
 			(at 27.94 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10977,7 +10992,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 205.74 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11056,7 +11071,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 121.92 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11135,7 +11150,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 129.54 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11214,7 +11229,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 137.16 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11293,7 +11308,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 144.78 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11372,7 +11387,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 152.4 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11451,7 +11466,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 160.02 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11530,7 +11545,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 167.64 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11609,7 +11624,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 175.26 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11688,7 +11703,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 182.88 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11767,7 +11782,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 198.12 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11846,7 +11861,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 114.3 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11925,7 +11940,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 121.92 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12004,7 +12019,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 129.54 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12083,7 +12098,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 137.16 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12162,7 +12177,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 144.78 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12241,7 +12256,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 152.4 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12320,7 +12335,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 160.02 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12399,7 +12414,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 167.64 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12478,7 +12493,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 190.5 39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12558,7 +12573,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 198.12 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12637,7 +12652,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 121.92 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12716,7 +12731,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 167.64 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12795,7 +12810,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 175.26 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12875,7 +12890,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 152.4 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12955,7 +12970,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 182.88 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13467,7 +13482,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.fairchildsemi.com/ds/LM/LM7905.pdf"
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/MC7900-D.PDF"
 			(at 152.4 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -13478,7 +13493,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Negative 1A 35V Linear Regulator, Fixed Output 5V, TO-220"
 			(at 152.4 106.68 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13560,7 +13575,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 121.92 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13640,7 +13655,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, US symbol"
 			(at 137.16 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13717,7 +13732,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Special symbol for telling ERC where power comes from"
 			(at 121.92 30.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13793,7 +13808,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 129.54 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13872,7 +13887,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 137.16 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14181,7 +14196,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 190.5 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14260,7 +14275,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 175.26 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14415,7 +14430,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 182.88 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14494,7 +14509,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 129.54 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14649,7 +14664,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Hex Inverter"
 			(at 172.72 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14763,7 +14778,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "quad 2-input NAND gate"
 			(at 187.96 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14877,7 +14892,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad And2"
 			(at 157.48 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15132,7 +15147,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74ls86.pdf"
+		(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 			(at 127 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -15143,7 +15158,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Quad 2-input XOR"
 			(at 127 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15702,7 +15717,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "74xx/74hc_hct74.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 			(at 142.24 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -15713,7 +15728,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual D Flip-flop, Set & Reset"
 			(at 142.24 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15980,7 +15995,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 144.78 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16282,7 +16297,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Generic connector, single row, 01x20, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 40.64 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
