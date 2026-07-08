@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Radio86RK_Custom")(type "KiCad")(uri "/Users/dveremeev/projects/radio-86rk/KiCad/Radio86RK_Custom.kicad_sym")(options "")(descr "Project-local symbol library for legacy/vintage parts (Intel MCS-80 family ICs, period-specific connectors, mounting-hole placeholder) with no official KiCad equivalent. Re-homed from the schematic's own embedded symbol cache during ERC remediation (2026-07-08) after discovering the original 'my_components' symbol library file no longer exists anywhere in the repo."))
+)
