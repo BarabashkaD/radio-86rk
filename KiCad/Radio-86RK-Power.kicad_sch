@@ -9274,7 +9274,7 @@
 		)
 		(uuid "ffe6d5f3-f9a5-48a9-88db-d2d7822b944f")
 	)
-	(label "D6"
+	(global_label "D6"
 		(at 35.56 33.02 180)
 		(effects
 			(font
@@ -9284,7 +9284,7 @@
 		)
 		(uuid "008153c7-0b76-4838-9ffc-642f1ac75e09")
 	)
-	(label "D3"
+	(global_label "D3"
 		(at 35.56 45.72 180)
 		(effects
 			(font
@@ -9294,7 +9294,7 @@
 		)
 		(uuid "1926f41d-06e9-4d31-a4ca-73a7911bd6b0")
 	)
-	(label "A1"
+	(global_label "A1"
 		(at 35.56 60.96 180)
 		(effects
 			(font
@@ -9304,7 +9304,7 @@
 		)
 		(uuid "2279d546-9ffd-4332-8151-bb3e19077fc1")
 	)
-	(label "RESET"
+	(global_label "RESET"
 		(at 35.56 38.1 180)
 		(effects
 			(font
@@ -9314,7 +9314,7 @@
 		)
 		(uuid "23c2c882-360c-456a-92d1-e297f53e411b")
 	)
-	(label "~{RD}"
+	(global_label "~{RD}"
 		(at 35.56 71.12 180)
 		(effects
 			(font
@@ -9324,7 +9324,7 @@
 		)
 		(uuid "3ac54e89-280f-4f4b-8a80-fd43df40ea02")
 	)
-	(label "D7"
+	(global_label "D7"
 		(at 35.56 30.48 180)
 		(effects
 			(font
@@ -9334,7 +9334,7 @@
 		)
 		(uuid "614bf20d-d405-43c5-8d81-38420cf375ca")
 	)
-	(label "~{WR}"
+	(global_label "~{WR}"
 		(at 35.56 73.66 180)
 		(effects
 			(font
@@ -9354,7 +9354,7 @@
 		)
 		(uuid "71b4e65e-9787-4d1d-be22-28dc0564d248")
 	)
-	(label "D1"
+	(global_label "D1"
 		(at 35.56 50.8 180)
 		(effects
 			(font
@@ -9364,7 +9364,7 @@
 		)
 		(uuid "795fcebf-ab6f-46f7-8d9a-9dcb16f2acf8")
 	)
-	(label "D2"
+	(global_label "D2"
 		(at 35.56 48.26 180)
 		(effects
 			(font
@@ -9374,7 +9374,7 @@
 		)
 		(uuid "79e859de-d22c-4ccc-abb3-0ee5dcda59f9")
 	)
-	(label "A0"
+	(global_label "A0"
 		(at 35.56 58.42 180)
 		(effects
 			(font
@@ -9384,7 +9384,7 @@
 		)
 		(uuid "8ba3132a-e975-4e55-87f4-f209a9671c07")
 	)
-	(label "D0"
+	(global_label "D0"
 		(at 35.56 53.34 180)
 		(effects
 			(font
@@ -9394,7 +9394,7 @@
 		)
 		(uuid "aca7fe32-8154-41eb-80f5-0fb98403e923")
 	)
-	(label "TTL_CLK"
+	(global_label "TTL_CLK"
 		(at 35.56 40.64 180)
 		(effects
 			(font
@@ -9404,7 +9404,7 @@
 		)
 		(uuid "c692ac8f-ca60-4eb5-bec3-1858e08dc659")
 	)
-	(label "D5"
+	(global_label "D5"
 		(at 35.56 35.56 180)
 		(effects
 			(font
@@ -9414,7 +9414,7 @@
 		)
 		(uuid "cb199fea-aa70-4ea3-b114-ba4eeee463cd")
 	)
-	(label "A2"
+	(global_label "A2"
 		(at 35.56 63.5 180)
 		(effects
 			(font
@@ -9424,7 +9424,7 @@
 		)
 		(uuid "d7011dac-e993-4712-bddb-7fcd3c4b81b9")
 	)
-	(label "A3"
+	(global_label "A3"
 		(at 35.56 66.04 180)
 		(effects
 			(font
@@ -9434,7 +9434,7 @@
 		)
 		(uuid "df5bb7be-048f-4633-8d78-3b88a3126def")
 	)
-	(label "D4"
+	(global_label "D4"
 		(at 35.56 43.18 180)
 		(effects
 			(font

@@ -9017,7 +9017,7 @@
 		)
 		(uuid "126f84ae-523c-4569-b046-7ee124f46a5a")
 	)
-	(label "PIT2_ENA"
+	(global_label "PIT2_ENA"
 		(at 66.04 137.16 0)
 		(effects
 			(font
@@ -9047,7 +9047,7 @@
 		)
 		(uuid "30f27120-8919-4f22-a0e2-49bd0c1104a0")
 	)
-	(label "~{WR}"
+	(global_label "~{WR}"
 		(at 35.56 127 180)
 		(effects
 			(font
@@ -9237,7 +9237,7 @@
 		)
 		(uuid "70b53718-ed58-494c-b8a6-19eb974c07c4")
 	)
-	(label "SPKR_ENA"
+	(global_label "SPKR_ENA"
 		(at 66.04 134.62 0)
 		(effects
 			(font
@@ -9307,7 +9307,7 @@
 		)
 		(uuid "ae121872-4c9f-495f-b631-8204082b9825")
 	)
-	(label "~{RD}"
+	(global_label "~{RD}"
 		(at 35.56 124.46 180)
 		(effects
 			(font
