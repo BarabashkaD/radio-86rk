@@ -15987,7 +15987,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "9a5aa453-9513-4c96-b1a5-f4cbf6c744a3")
+		(uuid "00000000-0000-0000-0000-00005ff4fde4")
 		(property "Reference" "Q2"
 			(at 175.26 156.21 0)
 			(show_name no)

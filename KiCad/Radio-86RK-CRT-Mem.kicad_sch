@@ -18226,7 +18226,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "f74f9061-5b68-4fb8-8d38-e88307ec7d34")
+		(uuid "00000000-0000-0000-0000-00006203b888")
 		(property "Reference" "Q1"
 			(at 246.38 128.27 0)
 			(show_name no)
