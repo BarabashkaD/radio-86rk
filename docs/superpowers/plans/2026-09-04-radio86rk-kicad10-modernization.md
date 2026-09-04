@@ -80,25 +80,43 @@ handled by the task named.
    perigoso's tidier silkscreen and a real `F.CrtYd` courtyard where skiselev draws the
    outline on `Eco2.User`, which KiCad 10 ignores for `courtyard_overlap`. Adding courtyards
    to the vendored footprints remains available later as a non-copper change.
-2. **Gerbers embed net names.** `%TO.N,<netname>*%` appears 1155 times in `F_Cu` alone, so a
+2. **A byte diff of gerbers does not work — the gate must canonicalise.** Verified by
+   running `kicad-cli pcb upgrade` on this board: it re-emits identical geometry in a
+   different order and renumbers aperture D-codes. 12 of 22 files change byte-wise, yet the
+   drill file is byte-identical, the aperture sets match, and every copper file holds the
+   same multiset of drawing commands. `F_Silkscreen` additionally drops 7 redundant
+   aperture-select no-ops and swaps which diameters D12 and D13 name. A naive line *sort* is
+   not safe either, because `F_Cu`, `B_Cu` and `F_Silkscreen` use G36/G37 region fills whose
+   vertex order defines the polygon. → Task 1 Step 3 adds `tools/gerber_canon.py`, validated
+   both ways: it passes the format upgrade and catches a 1 µm pad shift in 5 files.
+
+3. **The format upgrade raises ERC by 21, and that is expected.** `kicad-cli sch upgrade`
+   surfaces 21 `different_unit_net` violations the KiCad 6 format never reported, on the
+   multi-unit 74xx logic (U16, U17, U18, U19, U20) — the same symbols already reporting
+   `lib_symbol_mismatch`. Isolated by running ERC on upgraded and un-upgraded copies with
+   identical library tables. → Task 2 expects ERC 243 → 264 rather than "unchanged", and
+   Task 8 checks whether re-homing the symbols clears them.
+
+4. **Gerbers embed net names.** `%TO.N,<netname>*%` appears 1155 times in `F_Cu` alone, so a
    net rename changes gerber bytes without moving copper. → Task 1 builds two gate modes.
-3. **The project is in KiCad 6 format with CRLF endings.** The first save rewrites all
+5. **The project is in KiCad 6 format with CRLF endings.** The first save rewrites all
    173,936 lines. → Task 2 does that once, in isolation, gated.
-4. **3D models attach to 35 footprint definitions, not 191 instances.** → Tasks 4–6 are 35
+6. **3D models attach to 35 footprint definitions, not 191 instances.** → Tasks 4–6 are 35
    assignments, not 191.
-5. **U27 is `Transistor_TO92_EBC_254`, not a 3-pin regulator.** The spec's §3 text is wrong;
+7. **U27 is `Transistor_TO92_EBC_254`, not a 3-pin regulator.** The spec's §3 text is wrong;
    its socket table (which excludes U25/U26/U27) is right. → Task 4 gives it a TO-92 model.
-6. **F1 (a fuse) uses `Cap_Cer_508`.** Because models attach to footprints, F1 necessarily
+8. **F1 (a fuse) uses `Cap_Cer_508`.** Because models attach to footprints, F1 necessarily
    inherits the disc-capacitor model. Accepted per the 3D tolerance policy; recorded in
    `docs/3d-model-sources.md`.
-7. **KiCad ships no RCA and no 8-pin DIN model.** → Task 6 sources or records fallbacks.
+9. **KiCad ships no RCA and no 8-pin DIN model.** → Task 6 sources or records fallbacks.
 
 ## File Structure
 
 | Path | Responsibility |
 |---|---|
 | `tools/kicad-env.sh` | Single source of truth for tool paths. Sourced by every other script. |
-| `tools/gerber-gate.sh` | Export gerbers+drill, normalize, diff vs baseline. Two modes. |
+| `tools/gerber_canon.py` | Canonicalise a gerber so reordering and D-code renumbering compare equal. |
+| `tools/gerber-gate.sh` | Export gerbers+drill, canonicalise, diff vs baseline. Two modes. |
 | `tools/netlist-gate.sh` | Export the netlist, diff vs baseline. Proves no pin was renumbered. |
 | `tools/rules-report.sh` | Run ERC + DRC, print violation counts by type. |
 | `tools/render.sh` | Render the board to PNG for the visual record. |
@@ -160,11 +178,115 @@ for v in KICAD_CLI KICAD_PY KICAD_3DMODEL_DIR KICAD_3RD_PARTY PCB SCH; do
 done
 ```
 
-- [ ] **Step 3: Write `tools/gerber-gate.sh`**
+- [ ] **Step 3: Write `tools/gerber_canon.py`**
 
-The normalizer strips exactly the four line shapes that carry a generation timestamp, all
-verified present in real output. `--geometry` additionally strips X2 net/component
-attributes, for tasks that legitimately rename nets.
+**A byte diff of gerbers does not work, and this was verified the hard way.** Running
+`kicad-cli pcb upgrade` on this board re-emits identical geometry in a *different order*,
+and renumbers aperture D-codes: after the format upgrade, 12 of 22 files differ byte-wise
+while the drill file is byte-identical, apertures are the same set, and every copper file
+holds the same multiset of drawing commands. A naive byte gate would fail Task 2 and every
+task after it.
+
+A naive line *sort* is not safe either: `F_Cu`, `B_Cu` and `F_Silkscreen` all use G36/G37
+region fills, whose vertex order determines the polygon.
+
+So the gate canonicalises first — resolving each D-code to the aperture *shape* it names,
+grouping commands into atomic drawing units, and sorting the units:
+
+```python
+"""Canonicalise a gerber file so reordering and aperture renumbering compare equal,
+while any change to real geometry compares different.
+
+Canonical form: the file is split into atomic drawing units --
+  * a G36...G37 region block, kept verbatim and in order
+  * a D02 move plus the D01/D03 operations that follow it
+  * a bare D03 flash
+each prefixed by the resolved aperture definition (not its D-code) and the current
+interpolation mode. Units are then sorted, so order between units is irrelevant while
+order within a unit is preserved.
+"""
+import re, sys
+
+APERTURE_DEF = re.compile(r"^%ADD(\d+)([^*]*)\*%")
+APERTURE_SEL = re.compile(r"^D(\d+)\*$")
+GMODE        = re.compile(r"^(G0[123])\*?$")
+OPLINE       = re.compile(r"D0([123])\*$")
+
+def canon(path):
+    apertures, units = {}, []
+    cur_ap, cur_g, unit = "none", "G01", None
+    in_region, region = False, []
+
+    for raw in open(path, errors="replace"):
+        line = raw.rstrip("\n").rstrip("\r")
+        if not line:
+            continue
+
+        m = APERTURE_DEF.match(line)
+        if m:                                   # remember the shape, discard the D-code
+            apertures[m.group(1)] = m.group(2)
+            continue
+
+        if line.startswith("G36"):
+            if unit:
+                units.append(unit); unit = None
+            in_region, region = True, []
+            continue
+        if line.startswith("G37"):
+            units.append("REGION|%s|%s" % (cur_ap, "|".join(region)))
+            in_region = False
+            continue
+        if in_region:
+            region.append(line)
+            continue
+
+        m = APERTURE_SEL.match(line)
+        if m:                                   # aperture select: resolve to its shape
+            if unit:
+                units.append(unit); unit = None
+            cur_ap = apertures.get(m.group(1), "D" + m.group(1))
+            continue
+
+        m = GMODE.match(line)
+        if m:
+            cur_g = m.group(1)
+            continue
+
+        m = OPLINE.search(line)
+        if m:
+            op = m.group(1)
+            if op == "2":                       # move: starts a new unit
+                if unit:
+                    units.append(unit)
+                unit = "DRAW|%s|%s|%s" % (cur_ap, cur_g, line)
+            elif op == "1":                     # draw: extends the current unit
+                if unit is None:
+                    unit = "DRAW|%s|%s|" % (cur_ap, cur_g)
+                unit += "||" + line
+            else:                               # flash: atomic
+                if unit:
+                    units.append(unit); unit = None
+                units.append("FLASH|%s|%s" % (cur_ap, line))
+            continue
+        # everything else (format specs, attributes, M02) is metadata, not geometry
+
+    if unit:
+        units.append(unit)
+    return sorted(units)
+
+if __name__ == "__main__":
+    for u in canon(sys.argv[1]):
+        print(u)
+```
+
+This exact script was validated both ways on this board: it reports the format upgrade as
+unchanged, and it detects a 1 µm pad displacement in 5 files. Step 8 re-runs both checks.
+
+- [ ] **Step 4: Write `tools/gerber-gate.sh`**
+
+Drill and job files are compared directly (the drill file is byte-stable). Gerbers go
+through the canonicaliser. `--strict` additionally keeps the X2 net/component attributes so
+a net rename is visible; `--geometry` drops them, for tasks that legitimately rename nets.
 
 ```bash
 #!/usr/bin/env bash
@@ -196,11 +318,20 @@ rm -rf "$RAW" "$NORM"; mkdir -p "$RAW" "$NORM"
 STAMP='CreationDate|Created by KiCad|DRILL file KiCad'
 for f in "$RAW"/*; do
   out="$NORM/$(basename "$f")"
-  if [ "$MODE" = "geometry" ]; then
-    grep -vE "$STAMP" "$f" | grep -vE '^%T[OA]\.|^G04 #@! T[OA]\.' > "$out"
-  else
-    grep -vE "$STAMP" "$f" > "$out"
-  fi
+  case "$(basename "$f")" in
+    *.drl|*.gbrjob)
+      # Drill and job files are already stable and order-independent.
+      grep -vE "$STAMP" "$f" > "$out" ;;
+    *)
+      # Gerbers go through the canonicaliser: KiCad re-emits the same geometry in a
+      # different order and with D-codes renumbered, so a byte diff is meaningless.
+      "$KICAD_PY" "$(dirname "$0")/gerber_canon.py" "$f" > "$out"
+      if [ "$MODE" = "strict" ]; then
+        # In strict mode also keep the X2 net/component attributes, so a net rename
+        # is visible. --geometry drops them.
+        grep -E '^%T[OA]\.' "$f" | sort >> "$out"
+      fi ;;
+  esac
 done
 
 if [ "$CAPTURE" = 1 ]; then
@@ -217,7 +348,7 @@ else
 fi
 ```
 
-- [ ] **Step 4: Write `tools/rules-report.sh`**
+- [ ] **Step 5: Write `tools/rules-report.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -248,7 +379,7 @@ for label, path in (("ERC", sys.argv[1]), ("DRC", sys.argv[2])):
 PY
 ```
 
-- [ ] **Step 5: Write `tools/render.sh`**
+- [ ] **Step 6: Write `tools/render.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -263,7 +394,7 @@ OUT="$REPO_ROOT/verify/renders"; mkdir -p "$OUT"
 echo "rendered $OUT/$TAG-top.png"
 ```
 
-- [ ] **Step 6: Make the scripts executable and ignore build output**
+- [ ] **Step 7: Make the scripts executable and ignore build output**
 
 ```bash
 cd /Users/dveremeev/projects/radio-86rk
@@ -271,7 +402,7 @@ chmod +x tools/*.sh
 printf '.build/\n.DS_Store\nKiCad/.history/\nKiCad/*.kicad_prl\nKiCad/*.lck\n' >> .gitignore
 ```
 
-- [ ] **Step 7: Prove the gate works — capture the baseline, then run it unchanged**
+- [ ] **Step 8: Prove the gate works — capture the baseline, then run it unchanged**
 
 This is the failing-test-first moment: a gate that cannot pass on an untouched board is
 worthless, and a gate that cannot fail is equally worthless.
@@ -285,7 +416,7 @@ tools/gerber-gate.sh --geometry
 
 Expected: two `captured` lines, then two `PASS` lines.
 
-- [ ] **Step 8: Prove the gate can fail**
+- [ ] **Step 9: Prove the gate can fail**
 
 ```bash
 # Perturb one pad by 1 micron in a scratch copy, confirm the gate catches it.
@@ -298,7 +429,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `FAIL` + a diff + the confirmation line, then `PASS` after restore.
 
-- [ ] **Step 9: Record the starting rule counts**
+- [ ] **Step 10: Record the starting rule counts**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-00-baseline.txt
@@ -314,7 +445,7 @@ working tree as untracked files written on 2026-09-04. Step 10 commits them as-i
 baseline is reproducible from git; Tasks 3 and 7 then rewrite both to point at vendored
 libraries.
 
-- [ ] **Step 10: Commit**
+- [ ] **Step 11: Commit**
 
 ```bash
 git add tools .gitignore verify KiCad/sym-lib-table KiCad/fp-lib-table
@@ -386,15 +517,37 @@ Expected: `(kicad_pcb` with `(version 20260206)`, and zero CRLF lines.
 tools/gerber-gate.sh --strict
 ```
 
-Expected: `PASS`. A reformat that changes one coordinate is a KiCad bug or a wrong
-command; if this fails, `git checkout -- KiCad/` and stop.
+Expected: `PASS`. **This is the step that justifies `gerber_canon.py`'s existence.** Measured
+on this board, the upgrade rewrites the gerbers substantially — 12 of 22 files change
+byte-wise, `F_Silkscreen` loses 7 redundant aperture-select commands, and `F_Silkscreen`'s
+D12/D13 swap which diameter they name — while the drill file stays byte-identical, the
+aperture *sets* are unchanged, and every copper file holds the same multiset of drawing
+commands. None of that is a geometry change, and the canonical gate correctly reports it as
+none. A raw byte diff would fail here and at every later task.
 
-- [ ] **Step 6: Record rule counts (expect no change)**
+If the gate fails, `git checkout -- KiCad/` and stop: a reformat that moves a coordinate is
+a KiCad bug or a wrong command.
+
+- [ ] **Step 6: Record rule counts — ERC will go UP by 21, and that is correct**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-01-format-upgrade.txt
-diff verify/rules-00-baseline.txt verify/rules-01-format-upgrade.txt && echo "rule counts unchanged"
+diff verify/rules-00-baseline.txt verify/rules-01-format-upgrade.txt || true
 ```
+
+Expected: DRC unchanged at 91. **ERC rises from 243 to 264**, gaining 21
+`different_unit_net` violations that the KiCad 6 format never reported. Measured on this
+board, they land on the multi-unit 74xx logic — U16 (74LS86), U17 (74LS74), U18 (74LS08),
+U19 and U20 (74LS00) — which is exactly the set of symbols already reporting
+`lib_symbol_mismatch`.
+
+That correlation is the likely cause: the cached KiCad-4-era symbol definitions carry a unit
+structure that the current libraries do not agree with, and the upgrade gave KiCad enough
+information to notice. **Task 8 is expected to clear them when it re-homes those symbols**,
+and it checks explicitly rather than assuming. Do not attempt to fix them here — this task
+changes file format only.
+
+Any *other* new violation type is not expected. Investigate before continuing.
 
 - [ ] **Step 7: Commit**
 
@@ -550,10 +703,17 @@ Expected: `PASS`.
 tools/rules-report.sh | tee verify/rules-03-vendored.txt
 ```
 
-Expected: `DRC 22` — the 67 `lib_footprint_issues` and both `lib_footprint_mismatch` are
-gone, leaving exactly the 17 `silk_edge_clearance` + 5 `starved_thermal` inherited from
-v1.4. `ERC 176` — the 67 `footprint_link_issues` are gone, leaving 142
-`lib_symbol_mismatch` + 32 `same_local_global_label` + 2 `lib_symbol_issues`.
+Expected — **this whole step was executed end-to-end on a scratch copy of this board and
+produced exactly these numbers:**
+
+`DRC 22`, being 17 `silk_edge_clearance` + 5 `starved_thermal`. All 67
+`lib_footprint_issues` and both `lib_footprint_mismatch` clear, which confirms the
+extraction reproduces the board's geometry closely enough for KiCad's own library
+comparison. `unconnected_items` and `schematic_parity` are both empty.
+
+`ERC 197` — the 67 `footprint_link_issues` clear, leaving 142 `lib_symbol_mismatch` +
+32 `same_local_global_label` + 2 `lib_symbol_issues` + the 21 `different_unit_net` that
+Task 2's format upgrade surfaced.
 
 If `lib_footprint_mismatch` is **non-zero**, the extraction altered something. Diff the
 offending library footprint against its board instance before proceeding.
@@ -1326,7 +1486,8 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 8: Re-home the drifted symbols to public libraries and drive ERC down
 
-176 ERC violations remain: 142 `lib_symbol_mismatch`, 32 `same_local_global_label`,
+197 ERC violations remain: 142 `lib_symbol_mismatch`, 32 `same_local_global_label`,
+21 `different_unit_net`,
 2 `lib_symbol_issues`.
 
 **Every one of these resolves through public reuse — nothing needs vendoring.** The
@@ -1552,8 +1713,25 @@ you deliberately changed.
 tools/rules-report.sh | tee verify/rules-07-symbols.txt
 ```
 
-Expected: `lib_symbol_mismatch`, `lib_symbol_issues` and `same_local_global_label` all
-gone. New `pin_not_driven` / `pin_not_connected` / `unconnected_wire_endpoint` violations
+Expected: `lib_symbol_mismatch`, `lib_symbol_issues` and `same_local_global_label` all gone.
+
+**Check `different_unit_net` specifically.** The 21 of these that Task 2's format upgrade
+surfaced sit on U16, U17, U18, U19 and U20 — precisely the multi-unit 74xx symbols that
+were reporting `lib_symbol_mismatch`. The working hypothesis is that the stale cached
+symbol definitions disagree with the current libraries about unit structure, in which case
+re-homing clears them:
+
+```bash
+grep -c 'different_unit_net' .build/erc.json
+```
+
+If they are **gone**, the hypothesis held and nothing further is needed. If they **remain**,
+they are a genuine schematic defect rather than a library artefact — most likely a shared
+power pin wired to different nets across units. In that case treat them like issue #2:
+diagnose, do *not* fix by moving wires (that is a topology change), and record them in
+`docs/erc-exclusions.md` with the diagnosis. Either way, do not leave them undiagnosed.
+
+New `pin_not_driven` / `pin_not_connected` / `unconnected_wire_endpoint` violations
 on **U3 and U22** may now appear — that is issue #2 becoming visible for the first time,
 which is the correct outcome, not a regression.
 
