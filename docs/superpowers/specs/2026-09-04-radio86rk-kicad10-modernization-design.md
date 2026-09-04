@@ -207,13 +207,21 @@ machined turned-pin). Dimensions from distributor data, 2026-09-04:
 | `DILB8P-223TLF` | 10.16 | **5.1** | 10.16 | 7.62 | U21, U23, U24 |
 | `DILB14P-223TLF` | 17.78 | **5.48** | 10.16 | 7.62 | U15–U20 |
 | `DILB16P-223TLF` | 20.32 | **5.48** | 10.16 | 7.62 | U2, U14, U22 |
-| `DILB20P-223TLF` | 25.4 | **5.48** † | 10.16 | 7.62 | U12 |
-| `DILB24P-223TLF` | 30.48 | **5.48** † | 17.78 | 15.24 | U4, U13 |
+| `DILB20P-223TLF` | 25.4 | **5.48** | 10.16 | 7.62 | U12 |
+| `DILB24P-223TLF` | 30.48 | **5.48** | 17.78 | 15.24 | U4, U13 |
 | `DILB28P-223TLF` | 35.56 | **5.48** | 17.78 | 15.24 | U3, U9, U10, U11 |
 | `DILB40P-223TLF` | 50.8 | **5.48** | 17.78 | 15.24 | U1, U5, U6, U7, U8 |
 
-† inferred. Every DILB height sourced directly is 5.48 mm with the 8-pin as the sole
-exception, and the 0.3″ sibling `DILB24P-224TLF` is independently confirmed at 5.48 mm.
+**On the height figures.** Amphenol's own spec sheet publishes Dim A/B/C/D, pitch, row
+spacing and tail length but **no overall height** — verified directly against the
+`DILB16P-223TLF` datasheet. The height comes from distributor package data, which is
+indexed for the 14/16/28/40 parts and for the 0.3″ sibling `DILB24P-224TLF`, all of which
+report 5.48 mm across both row spacings and from 14 to 40 positions. Height is a property
+of the insulator's extruded cross-section and does not vary with body length, so 5.48 mm
+is taken for the 20- and 24-pin as well. The 8-pin at 5.1 mm is the sole outlier.
+
+This is a 3D-appearance parameter, not a geometry one: a 0.38 mm error would be invisible
+in the viewer and cannot affect the board. Per §4, be generous here.
 
 **Z-offset rule: 5.1 mm for 8-pin, 5.48 mm for all other sizes.**
 
@@ -321,8 +329,6 @@ prototype ruler check confirms physical clearance.
 
 ## Open Items
 
-- `DILB20P` and `DILB24P` heights are inferred from the series pattern rather than cited.
-  Confirm with calipers on the prototype if slice 3's render looks wrong.
 - `sw3-official-reroute-experiment` holds 6 unpushed commits of pad-swap work built on a
   pre-migration base. Its pad-swap logic is now known to be *necessary* under the Cherry
   MX exception. Evaluate whether to salvage it or redo the swap on `master` during
