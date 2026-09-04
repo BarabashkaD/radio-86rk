@@ -170,9 +170,10 @@ All library URIs use `${KIPRJMOD}` or `${KICAD10_*}` variables. No absolute path
 2. **Passives** `R`+`C`+`D`+`Y`+`F` — 72 components (38% of the board). Maps to
    `Resistor_THT.3dshapes`, `Capacitor_THT.3dshapes`, `Diode_THT.3dshapes`,
    `Crystal.3dshapes`.
-3. **DIP ICs** `U` — 27, socket composites (below).
-4. **Connectors** `J`+`JP` — 9. Hardest sourcing; salvage the RCA / DIN / DC-jack models
-   already sourced on `migrate2kicad10`.
+3. **DIP ICs** `U` — 27, of which 24 are socketed and get two-model composites (below).
+4. **Connectors** `J`+`JP` — 9. Hardest sourcing: RCA jack, 8-pin DIN, DC jack,
+   friction-lock header, DE9. Models sourced independently from manufacturer or SnapEDA
+   exports.
 5. **Misc** `RN`+`Q`+`SP`+`HOLE`+`LOGO` — 15.
 6. **Keyboard** `SW` — 68, the copper-changing exception, verified against the prototype.
 
@@ -196,7 +197,33 @@ footprint** — socket at board level, chip raised to the socket's seating heigh
 (model ".../Package_DIP.3dshapes/DIP-14_W7.62mm.step"        (offset (xyz 0 0 5.48)))
 ```
 
-Seating heights for turned-pin sockets: **5.1 mm for 8-pin, 5.48 mm for 14-pin and up.**
+### Sockets actually used — Amphenol FCI DILB `-223TLF`
+
+The prototype uses Amphenol FCI DILB series **stamped-and-formed** DIP sockets (not
+machined turned-pin). Dimensions from distributor data, 2026-09-04:
+
+| Part | Length | Height | Depth | Row spacing | Board ICs |
+|---|---:|---:|---:|---:|---|
+| `DILB8P-223TLF` | 10.16 | **5.1** | 10.16 | 7.62 | U21, U23, U24 |
+| `DILB14P-223TLF` | 17.78 | **5.48** | 10.16 | 7.62 | U15–U20 |
+| `DILB16P-223TLF` | 20.32 | **5.48** | 10.16 | 7.62 | U2, U14, U22 |
+| `DILB20P-223TLF` | 25.4 | **5.48** † | 10.16 | 7.62 | U12 |
+| `DILB24P-223TLF` | 30.48 | **5.48** † | 17.78 | 15.24 | U4, U13 |
+| `DILB28P-223TLF` | 35.56 | **5.48** | 17.78 | 15.24 | U3, U9, U10, U11 |
+| `DILB40P-223TLF` | 50.8 | **5.48** | 17.78 | 15.24 | U1, U5, U6, U7, U8 |
+
+† inferred. Every DILB height sourced directly is 5.48 mm with the 8-pin as the sole
+exception, and the 0.3″ sibling `DILB24P-224TLF` is independently confirmed at 5.48 mm.
+
+**Z-offset rule: 5.1 mm for 8-pin, 5.48 mm for all other sizes.**
+
+**24 of 27 `U` components are socketed.** The exceptions are `U25`/`U27` (3-pin
+regulators) and `U26` (7-pin DC-DC converter), which are not DIP parts and take a single
+model each.
+
+The prototype is populated with **Western parts only** (Intel `P8255A-5`, NEC `8257C-5`,
+TI `SN74198N`, `74LS74`), not the Soviet equivalents named in the dual silkscreen
+markings. Symbol and 3D choices follow the Western parts.
 
 All required models are public and verified present:
 
@@ -209,9 +236,8 @@ All required models are public and verified present:
 | `dil_28-w600.wrl` | `DIP-28_W15.24mm_Socket.step` | `DIP-28_W15.24mm.step` |
 | `dil_40-w600.wrl` | `DIP-40_W15.24mm_Socket.step` | `DIP-40_W15.24mm.step` |
 
-From `migrate2kicad10`'s `IC_Socket_Custom.pretty` we salvage **the two `(model ...)`
-entries, not the footprint** — those footprints copied their pads from official
-`Package_DIP` geometry, which does not match this board.
+The two-model composite is a technique, not an asset — every socket and chip model is
+public, so nothing is carried over from `migrate2kicad10`.
 
 ## Section 4 — Failure Paths
 
@@ -281,8 +307,9 @@ prototype ruler check confirms physical clearance.
 
 ## Out of Scope
 
-- `migrate2kicad10` as a base. It contributes salvaged 3D model entries and sourced
-  connector models only; its footprint relink decisions are not carried forward.
+- `migrate2kicad10` entirely. The plan is based on `master` only — no footprints, models,
+  libraries or relink decisions are carried over from that branch. It remains readable as
+  history and as a source of research notes, but contributes no content.
 - The U3/U22 RS-232 wiring defect (GitHub issue #2). Preserve-exactly excludes fixing it.
   Note that ERC on `migrate2kicad10` reports 0 violations, which does **not** establish
   the defect is fixed — converting local labels to global gives those pins a driver and
@@ -294,8 +321,8 @@ prototype ruler check confirms physical clearance.
 
 ## Open Items
 
-- Socket seating heights (5.1 / 5.48 mm) are from `migrate2kicad10` notes for Amphenol
-  turned-pin sockets. Confirm against the sockets actually used before slice 3 is closed.
+- `DILB20P` and `DILB24P` heights are inferred from the series pattern rather than cited.
+  Confirm with calipers on the prototype if slice 3's render looks wrong.
 - `sw3-official-reroute-experiment` holds 6 unpushed commits of pad-swap work built on a
   pre-migration base. Its pad-swap logic is now known to be *necessary* under the Cherry
   MX exception. Evaluate whether to salvage it or redo the swap on `master` during
