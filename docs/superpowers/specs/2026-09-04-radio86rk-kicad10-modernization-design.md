@@ -22,6 +22,11 @@ project strictly better than before and can be stopped at any point.
    libraries aggressively. Footprint geometry does not.
 3. **Every substitution is judged, not assumed.** A difference is a breaking change only
    when it changes behavior or geometry — not merely because two definitions differ.
+4. **Everything from scratch.** No commit, footprint, symbol, model, library table or
+   configuration is carried over from `migrate2kicad10`, `sw3-official-reroute-experiment`
+   or any other branch. Every issue is solved from first principles on `master`. Findings
+   from earlier attempts may inform the work, but only as facts independently verifiable
+   against `master` and the public libraries — never as content to be copied or rebased.
 
 ## Starting State (measured 2026-09-04)
 
@@ -105,9 +110,13 @@ the same physical part. The drill difference is 1.4 µm.
 **The pin-name swap is functionally significant even though the switch is not polarized.**
 KiCad binds nets to pads by name. On SW54, `master` has pad 1 → `/Keyboard/ROW6` at
 (2.54, −5.08) and pad 2 → `/Keyboard/K_PB5` at (−3.81, −2.54). Adopting perigoso moves
-both nets to the opposite hole while the copper tracks stay put, producing shorts at
-identical coordinates. This is the cause of the 199 `shorting_items` observed on
-`migrate2kicad10` — not the pad diameter.
+both nets to the opposite hole while the copper tracks stay put, producing shorts where a
+track and a pad meet at identical coordinates.
+
+This is a property of the two footprint definitions, verifiable from `master`'s board file
+and the public perigoso library alone — no other branch is needed to establish it. Note
+that the pad *diameter* change is not the cause of the shorts; it is a separate and
+smaller effect on clearance.
 
 The exception therefore carries three obligations:
 
@@ -315,9 +324,13 @@ prototype ruler check confirms physical clearance.
 
 ## Out of Scope
 
-- `migrate2kicad10` entirely. The plan is based on `master` only — no footprints, models,
-  libraries or relink decisions are carried over from that branch. It remains readable as
-  history and as a source of research notes, but contributes no content.
+- **Every other branch.** `migrate2kicad10` and `sw3-official-reroute-experiment`
+  contribute nothing — no commits, footprints, models, library tables or relink decisions
+  are rebased, cherry-picked or copied. `sw3` additionally implements the *opposite* fix
+  for the Cherry MX pin swap (editing pad coordinates inside the board's footprint
+  instances rather than the schematic), which this spec rejects: a board footprint that
+  deliberately diverges from its library reverts silently on any future "Update Footprints
+  from Library" and re-shorts the keyboard matrix.
 - The U3/U22 RS-232 wiring defect (GitHub issue #2). Preserve-exactly excludes fixing it.
   Note that ERC on `migrate2kicad10` reports 0 violations, which does **not** establish
   the defect is fixed — converting local labels to global gives those pins a driver and
@@ -329,7 +342,7 @@ prototype ruler check confirms physical clearance.
 
 ## Open Items
 
-- `sw3-official-reroute-experiment` holds 6 unpushed commits of pad-swap work built on a
-  pre-migration base. Its pad-swap logic is now known to be *necessary* under the Cherry
-  MX exception. Evaluate whether to salvage it or redo the swap on `master` during
-  slice 6.
+None. All design decisions are settled.
+
+Slice 6 relinks all 68 switches from scratch on `master`, applying the pin swap in the
+schematic so the perigoso library footprint is used unmodified.
