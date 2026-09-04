@@ -4,7 +4,7 @@
 
 **Goal:** Bring the Radio-86RK project to full KiCad 10 compatibility and a complete 3D render of every populated component, without moving a single copper feature.
 
-**Architecture:** The board is the authoritative geometry source. All 191 footprint instances are extracted into a project-local library (`Radio86RK.pretty`), guaranteeing pad-for-pad identity by construction; 3D models are then attached to the 35 *unique* footprint definitions rather than to the 191 instances. Every change is gated by a gerber+drill diff against a baseline captured from `master` before any edit. The one authorized copper change is the keyboard, done last.
+**Architecture:** The board is the authoritative geometry source. All 191 footprint instances are extracted into a project-local library (`Radio86RK.pretty`), guaranteeing pad-for-pad identity by construction; 3D models are then attached to the 35 *unique* footprint definitions rather than to the 191 instances. Every change is gated by a gerber+drill diff against a baseline captured from `master` before any edit, and **no task changes copper** — that gate passes on every one of them.
 
 **Tech Stack:** KiCad 10.0.4; `kicad-cli` for export/DRC/ERC/render; KiCad's bundled Python 3.9 with the `pcbnew` SWIG bindings for scripted board and library edits; plain POSIX shell for the verification harness; git for per-task commits.
 
@@ -13,10 +13,10 @@
 Every task's requirements implicitly include this section.
 
 - **KiCad version floor:** 10.0.4. All file formats end at board `version 20260206`.
-- **Copper is frozen.** No pad, track, via, zone or drill hole may move. The gerber+drill gate is binary and must pass on every task except Task 9.
+- **Copper is frozen.** No pad, track, via, zone or drill hole may move. The gerber+drill gate is binary and must pass on **every** task, with no exceptions.
 - **From scratch only.** No commit, footprint, symbol, model, library table or configuration is taken from `migrate2kicad10`, `sw3-official-reroute-experiment`, or any other branch. Findings from earlier attempts may inform the work only as facts independently re-verified against `master`.
 - **No absolute paths in committed files.** Every library and model URI uses `${KIPRJMOD}`, `${KICAD10_3DMODEL_DIR}` or `${KICAD10_3RD_PARTY}`.
-- **Public reuse policy, by layer:** 3D models — aggressive. Symbols — where pin-compatible. Footprints — only the Cherry MX exception, and only where pad-for-pad identical apart from the documented name swap.
+- **Public reuse policy, by layer:** 3D models — aggressive, on every footprint. Symbols — where pin-compatible. Footprints — **none are replaced**; all 35 are vendored from the board. See Finding 1: the spec's Cherry MX exception rested on a false premise and is not taken.
 - **Tolerance policy:** does not apply to footprints (the gerber diff is binary); does apply to 3D models (a fraction of a millimetre is invisible and carries no risk).
 - **Work branch:** `kicad10-modernization`, based on `master` (`9476ec3`).
 - **Every task ends with a commit.** No task leaves the tree dirty.
@@ -43,28 +43,43 @@ KiCad 10 ships `.step` files in `3dmodels`, **not** `.wrl`. Every model path bel
 These were measured while writing this plan and change what the spec assumed. Each is
 handled by the task named.
 
-1. **`CHERRY_PCB_225H` and `CHERRY_PCB_625H` carry stabilizer holes that perigoso does not.**
-   The board's 2.25u has 4 extra NPTH (±11.938, +8.255 @ ⌀3.9878; ±11.938, −6.985 @ ⌀3.048);
-   the 6.25u has 4 (±50.038, −8.255 @ ⌀3.9878; ±50.038, +6.985 @ ⌀3.048). perigoso's
-   `SW_Cherry_MX_PCB_2.25u` / `_6.25u` have only the standard 5 pads — they are byte-identical
-   to the 1.00u apart from the keycap outline on `Dwgs.User`, because perigoso keeps
-   stabilizers as *separate* footprints in `Mounting_Keyboard_Stabilizer.pretty`. Swapping
-   naively would **delete 8 drill holes**.
+1. **The spec's Cherry MX exception rests on a false premise, and is not taken.**
+   The spec adopts perigoso's `SW_Cherry_MX_PCB_*u` footprints on the stated grounds that
+   doing so *"brings a 3D model"*. It does not need to. `models.tsv` attaches a model to any
+   footprint **by name** — that is how the other 27 footprints in Tasks 4–6 get theirs — and
+   the origins already coincide: both libraries put the switch's centre guide boss at (0, 0),
+   so `SW_Cherry_MX_PCB.stp` lands correctly on the board's own geometry with no offset.
 
-   Placing perigoso's separate stabilizer footprints does not recover them either: its
-   `Stabilizer_Cherry_MX_2.00u` sits at (±11.938, **+8.225**) — 30 µm out — and its
-   `_6.25u` at (±50, ±8.225/−6.985), which is 38 µm out **and mirrored in Y**.
+   Verified consequences of adopting perigoso anyway, none of which buy anything:
 
-   The board's geometry is not a rounding error; it is a different physical part. skiselev's
-   README BOM specifies Cherry **G99-0742** leveling kits for SW11 and SW64, plus a
-   **G99-0226** (MX 1x8) kit for SW64 with the note *"use the wire from this part and one of
-   540-G99-0742 to build a through hole leveling kit for the spacebar"* — a hybrid assembly,
-   which is exactly why its 100.076 mm wire spacing does not match a stock 6.25u stabilizer.
+   - **Pads grow 2.286 → 2.5 mm** on all 67 Cherry switches. Cherry specifies *hole* sizes
+     (⌀1.5 mm terminals, ⌀4.0 mm boss, ⌀1.7 mm locating pins), **not** land diameter, so
+     neither figure is "the manufacturer's value" and the board's own is as correct as
+     perigoso's. skiselev's numbers are Cherry's metric drawing on an imperial grid —
+     1.4986 mm = 0.059″, 1.7018 mm = 0.067″, 3.9878 mm = 0.157″ — so the drill deltas are
+     unit-conversion artefacts of ~0.1%, noise at fab tolerance.
+   - **A schematic pin swap becomes mandatory** on all 67, because perigoso exchanges the two
+     pad names against identical positions. This is the single riskiest operation in the
+     plan: applied to the wrong subset it shorts the keyboard matrix.
+   - **Two clearance violations appear.** Measured across all 134 switch pads, the +0.107 mm
+     of radius drops SW4 pad 2 and SW61 pad 2 to 0.150 mm against the project's 0.2 mm rule,
+     requiring a prototype measurement gate to dispose of.
+   - **SW11 and SW64 lose their stabilizer holes.** The board's `CHERRY_PCB_225H` carries 4
+     extra NPTH (±11.938, +8.255 @ ⌀3.9878; ±11.938, −6.985 @ ⌀3.048) and `_625H` carries 4
+     (±50.038, −8.255 @ ⌀3.9878; ±50.038, +6.985 @ ⌀3.048). perigoso's wide-key footprints
+     are byte-identical to its 1.00u apart from the keycap outline, because it keeps
+     stabilizers as *separate* footprints. Its separate parts do not recover them either:
+     `Stabilizer_Cherry_MX_2.00u` is 30 µm out and `_6.25u` is 38 µm out **and mirrored**.
+     That is not a rounding error — per skiselev's README BOM, SW64's stabilizer is a hybrid
+     of a **G99-0226** (MX 1x8) wire in **G99-0742** housings, so its 100.076 mm spacing
+     matches no stock part.
 
-   → Task 9 builds two **project-specific derived footprints**: perigoso's switch geometry
-   and pad naming, plus skiselev's stabilizer holes at their exact board coordinates. All 67
-   Cherry switches then share one pad convention, so the pin swap applies uniformly with no
-   exceptions. 1.00u/1.25u/1.50u have exactly 5 pads and adopt perigoso directly.
+   → **Task 7 keeps every switch footprint and attaches the models to it.** Copper, drill and
+   silkscreen are untouched, there is no pin swap, no clearance question and no prototype
+   gate, and the stabilizer holes are never at risk. What is forfeited is cosmetic:
+   perigoso's tidier silkscreen and a real `F.CrtYd` courtyard where skiselev draws the
+   outline on `Eco2.User`, which KiCad 10 ignores for `courtyard_overlap`. Adding courtyards
+   to the vendored footprints remains available later as a non-copper change.
 2. **Gerbers embed net names.** `%TO.N,<netname>*%` appears 1155 times in `F_Cu` alone, so a
    net rename changes gerber bytes without moving copper. → Task 1 builds two gate modes.
 3. **The project is in KiCad 6 format with CRLF endings.** The first save rewrites all
@@ -89,20 +104,16 @@ handled by the task named.
 | `tools/render.sh` | Render the board to PNG for the visual record. |
 | `tools/vendor_footprints.py` | Extract the 35 unique footprints from the board into `Radio86RK.pretty`. |
 | `tools/apply_models.py` | Apply `models.tsv` to both the library and the board instances. |
-| `tools/models.tsv` | Data: footprint name → 3D model path → Z offset. Grows across Tasks 4–6 and 9. |
-| `tools/switch_net_map.py` | Dump every switch pad as REF/PAD/NET/X/Y. The keyboard correctness proof. |
-| `tools/make_stabilized_switch.py` | Build SW11/SW64 derived footprints: perigoso switch + skiselev stabilizer holes. |
-| `tools/pad_clearance.py` | Tightest copper gap per switch pad, and the predicted gap after growth. |
+| `tools/models.tsv` | Data: footprint → 3D model → Z offset → Z rotation. Grows across Tasks 4–7. |
 | `verify/baseline/` | Frozen normalized gerbers+drill from `master`. Committed. |
 | `verify/renders/` | Per-task PNG renders. Committed. |
 | `KiCad/Radio86RK.pretty/` | Tier 2: the 35 vendored footprints. |
-| `KiCad/Radio86RK.kicad_sym` | Tier 2: the `my_components` symbols, plus the pin-swapped switch symbol. |
+| `KiCad/Radio86RK.kicad_sym` | Tier 2: the `my_components` symbols, vendored so a fresh clone works. |
 | `KiCad/Radio86RK.3dshapes/` | Externally sourced models (RCA, DIN-8, DC-DC) if obtained. |
 | `KiCad/fp-lib-table`, `KiCad/sym-lib-table` | Project-local library registration. |
 | `docs/3d-model-sources.md` | Why each model was chosen; every substitution and fallback. |
 | `docs/drc-exclusions.md` | Written reason for each retained DRC violation. |
 | `docs/erc-exclusions.md` | Written reason for each retained ERC violation (the RS-232 defect). |
-| `docs/keyboard-slice.md` | The one copper change: what moved, and the prototype measurements. |
 | `docs/modernization-summary.md` | Before/after outcome table and how to re-verify it. |
 
 ---
@@ -518,14 +529,12 @@ touching the board.
 	(version 7)
 	(lib (name "My_Components")(type "KiCad")(uri "${KIPRJMOD}/Radio86RK.pretty")(options "")(descr "Vendored from Radio-86RK.kicad_pcb - geometry identical to v1.4 by construction"))
 	(lib (name "Cherry_MX")(type "KiCad")(uri "${KIPRJMOD}/Radio86RK.pretty")(options "")(descr "Vendored from Radio-86RK.kicad_pcb - original Cherry_MX library is lost upstream"))
-	(lib (name "Radio86RK")(type "KiCad")(uri "${KIPRJMOD}/Radio86RK.pretty")(options "")(descr "Canonical nickname for this project's own footprints"))
 )
 ```
 
-Three nicknames, one directory. `My_Components` and `Cherry_MX` exist so the board's
-existing 191 `lib_id`s keep resolving untouched; `Radio86RK` is the canonical name under
-which Task 9 adds the two derived stabilized switch footprints.
-```
+Two nicknames, one directory. They keep the board's existing 191 `lib_id`s resolving
+untouched, which is what makes this task a pure addition: no `lib_id` is rewritten anywhere
+in the plan, so no footprint is ever replaced and the strict gate cannot be threatened.
 
 - [ ] **Step 7: Run the gate — the board was not edited, so this must pass trivially**
 
@@ -1081,7 +1090,7 @@ Ten of twelve footprints map to KiCad stock models. RCA (J1) and 8-pin DIN
 with whichever branch was taken - sourced into Radio86RK.3dshapes or the
 documented fallback.
 
-3D coverage 100/183 -> 115/183; the remaining 68 are the switches.
+3D coverage 100/183 -> 115/183; the remaining 68 switches are Task 7.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
@@ -1089,7 +1098,233 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ---
 
-### Task 7: Re-home the drifted symbols to public libraries and drive ERC down
+### Task 7: 3D models for the keyboard (68 switches, 6 footprints)
+
+The last 68 components, completing 3D coverage at 183/183. Like every other 3D task, this
+one **does not touch copper** — the switches keep their vendored footprints and simply gain
+models.
+
+**Why the switch footprints are not replaced.** An earlier revision of this plan adopted
+perigoso's `SW_Cherry_MX_PCB_*u` footprints, on the design spec's stated grounds that doing
+so *"brings a 3D model"*. That premise is false. `models.tsv` attaches a model to any
+footprint by name — it is how the other 27 footprints in Tasks 4–6 get theirs — so the
+perigoso *model* never required the perigoso *footprint*. The origins already coincide:
+both put the switch's centre guide boss at (0, 0), so `SW_Cherry_MX_PCB.stp` lands correctly
+on the board's own geometry with no offset.
+
+Dropping that substitution removes, at no cost to the result:
+
+| Removed | Why it existed |
+|---|---|
+| Pad growth 2.286 → 2.5 mm on 67 switches | a side effect of adopting perigoso's pads |
+| The schematic pin swap on all 67 switches | to compensate for perigoso's exchanged pad names |
+| Two clearance violations (SW4, SW61 at 0.150 mm) | a consequence of the pad growth |
+| A prototype measurement gate | to dispose of those violations |
+| Derived stabilized footprints for SW11/SW64 | to re-add stabilizer holes perigoso lacks |
+
+The pin swap in particular was the single riskiest operation in this plan — applied to the
+wrong subset it shorts the keyboard matrix — and it existed only to undo a change that was
+itself unnecessary. **Cherry specifies hole sizes, not land diameter** (⌀1.5 mm terminals,
+⌀4.0 mm boss, ⌀1.7 mm locating pins), so neither 2.286 mm nor 2.5 mm is "the manufacturer's
+value"; keeping the board's own pads forfeits nothing.
+
+What is given up is cosmetic: perigoso's tidier silkscreen, and a real `F.CrtYd` courtyard
+where skiselev draws the outline on `Eco2.User` (which KiCad 10 does not treat as a
+courtyard, so `courtyard_overlap` checks stay inert for switches). Adding courtyards to the
+vendored footprints later is a non-copper change and remains available.
+
+**The wide keys keep their stabilizer holes** because their footprints are never replaced.
+SW11 (2.25u) carries ⌀3.9878 at (±11.938, +8.255) and ⌀3.048 at (±11.938, −6.985); SW64
+(6.25u, spacebar) carries ⌀3.9878 at (±50.038, −8.255) and ⌀3.048 at (±50.038, +6.985).
+Per skiselev's README BOM these take Cherry **G99-0742** leveling kits, with SW64
+additionally using the **wire from a G99-0226** (MX 1x8) in G99-0742 housings — a hybrid
+assembly, which is why its 100.076 mm spacing matches no stock 6.25u part.
+
+**Files:**
+- Modify: `tools/models.tsv`, `docs/3d-model-sources.md`
+- Modify: `KiCad/Radio86RK.pretty/CHERRY_PCB_*.kicad_mod`, `KiCad/Radio-86RK.kicad_pcb`
+
+**Interfaces:**
+- Consumes: `tools/apply_models.py` from Task 4, unchanged — including its optional
+  4th column, which this task is the first to use.
+
+- [ ] **Step 1: Confirm the model origins coincide**
+
+This is the fact the whole task rests on. If the two footprints did not share an origin, the
+model would need an offset.
+
+```bash
+source tools/kicad-env.sh
+PG="$KICAD_3RD_PARTY/footprints/com_github_perigoso_keyswitch-kicad-library"
+echo "board:"; grep -A2 '(pad ""' KiCad/Radio86RK.pretty/CHERRY_PCB_100H.kicad_mod \
+  | grep -B1 '3.9878' | grep '(at '
+echo "perigoso:"; grep '(at 0 0)' "$PG/Switch_Keyboard_Cherry_MX.pretty/SW_Cherry_MX_PCB_1.00u.kicad_mod" \
+  | grep 'size 4 4'
+```
+
+Expected: both centre bosses at `(0 0)` — the board's at ⌀3.9878, perigoso's at ⌀4.0. Same
+origin, so the model needs no offset.
+
+- [ ] **Step 2: Verify the six model files exist**
+
+```bash
+source tools/kicad-env.sh
+D="$KICAD_3RD_PARTY/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes"
+for m in SW_Cherry_MX_PCB Stabilizer_Cherry_MX_2.00u Stabilizer_Cherry_MX_6.25u; do
+  [ -f "$D/$m.stp" ] || echo "MISSING: $D/$m.stp"
+done
+[ -f "$KICAD_3DMODEL_DIR/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step" ] \
+  || echo "MISSING: tactile switch model"
+echo "check complete"
+```
+
+Expected: `check complete`, no `MISSING` lines.
+
+- [ ] **Step 3: Append the keyboard rows to `tools/models.tsv`**
+
+The fourth column is the Z rotation. perigoso's 6.25u stabilizer model is mirrored in Y
+relative to this board's hole pattern — its big holes sit at +8.225 where the board's sit at
+−8.255 — so SW64's stabilizer needs 180°. SW11's does not.
+
+```
+# --- Keyboard: plain switches ---
+CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_150H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+# --- Keyboard: stabilized wide keys, switch + stabilizer composite ---
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	180
+# --- Keyboard: reset switch ---
+Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	0	0
+```
+
+- [ ] **Step 4: Apply**
+
+```bash
+source tools/kicad-env.sh
+"$KICAD_PY" tools/apply_models.py tools/models.tsv "$PCB" "$REPO_ROOT/KiCad/Radio86RK.pretty"
+```
+
+Expected: `applied to 33 footprints / 183 instances` — the 27 footprints from Tasks 4–6
+(115 instances) plus these 6 (68 instances).
+
+- [ ] **Step 5: Run the gate**
+
+```bash
+tools/gerber-gate.sh --strict
+```
+
+Expected: `PASS`. **This is the step that distinguishes Option C from the abandoned
+approach**: the keyboard now passes the same unmodified strict gate as every other task, so
+the board carries no authorized copper exception at all.
+
+- [ ] **Step 6: Confirm full 3D coverage**
+
+```bash
+source tools/kicad-env.sh
+"$KICAD_PY" - "$PCB" <<'PY'
+import sys, pcbnew
+b = pcbnew.LoadBoard(sys.argv[1])
+none = sorted(f.GetReference() for f in b.GetFootprints() if len(f.Models()) == 0)
+print("without models: %d ->" % len(none), " ".join(none))
+PY
+```
+
+Expected: only the 7 `HOLE` references and `LOGO1` (plus `J4` if its model was not
+sourced) — i.e. **183/183** coverage of components that should have one.
+
+- [ ] **Step 7: Render, and check the stabilizers specifically**
+
+```bash
+tools/render.sh 07-keyboard-complete
+```
+
+Expected: all 68 keys present with keycap-less switch bodies. Check SW11 and SW64
+closely: the stabilizer wire and housings must render **alongside** the switch body, and
+SW64's must sit on the correct side of the key. **If SW64's stabilizer looks mirrored, the
+180° is on the wrong row** — it belongs on the `Stabilizer_Cherry_MX_6.25u` line, not the
+`SW_Cherry_MX_PCB` one.
+
+The stabilizer models sit 30 µm (SW11) and 38 µm (SW64) from the board's actual hole
+centres, because perigoso models them at ±11.938/±50 where this board uses ±11.938/±50.038.
+That is invisible in the viewer and is exactly the kind of difference the 3D tolerance
+policy exists to permit.
+
+- [ ] **Step 8: Extend `docs/3d-model-sources.md`**
+
+```markdown
+## Keyboard
+
+| Footprint | Refs | Model(s) | Note |
+|---|---|---|---|
+| `CHERRY_PCB_100H` | 62 keys | `SW_Cherry_MX_PCB` | perigoso, via PCM |
+| `CHERRY_PCB_125H` | SW65, SW66 | `SW_Cherry_MX_PCB` | |
+| `CHERRY_PCB_150H` | SW61 | `SW_Cherry_MX_PCB` | |
+| `CHERRY_PCB_225H` | SW11 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_2.00u` | composite |
+| `CHERRY_PCB_625H` | SW64 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_6.25u` @ 180° | composite, mirrored |
+| `Switch_Tactile_6mm_Right` | SW68 | `SW_Tactile_SPST_Angled_PTS645Vx31-2LFS` | reset switch |
+
+**The footprints are the board's own, not perigoso's.** Only the models come from perigoso.
+The design spec proposed adopting perigoso's footprints on the grounds that doing so "brings
+a 3D model", but models attach to any footprint by name, and both libraries put the switch's
+centre boss at (0, 0), so the model lands correctly on the original geometry. Keeping the
+board's footprints avoids a 2.286 → 2.5 mm pad growth, the compensating schematic pin swap,
+two clearance violations at 0.150 mm, and the loss of SW11/SW64's stabilizer holes — all for
+no loss beyond silkscreen cosmetics.
+
+Cherry specifies hole sizes (⌀1.5 mm terminals, ⌀4.0 mm boss, ⌀1.7 mm locating pins), not
+land diameter, so the board's 2.286 mm pads are as legitimate as perigoso's 2.5 mm.
+skiselev's figures are Cherry's metric drawing on an imperial grid: 1.4986 mm = 0.059″,
+1.7018 mm = 0.067″, 3.9878 mm = 0.157″.
+
+### Stabilizers
+
+SW11 and SW64 keep the stabilizer holes baked into their footprints. Per skiselev's README
+BOM they take Cherry **G99-0742** leveling kits (Mouser `540-G99-0742`), and SW64
+additionally uses the **wire from a G99-0226** (MX 1x8, `540-G99-0226`) fitted into G99-0742
+housings — *"use the wire from this part and one of 540-G99-0742 to build a through hole
+leveling kit for the spacebar"*. That hybrid is why SW64's 100.076 mm spacing matches no
+stock 6.25u stabilizer, and why perigoso's is 38 µm out and mirrored.
+
+| Ref | Size | Stabilizer holes (mm) |
+|---|---|---|
+| SW11 | 2.25u | ⌀3.9878 at (±11.938, +8.255); ⌀3.048 at (±11.938, −6.985) |
+| SW64 | 6.25u | ⌀3.9878 at (±50.038, −8.255); ⌀3.048 at (±50.038, +6.985) |
+```
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add tools/models.tsv docs/3d-model-sources.md \
+        KiCad/Radio86RK.pretty KiCad/Radio-86RK.kicad_pcb verify/renders
+git commit -m "Add 3D models for the keyboard; 3D coverage complete at 183/183
+
+The switches keep their own footprints and simply gain models. The design
+spec proposed adopting perigoso's footprints because doing so 'brings a 3D
+model', but models attach to any footprint by name - as the other 27
+footprints in Tasks 4-6 demonstrate - and both libraries put the switch's
+centre boss at (0,0), so the model lands correctly on the original geometry.
+
+Not doing the substitution avoids a 2.286 -> 2.5mm pad growth on 67
+switches, the compensating schematic pin swap, two clearance violations at
+0.150mm needing a prototype measurement, and the loss of SW11/SW64's
+stabilizer holes. Cost is cosmetic: perigoso's tidier silkscreen and a real
+F.CrtYd courtyard.
+
+SW11 and SW64 get switch+stabilizer composites; SW64's stabilizer is rotated
+180 degrees because perigoso models it mirrored relative to this board.
+
+The board now has no authorized copper exception: --strict passes everywhere.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
+```
+
+---
+
+### Task 8: Re-home the drifted symbols to public libraries and drive ERC down
 
 176 ERC violations remain: 142 `lib_symbol_mismatch`, 32 `same_local_global_label`,
 2 `lib_symbol_issues`.
@@ -1372,7 +1607,7 @@ wiring defect stays visible and is excluded with a written reason.
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 ```
-### Task 8: Document the retained DRC violations as exclusions
+### Task 9: Document the retained DRC violations as exclusions
 
 DRC stands at 22: 17 `silk_edge_clearance` and 5 `starved_thermal`. Both are properties of
 the 1986 board, preserved deliberately. They should not be "fixed" — fixing them would move
@@ -1418,8 +1653,8 @@ routing. Fixing it means altering zone or pad geometry.
 
 ## Not in this list
 
-Anything the keyboard slice (Task 9) adds is documented separately in that task, and only
-after the physical prototype confirms clearance.
+The keyboard adds nothing to this list. Task 7 attaches 3D models to the switch footprints
+without replacing them, so no switch geometry changes and no new violation appears.
 ```
 
 - [ ] **Step 3: Add the exclusions**
@@ -1462,816 +1697,7 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ---
 
-### Task 9: The keyboard — the one authorized copper change
-
-This is the only task permitted to change the fab output, and the only one whose gate is
-reviewed rather than required to pass. Do it last, on a clean tree, with every other task
-committed.
-
-**All 67 Cherry switches adopt perigoso's switch geometry and pad naming.** 62 × 1.00u,
-2 × 1.25u and 1 × 1.50u use perigoso's library footprints directly. SW11 (2.25u) and SW64
-(6.25u) use **project-specific derived footprints**: perigoso's switch geometry with
-skiselev's stabilizer holes added at their exact board coordinates. SW68 is a tactile
-switch and only needs a 3D model.
-
-**Why the wide keys are derived rather than adopted.** perigoso's `SW_Cherry_MX_PCB_2.25u`
-and `_6.25u` are byte-identical to its `1.00u` apart from the keycap outline on
-`Dwgs.User` — it keeps stabilizers as separate footprints in
-`Mounting_Keyboard_Stabilizer.pretty`. Using them directly would delete 8 drill holes.
-Placing perigoso's separate stabilizer footprints does not recover them either: its
-`Stabilizer_Cherry_MX_2.00u` is 30 µm out in Y, and its `_6.25u` is 38 µm out in X **and
-mirrored in Y** — and adding footprints with no schematic symbols would break
-`schematic_parity`.
-
-The board's geometry is a different physical part, not a rounding error. skiselev's README
-BOM specifies:
-
-| Ref | Part | Mouser | Note |
-|---|---|---|---|
-| SW11, SW64 | Cherry G99-0742, leveling kit for MX 1x2 / 1x2.25 / 1x2.75 | `540-G99-0742` | 2 off |
-| SW64 | Cherry G99-0226, leveling kit for MX 1x8 | `540-G99-0226` | "use the wire from this part and one of 540-G99-0742 to build a through hole leveling kit for the spacebar" |
-
-The spacebar stabilizer is therefore a **hybrid** — a 1x8 wire in 1x2.25 housings — which is
-exactly why its 100.076 mm spacing matches no stock 6.25u part. Deriving the footprints
-preserves that assembly exactly while still giving every switch one pad convention, so the
-pin swap applies uniformly with no exceptions to get wrong.
-
-**Why the pin swap is mandatory.** KiCad binds nets to pads by *name*. The board has pad 1
-at (2.54, −5.08) and pad 2 at (−3.81, −2.54); perigoso has them the other way round. The
-positions are identical — only the names are exchanged — so adopting perigoso without a
-compensating swap moves every net to the opposite hole while the copper stays put, shorting
-the keyboard matrix. The swap is applied **in the schematic**, as a project-local symbol
-with pin numbers exchanged, so the perigoso footprints are used unmodified. A board
-footprint that diverges from its library reverts silently on any future "Update Footprints
-from Library"; a project-local symbol does not.
-
-The switch is not polarized, so exchanging its two pin numbers is electrically free.
-
-**Files:**
-- Create: `tools/make_stabilized_switch.py`, `tools/switch_net_map.py`, `docs/keyboard-slice.md`
-- Create: `KiCad/Radio86RK.pretty/SW_Cherry_MX_PCB_{2.25u,6.25u}_Stabilized.kicad_mod`
-- Modify: `KiCad/fp-lib-table`, `KiCad/Radio86RK.kicad_sym`, `KiCad/Radio-86RK-Keyboard.kicad_sch`
-- Modify: `KiCad/Radio-86RK.kicad_pcb`, `tools/models.tsv`, `docs/3d-model-sources.md`
-
-**Interfaces:**
-- Consumes: `KiCad/Radio86RK.pretty`, `KiCad/Radio86RK.kicad_sym`, `tools/apply_models.py`,
-  `tools/netlist-gate.sh`.
-- Produces: `tools/switch_net_map.py <board>` — prints `REF PAD NET X Y` for every switch
-  pad, sorted. This is the correctness proof for the whole task.
-
-- [ ] **Step 1: Write `tools/switch_net_map.py`**
-
-```python
-"""Dump every switch pad as REF PAD NET X Y in board coordinates.
-
-Run before and after the relink: the two dumps must be IDENTICAL. A net may only ever be
-paired with the same absolute hole position.
-"""
-import sys, pcbnew
-
-board = pcbnew.LoadBoard(sys.argv[1])
-rows = []
-for fp in board.GetFootprints():
-    ref = fp.GetReference()
-    if not ref.startswith("SW"):
-        continue
-    for pad in fp.Pads():
-        name = pad.GetName()
-        if not name:                      # skip the mechanical NPTH pads
-            continue
-        pos = pad.GetPosition()
-        rows.append("%-6s %-3s %-24s %9.4f %9.4f"
-                    % (ref, name, pad.GetNetname(),
-                       pcbnew.ToMM(pos.x), pcbnew.ToMM(pos.y)))
-for r in sorted(rows):
-    print(r)
-```
-
-- [ ] **Step 2: Capture the reference net-to-hole map**
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" tools/switch_net_map.py "$PCB" > verify/switch-map-before.txt
-wc -l verify/switch-map-before.txt
-grep -E '^SW(54|11|64) ' verify/switch-map-before.txt
-```
-
-Expected: 136 lines (68 switches × 2 electrical pads). SW54 shows pad 1 on
-`/Keyboard/ROW6` and pad 2 on `/Keyboard/K_PB5`.
-
-- [ ] **Step 3: Capture the stabilizer hole positions too**
-
-The net map only covers *electrical* pads. The stabilizer holes have no net, so they need
-their own before/after record.
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" - "$PCB" <<'PY' > verify/stabilizer-holes-before.txt
-import sys, pcbnew
-b = pcbnew.LoadBoard(sys.argv[1])
-for fp in b.GetFootprints():
-    if fp.GetReference() not in ("SW11", "SW64"):
-        continue
-    for pad in fp.Pads():
-        if pad.GetName():
-            continue
-        p = pad.GetPosition()
-        print("%-6s %9.4f %9.4f  drill %.4f"
-              % (fp.GetReference(), pcbnew.ToMM(p.x), pcbnew.ToMM(p.y),
-                 pcbnew.ToMM(pad.GetDrillSizeX())))
-PY
-sort -o verify/stabilizer-holes-before.txt verify/stabilizer-holes-before.txt
-cat verify/stabilizer-holes-before.txt
-```
-
-Expected 14 lines — 7 NPTH each for SW11 and SW64. Among them, for SW11:
-`±11.938, 8.255 drill 3.9878` and `±11.938, −6.985 drill 3.0480`; for SW64:
-`±50.038, −8.255 drill 3.9878` and `±50.038, 6.985 drill 3.0480`.
-
-- [ ] **Step 4: Register the perigoso footprint library**
-
-Append to `KiCad/fp-lib-table`, inside the closing paren:
-
-```
-	(lib (name "Switch_Keyboard_Cherry_MX")(type "KiCad")(uri "${KICAD10_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty")(options "")(descr "perigoso keyswitch library, installed via PCM"))
-```
-
-Verify it resolves:
-
-```bash
-source tools/kicad-env.sh
-ls "$KICAD_3RD_PARTY/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty/" \
-  | grep -E 'SW_Cherry_MX_PCB_(1\.00|1\.25|1\.50|2\.25|6\.25)u\.kicad_mod'
-```
-
-Expected: all five filenames.
-
-- [ ] **Step 5: Confirm the pad-name swap is real before relying on it**
-
-```bash
-source tools/kicad-env.sh
-P="$KICAD_3RD_PARTY/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty"
-grep -E '^\s*\(pad [12] ' "$P/SW_Cherry_MX_PCB_1.00u.kicad_mod"
-grep -A2 '(pad "[12]"' KiCad/Radio86RK.pretty/CHERRY_PCB_100H.kicad_mod | grep -E '\(pad|\(at '
-```
-
-Expected: perigoso pad 1 at `(-3.81 -2.54)`, pad 2 at `(2.54 -5.08)`; vendored pad "1" at
-`(2.54 -5.08)`, pad "2" at `(-3.81 -2.54)`. Same two positions, names exchanged.
-
-- [ ] **Step 6: Predict the clearance impact BEFORE changing anything**
-
-The pads grow 2.286 → 2.5 mm, i.e. **+0.107 mm of radius**, against a Default netclass
-clearance rule of **0.2 mm**. So any switch pad currently closer than 0.307 mm to
-foreign copper becomes a violation. Compute that now, on the unmodified board: if the
-answer were dozens of pads, the whole approach would need rethinking, and it is far cheaper
-to learn that here than after the relink.
-
-Write `tools/pad_clearance.py`:
-
-```python
-"""Report the tightest copper clearance for every switch pad, and predict the post-change gap.
-
-Adopting perigoso grows switch pads from 2.286mm to 2.5mm diameter: +0.107mm of radius.
-Any pad whose current gap is under (rule + 0.107) becomes a DRC violation.
-
-Usage: pad_clearance.py <board> [growth_mm] [rule_mm]
-"""
-import sys, math, pcbnew
-
-board  = pcbnew.LoadBoard(sys.argv[1])
-GROWTH = float(sys.argv[2]) if len(sys.argv) > 2 else 0.107
-RULE   = float(sys.argv[3]) if len(sys.argv) > 3 else 0.2
-MM     = pcbnew.ToMM
-
-def seg_dist(px, py, x1, y1, x2, y2):
-    dx, dy = x2 - x1, y2 - y1
-    if dx == 0 and dy == 0:
-        return math.hypot(px - x1, py - y1)
-    t = max(0.0, min(1.0, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)))
-    return math.hypot(px - (x1 + t * dx), py - (y1 + t * dy))
-
-tracks = []
-for t in board.GetTracks():
-    net = t.GetNetCode()
-    if t.Type() == pcbnew.PCB_VIA_T:
-        p = t.GetPosition()
-        tracks.append((net, "via", MM(p.x), MM(p.y), None, None, MM(t.GetWidth()) / 2))
-    else:
-        s, e = t.GetStart(), t.GetEnd()
-        tracks.append((net, "trk", MM(s.x), MM(s.y), MM(e.x), MM(e.y), MM(t.GetWidth()) / 2))
-
-pads = []
-for fp in board.GetFootprints():
-    for p in fp.Pads():
-        if not p.GetName():
-            continue
-        pos = p.GetPosition()
-        pads.append((p.GetNetCode(), fp.GetReference(), p.GetName(),
-                     MM(pos.x), MM(pos.y), MM(p.GetSizeX()) / 2))
-
-rows = []
-for net, ref, name, px, py, r in pads:
-    if not ref.startswith("SW"):
-        continue
-    best = (999.0, "")
-    for n2, kind, x1, y1, x2, y2, hw in tracks:
-        if n2 == net:
-            continue
-        d = math.hypot(px - x1, py - y1) if kind == "via" else seg_dist(px, py, x1, y1, x2, y2)
-        if d - r - hw < best[0]:
-            best = (d - r - hw, kind)
-    for n2, r2, nm2, x2, y2, rr in pads:
-        if n2 == net or (r2 == ref and nm2 == name):
-            continue
-        if math.hypot(px - x2, py - y2) - r - rr < best[0]:
-            best = (math.hypot(px - x2, py - y2) - r - rr, "pad %s.%s" % (r2, nm2))
-    rows.append((best[0], ref, name, best[1]))
-
-rows.sort()
-print("# gap_now  gap_after  ref  pad  nearest        (rule %.3f, growth %.3f)"
-      % (RULE, GROWTH))
-for g, ref, name, what in rows:
-    after = g - GROWTH
-    if after < RULE + 0.15:                    # print the interesting tail only
-        flag = "  VIOLATION" if after < RULE else ""
-        print("  %7.4f  %7.4f   %-6s %-3s %s%s" % (g, after, ref, name, what, flag))
-bad = [r for r in rows if r[0] - GROWTH < RULE]
-print("\n%d of %d switch pads fall below %.3fmm after the change" % (len(bad), len(rows), RULE))
-```
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" tools/pad_clearance.py "$PCB" | tee verify/clearance-prediction.txt
-```
-
-Expected (measured 2026-09-04 on the unmodified board):
-
-```
-   0.2227   0.1157   SW68   1   trk  VIOLATION
-   0.2570   0.1500   SW4    2   trk  VIOLATION
-   0.2570   0.1500   SW61   2   trk  VIOLATION
-   0.3870   0.2800   SW6    1   trk
-   0.3870   0.2800   SW7    1   trk
-   0.3870   0.2800   SW24   1   trk
-```
-
-**Read this carefully — SW68 is a false positive.** It is the tactile reset switch on
-`Switch_Tactile_6mm_Right`, which keeps its vendored footprint and does **not** grow. The
-script flags every `SW*` reference uniformly; only the 67 Cherry switches actually change.
-
-So the real answer is **two pads: SW4 pad 2 and SW61 pad 2**, both landing at 0.150 mm
-against a 0.2 mm rule — 50 µm short. Note also that SW11 and SW64 do not appear anywhere
-near the top, so the derived stabilized footprints carry no clearance risk.
-
-Two out of 134 is a proceed signal. If this run reports substantially more, **stop** and
-raise it before continuing: the cheap alternative is to leave the affected switches on
-their vendored footprints, at the cost of a non-uniform pad convention.
-
-Task 11 disposes of SW4 and SW61 against the physical prototype.
-
-- [ ] **Step 7: Write `tools/make_stabilized_switch.py`**
-
-```python
-"""Build a project-specific switch footprint: perigoso geometry + this board's stabilizer holes.
-
-perigoso keeps stabilizers as separate footprints, but this board bakes them into the switch
-footprint, using a hybrid Cherry G99-0742 / G99-0226 assembly whose spacing matches no stock
-part. Deriving preserves that geometry exactly while keeping perigoso's pad naming, so the
-schematic pin swap applies uniformly to all 67 Cherry switches.
-
-Usage: make_stabilized_switch.py <src_lib> <src_name> <dst_lib> <dst_name> <x,y,drill>...
-"""
-import sys, pcbnew
-
-src_lib, src_name, dst_lib, dst_name = sys.argv[1:5]
-holes = [tuple(float(v) for v in a.split(",")) for a in sys.argv[5:]]
-
-fp = pcbnew.FootprintLoad(src_lib, src_name)
-if fp is None:
-    sys.exit("ERROR: %s not found in %s" % (src_name, src_lib))
-before = len(list(fp.Pads()))
-
-for x, y, d in holes:
-    pad = pcbnew.PAD(fp)
-    pad.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
-    pad.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
-    pad.SetDrillShape(pcbnew.PAD_DRILL_SHAPE_CIRCLE)
-    pad.SetSize(pcbnew.VECTOR2I(pcbnew.FromMM(d), pcbnew.FromMM(d)))
-    pad.SetDrillSize(pcbnew.VECTOR2I(pcbnew.FromMM(d), pcbnew.FromMM(d)))
-    pad.SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(x), pcbnew.FromMM(y)))
-    pad.SetNumber("")
-    pad.SetLayerSet(pcbnew.PAD.UnplatedHoleMask())
-    fp.Add(pad)
-
-fp.SetFPIDAsString("Radio86RK:" + dst_name)
-io = pcbnew.PCB_IO_MGR.FindPlugin(pcbnew.PCB_IO_MGR.KICAD_SEXP)
-io.FootprintSave(dst_lib, fp)
-print("%s -> %s : %d pads + %d stabilizer holes = %d"
-      % (src_name, dst_name, before, len(holes), before + len(holes)))
-```
-
-- [ ] **Step 8: Build the two derived footprints**
-
-The hole coordinates are taken verbatim from `verify/stabilizer-holes-before.txt`.
-
-```bash
-source tools/kicad-env.sh
-PG="$KICAD_3RD_PARTY/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty"
-LIB="$REPO_ROOT/KiCad/Radio86RK.pretty"
-
-"$KICAD_PY" tools/make_stabilized_switch.py "$PG" SW_Cherry_MX_PCB_2.25u \
-    "$LIB" SW_Cherry_MX_PCB_2.25u_Stabilized \
-    -11.938,8.255,3.9878  11.938,8.255,3.9878 \
-    -11.938,-6.985,3.048  11.938,-6.985,3.048
-
-"$KICAD_PY" tools/make_stabilized_switch.py "$PG" SW_Cherry_MX_PCB_6.25u \
-    "$LIB" SW_Cherry_MX_PCB_6.25u_Stabilized \
-    -50.038,-8.255,3.9878  50.038,-8.255,3.9878 \
-    -50.038,6.985,3.048    50.038,6.985,3.048
-```
-
-Expected: two lines each reporting `5 pads + 4 stabilizer holes = 9`.
-
-- [ ] **Step 9: Verify the derived footprints against both sources**
-
-```bash
-for f in SW_Cherry_MX_PCB_2.25u_Stabilized SW_Cherry_MX_PCB_6.25u_Stabilized; do
-  echo "== $f =="
-  grep -c '(pad ' KiCad/Radio86RK.pretty/$f.kicad_mod
-  grep -A1 '(pad "[12]"' KiCad/Radio86RK.pretty/$f.kicad_mod | grep '(at '
-done
-grep -E '11\.938|50\.038' KiCad/Radio86RK.pretty/SW_Cherry_MX_PCB_*_Stabilized.kicad_mod | wc -l
-```
-
-Expected: `9` pads each; pad 1 at `(-3.81 -2.54)` and pad 2 at `(2.54 -5.08)` (perigoso
-convention, so the pin swap applies to these too); and `8` stabilizer coordinate lines
-across the two files.
-
-- [ ] **Step 10: Add the pin-swapped symbol to `KiCad/Radio86RK.kicad_sym`**
-
-Copy the `SW_Push_45deg` symbol out of KiCad's stock `Switch.kicad_sym`, rename it to
-`SW_Push_45deg_MX`, and exchange **only** the two `(number ...)` values — leave every
-`(at ...)`, `(name ...)` and graphic untouched, so no wire endpoint moves.
-
-Stock definition (verified): pin `(number "1")` at `(-2.54 2.54 0)`, pin `(number "2")` at
-`(2.54 -2.54 180)`. After the swap, the pin at `(-2.54 2.54 0)` is number `2` and the pin
-at `(2.54 -2.54 180)` is number `1`.
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_CLI" sym export svg --output .build/symcheck KiCad/Radio86RK.kicad_sym >/dev/null \
-  && echo "library still parses"
-```
-
-- [ ] **Step 11: Relink all 67 Cherry switches in the schematic**
-
-In `KiCad/Radio-86RK-Keyboard.kicad_sch`, for **every** switch symbol (all 67 — SW68 the
-tactile switch is on a different sheet and is not touched):
-
-- `(lib_id "Switch:SW_Push_45deg")` → `(lib_id "Radio86RK:SW_Push_45deg_MX")`
-- the `Footprint` property value → per key size:
-
-| Refs | Count | Footprint |
-|---|---:|---|
-| all 1.00u keys | 62 | `Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u` |
-| SW65, SW66 | 2 | `Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.25u` |
-| SW61 | 1 | `Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.50u` |
-| SW11 | 1 | `Radio86RK:SW_Cherry_MX_PCB_2.25u_Stabilized` |
-| SW64 | 1 | `Radio86RK:SW_Cherry_MX_PCB_6.25u_Stabilized` |
-
-```bash
-grep -c 'Radio86RK:SW_Push_45deg_MX' KiCad/Radio-86RK-Keyboard.kicad_sch
-grep -c 'SW_Cherry_MX_PCB_1.00u' KiCad/Radio-86RK-Keyboard.kicad_sch
-grep -c '_Stabilized' KiCad/Radio-86RK-Keyboard.kicad_sch
-```
-
-Expected: `67`, `62`, `2`.
-
-- [ ] **Step 12: Update the board from the schematic**
-
-Open the project in Pcbnew and run **Tools → Update PCB from Schematic** with
-"Update footprints" enabled and "Delete extra footprints" disabled. Save.
-
-- [ ] **Step 13: THE CRITICAL CHECK — every net must still be in its original hole**
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" tools/switch_net_map.py "$PCB" > verify/switch-map-after.txt
-diff verify/switch-map-before.txt verify/switch-map-after.txt \
-  && echo "PASS: every net is in the same physical hole"
-```
-
-Expected: `PASS`. **Any difference means the pin swap is wrong and the keyboard matrix is
-shorted.** Revert the whole task and re-check Step 9 before doing anything else.
-
-- [ ] **Step 14: THE SECOND CRITICAL CHECK — the stabilizer holes are intact**
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" - "$PCB" <<'PY' > verify/stabilizer-holes-after.txt
-import sys, pcbnew
-b = pcbnew.LoadBoard(sys.argv[1])
-for fp in b.GetFootprints():
-    if fp.GetReference() not in ("SW11", "SW64"):
-        continue
-    for pad in fp.Pads():
-        if pad.GetName():
-            continue
-        p = pad.GetPosition()
-        print("%-6s %9.4f %9.4f  drill %.4f"
-              % (fp.GetReference(), pcbnew.ToMM(p.x), pcbnew.ToMM(p.y),
-                 pcbnew.ToMM(pad.GetDrillSizeX())))
-PY
-sort -o verify/stabilizer-holes-after.txt verify/stabilizer-holes-after.txt
-diff verify/stabilizer-holes-before.txt verify/stabilizer-holes-after.txt \
-  && echo "PASS: all stabilizer holes preserved"
-```
-
-Expected: `PASS` on the four stabilizer holes per key. The three switch-mounting NPTH will
-differ — perigoso uses ⌀4.0 and ⌀1.75 where skiselev used ⌀3.9878 and ⌀1.7018 — so a diff
-limited to those six lines is correct. **Any change to a ±11.938 or ±50.038 hole is a
-failure.**
-
-- [ ] **Step 15: Confirm the board is still electrically whole**
-
-```bash
-tools/netlist-gate.sh || echo "EXPECTED: footprint assignments changed, check nets below"
-tools/rules-report.sh | tee verify/rules-09-keyboard.txt
-```
-
-Expected: `unconnected=0` and `parity=0`. New `clearance` or `shorting_items` violations
-mean the larger 2.5 mm pads now conflict with adjacent copper — that is the physical
-question Steps 6 and 17 quantify and Task 11 disposes of, not a reason to stop here.
-
-- [ ] **Step 16: Review the gerber diff feature by feature**
-
-This is the one place the gate is expected to fail. Read the diff rather than accepting it.
-
-```bash
-tools/gerber-gate.sh --strict || true
-```
-
-Expected changes, and nothing else:
-- **Drill:** switch pad holes 1.4986 mm → 1.5 mm (+1.4 µm) on all 67; switch-mounting NPTH
-  1.7018 → 1.75 mm and 3.9878 → 4.0 mm.
-- **Copper:** switch pad annular rings 2.286 mm → 2.5 mm (+0.214 mm diameter) on all 67.
-- **Silkscreen / courtyard / user layers:** perigoso's outlines replace the originals. The
-  vendored footprints put pads on `*.SilkS`; perigoso does not.
-- **Unchanged:** every pad *position*, every track, every via, every zone, and all 8
-  stabilizer holes on SW11 and SW64.
-
-```bash
-grep -cE '11\.938|50\.038' KiCad/Radio-86RK.kicad_pcb
-```
-
-Expected: `8`.
-
-- [ ] **Step 17: Confirm the measured result matches the prediction, and hand off**
-
-Re-run the clearance analysis on the changed board with zero further growth, so it reports
-actual post-change gaps rather than predicted ones, and check it against Step 6.
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" tools/pad_clearance.py "$PCB" 0 0.2 | tee verify/clearance-actual.txt
-grep -c VIOLATION verify/clearance-actual.txt
-```
-
-Expected: SW4 pad 2 and SW61 pad 2 at **0.1500 mm**, matching Step 6's prediction, and
-SW68 unchanged at 0.2227 mm (it did not grow, confirming it was a false positive). The
-DRC run in Step 15 should have reported the same two as `clearance` violations.
-
-**This task stops here.** Deciding what to do about those two pads requires the physical
-prototype, so it is Task 11's job — that keeps Task 9 completable and committable without
-hardware, and keeps a hardware-dependent judgement out of a mechanical relink.
-
-Write the handoff list:
-
-```bash
-grep VIOLATION verify/clearance-actual.txt > verify/clearance-targets.txt
-cat verify/clearance-targets.txt
-```
-
-- [ ] **Step 18: Add the switch and stabilizer 3D models**
-
-perigoso's own footprints reference their model through `${KICAD6_3RD_PARTY}`, which may not
-resolve under KiCad 10. Pin all of them explicitly to `${KICAD10_3RD_PARTY}` instead — the
-board instances get the models regardless of what the upstream footprint says.
-
-The fourth column is the Z rotation: perigoso's 6.25u stabilizer model is mirrored in Y
-relative to this board's hole pattern, so it needs 180°.
-
-```
-# --- Keyboard: switch bodies (board-only; these live in perigoso's library) ---
-SW_Cherry_MX_PCB_1.00u	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-SW_Cherry_MX_PCB_1.25u	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-SW_Cherry_MX_PCB_1.50u	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-# --- Keyboard: stabilized wide keys, switch + stabilizer composite ---
-SW_Cherry_MX_PCB_2.25u_Stabilized	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-SW_Cherry_MX_PCB_2.25u_Stabilized	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0
-SW_Cherry_MX_PCB_6.25u_Stabilized	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-SW_Cherry_MX_PCB_6.25u_Stabilized	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	180
-# --- Keyboard: reset switch ---
-Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	0	0
-```
-
-```bash
-source tools/kicad-env.sh
-awk -F'\t' '!/^#/ && NF>=2 && $2!="-" {print $2}' tools/models.tsv \
-  | sed -e "s|\${KICAD10_3DMODEL_DIR}|$KICAD_3DMODEL_DIR|" \
-        -e "s|\${KICAD10_3RD_PARTY}|$KICAD_3RD_PARTY|" \
-  | sort -u | while read -r m; do [ -f "$m" ] || echo "MISSING: $m"; done
-echo "check complete"
-"$KICAD_PY" tools/apply_models.py tools/models.tsv "$PCB" "$REPO_ROOT/KiCad/Radio86RK.pretty"
-```
-
-Expected: no `MISSING` lines; then a `board-only (not in ...)` line naming the three
-perigoso footprints, and `applied to 33 footprints / 183 instances` — 8 from Task 4,
-7 from Task 5, 12 from Task 6 and these 6.
-
-- [ ] **Step 19: Confirm full 3D coverage**
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_PY" - "$PCB" <<'PY'
-import sys, pcbnew
-b = pcbnew.LoadBoard(sys.argv[1])
-none = sorted(f.GetReference() for f in b.GetFootprints() if len(f.Models()) == 0)
-print("without models: %d ->" % len(none), " ".join(none))
-PY
-```
-
-Expected: only the 7 `HOLE` references and `LOGO1` (plus `J4` if its model was not
-sourced) — i.e. 183/183 coverage of components that should have one.
-
-- [ ] **Step 20: Render the finished board**
-
-```bash
-tools/render.sh 09-keyboard-complete
-```
-
-Expected: all 68 keys present with keycap-less switch bodies. Check SW11 and SW64
-specifically: the stabilizer wire and housings should render **alongside** the switch body,
-and SW64's stabilizer must sit on the correct side — if it looks mirrored, the 180° in
-Step 17 is on the wrong row.
-
-- [ ] **Step 21: Re-baseline and write `docs/keyboard-slice.md`**
-
-```bash
-tools/gerber-gate.sh --strict   --capture
-tools/gerber-gate.sh --geometry --capture
-```
-
-```markdown
-# The keyboard slice — the one authorized copper change
-
-## What changed
-
-All 67 Cherry MX switches adopted perigoso's switch geometry and pad naming:
-pads 2.286 → 2.5 mm, drills 1.4986 → 1.5 mm, switch-mounting NPTH 1.7018 → 1.75 mm and
-3.9878 → 4.0 mm. **No pad position moved.** A compensating pin swap, applied in the
-schematic via the project-local `SW_Push_45deg_MX` symbol, kept every net in its original
-physical hole — proven by `verify/switch-map-before.txt` vs `-after.txt`.
-
-## The stabilized wide keys
-
-SW11 (2.25u) and SW64 (6.25u, spacebar) use project-specific derived footprints,
-`Radio86RK:SW_Cherry_MX_PCB_2.25u_Stabilized` and `_6.25u_Stabilized`: perigoso's switch
-geometry with skiselev's stabilizer holes added at their exact original coordinates.
-
-perigoso's own wide-key footprints carry no stabilizer holes at all — it keeps stabilizers
-as separate footprints — and its separate stabilizer parts do not match this board:
-30 µm out for the 2.00u, and 38 µm out plus mirrored for the 6.25u.
-
-That mismatch is not an error in either library. Per skiselev's README BOM, SW11 and SW64
-use Cherry **G99-0742** leveling kits (Mouser `540-G99-0742`), and the spacebar additionally
-uses the **wire from a G99-0226** (MX 1x8, Mouser `540-G99-0226`) fitted into G99-0742
-housings. That hybrid is why the spacebar spacing is 100.076 mm rather than any stock
-figure, and it is preserved exactly here.
-
-| Ref | Size | Stabilizer holes (mm) |
-|---|---|---|
-| SW11 | 2.25u | ⌀3.9878 at (±11.938, +8.255); ⌀3.048 at (±11.938, −6.985) |
-| SW64 | 6.25u | ⌀3.9878 at (±50.038, −8.255); ⌀3.048 at (±50.038, +6.985) |
-
-## Prototype measurements
-
-*(Task 11 records the prototype measurements and the disposition of SW4 / SW61 here.)*
-```
-
-- [ ] **Step 22: Commit**
-
-```bash
-git add KiCad tools docs verify
-git commit -m "Adopt the public Cherry MX footprint for all 67 switches, with the pin swap
-
-The only authorized copper change. Pads grow 2.286 -> 2.5mm and drills
-1.4986 -> 1.5mm, while every pad position is unchanged.
-
-SW11 (2.25u) and SW64 (6.25u) use derived footprints - perigoso's switch
-geometry plus this board's stabilizer holes at their exact coordinates.
-perigoso's wide-key footprints carry no stabilizer holes at all, and its
-separate stabilizer parts miss by 30-38um and are mirrored, because
-skiselev's spacebar uses a hybrid assembly: a Cherry G99-0226 (1x8) wire in
-G99-0742 housings, per the README BOM note. Deriving preserves that exactly
-while letting all 67 switches share one pad convention, so the pin swap has
-no exceptions.
-
-The pin swap is applied in the schematic via a project-local
-SW_Push_45deg_MX symbol with pin numbers exchanged, leaving the perigoso
-footprints unmodified. switch_net_map.py proves every net stayed in its
-original hole; the stabilizer-hole dump proves all 8 survived.
-
-3D coverage now 183/183, with switch+stabilizer composites on the wide keys.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
-```
-### Task 10: Physical validation of the enlarged pads
-
-The only task in this plan that needs hardware. It is separated from Task 9 deliberately:
-Task 9's relink is mechanical and fully gated by scripts, so it should not sit uncommitted
-waiting for a bench session, and a judgement that depends on a physical board should not be
-buried as one step inside a twenty-two-step mechanical task.
-
-**What is actually at stake.** Adopting perigoso grew every Cherry switch pad from 2.286 mm
-to 2.5 mm — 0.107 mm of extra radius. Step 6 of Task 9 computed the consequence across all
-134 switch pads: **two** fall below the project's 0.2 mm clearance rule.
-
-| Pad | Nearest | Before | After | Short by |
-|---|---|---:|---:|---:|
-| SW4 pad 2 | track | 0.2570 | **0.1500** | 50 µm |
-| SW61 pad 2 | track | 0.2570 | **0.1500** | 50 µm |
-
-Everything else stays at 0.28 mm or wider. SW11 and SW64 — the stabilized wide keys — are
-nowhere near the tight end, so the derived footprints carry no clearance risk.
-
-**Why 0.150 mm is a judgement and not automatically a failure.** It is below *this
-project's* 0.2 mm rule, which is a design-time choice inherited from a 1986 layout, not a
-fabrication limit. Most modern fabs hold 0.127 mm (5 mil) on 1 oz copper comfortably, and
-0.15 mm (6 mil) is a standard-process figure at every major vendor. So the realistic
-options are to accept it with a documented exclusion, to relax the netclass rule, or to
-revert those two switches. The prototype tells you which.
-
-**Neither pad diameter is "the manufacturer's value."** Cherry's MX drawing specifies
-*hole* sizes only — ⌀1.5 mm solder terminals, ⌀4.0 mm centre boss, ⌀1.7 mm locating pins.
-The annular ring is the board designer's choice, so skiselev's 2.286 mm (0.090″) and
-perigoso's 2.5 mm are both legitimate and neither is more correct. This matters for the
-decision below: **option (c) sacrifices nothing but uniformity.** It is not a retreat to an
-inferior footprint.
-
-It also explains the drill numbers. skiselev's footprint is Cherry's metric drawing
-rendered on an imperial grid — 1.4986 mm = 0.059″, 1.7018 mm = 0.067″, 3.9878 mm = 0.157″ —
-while perigoso uses Cherry's metric figures directly. The 1.4 µm drill delta is a unit
-conversion artefact, roughly 0.1%, and is noise at fab tolerance. Only the pad growth is a
-real design change, which is exactly why it gets a clearance check and the drill change does
-not. `Documentation/MX Series.pdf` in this repo is the source drawing if the figures need
-confirming.
-
-**Files:**
-- Modify: `docs/keyboard-slice.md`, `KiCad/Radio-86RK.kicad_pro`
-- Possibly modify: `KiCad/Radio-86RK-Keyboard.kicad_sch`, `KiCad/Radio-86RK.kicad_pcb`
-
-**Interfaces:**
-- Consumes: `verify/clearance-targets.txt` and `verify/clearance-actual.txt` from Task 9,
-  `tools/gerber-gate.sh`, `tools/rules-report.sh`.
-
-- [ ] **Step 1: Locate the two pads on the physical board**
-
-```bash
-source tools/kicad-env.sh
-cat verify/clearance-targets.txt
-"$KICAD_PY" - "$PCB" <<'PY'
-import sys, pcbnew
-b = pcbnew.LoadBoard(sys.argv[1])
-for fp in b.GetFootprints():
-    if fp.GetReference() in ("SW4", "SW61"):
-        p = fp.GetPosition()
-        print("%-5s at (%.3f, %.3f) mm, rotation %.0f deg"
-              % (fp.GetReference(), pcbnew.ToMM(p.x), pcbnew.ToMM(p.y),
-                 fp.GetOrientationDegrees()))
-PY
-```
-
-Record the board coordinates so the pads can be found under magnification.
-
-- [ ] **Step 2: Measure the actual gap on the prototype**
-
-For SW4 pad 2 and SW61 pad 2, measure the copper gap between the pad's annular ring and the
-adjacent track. Use a calibrated method — a measuring microscope, a loupe with a reticle, or
-a photograph against a known scale. Calipers cannot resolve 0.15 mm on a populated board.
-
-**Measurement precedes exclusion, never the reverse.** Record the numbers even if they look
-fine; a later reader needs to know this was checked rather than assumed.
-
-- [ ] **Step 3: Check the fabricated board against the design intent**
-
-The prototype was fabricated from the **original** 2.286 mm geometry, so what you are
-measuring is the 0.257 mm gap, not the 0.150 mm one. Confirm that:
-
-- the existing 0.257 mm gap is cleanly resolved on the real board with no bridging,
-  necking or mask slivers;
-- the fab's stated capability covers 0.15 mm. Check the order documentation for the process
-  class actually used.
-
-If the fab holds 0.15 mm and the 0.257 mm gap is clean, the change is safe. If the existing
-gap already looks marginal at 0.257 mm, do not spend the extra 0.107 mm.
-
-- [ ] **Step 4: Confirm the stabilizer assemblies physically fit**
-
-While the board is on the bench, verify the parts skiselev's BOM specifies actually seat in
-the holes the derived footprints preserve:
-
-- **SW11** — a Cherry G99-0742 (Mouser `540-G99-0742`) housing pair into the
-  ⌀3.9878 / ⌀3.048 holes at ±11.938 mm.
-- **SW64** — G99-0742 housings with the **wire from a G99-0226** (Mouser `540-G99-0226`),
-  spanning the ⌀3.9878 / ⌀3.048 holes at ±50.038 mm, per the README note *"use the wire
-  from this part and one of 540-G99-0742 to build a through hole leveling kit for the
-  spacebar"*.
-
-This confirms the hybrid assembly the derived footprints were built to preserve.
-
-- [ ] **Step 5: Decide, and apply the decision**
-
-Pick exactly one and record the reasoning in `docs/keyboard-slice.md`:
-
-**(a) Accept — add DRC exclusions.** The gap is manufacturable and measured clean. Exclude
-the two `clearance` violations in Pcbnew with the comment
-`measured on prototype <date>; 0.150mm is within fab capability, accepted`.
-
-**(b) Accept — relax the netclass rule.** If 0.15 mm is comfortably within the process you
-actually order, change the Default netclass `clearance` from 0.2 to 0.15 in
-`KiCad/Radio-86RK.kicad_pro`. Cleaner than two exclusions, but it lowers the bar
-board-wide, so only do this deliberately.
-
-**(c) Revert SW4 and SW61 to their vendored footprints.** Costs only the uniform pad
-convention — set their schematic `Footprint` back to `Cherry_MX:CHERRY_PCB_100H` and
-`Cherry_MX:CHERRY_PCB_150H`, revert their symbol `lib_id` to `Switch:SW_Push_45deg` (they
-must **not** carry the pin swap if they keep the original pad names), and add a
-`models.tsv` row so they still render. Then re-run Task 9's Step 13 net-map check — it must
-still pass.
-
-- [ ] **Step 6: Re-verify whichever path was taken**
-
-```bash
-tools/rules-report.sh | tee verify/rules-10-physical.txt
-source tools/kicad-env.sh
-"$KICAD_PY" tools/switch_net_map.py "$PCB" > verify/switch-map-final.txt
-diff verify/switch-map-before.txt verify/switch-map-final.txt \
-  && echo "PASS: every net still in its original hole"
-```
-
-Expected: `PASS` regardless of which option was chosen — no disposition of a clearance
-question may move a net. Under (a) or (b), DRC's `clearance` count reaches zero (excluded
-or in-rule). Under (c), it reaches zero because the pads shrank back.
-
-- [ ] **Step 7: Complete `docs/keyboard-slice.md`**
-
-Fill in the section Task 9 left open:
-
-```markdown
-## Prototype measurements
-
-Measured <date> on the v1.4 prototype.
-
-| Pad | Predicted after change | Measured on prototype (original geometry) | Verdict |
-|---|---:|---:|---|
-| SW4 pad 2 | 0.150 mm | <value> | <accepted / reverted> |
-| SW61 pad 2 | 0.150 mm | <value> | <accepted / reverted> |
-
-Fab process class: <value>. Minimum clearance capability: <value>.
-
-Stabilizer fit: G99-0742 housings seat correctly in SW11's ±11.938 mm holes; the
-G99-0226 wire in G99-0742 housings seats correctly in SW64's ±50.038 mm holes.
-
-**Decision:** <(a) exclusions / (b) relaxed netclass / (c) reverted SW4 and SW61>, because
-<reason>.
-```
-
-- [ ] **Step 8: Commit**
-
-```bash
-git add KiCad docs verify
-git commit -m "Dispose of the two clearance violations against the physical prototype
-
-Adopting perigoso grew switch pads by 0.107mm of radius. Across all 134
-switch pads exactly two fall below the 0.2mm rule - SW4 pad 2 and SW61 pad 2,
-both at 0.150mm. Everything else stays at 0.28mm or wider, and the stabilized
-wide keys SW11/SW64 are nowhere near the tight end.
-
-Measured on the prototype before deciding, per the spec's rule that
-measurement precedes exclusion. Also confirmed the G99-0742 and G99-0226
-stabilizer assemblies seat in the holes the derived footprints preserve.
-
-Net map unchanged, so nothing moved.
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
-```
-
----
-
-### Task 11: Prove the project is standalone and record the result
+### Task 10: Prove the project is standalone and record the result
 
 The whole point of vendoring is that someone who clones this repo can open, check and
 fabricate the board with nothing but KiCad 10. Prove it on a clean clone, not on the
@@ -2302,7 +1728,7 @@ tools/gerber-gate.sh --strict
 tools/rules-report.sh
 ```
 
-Expected: `PASS`, and rule counts matching `verify/rules-10-physical.txt` from Task 10 (or `rules-09-keyboard.txt` if Task 10 has not run). A
+Expected: `PASS`, and rule counts matching `verify/rules-09-exclusions.txt` from Task 9. A
 difference here means something the working tree provided is not in git.
 
 - [ ] **Step 3: Confirm every 3D model resolves from the clone**
@@ -2343,22 +1769,21 @@ committed.
 | Schematic/board parity | 0 | 0 |
 | Components rendering in 3D | 0 / 183 | 183 / 183 |
 | Opens from a fresh clone | no | yes |
-| Gerber diff vs v1.4 | — | empty outside the keyboard slice |
+| Gerber diff vs v1.4 | — | **empty**, no exception |
 
 ## What changed on the board
 
-Exactly one thing: all 67 Cherry MX keyswitches adopted perigoso's switch geometry and pad
-naming, growing their pads from 2.286 mm to 2.5 mm and their drills from 1.4986 mm to
-1.5 mm. Pad positions did not move, and a compensating pin swap in the schematic kept every
-net in its original physical hole.
+**Nothing.** All 191 footprints, all copper, every drill hole and all silkscreen are
+byte-identical to skiselev's v1.4 output. The gerber and drill diff is empty, with no
+exception anywhere in the project.
 
-SW11 (2.25u) and SW64 (6.25u, spacebar) use project-specific derived footprints — perigoso's
-switch geometry plus this board's stabilizer holes at their exact original coordinates,
-because skiselev's spacebar stabilizer is a hybrid Cherry G99-0226 wire in G99-0742
-housings that matches no stock part. See `docs/keyboard-slice.md`.
-
-Everything else — all 191 footprints, all copper, all drills — is byte-identical to
-skiselev's v1.4 output.
+The design spec had proposed one authorized copper change — adopting perigoso's Cherry MX
+footprints across the keyboard — on the grounds that doing so "brings a 3D model". That
+premise turned out to be false: models attach to any footprint by name, and both libraries
+put the switch's centre boss at (0, 0), so perigoso's model renders correctly on the board's
+own geometry. Declining the substitution avoided a 2.286 → 2.5 mm pad growth on 67 switches,
+a compensating schematic pin swap, two clearance violations at 0.150 mm, and the loss of
+SW11 and SW64's stabilizer holes — at a cost of nothing but silkscreen cosmetics.
 
 ## How to verify any of this yourself
 
@@ -2396,25 +1821,25 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ```
 1  harness + baseline
-2  format upgrade         (needs 1)
+2  format upgrade         (needs 1)    KiCad 6 -> 10 format, CRLF -> LF
 3  vendor footprints      (needs 2)    DRC 91 -> 22, ERC 243 -> 176
 4  3D passives            (needs 3)    3D  0 -> 76
 5  3D DIP sockets         (needs 4)    3D 76 -> 100
 6  3D connectors/misc     (needs 4)    3D 100 -> 115
-7  re-home symbols, ERC   (needs 3)    ERC 176 -> issue-#2 only
-8  DRC exclusions         (needs 3)    DRC 22 documented
-9  keyboard               (needs 3,7)  3D 115 -> 183, the one copper change
-10 physical validation    (needs 9)    NEEDS HARDWARE - disposes of SW4/SW61
-11 standalone proof       (needs all)
+7  3D keyboard            (needs 4)    3D 115 -> 183
+8  re-home symbols, ERC   (needs 3)    ERC 176 -> issue-#2 only
+9  DRC exclusions         (needs 3)    DRC 22 documented
+10 standalone proof       (needs all)
 ```
 
-Tasks 4–6 and 7–8 are independent of each other and may be reordered.
+Tasks 4–7 are independent of each other and may be reordered, as may 8–9.
 
-Task 9 is the only task whose gate is reviewed rather than required to pass, so it runs
-against an otherwise finished tree. **Task 10 is the only task that needs the physical
-prototype.** It is split out so that Task 9 — which is mechanical and fully script-gated —
-can complete and commit without waiting on a bench session, and so a hardware-dependent
-judgement is not buried inside a twenty-two-step relink. If the prototype is unavailable,
-Tasks 1–9 and 11 still deliver a complete, verified result; only the disposition of SW4 and
-SW61's 0.150 mm clearance stays open, and Task 9 leaves that recorded in
-`verify/clearance-targets.txt` rather than silently excluded.
+**No task changes copper.** `tools/gerber-gate.sh --strict` must pass on every one of them,
+with no reviewed exception and no prototype measurement anywhere in the plan. That is a
+direct consequence of Finding 1: once the switches keep their own footprints, nothing on
+the board moves, and the Definition of Done becomes an unconditional empty gerber diff
+against skiselev's v1.4.
+
+The riskiest remaining task is 8, because refreshing a symbol whose pins were renumbered
+would move nets to different pads. `tools/netlist-gate.sh` exists for exactly that, and it
+is the only place in the plan where a silent netlist change is possible.
