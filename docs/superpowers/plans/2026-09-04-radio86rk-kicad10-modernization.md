@@ -48,6 +48,7 @@ below are **measured**, not predicted.
 | Commit | What landed | Verified by |
 |---|---|---|
 | `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
+| `4839945` | Task 4: 3D models for 76 passives | coverage 0 → 76/183; both gates PASS; render verified |
 | `3614cc1` | Task 3: 35 footprints vendored into `Radio86RK.pretty` | DRC 91 → 22, ERC 101 → 34, unconnected 0, parity 0; stabilizer holes and pad counts verified |
 | `4f4c13c` | Board converted to KiCad 10 format (`20211014` → `20260206`) via `kicad-cli pcb upgrade` | both gerber gates PASS vs frozen v1.4 baseline; netlist PASS; ERC 101 / DRC 91 unchanged |
 | `2a7788a` | Schematics converted to KiCad 10 format (`20211123` → `20260306`) via the **GUI** | netlist identical (22971 lines); ERC 243 unchanged; DRC 91, unconnected 0, parity 0; gerbers byte-identical to v1.4 |
@@ -914,6 +915,11 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 4: 3D models for passives (76 components, 8 footprints)
 
+> **STATUS: complete** — committed as `4839945`. 3D coverage 0 → 76/183, both gates pass.
+> Added `tools/model_coverage.py` during execution: counting "has a model entry" scores the
+> 109 broken KiCad-4-era references as covered, so coverage is measured by whether the model
+> file actually resolves.
+
 All 19 legacy model paths are KiCad 4-era (`dil/`, `discret/`, `pin_array/`) and resolve to
 nothing. Because models attach to footprint *definitions*, 76 components are covered by 8
 assignments.
@@ -929,7 +935,7 @@ assignments.
   Re-runnable and idempotent: it clears a footprint's model list before adding. Tasks 5, 6
   and 9 append rows to the same `models.tsv` and re-run the same script.
 
-- [ ] **Step 1: Write `tools/apply_models.py`**
+- [x] **Step 1: Write `tools/apply_models.py`**
 
 ```python
 """Apply models.tsv to the vendored library AND to the board's footprint instances.
@@ -1005,7 +1011,7 @@ if ghosts:
     sys.exit("ERROR: named in models.tsv but found nowhere: %s" % ", ".join(ghosts))
 ```
 
-- [ ] **Step 2: Write `tools/models.tsv` (passives)**
+- [x] **Step 2: Write `tools/models.tsv` (passives)**
 
 Columns are tab-separated. `${KICAD10_3DMODEL_DIR}` keeps the paths portable.
 
@@ -1021,7 +1027,7 @@ Transistor_TO92_EBC_254	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92
 IC_TO220-3_Vert	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step	0
 ```
 
-- [ ] **Step 3: Verify every model file exists before applying**
+- [x] **Step 3: Verify every model file exists before applying**
 
 A path typo produces a silently invisible component, so check first.
 
@@ -1035,7 +1041,7 @@ echo "check complete"
 
 Expected: `check complete` with no `MISSING` lines.
 
-- [ ] **Step 4: Confirm the board currently renders nothing**
+- [x] **Step 4: Confirm the board currently renders nothing**
 
 ```bash
 tools/render.sh 03-no-models
@@ -1043,7 +1049,7 @@ tools/render.sh 03-no-models
 
 Expected: a bare green board with pads and silkscreen, zero component bodies.
 
-- [ ] **Step 5: Apply**
+- [x] **Step 5: Apply**
 
 ```bash
 "$KICAD_PY" tools/apply_models.py tools/models.tsv "$PCB" "$REPO_ROOT/KiCad/Radio86RK.pretty"
@@ -1051,7 +1057,7 @@ Expected: a bare green board with pads and silkscreen, zero component bodies.
 
 Expected: a per-footprint count table summing to `applied to 8 footprints / 76 instances`.
 
-- [ ] **Step 6: Run the gate — models must not move copper**
+- [x] **Step 6: Run the gate — models must not move copper**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -1060,7 +1066,7 @@ tools/gerber-gate.sh --strict
 Expected: `PASS`. `apply_models.py` rewrites the whole board file via `SaveBoard`, so this
 also confirms the round-trip through `pcbnew` is lossless.
 
-- [ ] **Step 7: Render and eyeball**
+- [x] **Step 7: Render and eyeball**
 
 ```bash
 tools/render.sh 04-passives
@@ -1070,7 +1076,7 @@ Expected: resistors, disc and electrolytic capacitors, diodes, LEDs, the crystal
 TO-92/TO-220 packages all visible, seated on the board, none floating or sunk. ICs,
 connectors and switches are still bare.
 
-- [ ] **Step 8: Start `docs/3d-model-sources.md`**
+- [x] **Step 8: Start `docs/3d-model-sources.md`**
 
 ```markdown
 # 3D model sources and substitutions
@@ -1101,7 +1107,7 @@ copper — cost without benefit. Accepted under the tolerance policy.
 regulators; the board says `Transistor_TO92_EBC_254`. The board is right.
 ```
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add tools/apply_models.py tools/models.tsv docs/3d-model-sources.md \
