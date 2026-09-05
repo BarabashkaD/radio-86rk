@@ -1786,7 +1786,7 @@ footprints 218/218 intact, board untouched. The two violations change class from
 **Resume here.** ERC currently 101 = 67 `footprint_link_issues` + 32
 `same_local_global_label` + 2 `lib_symbol_mismatch`.
 
-- [ ] **Step 6: One more symbol refresh, bundled with Step 7**
+- [x] **Step 6: One more symbol refresh, bundled with Step 7**
 
 Q1/Q2's cache still holds the old `Device` definition under the new key. Re-running Step 3's
 procedure now finds `Transistor_BJT:Q_NPN_EBC` and rewrites it, clearing the last 2
@@ -1796,7 +1796,7 @@ Do this in the **same Eeschema session** as Step 7 rather than as its own trip �
 do not justify a separate round-trip with an operation that has already broken the board
 once. Re-run Step 4's four checks afterwards.
 
-- [ ] **Step 7: Resolve the 32 `same_local_global_label` collisions**
+- [x] **Step 7 (decided against — see docs/erc-exclusions.md): Resolve the 32 `same_local_global_label` collisions**
 
 All 32 are bus and control signals carrying both a local and a global label of the same
 name — 15 address lines `A0`–`A14`, 8 data lines `D0`–`D7`, the four strobes `~{RD}`,
@@ -1882,7 +1882,7 @@ tools/netlist-gate.sh
 Expected: ERC unchanged; netlist `PASS`. If ERC *rises*, the vendored library differs from
 the sibling clone and Step 8 dropped something.
 
-- [ ] **Step 10: Write `docs/erc-exclusions.md` and exclude the issue-#2 violations**
+- [x] **Step 10: Write `docs/erc-exclusions.md` and exclude the issue-#2 violations**
 
 ```markdown
 # Retained ERC violations
