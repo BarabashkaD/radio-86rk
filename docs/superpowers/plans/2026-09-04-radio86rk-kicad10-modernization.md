@@ -2028,7 +2028,7 @@ missing file.
 - Modify: `README.md`
 - Create: `docs/modernization-summary.md`
 
-- [ ] **Step 1: Clone into a scratch directory and check for absolute paths**
+- [x] **Step 1: Clone into a scratch directory and check for absolute paths**
 
 ```bash
 cd /tmp && rm -rf rk-clone && git clone -b kicad10-modernization \
@@ -2040,7 +2040,7 @@ grep -rEn '/Users/|/home/|C:\\\\' KiCad/*-lib-table KiCad/*.kicad_pcb KiCad/*.ki
 
 Expected: `no absolute paths - portable`.
 
-- [ ] **Step 2: Run the full verification on the clone**
+- [x] **Step 2: Run the full verification on the clone**
 
 ```bash
 cd /tmp/rk-clone
@@ -2051,7 +2051,7 @@ tools/rules-report.sh
 Expected: `PASS`, and rule counts matching `verify/rules-09-exclusions.txt` from Task 9. A
 difference here means something the working tree provided is not in git.
 
-- [ ] **Step 3: Confirm every 3D model resolves from the clone**
+- [x] **Step 3: Confirm every 3D model resolves from the clone**
 
 ```bash
 cd /tmp/rk-clone && source tools/kicad-env.sh
@@ -2065,7 +2065,7 @@ echo "model check complete"
 
 Expected: `model check complete`, no `MISSING`.
 
-- [ ] **Step 4: Render from the clone**
+- [x] **Step 4: Render from the clone**
 
 ```bash
 cd /tmp/rk-clone && tools/render.sh 10-fresh-clone
@@ -2075,7 +2075,7 @@ Compare against `verify/renders/09-keyboard-complete-top.png`. They should be
 indistinguishable. A component missing here but present there is a file that never got
 committed.
 
-- [ ] **Step 5: Write `docs/modernization-summary.md`**
+- [x] **Step 5: Write `docs/modernization-summary.md`**
 
 ```markdown
 # KiCad 10 modernization — outcome
@@ -2112,13 +2112,13 @@ SW11 and SW64's stabilizer holes — at a cost of nothing but silkscreen cosmeti
     tools/render.sh mycheck           # 3D render to verify/renders/
 ```
 
-- [ ] **Step 6: Add a short section to `README.md`**
+- [x] **Step 6: Add a short section to `README.md`**
 
 Point at `docs/modernization-summary.md`, `docs/3d-model-sources.md`,
 `docs/drc-exclusions.md` and `docs/erc-exclusions.md`, and note that the project now
 requires only KiCad 10 plus the perigoso keyswitch library from PCM.
 
-- [ ] **Step 7: Clean up and commit**
+- [x] **Step 7: Clean up and commit**
 
 ```bash
 rm -rf /tmp/rk-clone
