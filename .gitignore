@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Editor local history
+.history/
+
+# KiCad per-user state (UI layout, zoom, layer visibility) — not project data
+*.kicad_prl
+*-backups/
+*.lck
+~*.lck
+fp-info-cache
+
+# KiCad autosave / recovery
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_pro-bak
+
+# Verification harness scratch output
+.build/
