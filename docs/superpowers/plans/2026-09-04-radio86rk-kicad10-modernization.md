@@ -428,7 +428,48 @@ else
 fi
 ```
 
-- [ ] **Step 5: Write `tools/rules-report.sh`**
+- [ ] **Step 5: Write `tools/netlist-gate.sh`**
+
+The gerber gate cannot see schematic-side damage, because the board is not edited. The
+netlist is the ground truth linking schematic to copper: if it is unchanged, no symbol edit
+can have moved a net to a different pad. Finding 4 is what happens without this check.
+
+Compare the `(nets …)` section specifically. The full netlist legitimately gains and loses
+metadata on a symbol refresh — datasheet URLs, `ki_keywords`, ngspice `Sim.*` fields — and
+none of that is connectivity.
+
+```bash
+#!/usr/bin/env bash
+# Export the netlist and diff its connectivity against verify/baseline/netlist.nets.
+#   --capture   write the baseline instead of comparing
+set -euo pipefail
+source "$(dirname "$0")/kicad-env.sh"
+mkdir -p "$BUILD" "$REPO_ROOT/verify/baseline"
+BASE="$REPO_ROOT/verify/baseline/netlist.nets"
+CUR="$BUILD/netlist.nets"
+
+"$KICAD_CLI" sch export netlist --format kicadsexpr --output "$BUILD/netlist.raw" "$SCH" >/dev/null
+# Keep only the (nets ...) section: components and libparts carry metadata that changes
+# legitimately when symbols are refreshed from their libraries.
+awk '/^\t\(nets/{f=1} f' "$BUILD/netlist.raw" > "$CUR"
+
+if [ "${1:-}" = "--capture" ]; then
+  cp "$CUR" "$BASE"
+  echo "netlist-gate: captured baseline ($(wc -l < "$BASE" | tr -d ' ') lines)"
+  exit 0
+fi
+[ -f "$BASE" ] || { echo "netlist-gate: no baseline; run --capture" >&2; exit 2; }
+if diff -q "$BASE" "$CUR" >/dev/null; then
+  echo "netlist-gate: PASS - every pin maps to the same net"
+else
+  echo "netlist-gate: FAIL"; diff -u "$BASE" "$CUR" | head -40; exit 1
+fi
+```
+
+Measured on this board: the connectivity section is **6790 lines**, and it stayed
+byte-identical through the format conversion, the symbol refresh and the Q1/Q2 re-home.
+
+- [ ] **Step 6: Write `tools/rules-report.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -459,7 +500,7 @@ for label, path in (("ERC", sys.argv[1]), ("DRC", sys.argv[2])):
 PY
 ```
 
-- [ ] **Step 6: Write `tools/render.sh`**
+- [ ] **Step 7: Write `tools/render.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -474,7 +515,7 @@ OUT="$REPO_ROOT/verify/renders"; mkdir -p "$OUT"
 echo "rendered $OUT/$TAG-top.png"
 ```
 
-- [ ] **Step 7: Make the scripts executable and ignore build output**
+- [ ] **Step 8: Make the scripts executable and ignore build output**
 
 ```bash
 cd /Users/dveremeev/projects/radio-86rk
@@ -482,7 +523,7 @@ chmod +x tools/*.sh
 printf '.build/\n.DS_Store\nKiCad/.history/\nKiCad/*.kicad_prl\nKiCad/*.lck\n' >> .gitignore
 ```
 
-- [ ] **Step 8: Prove the gate works — capture the baseline, then run it unchanged**
+- [ ] **Step 9: Prove the gate works — capture the baseline, then run it unchanged**
 
 This is the failing-test-first moment: a gate that cannot pass on an untouched board is
 worthless, and a gate that cannot fail is equally worthless.
@@ -496,7 +537,7 @@ tools/gerber-gate.sh --geometry
 
 Expected: two `captured` lines, then two `PASS` lines.
 
-- [ ] **Step 9: Prove the gate can fail**
+- [ ] **Step 10: Prove the gate can fail**
 
 ```bash
 # Perturb one pad by 1 micron in a scratch copy, confirm the gate catches it.
@@ -509,7 +550,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `FAIL` + a diff + the confirmation line, then `PASS` after restore.
 
-- [ ] **Step 10: Record the starting rule counts**
+- [ ] **Step 11: Record the starting rule counts**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-00-baseline.txt
@@ -525,7 +566,7 @@ working tree as untracked files written on 2026-09-04. Step 10 commits them as-i
 baseline is reproducible from git; Tasks 3 and 7 then rewrite both to point at vendored
 libraries.
 
-- [ ] **Step 11: Commit**
+- [ ] **Step 12: Commit**
 
 ```bash
 git add tools .gitignore verify KiCad/sym-lib-table KiCad/fp-lib-table
