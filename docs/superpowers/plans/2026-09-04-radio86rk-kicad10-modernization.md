@@ -48,14 +48,16 @@ below are **measured**, not predicted.
 | Commit | What landed | Verified by |
 |---|---|---|
 | `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
+| `3614cc1` | Task 3: 35 footprints vendored into `Radio86RK.pretty` | DRC 91 → 22, ERC 101 → 34, unconnected 0, parity 0; stabilizer holes and pad counts verified |
 | `4f4c13c` | Board converted to KiCad 10 format (`20211014` → `20260206`) via `kicad-cli pcb upgrade` | both gerber gates PASS vs frozen v1.4 baseline; netlist PASS; ERC 101 / DRC 91 unchanged |
 | `2a7788a` | Schematics converted to KiCad 10 format (`20211123` → `20260306`) via the **GUI** | netlist identical (22971 lines); ERC 243 unchanged; DRC 91, unconnected 0, parity 0; gerbers byte-identical to v1.4 |
 | `9d8e182` | Symbol definitions refreshed from libraries — **ERC 243 → 101**, all 142 `lib_symbol_mismatch` cleared | footprints 218/218 unchanged; netlist connectivity byte-identical (6790 lines); board untouched |
 | `16a7755` | Q1/Q2 re-pointed `Device:Q_NPN_EBC` → `Transistor_BJT:Q_NPN_EBC` | netlist connectivity byte-identical; footprints intact; DRC 91, parity 0 |
 
-**Current state:** board at format `20260206`, geometry byte-identical to v1.4 under the canonical gate. ERC 101 =
-67 `footprint_link_issues` + 32 `same_local_global_label` + 2 `lib_symbol_mismatch`.
-DRC 91, unconnected 0, parity 0.
+**Current state:** board at format `20260206`, geometry byte-identical to v1.4 under the
+canonical gate. ERC 34 = 32 `same_local_global_label` + 2 `lib_symbol_mismatch`.
+DRC 22 = 17 `silk_edge_clearance` + 5 `starved_thermal`. Unconnected 0, parity 0.
+Footprints no longer depend on the sibling clone; symbols still do.
 
 That maps onto the tasks below as:
 
@@ -735,10 +737,9 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 3: Vendor the 35 footprints and make the project self-contained
 
-> **STATUS: rehearsed end-to-end on a scratch copy, not yet committed.** Every step below
-> was executed against a throwaway copy of this board and produced exactly the numbers
-> stated — DRC 22, unconnected 0, parity 0, all 67 `lib_footprint_issues` and both
-> `lib_footprint_mismatch` cleared. The predictions here are measurements.
+> **STATUS: complete** — committed as `3614cc1`. Produced exactly the rehearsed numbers:
+> DRC 91 → 22, ERC 101 → 34, unconnected 0, parity 0, all 67 `lib_footprint_issues` and
+> both `lib_footprint_mismatch` cleared. Both gates passed; the board was never edited.
 
 `Cherry_MX` is lost and `My_Components` currently resolves only through a sibling clone,
 so a fresh clone of this repo cannot open the board. Extract all 35 unique footprints from
@@ -764,7 +765,7 @@ external dependency. A vendored copy is written anyway as a belt-and-braces fall
 - Produces: `KiCad/Radio86RK.pretty/<name>.kicad_mod` for all 35 names; consumed by
   `tools/apply_models.py` in Tasks 4–6 and by Task 9.
 
-- [ ] **Step 1: Write `tools/vendor_footprints.py`**
+- [x] **Step 1: Write `tools/vendor_footprints.py`**
 
 The `Duplicate()` return needs a cast, so mutate the loaded board in memory instead — it is
 a throwaway copy and is never saved.
@@ -802,7 +803,7 @@ for fp in board.GetFootprints():
 print("vendored %d unique footprints -> %s" % (len(seen), LIB))
 ```
 
-- [ ] **Step 2: Verify the expectation before running — 35 unique, 191 instances**
+- [x] **Step 2: Verify the expectation before running — 35 unique, 191 instances**
 
 ```bash
 grep -c '^	(footprint "' KiCad/Radio-86RK.kicad_pcb
@@ -811,7 +812,7 @@ grep -o '^	(footprint "[^"]*"' KiCad/Radio-86RK.kicad_pcb | sort -u | wc -l
 
 Expected: `191` then `35`. (The leading tab is the KiCad 10 indent produced by Task 2.)
 
-- [ ] **Step 3: Extract**
+- [x] **Step 3: Extract**
 
 ```bash
 source tools/kicad-env.sh
@@ -822,7 +823,7 @@ ls KiCad/Radio86RK.pretty | wc -l
 Expected: `vendored 35 unique footprints` and `35`.
 A harmless `create wxApp before calling this` assert on stderr is normal for headless `pcbnew`.
 
-- [ ] **Step 4: Verify the stabilizer holes survived — the highest-value single check**
+- [x] **Step 4: Verify the stabilizer holes survived — the highest-value single check**
 
 If the 2.25u and 6.25u stabilizer holes were lost here, Task 9 would silently ship a board
 with 8 missing drills.
@@ -836,7 +837,7 @@ grep -E '11\.938|50\.038' KiCad/Radio86RK.pretty/CHERRY_PCB_225H.kicad_mod KiCad
 
 Expected: `9`, `9`, `5`, and `8` (four stabilizer pads in each of the two files).
 
-- [ ] **Step 5: Verify no instance data leaked into the library**
+- [x] **Step 5: Verify no instance data leaked into the library**
 
 ```bash
 grep -l -E 'Sheetfile|Sheetname|\(path |\(net ' KiCad/Radio86RK.pretty/*.kicad_mod | wc -l
@@ -844,7 +845,7 @@ grep -l -E 'Sheetfile|Sheetname|\(path |\(net ' KiCad/Radio86RK.pretty/*.kicad_m
 
 Expected: `0`.
 
-- [ ] **Step 6: Write `KiCad/fp-lib-table`**
+- [x] **Step 6: Write `KiCad/fp-lib-table`**
 
 Two nicknames, one directory. This is what removes the sibling-clone dependency without
 touching the board.
@@ -861,7 +862,7 @@ Two nicknames, one directory. They keep the board's existing 191 `lib_id`s resol
 untouched, which is what makes this task a pure addition: no `lib_id` is rewritten anywhere
 in the plan, so no footprint is ever replaced and the strict gate cannot be threatened.
 
-- [ ] **Step 7: Run the gate — the board was not edited, so this must pass trivially**
+- [x] **Step 7: Run the gate — the board was not edited, so this must pass trivially**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -869,7 +870,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `PASS`.
 
-- [ ] **Step 8: Confirm the rule counts moved as predicted**
+- [x] **Step 8: Confirm the rule counts moved as predicted**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-03-vendored.txt
@@ -891,7 +892,7 @@ land it gives **0**. Run this task before or after those — it is independent o
 If `lib_footprint_mismatch` is **non-zero**, the extraction altered something. Diff the
 offending library footprint against its board instance before proceeding.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add KiCad/Radio86RK.pretty KiCad/fp-lib-table tools/vendor_footprints.py verify
