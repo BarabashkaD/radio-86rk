@@ -50,7 +50,7 @@ silkscreen cosmetics.
 |---|---|
 | 22 DRC violations | Properties of the v1.4 board. Fixing means moving silkscreen or zone geometry. See `docs/drc-exclusions.md`. |
 | 32 ERC violations | Bus signals carrying both label scopes. Clearing them costs 91 label edits for 0 errors — measured, not estimated. See `docs/erc-exclusions.md`. |
-| J4's 3D model | No public 8-pin DIN model exists in any installed library. A visibly wrong connector is worse than none. |
+| J4's 3D model | No public 8-pin DIN model exists in any installed library. A visibly wrong connector is worse than none. See `docs/followup-3d-models.md`. |
 | U3/U22 RS-232 defect | Pre-existing v1.4 design defect, GitHub issue #2. Fixing it is a topology change. |
 
 ## How to verify any of this yourself
