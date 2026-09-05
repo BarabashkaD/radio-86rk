@@ -19,3 +19,7 @@ _autosave-*
 
 # Verification harness scratch output
 .build/
+
+# Python bytecode from tools/
+__pycache__/
+*.pyc
