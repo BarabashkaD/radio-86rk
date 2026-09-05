@@ -48,6 +48,7 @@ below are **measured**, not predicted.
 | Commit | What landed | Verified by |
 |---|---|---|
 | `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
+| `e881aba` | Task 5: socket+chip composites for 24 DIP ICs | coverage 76 → 100/183; both gates PASS; closeup render verified |
 | `4839945` | Task 4: 3D models for 76 passives | coverage 0 → 76/183; both gates PASS; render verified |
 | `3614cc1` | Task 3: 35 footprints vendored into `Radio86RK.pretty` | DRC 91 → 22, ERC 101 → 34, unconnected 0, parity 0; stabilizer holes and pad counts verified |
 | `4f4c13c` | Board converted to KiCad 10 format (`20211014` → `20260206`) via `kicad-cli pcb upgrade` | both gerber gates PASS vs frozen v1.4 baseline; netlist PASS; ERC 101 / DRC 91 unchanged |
@@ -1129,6 +1130,9 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 5: 3D models for socketed DIP ICs (24 ICs, 7 footprints)
 
+> **STATUS: complete** — committed as `e881aba`. 3D coverage 76 → 100/183, both gates pass.
+> Board DIP census verified against the socket table: 3/6/3/1/2/4/5 = 24 socketed.
+
 Every DIP on this board sits in a socket, so each of the 7 DIP footprints carries **two**
 models: the socket at board level and the chip raised to the socket's seating height.
 
@@ -1146,7 +1150,7 @@ the insulator's extruded cross-section rather than of body length — so 5.48 mm
 - Consumes: `tools/apply_models.py` from Task 4, unchanged. Multi-model support is already
   in it — this task is the first to use it.
 
-- [ ] **Step 1: Verify the socket/chip model pairs exist**
+- [x] **Step 1: Verify the socket/chip model pairs exist**
 
 ```bash
 source tools/kicad-env.sh
@@ -1162,7 +1166,7 @@ echo "check complete"
 
 Expected: `check complete` with no `MISSING` lines — all 14 files.
 
-- [ ] **Step 2: Append the socket composites to `tools/models.tsv`**
+- [x] **Step 2: Append the socket composites to `tools/models.tsv`**
 
 Row spacing follows the board: the `*_300` footprints are 300 mil (7.62 mm), the `*_600`
 are 600 mil (15.24 mm).
@@ -1185,7 +1189,7 @@ IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.
 IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	5.48
 ```
 
-- [ ] **Step 3: Apply**
+- [x] **Step 3: Apply**
 
 ```bash
 "$KICAD_PY" tools/apply_models.py tools/models.tsv "$PCB" "$REPO_ROOT/KiCad/Radio86RK.pretty"
@@ -1195,7 +1199,7 @@ Expected: `applied to 15 footprints / 100 instances` — the 8 passive footprint
 Task 4 (76 instances) plus these 7 (24 instances). The script is idempotent, so
 re-applying Task 4's rows is intentional and harmless.
 
-- [ ] **Step 4: Verify the composite landed in the board, not just the library**
+- [x] **Step 4: Verify the composite landed in the board, not just the library**
 
 ```bash
 grep -A3 'DIP-40_W15.24mm' KiCad/Radio-86RK.kicad_pcb | grep -E 'model|xyz' | head -8
@@ -1203,7 +1207,7 @@ grep -A3 'DIP-40_W15.24mm' KiCad/Radio-86RK.kicad_pcb | grep -E 'model|xyz' | he
 
 Expected: the socket model with `(xyz 0 0 0)` and the chip model with `(xyz 0 0 5.48)`.
 
-- [ ] **Step 5: Run the gate**
+- [x] **Step 5: Run the gate**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -1211,7 +1215,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `PASS`.
 
-- [ ] **Step 6: Render — this is the step that catches a wrong Z offset**
+- [x] **Step 6: Render — this is the step that catches a wrong Z offset**
 
 ```bash
 tools/render.sh 05-dip-sockets
@@ -1221,7 +1225,7 @@ Expected: 24 ICs visibly seated **in** sockets — a distinct socket body under 
 chip bodies not intersecting the socket rails and not floating above them. Compare U21
 (8-pin, 5.1 mm) against U1 (40-pin, 5.48 mm); both should look seated.
 
-- [ ] **Step 7: Extend `docs/3d-model-sources.md`**
+- [x] **Step 7: Extend `docs/3d-model-sources.md`**
 
 ```markdown
 ## Socketed DIP ICs
@@ -1254,7 +1258,7 @@ viewer and cannot reach the board.
 silkscreen markings, so package choices follow the Western parts.
 ```
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add tools/models.tsv docs/3d-model-sources.md \
