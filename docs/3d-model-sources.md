@@ -245,3 +245,23 @@ those were verified separately, since both libraries put the switch's centre bos
 **Automated coverage cannot catch this.** `model_coverage.py` proves a model file resolves;
 it says nothing about whether the model is placed correctly. Only the render does. See the
 validation section above.
+
+### Connector alignment, verified
+
+Checked numerically (does the transform map every pad?) and visually:
+
+| Ref | Footprint | rot | worst pad error | Visual |
+|---|---|---:|---:|---|
+| J5 | `Conn_Dsub_DE9M` | 180° | 0.107 mm | shell points outward past the board edge |
+| J6 | `Conn_Pin_Header_13x2_2.54mm_Shrouded` | 270° | 0.000 mm | shroud opening faces up |
+| J7 | `Conn_Pin_Header_20x1_2.54mm` | 270° | 0.000 mm | |
+| JP1, JP2 | `Conn_Pin_Header_4x1_2.54mm` | 270° | 0.000 mm | pins on pads, body within the silk outline |
+| RN1 | `Conn_SIL10` | 0° | 0.000 mm | |
+| RN2–RN4 | `Conn_SIL6` | 0° | 0.000 mm | |
+| J3 | `Conn_Friction_Lock_8P_2.54mm` | 0° | 0.000 mm | |
+
+J5's 0.107 mm is KiCad's 2.77 vs 2.84 mm DSUB pitch variant, and our footprint carries 10
+pads to KiCad's 9 (an extra shield pad). Neither matters at the 3D layer.
+
+Reference renders: `validate-ic-alignment.png`, `validate-connectors.png`,
+`validate-jumpers.png`.
