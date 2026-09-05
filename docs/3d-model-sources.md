@@ -159,3 +159,53 @@ the viewer, and exactly what the 3D tolerance policy exists to permit.
 
 **182 / 183.** The 7 mounting holes and the silkscreen logo are exempt. The single gap is
 **J4**, the 8-pin DIN, for which no public model exists anywhere — see above.
+
+## Validating the render
+
+Automated checks catch missing models; they cannot catch a model that is present but wrong.
+Do both.
+
+### Scripted
+
+```bash
+"$KICAD_PY" tools/model_coverage.py "$PCB"                 # counts only resolving models
+"$KICAD_PY" tools/model_coverage.py "$PCB" --list-missing  # names what has none
+```
+
+Coverage counts a footprint as covered only if the model file exists on disk. The board
+began with 109 footprints carrying KiCad-4-era references that pointed at nothing, so
+"has a model entry" would have scored those as covered.
+
+### Visual, in KiCad
+
+PCB Editor → **View → 3D Viewer** (`Alt+3`). Left-drag rotates, scroll zooms.
+**Preferences → Display Options → Raytracing** for a realistic render.
+Hiding the board itself makes floating or sunk parts obvious.
+
+### Visual, scripted
+
+Top-down views hide Z errors. A low camera angle is what exposes them:
+
+```bash
+# the shot that validates seating heights
+kicad-cli pcb render --output check.png --width 1600 --height 700 --quality high \
+  --rotate '-72,0,0' --zoom 2.2 --pivot '-2.0,3.0,0' --perspective board.kicad_pcb
+```
+
+Reference images are in `verify/renders/`:
+`validate-dip-lowangle.png` (socket seating) and `validate-profile.png` (switch heights).
+
+### What to check, and why each could be wrong
+
+| Check | Expected | Failure mode |
+|---|---|---|
+| DIP seating | chip sitting *in* a socket, socket rails visible beneath | wrong Z offset — 5.1 mm for 8-pin, 5.48 mm otherwise |
+| SW64 spacebar | two stabilizer housings straddling the switch, wire between, all **on** the board | wrong rotation — at 0° the assembly hangs 16.5 mm off the edge |
+| SW11 (2.25u) | same, no rotation | |
+| Edge connectors J2, J5, J6 | bodies pointing **outward** past the board edge | model orientation |
+| Y1 crystal | standing upright | vertical vs horizontal model |
+| Switch row | uniform height, all flat on the board | |
+| J1 | renders as a **BNC** | known and documented — no public RCA model |
+| J4 | renders as **nothing** | known and documented — no public 8-pin DIN |
+
+All of these were checked on the current board and are correct.
