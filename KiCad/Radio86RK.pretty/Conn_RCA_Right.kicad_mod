@@ -1,0 +1,181 @@
+(footprint "Conn_RCA_Right"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Connector, RCA, Right Angle")
+	(tags "CONN POWER JACK")
+	(property "Reference" "REF**"
+		(at 8.255 2.8575 90)
+		(layer "F.SilkS")
+		(uuid "c9ca37d8-0e8f-4b04-993b-441db04c0b0d")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Conn_RCA_Right"
+		(at 8.255 -1.905 90)
+		(layer "F.SilkS")
+		(uuid "bf088994-1ba8-498c-a809-f88743135320")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "18828453-a6a4-4af1-997d-f8892920ef66")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "daefa5ec-3343-4fe5-9a8c-97f590cd0bcb")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "CRT_Memory")
+	(sheetfile "Radio-86RK-CRT-Mem.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -7.874 -4.191)
+		(end -7.874 4.191)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7939b92c-a5f5-4a8b-ba86-fc0c677b18cb")
+	)
+	(fp_line
+		(start -7.874 4.191)
+		(end 0 4.191)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7d2c2fc9-481a-4ecc-849e-58a5b435da44")
+	)
+	(fp_line
+		(start 0 -5.207)
+		(end 0 -2.159)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "711bebbd-0f97-4c80-9d2e-e257bdaa6615")
+	)
+	(fp_line
+		(start 0 -5.207)
+		(end 2.921 -5.207)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ae461775-95f4-4fc6-b029-aa387c421790")
+	)
+	(fp_line
+		(start 0 -4.191)
+		(end -7.874 -4.191)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b2a073f6-1225-410b-90ff-f0ad1dbdb60a")
+	)
+	(fp_line
+		(start 0 5.207)
+		(end 0 2.159)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "707031c5-9733-4e95-a514-50f444a0151b")
+	)
+	(fp_line
+		(start 0 5.207)
+		(end 2.921 5.207)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d2ee57c5-1b31-430e-a5f8-c3c23c715135")
+	)
+	(fp_line
+		(start 6.731 -3.683)
+		(end 6.731 3.683)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e1757b99-5a9c-41fa-b267-62780388876e")
+	)
+	(pad "1" thru_hole circle
+		(at 5.08 0)
+		(size 2.9718 2.9718)
+		(drill 1.5748)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "dc1e105a-e370-423a-9d79-3f8aa3ffddd9")
+	)
+	(pad "2" thru_hole circle
+		(at 0 0)
+		(size 4.064 4.064)
+		(drill 2.667)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8d65699a-8138-4342-b5b5-38eb38640046")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 -5.08)
+		(size 4.064 4.064)
+		(drill 2.667)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "15169856-5191-4eb2-bcb7-78921a0d68a7")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 5.08)
+		(size 4.064 4.064)
+		(drill 2.667)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "02ad1cd3-0898-4b52-ab68-5686fb86805a")
+	)
+	(embedded_fonts no)
+	(model "connectors/POWER_21.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.8 0.8 0.8)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

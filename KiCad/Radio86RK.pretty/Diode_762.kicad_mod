@@ -1,0 +1,201 @@
+(footprint "Diode_762"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Diode, 7.62mm lead spacing")
+	(tags "DIODE 7.62mm")
+	(property "Reference" "REF**"
+		(at 5.715 0 0)
+		(layer "F.SilkS")
+		(uuid "280f9e83-94cc-435e-aa15-49f77bf81fe6")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Diode_762"
+		(at -7.62 0 0)
+		(layer "F.SilkS")
+		(uuid "a8dd0f4e-868a-44f7-841e-d15668e43b7a")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aca44056-dcf0-4b8f-8efc-051e016d593d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "31e49f8d-dc1f-4551-a69e-671decbd9102")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Keyboard")
+	(sheetfile "Radio-86RK-Keyboard.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.556 0)
+		(end -2.032 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "176c0786-95e2-495a-925c-f4b3292bdbbd")
+	)
+	(fp_line
+		(start -2.032 0.762)
+		(end -2.032 -0.762)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bfb898c1-e05b-462d-908a-ea58bf43c9ba")
+	)
+	(fp_line
+		(start -1.778 -1.016)
+		(end 1.778 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6a9a78bb-3540-4455-afb8-c76a11d08188")
+	)
+	(fp_line
+		(start 1.778 1.016)
+		(end -1.778 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6f1866a2-0786-4b19-96b7-fed0c2abbd13")
+	)
+	(fp_line
+		(start 2.032 -0.762)
+		(end 2.032 0.762)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ffc44561-f472-40b8-9130-c3f572e949e8")
+	)
+	(fp_line
+		(start 2.032 0)
+		(end 3.81 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "61f294d5-e646-4769-b2c5-5766578ee898")
+	)
+	(fp_arc
+		(start -2.032 -0.762)
+		(mid -1.957605 -0.941605)
+		(end -1.778 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "65b8dd01-b34d-4573-b05e-00e4bee5bdd3")
+	)
+	(fp_arc
+		(start -1.778 1.016)
+		(mid -1.957605 0.941605)
+		(end -2.032 0.762)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f70c07ff-8dd2-44e8-9617-b64ca0dc9f24")
+	)
+	(fp_arc
+		(start 1.778 -1.016)
+		(mid 1.957605 -0.941605)
+		(end 2.032 -0.762)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "71997e58-0b66-4983-b94d-6e299aa28e70")
+	)
+	(fp_arc
+		(start 2.032 0.762)
+		(mid 1.957605 0.941605)
+		(end 1.778 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "af5cf59f-92c6-4b5e-b1c3-08546879d39c")
+	)
+	(fp_poly
+		(pts
+			(xy 1.27 1.016) (xy 0.762 1.016) (xy 0.762 -1.016) (xy 1.27 -1.016)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "9997ed5c-9c49-4751-abad-de8b60a84a2a")
+	)
+	(pad "1" thru_hole rect
+		(at 3.81 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ae126478-8c0e-4541-b4c4-4f5b4aee87dd")
+	)
+	(pad "2" thru_hole circle
+		(at -3.81 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "879e5759-9e9a-49d1-b66f-adeaf3488154")
+	)
+	(embedded_fonts no)
+	(model "discret/diode.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.3 0.3 0.3)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

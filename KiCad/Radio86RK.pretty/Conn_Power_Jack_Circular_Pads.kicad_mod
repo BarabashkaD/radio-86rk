@@ -1,0 +1,163 @@
+(footprint "Conn_Power_Jack_Circular_Pads"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Connector, Power Jack")
+	(tags "CONN POWER JACK")
+	(property "Reference" "REF**"
+		(at 5.3975 -5.715 0)
+		(layer "F.SilkS")
+		(uuid "73b52b31-08e2-42c2-8c3f-ed6d3dfe4c54")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Conn_Power_Jack_Circular_Pads"
+		(at 2.8575 -5.715 0)
+		(layer "F.SilkS")
+		(uuid "d2505369-cc6c-4f2d-b3f4-767d0356c47f")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ac43c364-b99d-4120-b341-624feb002983")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "edd6967a-7279-4750-8c52-09b7b83b1181")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -7.69874 -4.50088)
+		(end 6.79958 -4.50088)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "eb058961-ed02-41fe-bf2e-e4f86d2faa60")
+	)
+	(fp_line
+		(start -7.69874 4.50088)
+		(end -7.69874 -4.50088)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0fe76f21-176d-4648-b36c-847bacae8545")
+	)
+	(fp_line
+		(start -7.69874 4.50088)
+		(end 0.889 4.50088)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "313d11c3-9029-432b-8d9f-9bab5dc94749")
+	)
+	(fp_line
+		(start -4.20116 -4.50088)
+		(end -4.20116 4.50088)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c9e73ee7-0e02-4b5a-8bc1-665126b97f0f")
+	)
+	(fp_line
+		(start 5.08 4.50088)
+		(end 6.79958 4.50088)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "96a63ee6-163d-4b6a-8faa-36ff93944ab7")
+	)
+	(fp_line
+		(start 6.79958 -4.50088)
+		(end 6.79958 -2.286)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "42a7f320-32a6-4091-a26a-d2c0a33c06b0")
+	)
+	(fp_line
+		(start 6.79958 4.50088)
+		(end 6.79958 2.286)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "330342bc-7fd2-44fa-acf8-f270303aa789")
+	)
+	(pad "1" thru_hole circle
+		(at 6.20014 0)
+		(size 4.5 4.5)
+		(drill 3.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "72b6f05e-1811-4f06-a372-7aec24e6dd66")
+	)
+	(pad "2" thru_hole circle
+		(at 0 0)
+		(size 4 4)
+		(drill 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6f1fa3d9-84ff-4d97-bf14-ba49a2725917")
+	)
+	(pad "3" thru_hole circle
+		(at 2.99974 4.8006)
+		(size 4 4)
+		(drill 2.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "886c92fe-1822-4545-bb6a-435e076fb3e4")
+	)
+	(embedded_fonts no)
+	(model "connectors/POWER_21.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.8 0.8 0.8)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

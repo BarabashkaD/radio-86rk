@@ -1,0 +1,169 @@
+(footprint "Cap_Cer_508"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Ceramic Capacitor, 5.08mm lead spacing")
+	(tags "Cap_Cer_508")
+	(property "Reference" "REF**"
+		(at 2.54 -1.905 0)
+		(layer "F.SilkS")
+		(uuid "e5933e69-8585-485a-a429-1f6fe57fb617")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Cap_Cer_508"
+		(at -1.905 -1.905 0)
+		(layer "F.SilkS")
+		(uuid "268ca012-9f01-4407-91a3-296bc2ee0f1a")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0f10f955-b835-4f24-b01f-50eda7b0dd64")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3bf2d660-64c4-4c01-8258-1fca0eaec293")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.556 0.508)
+		(end -3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c0de9401-6aab-4d17-a51c-341a0547905b")
+	)
+	(fp_line
+		(start -3.048 -1.016)
+		(end 3.048 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "41c869ac-c530-4aa2-bc0d-065371f8b1b2")
+	)
+	(fp_line
+		(start -3.048 1.016)
+		(end 3.048 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "94634116-3a5f-4c63-994f-a276416542db")
+	)
+	(fp_line
+		(start 3.556 0.508)
+		(end 3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "38547374-e202-4bf0-be0a-10a468328583")
+	)
+	(fp_arc
+		(start -3.556 -0.508)
+		(mid -3.40721 -0.86721)
+		(end -3.048 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bf681f60-9e34-4259-b02b-60bd043d9cf9")
+	)
+	(fp_arc
+		(start -3.048 1.016)
+		(mid -3.40721 0.86721)
+		(end -3.556 0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "845ce87f-d6a9-4718-8532-240790294891")
+	)
+	(fp_arc
+		(start 3.048 -1.016)
+		(mid 3.40721 -0.86721)
+		(end 3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "02a793d0-c01a-467b-9465-dd6dddf24f2f")
+	)
+	(fp_arc
+		(start 3.556 0.508)
+		(mid 3.40721 0.86721)
+		(end 3.048 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2bda7776-619c-4862-9856-7db0b750ee48")
+	)
+	(pad "1" thru_hole circle
+		(at -2.54 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e3deda87-eb81-4165-b79e-5270f05ed8d4")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "68c052d2-7a9a-41eb-95ea-66ee3088a7cd")
+	)
+	(embedded_fonts no)
+	(model "discret/capa_2pas_5x5mm.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

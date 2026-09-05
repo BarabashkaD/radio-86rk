@@ -1,0 +1,148 @@
+(footprint "Crystal_HC-49U_Vert"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Quartz Crystal, HC-49U, Vertical")
+	(tags "QUARTZ CRYSTAL HC49U VERT")
+	(property "Reference" "REF**"
+		(at 2.54 -3.302 0)
+		(layer "F.SilkS")
+		(uuid "abf74400-1168-423c-a496-86d56abbcd49")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Crystal_HC-49U_Vert"
+		(at -1.905 -3.302 0)
+		(layer "F.SilkS")
+		(uuid "bdc44bec-c474-44bd-8142-fe69dec97ba2")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "27c5b4f7-5371-42b7-8f11-ad4603ad3999")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c1d9a488-f46c-40ec-be7d-f9adae7c073d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetfile "Radio-86RK.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.429 2.413)
+		(end 3.429 2.413)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8437b504-6b08-4b2d-8967-19648f5404ac")
+	)
+	(fp_line
+		(start 3.429 -2.413)
+		(end -3.429 -2.413)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b0f49389-ff21-400c-bf8c-7015cdeba508")
+	)
+	(fp_arc
+		(start -5.842 0)
+		(mid -5.135249 -1.706249)
+		(end -3.429 -2.413)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7b968eaf-9855-4167-95b7-975c001eb695")
+	)
+	(fp_arc
+		(start -3.429 2.413)
+		(mid -5.135249 1.706249)
+		(end -5.842 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0836eefa-664d-455e-a2cb-11f6010b1c3d")
+	)
+	(fp_arc
+		(start 3.429 -2.413)
+		(mid 5.135249 -1.706249)
+		(end 5.842 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1fe1cebf-1c66-4bf1-8d9a-f861bd54845b")
+	)
+	(fp_arc
+		(start 5.842 0)
+		(mid 5.135249 1.706249)
+		(end 3.429 2.413)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2e04e12b-e324-479e-acc6-9747683111a8")
+	)
+	(pad "1" thru_hole circle
+		(at -2.44094 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "991d0782-b280-4e3a-9748-a94787da431e")
+	)
+	(pad "2" thru_hole circle
+		(at 2.44094 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b77a483c-96db-42a6-a920-946f23563ea1")
+	)
+	(embedded_fonts no)
+	(model "discret/crystal_hc18u_vertical.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
