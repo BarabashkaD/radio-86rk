@@ -32,3 +32,37 @@ copper — cost without benefit. Accepted under the tolerance policy.
 
 **U27 is a TO-92 transistor, not a regulator.** The design spec's prose calls U25 and U27
 regulators; the board says `Transistor_TO92_EBC_254`. The board is right.
+
+## Socketed DIP ICs — 24 components, 7 footprints
+
+Every DIP on this board sits in a socket, so each DIP footprint carries **two** models: the
+socket at board level and the chip raised to the socket's seating height. U25 (TO-220),
+U26 (SIP DC-DC) and U27 (TO-92) are not DIP parts and take a single model each.
+
+| Footprint | Refs | Socket (z=0) | Chip (z=offset) | Offset |
+|---|---|---|---|---:|
+| `IC_DIP8_300` | U21, U23, U24 | `DIP-8_W7.62mm_Socket` | `DIP-8_W7.62mm` | 5.1 |
+| `IC_DIP14_300` | U15–U20 | `DIP-14_W7.62mm_Socket` | `DIP-14_W7.62mm` | 5.48 |
+| `IC_DIP16_300` | U2, U14, U22 | `DIP-16_W7.62mm_Socket` | `DIP-16_W7.62mm` | 5.48 |
+| `IC_DIP20_300` | U12 | `DIP-20_W7.62mm_Socket` | `DIP-20_W7.62mm` | 5.48 |
+| `IC_DIP24_600` | U4, U13 | `DIP-24_W15.24mm_Socket` | `DIP-24_W15.24mm` | 5.48 |
+| `IC_DIP28_600` | U3, U9, U10, U11 | `DIP-28_W15.24mm_Socket` | `DIP-28_W15.24mm` | 5.48 |
+| `IC_DIP40_600` | U1, U5–U8 | `DIP-40_W15.24mm_Socket` | `DIP-40_W15.24mm` | 5.48 |
+
+Row spacing follows the board: `*_300` footprints are 300 mil (7.62 mm), `*_600` are
+600 mil (15.24 mm).
+
+**Where the heights come from.** The prototype uses Amphenol FCI DILB `-223TLF`
+stamped-and-formed sockets. Amphenol's spec sheet publishes Dim A/B/C/D, pitch, row spacing
+and tail length but no overall height. Distributor package data reports 5.48 mm for the 14,
+16, 28 and 40 position parts and for the 0.3″ sibling `DILB24P-224TLF`, across both row
+spacings and from 14 to 40 positions. Height is a property of the insulator's extruded
+cross-section and does not vary with body length, so 5.48 mm is taken for the 20- and
+24-pin as well. The 8-pin at 5.1 mm is the only outlier.
+
+This is a 3D-appearance parameter, not a geometry one: a 0.38 mm error would be invisible
+in the viewer and cannot reach the board.
+
+**Western parts, not Soviet.** The prototype is populated with Intel `P8255A-5`, NEC
+`8257C-5`, TI `SN74198N` and `74LS74` rather than the Soviet equivalents in the dual
+silkscreen markings, so package choices follow the Western parts.

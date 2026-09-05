@@ -9442,9 +9442,20 @@
 			(uuid "7aa2b5aa-d7cf-4d07-beb7-f350fb285e22")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9726,9 +9737,20 @@
 			(uuid "0d1775c1-6da1-4442-8387-eece30519748")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -10033,9 +10055,20 @@
 			(uuid "a3f0c11b-c4e5-41a0-a18d-81271fb225f3")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -32464,9 +32497,20 @@
 			(uuid "916f20dd-d1b4-4be5-93d6-29dce453eccd")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_24-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -32903,9 +32947,20 @@
 			(uuid "4959fa24-b234-458f-94bd-97c8a656018b")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_28-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33474,9 +33529,20 @@
 			(uuid "1c72c4c1-84a9-4518-9ca5-32b5fb4fd23f")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_40-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33869,9 +33935,20 @@
 			(uuid "2d7b4a88-65ee-4eb5-9ca0-304d32389112")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_24-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34308,9 +34385,20 @@
 			(uuid "1d9cff79-7f6d-4cda-bfb4-b534a63e19ab")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_28-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34878,9 +34966,20 @@
 			(uuid "22d009cf-d408-43aa-a260-4b56e3138287")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_40-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -35849,9 +35948,20 @@
 			(uuid "dd2de063-aaee-4b6d-adf4-6089c99ebf3f")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_40-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -36420,9 +36530,20 @@
 			(uuid "a0ea32a9-ddb1-4545-be99-64a64a10c247")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_40-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -37996,9 +38117,20 @@
 			(uuid "465e7cd0-ec8a-4847-91c5-f95e705d2138")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38566,9 +38698,20 @@
 			(uuid "ba395dac-3415-449d-94ae-874feabe762d")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_40-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38916,9 +39059,20 @@
 			(uuid "59fb1497-7781-4ece-9b96-c62617a79135")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_20.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -39637,9 +39791,20 @@
 			(uuid "cbdc9da0-4eb9-4ec7-a4dc-f71790290b6d")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40356,9 +40521,20 @@
 			(uuid "7246975a-ba7a-467c-a012-3ae386c960fd")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40628,9 +40804,20 @@
 			(uuid "a063bf34-af15-4bc6-8b4e-59a011197000")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40847,9 +41034,20 @@
 			(uuid "437e66b9-8c68-473f-9bf1-237c9c8c6878")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_8.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -44216,9 +44414,20 @@
 			(uuid "238df3e3-fc4c-40f8-98e7-93591c3f26ac")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -44905,9 +45114,20 @@
 			(uuid "f83e703c-3191-400c-b20c-a28d5feac222")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_8.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45384,9 +45604,20 @@
 			(uuid "c0d104eb-7d58-4b39-876a-82bdbf0a3114")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_8.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46604,9 +46835,20 @@
 			(uuid "129d91a6-461b-43dd-9dd7-b06b913b7b90")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_16.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -48734,9 +48976,20 @@
 			(uuid "e7b11db4-057c-4dec-bc62-0c6ba197020a")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_28-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -52319,9 +52572,20 @@
 			(uuid "58d2bcfa-84ef-4eb0-b28c-aa660c6f8653")
 		)
 		(embedded_fonts no)
-		(model "dil/dil_28-w600.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
+			(offset
+				(xyz 0 0 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
