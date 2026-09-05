@@ -47,6 +47,7 @@ below are **measured**, not predicted.
 
 | Commit | What landed | Verified by |
 |---|---|---|
+| `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
 | `2a7788a` | Schematics converted to KiCad 10 format (`20211123` → `20260306`) via the **GUI** | netlist identical (22971 lines); ERC 243 unchanged; DRC 91, unconnected 0, parity 0; gerbers byte-identical to v1.4 |
 | `9d8e182` | Symbol definitions refreshed from libraries — **ERC 243 → 101**, all 142 `lib_symbol_mismatch` cleared | footprints 218/218 unchanged; netlist connectivity byte-identical (6790 lines); board untouched |
 | `16a7755` | Q1/Q2 re-pointed `Device:Q_NPN_EBC` → `Transistor_BJT:Q_NPN_EBC` | netlist connectivity byte-identical; footprints intact; DRC 91, parity 0 |
@@ -218,6 +219,13 @@ handled by the task named.
 
 ### Task 1: Verification harness and frozen baseline
 
+> **STATUS: complete** — committed as `de7a774`. Both gates proven in both directions;
+> baselines captured from the board at v1.4 geometry. Starting counts: ERC 101, DRC 91,
+> unconnected 0, parity 0. Two refinements were made during execution and are reflected
+> in the scripts below: `REPO_ROOT` comes from `git rev-parse` rather than
+> `${BASH_SOURCE[0]}` (empty under zsh), and kicad-cli stderr is filtered for Homebrew
+> fontconfig warnings, which otherwise emit ~40 lines per call.
+
 Nothing may be edited until the gate that protects the board exists and is proven to work
 on an unchanged board. This task creates it and captures the reference.
 
@@ -231,14 +239,14 @@ on an unchanged board. This task creates it and captures the reference.
   prints a unified diff of the offending files. `tools/rules-report.sh` — prints
   `ERC <n>` / `DRC <n>` plus a per-type breakdown. Both are consumed by every later task.
 
-- [ ] **Step 1: Create the branch**
+- [x] **Step 1: Create the branch**
 
 ```bash
 cd /Users/dveremeev/projects/radio-86rk
 git checkout -b kicad10-modernization master
 ```
 
-- [ ] **Step 2: Write `tools/kicad-env.sh`**
+- [x] **Step 2: Write `tools/kicad-env.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -248,7 +256,7 @@ export KICAD_CLI="$KICAD_APP/MacOS/kicad-cli"
 export KICAD_PY="$KICAD_APP/Frameworks/Python.framework/Versions/3.9/bin/python3"
 export KICAD_3DMODEL_DIR="$KICAD_APP/SharedSupport/3dmodels"
 export KICAD_3RD_PARTY="$HOME/Documents/KiCad/10.0/3rdparty"
-export REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export REPO_ROOT="$(git rev-parse --show-toplevel)"
 export PCB="$REPO_ROOT/KiCad/Radio-86RK.kicad_pcb"
 export SCH="$REPO_ROOT/KiCad/Radio-86RK.kicad_sch"
 export BUILD="$REPO_ROOT/.build"
@@ -258,7 +266,7 @@ for v in KICAD_CLI KICAD_PY KICAD_3DMODEL_DIR KICAD_3RD_PARTY PCB SCH; do
 done
 ```
 
-- [ ] **Step 3: Write `tools/gerber_canon.py`**
+- [x] **Step 3: Write `tools/gerber_canon.py`**
 
 **A byte diff of gerbers does not work, and this was verified the hard way.** Running
 `kicad-cli pcb upgrade` on this board re-emits identical geometry in a *different order*,
@@ -362,7 +370,7 @@ if __name__ == "__main__":
 This exact script was validated both ways on this board: it reports the format upgrade as
 unchanged, and it detects a 1 µm pad displacement in 5 files. Step 8 re-runs both checks.
 
-- [ ] **Step 4: Write `tools/gerber-gate.sh`**
+- [x] **Step 4: Write `tools/gerber-gate.sh`**
 
 Drill and job files are compared directly (the drill file is byte-stable). Gerbers go
 through the canonicaliser. `--strict` additionally keeps the X2 net/component attributes so
@@ -428,7 +436,7 @@ else
 fi
 ```
 
-- [ ] **Step 5: Write `tools/netlist-gate.sh`**
+- [x] **Step 5: Write `tools/netlist-gate.sh`**
 
 The gerber gate cannot see schematic-side damage, because the board is not edited. The
 netlist is the ground truth linking schematic to copper: if it is unchanged, no symbol edit
@@ -469,7 +477,7 @@ fi
 Measured on this board: the connectivity section is **6790 lines**, and it stayed
 byte-identical through the format conversion, the symbol refresh and the Q1/Q2 re-home.
 
-- [ ] **Step 6: Write `tools/rules-report.sh`**
+- [x] **Step 6: Write `tools/rules-report.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -500,7 +508,7 @@ for label, path in (("ERC", sys.argv[1]), ("DRC", sys.argv[2])):
 PY
 ```
 
-- [ ] **Step 7: Write `tools/render.sh`**
+- [x] **Step 7: Write `tools/render.sh`**
 
 ```bash
 #!/usr/bin/env bash
@@ -515,7 +523,7 @@ OUT="$REPO_ROOT/verify/renders"; mkdir -p "$OUT"
 echo "rendered $OUT/$TAG-top.png"
 ```
 
-- [ ] **Step 8: Make the scripts executable**
+- [x] **Step 8: Make the scripts executable**
 
 ```bash
 cd /Users/dveremeev/projects/radio-86rk
@@ -526,7 +534,7 @@ chmod +x tools/*.sh
 editor local history, and KiCad per-user state (`*.kicad_prl`, lock files, `fp-info-cache`,
 backups). Check it covers anything new this task writes before adding to it.
 
-- [ ] **Step 9: Prove the gate works — capture the baseline, then run it unchanged**
+- [x] **Step 9: Prove the gate works — capture the baseline, then run it unchanged**
 
 This is the failing-test-first moment: a gate that cannot pass on an untouched board is
 worthless, and a gate that cannot fail is equally worthless.
@@ -540,7 +548,7 @@ tools/gerber-gate.sh --geometry
 
 Expected: two `captured` lines, then two `PASS` lines.
 
-- [ ] **Step 10: Prove the gate can fail**
+- [x] **Step 10: Prove the gate can fail**
 
 ```bash
 # Perturb one pad by 1 micron in a scratch copy, confirm the gate catches it.
@@ -553,7 +561,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `FAIL` + a diff + the confirmation line, then `PASS` after restore.
 
-- [ ] **Step 11: Record the starting rule counts**
+- [x] **Step 11: Record the starting rule counts**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-00-baseline.txt
@@ -569,7 +577,7 @@ working tree as untracked files written on 2026-09-04. Step 10 commits them as-i
 baseline is reproducible from git; Tasks 3 and 7 then rewrite both to point at vendored
 libraries.
 
-- [ ] **Step 12: Commit**
+- [x] **Step 12: Commit**
 
 ```bash
 git add tools .gitignore verify KiCad/sym-lib-table KiCad/fp-lib-table
