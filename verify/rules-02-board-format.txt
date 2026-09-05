@@ -1,0 +1,10 @@
+ERC 101  errors=0 warnings=101
+       67  footprint_link_issues
+       32  same_local_global_label
+        2  lib_symbol_mismatch
+DRC 91  errors=0 warnings=91
+       67  lib_footprint_issues
+       17  silk_edge_clearance
+        5  starved_thermal
+        2  lib_footprint_mismatch
+     unconnected=0  parity=0
