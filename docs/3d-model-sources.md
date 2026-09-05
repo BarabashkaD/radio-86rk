@@ -226,6 +226,13 @@ were found, all of them by looking at the render:
 None of this touches copper. It is purely how the model is placed for rendering, which is
 why both gerber gates passed throughout while the render was visibly wrong.
 
+**KiCad's 3D model offset has Y inverted relative to PCB coordinates** (the 3D view has Y
+up, the board has Y down); the Z rotation is not inverted. That was determined empirically
+with a calibration board - `verify/renders/calib2.png` renders eight candidate conventions
+side by side against KiCad's own DIP-40 as a known-good reference, and only one puts the
+chip body between its pad rows. It is also why the passives looked right while every IC was
+visibly wrong: the passives all have `off_y` = 0, so the inversion changes nothing for them.
+
 `tools/align_models.py` derives the transform from geometry rather than guessing: it takes
 the pad-1 → pad-N vector in each footprint, rotates by the angle between them, and
 translates so the model's pad 1 lands on ours. The results are written into `models.tsv` as

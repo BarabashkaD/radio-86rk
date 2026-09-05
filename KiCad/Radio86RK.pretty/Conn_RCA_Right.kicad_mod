@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 8.255 2.8575 90)
 		(layer "F.SilkS")
-		(uuid "f416797f-1006-45cd-82d9-e19137983949")
+		(uuid "bff416a9-9304-4a9c-bfa3-b353f32bbc79")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "Conn_RCA_Right"
 		(at 8.255 -1.905 90)
 		(layer "F.SilkS")
-		(uuid "dec1dce0-c781-42b3-98e2-248f65ca7572")
+		(uuid "21cd4a94-311b-4d38-b3cd-990872473725")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "bbb5f222-ae47-434f-94d5-6a2e7fbfb597")
+		(uuid "3277cd32-26a2-4991-8251-063308e5864b")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "3a3ea03d-7a8d-4604-a03b-9a65f309d89f")
+		(uuid "61e08e8a-e1ec-40d8-bb2f-4c401aabeaf0")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "5360c2d5-0964-4a6b-b060-ebf49e842ea1")
+		(uuid "892817ab-e583-4bfe-bd46-af72995fa29f")
 	)
 	(fp_line
 		(start -7.874 4.191)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "69ce33eb-a3bb-4ea6-8059-8c665ee93abe")
+		(uuid "9d8aebad-884e-4e8a-b59a-bb6a35c31220")
 	)
 	(fp_line
 		(start 0 -5.207)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d42de292-838b-4364-9ffe-f679f6ad025f")
+		(uuid "e062e934-61e1-4e1f-a0e6-8c111bcfc1eb")
 	)
 	(fp_line
 		(start 0 -5.207)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "2651b43b-097e-40f7-b683-6be09a419c4a")
+		(uuid "7ae6e7c2-6162-473e-b399-a2c15d87d9c8")
 	)
 	(fp_line
 		(start 0 -4.191)
@@ -102,7 +102,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "a7babef5-76e1-4f9a-95cb-3b6c1841d914")
+		(uuid "13f28cdc-992f-4714-be3a-e7a45e123229")
 	)
 	(fp_line
 		(start 0 5.207)
@@ -112,7 +112,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "df2f8316-0ac4-4fd3-9f01-4abf26984f81")
+		(uuid "b0de7968-2dc0-471a-91f1-d13f052c2691")
 	)
 	(fp_line
 		(start 0 5.207)
@@ -122,7 +122,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "4d3a1ebd-124d-4652-8492-c21b3129ac1e")
+		(uuid "6f1e12bd-f999-4e16-85d5-87f0d2fd461e")
 	)
 	(fp_line
 		(start 6.731 -3.683)
@@ -132,7 +132,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e2ed4211-9981-4ddd-9ac5-4c27862991ca")
+		(uuid "c6b4f246-79ee-44ae-a32f-25922e346948")
 	)
 	(pad "1" thru_hole circle
 		(at 5.08 0)
@@ -140,7 +140,7 @@
 		(drill 1.5748)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d4b0c000-9886-4e0d-84bf-4876a7bb90ac")
+		(uuid "5249b552-094b-4a62-adae-1eb4504f79fd")
 	)
 	(pad "2" thru_hole circle
 		(at 0 0)
@@ -148,7 +148,7 @@
 		(drill 2.667)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "198c7ff0-8a2c-4e3b-95aa-89f5a767ef77")
+		(uuid "3f26a457-08bd-409b-b7e7-4929398bb8de")
 	)
 	(pad "2" thru_hole circle
 		(at 5.08 -5.08)
@@ -156,7 +156,7 @@
 		(drill 2.667)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "5f2afd73-778a-4262-8b23-72f3a612cf83")
+		(uuid "87e2a592-aa94-40c3-a9b8-3bf34ff185e3")
 	)
 	(pad "2" thru_hole circle
 		(at 5.08 5.08)
@@ -164,7 +164,7 @@
 		(drill 2.667)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c03a0061-7574-409f-9781-87b78d33849c")
+		(uuid "53ae1c46-c006-4aa5-81d1-4debcb2f9570")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step"

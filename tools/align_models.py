@@ -97,7 +97,17 @@ def transform(ours, kilib, kiname):
     # the model's pad 1 sits at KiCad's pad-1 position; place it on ours
     c, s = math.cos(math.radians(rot)), math.sin(math.radians(rot))
     rx, ry = bx1 * c - by1 * s, bx1 * s + by1 * c
-    return round(ax1 - rx, 4), round(ay1 - ry, 4), rot
+    ox, oy = ax1 - rx, ay1 - ry
+
+    # KiCad's 3D model offset has Y inverted relative to PCB coordinates (the 3D view has
+    # Y up, the board has Y down); the Z rotation is NOT inverted. Determined empirically
+    # with a calibration board -- see verify/renders/calib2.png, which renders eight
+    # candidate conventions side by side against KiCad's own DIP-40 as a known-good
+    # reference. Only (ox, -oy, rot) puts the chip body between its pad rows.
+    #
+    # This is why the passives looked correct while every IC was visibly wrong: the
+    # passives all have oy = 0, so negating it changes nothing.
+    return round(ox, 4), round(-oy, 4), rot
 
 
 if __name__ == "__main__":

@@ -7174,7 +7174,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step"
 			(offset
-				(xyz -15.24 1.27 0)
+				(xyz -15.24 -1.27 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9149,7 +9149,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step"
 			(offset
-				(xyz 2.253 3.8506 0)
+				(xyz 2.253 -3.8506 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9455,7 +9455,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz -8.89 3.81 0)
+				(xyz -8.89 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9466,7 +9466,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz -8.89 3.81 5.48)
+				(xyz -8.89 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9750,7 +9750,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9761,7 +9761,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -10068,7 +10068,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz -8.89 3.81 0)
+				(xyz -8.89 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -10079,7 +10079,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz -8.89 3.81 5.48)
+				(xyz -8.89 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33203,7 +33203,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
-				(xyz -13.97 7.62 0)
+				(xyz -13.97 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33214,7 +33214,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
 			(offset
-				(xyz -13.97 7.62 5.48)
+				(xyz -13.97 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33653,7 +33653,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz -16.51 7.62 0)
+				(xyz -16.51 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -33664,7 +33664,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz -16.51 7.62 5.48)
+				(xyz -16.51 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34235,7 +34235,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz -24.13 7.62 0)
+				(xyz -24.13 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34246,7 +34246,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz -24.13 7.62 5.48)
+				(xyz -24.13 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34641,7 +34641,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
-				(xyz -13.97 7.62 0)
+				(xyz -13.97 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -34652,7 +34652,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
 			(offset
-				(xyz -13.97 7.62 5.48)
+				(xyz -13.97 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -35091,7 +35091,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz -16.51 7.62 0)
+				(xyz -16.51 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -35102,7 +35102,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz -16.51 7.62 5.48)
+				(xyz -16.51 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -35672,7 +35672,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz -24.13 7.62 0)
+				(xyz -24.13 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -35683,7 +35683,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz -24.13 7.62 5.48)
+				(xyz -24.13 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -36654,7 +36654,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz -24.13 7.62 0)
+				(xyz -24.13 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -36665,7 +36665,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz -24.13 7.62 5.48)
+				(xyz -24.13 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -37236,7 +37236,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz -24.13 7.62 0)
+				(xyz -24.13 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -37247,7 +37247,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz -24.13 7.62 5.48)
+				(xyz -24.13 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38845,7 +38845,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38856,7 +38856,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -39426,7 +39426,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz -24.13 7.62 0)
+				(xyz -24.13 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -39437,7 +39437,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz -24.13 7.62 5.48)
+				(xyz -24.13 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -39787,7 +39787,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step"
 			(offset
-				(xyz -11.43 3.81 0)
+				(xyz -11.43 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -39798,7 +39798,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step"
 			(offset
-				(xyz -11.43 3.81 5.48)
+				(xyz -11.43 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40530,7 +40530,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40541,7 +40541,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41260,7 +41260,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41271,7 +41271,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41543,7 +41543,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41554,7 +41554,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41773,7 +41773,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz -3.81 3.81 0)
+				(xyz -3.81 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41784,7 +41784,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz -3.81 3.81 5.1)
+				(xyz -3.81 -3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45208,7 +45208,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz -7.62 3.81 0)
+				(xyz -7.62 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45219,7 +45219,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz -7.62 3.81 5.48)
+				(xyz -7.62 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45908,7 +45908,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz -3.81 3.81 0)
+				(xyz -3.81 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45919,7 +45919,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz -3.81 3.81 5.1)
+				(xyz -3.81 -3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46179,7 +46179,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step"
 			(offset
-				(xyz 5.4864 1.4224 0)
+				(xyz 5.4864 -1.4224 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46398,7 +46398,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz -3.81 3.81 0)
+				(xyz -3.81 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46409,7 +46409,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz -3.81 3.81 5.1)
+				(xyz -3.81 -3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -47629,7 +47629,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz -8.89 3.81 0)
+				(xyz -8.89 -3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -47640,7 +47640,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz -8.89 3.81 5.48)
+				(xyz -8.89 -3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -49781,7 +49781,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz -16.51 7.62 0)
+				(xyz -16.51 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -49792,7 +49792,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz -16.51 7.62 5.48)
+				(xyz -16.51 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -53388,7 +53388,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz -16.51 7.62 0)
+				(xyz -16.51 -7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -53399,7 +53399,7 @@
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz -16.51 7.62 5.48)
+				(xyz -16.51 -7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)

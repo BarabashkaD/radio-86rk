@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 3.175 0)
 		(layer "F.SilkS")
-		(uuid "0d360465-81fb-4bd4-99de-80afafea393e")
+		(uuid "14c3a496-fe8c-487b-a92b-cc96c5915adb")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "IC_TO220-3_Vert"
 		(at 0 5.08 0)
 		(layer "F.SilkS")
-		(uuid "5727071d-e12d-4bcd-a490-18cc89cc77a1")
+		(uuid "31218c25-2f2f-46a1-93a4-36802e6bab71")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "33a8fadd-7cff-48ba-a876-ffce00617fe4")
+		(uuid "89338116-57b8-4fab-823d-ddc93e3ac3b6")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "7da298a9-18c5-41c6-ba54-4b31550b3f7e")
+		(uuid "af0bd325-30ba-4e5d-a63a-941b4132b231")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "b57e0701-2b28-4cea-a812-0cbebfa85ecc")
+		(uuid "8b003583-56dd-4683-b172-fc8274608815")
 	)
 	(fp_line
 		(start -5.08 -1.905)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "0a710c3f-32cc-45bb-9f5e-53538df28cc2")
+		(uuid "8778ed4f-7ddf-4eea-8341-fa3d7f49e95c")
 	)
 	(fp_line
 		(start -5.08 -1.905)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "6eb97a19-8710-4c54-a7ae-dffa2e0a6a62")
+		(uuid "f0b43758-bebc-4be7-9dc6-908e7e6c3f0a")
 	)
 	(fp_line
 		(start -5.08 1.905)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "8638c69e-8962-41d4-8f1f-ddb8b4688800")
+		(uuid "9ef8238f-d007-4a18-8305-27d3aed3ee98")
 	)
 	(fp_line
 		(start 5.08 -2.54)
@@ -102,7 +102,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "299c93f5-572f-4e5b-ada2-10d7f0b284af")
+		(uuid "0737d789-d3c0-4b0f-9180-316f855779b8")
 	)
 	(fp_line
 		(start 5.08 -1.905)
@@ -112,7 +112,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "cc74d4fb-388b-42d9-a0b6-16919cd344c1")
+		(uuid "5d224bf2-923a-41d1-bfd1-37579e9efbfd")
 	)
 	(fp_line
 		(start 5.08 1.905)
@@ -122,7 +122,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d43578c5-d5d3-41f9-8671-4a74ebfba543")
+		(uuid "6f620634-fa96-4e17-9bc3-3e468d879670")
 	)
 	(pad "1" thru_hole rect
 		(at -2.54 0 90)
@@ -130,7 +130,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "4f993af8-1b63-44b2-a6fb-daeb836e1f4c")
+		(uuid "da010ed9-5808-4c08-99ce-d4dab183437e")
 	)
 	(pad "2" thru_hole circle
 		(at 0 0 90)
@@ -138,7 +138,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c3ba90ce-ab6f-429c-a9c7-22b094bf7359")
+		(uuid "861e91fa-943a-494c-bcdf-ecd99541b077")
 	)
 	(pad "3" thru_hole circle
 		(at 2.54 0 90)
@@ -146,7 +146,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "0f9652f0-8f6a-44f7-a665-8f64b3ea5e95")
+		(uuid "84d46dd4-be5f-4b5b-8c08-6ee5f9225a2e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step"
