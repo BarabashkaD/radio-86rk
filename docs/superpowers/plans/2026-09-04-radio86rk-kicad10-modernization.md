@@ -48,6 +48,8 @@ below are **measured**, not predicted.
 | Commit | What landed | Verified by |
 |---|---|---|
 | `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
+| `ea168b6` | Task 7: keyboard 3D models, switch+stabilizer composites | coverage 114 → 182/183; all gates PASS; spacebar rotation verified |
+| `75dd53f` | Task 6: connectors, arrays, misc | coverage 100 → 114/183; RCA fallback, DIN-8 blank |
 | `e881aba` | Task 5: socket+chip composites for 24 DIP ICs | coverage 76 → 100/183; both gates PASS; closeup render verified |
 | `4839945` | Task 4: 3D models for 76 passives | coverage 0 → 76/183; both gates PASS; render verified |
 | `3614cc1` | Task 3: 35 footprints vendored into `Radio86RK.pretty` | DRC 91 → 22, ERC 101 → 34, unconnected 0, parity 0; stabilizer holes and pad counts verified |
@@ -1448,6 +1450,10 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 7: 3D models for the keyboard (68 switches, 6 footprints)
 
+> **STATUS: complete** — committed as `ea168b6`. 3D coverage 114 → **182/183**; the single gap
+> is J4, the 8-pin DIN, which has no public model anywhere. Origins verified to coincide at
+> (0,0); SW64's 180° stabilizer rotation confirmed in the render.
+
 The last 68 components, completing 3D coverage at 183/183. Like every other 3D task, this
 one **does not touch copper** — the switches keep their vendored footprints and simply gain
 models.
@@ -1496,7 +1502,7 @@ assembly, which is why its 100.076 mm spacing matches no stock 6.25u part.
 - Consumes: `tools/apply_models.py` from Task 4, unchanged — including its optional
   4th column, which this task is the first to use.
 
-- [ ] **Step 1: Confirm the model origins coincide**
+- [x] **Step 1: Confirm the model origins coincide**
 
 This is the fact the whole task rests on. If the two footprints did not share an origin, the
 model would need an offset.
@@ -1513,7 +1519,7 @@ echo "perigoso:"; grep '(at 0 0)' "$PG/Switch_Keyboard_Cherry_MX.pretty/SW_Cherr
 Expected: both centre bosses at `(0 0)` — the board's at ⌀3.9878, perigoso's at ⌀4.0. Same
 origin, so the model needs no offset.
 
-- [ ] **Step 2: Verify the six model files exist**
+- [x] **Step 2: Verify the six model files exist**
 
 ```bash
 source tools/kicad-env.sh
@@ -1528,7 +1534,7 @@ echo "check complete"
 
 Expected: `check complete`, no `MISSING` lines.
 
-- [ ] **Step 3: Append the keyboard rows to `tools/models.tsv`**
+- [x] **Step 3: Append the keyboard rows to `tools/models.tsv`**
 
 The fourth column is the Z rotation. perigoso's 6.25u stabilizer model is mirrored in Y
 relative to this board's hole pattern — its big holes sit at +8.225 where the board's sit at
@@ -1548,7 +1554,7 @@ CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kica
 Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	0	0
 ```
 
-- [ ] **Step 4: Apply**
+- [x] **Step 4: Apply**
 
 ```bash
 source tools/kicad-env.sh
@@ -1558,7 +1564,7 @@ source tools/kicad-env.sh
 Expected: `applied to 33 footprints / 183 instances` — the 27 footprints from Tasks 4–6
 (115 instances) plus these 6 (68 instances).
 
-- [ ] **Step 5: Run the gate**
+- [x] **Step 5: Run the gate**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -1568,7 +1574,7 @@ Expected: `PASS`. **This is the step that distinguishes Option C from the abando
 approach**: the keyboard now passes the same unmodified strict gate as every other task, so
 the board carries no authorized copper exception at all.
 
-- [ ] **Step 6: Confirm full 3D coverage**
+- [x] **Step 6: Confirm full 3D coverage**
 
 ```bash
 source tools/kicad-env.sh
@@ -1583,7 +1589,7 @@ PY
 Expected: only the 7 `HOLE` references and `LOGO1` (plus `J4` if its model was not
 sourced) — i.e. **183/183** coverage of components that should have one.
 
-- [ ] **Step 7: Render, and check the stabilizers specifically**
+- [x] **Step 7: Render, and check the stabilizers specifically**
 
 ```bash
 tools/render.sh 07-keyboard-complete
@@ -1600,7 +1606,7 @@ centres, because perigoso models them at ±11.938/±50 where this board uses ±1
 That is invisible in the viewer and is exactly the kind of difference the 3D tolerance
 policy exists to permit.
 
-- [ ] **Step 8: Extend `docs/3d-model-sources.md`**
+- [x] **Step 8: Extend `docs/3d-model-sources.md`**
 
 ```markdown
 ## Keyboard
@@ -1642,7 +1648,7 @@ stock 6.25u stabilizer, and why perigoso's is 38 µm out and mirrored.
 | SW64 | 6.25u | ⌀3.9878 at (±50.038, −8.255); ⌀3.048 at (±50.038, +6.985) |
 ```
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add tools/models.tsv docs/3d-model-sources.md \
