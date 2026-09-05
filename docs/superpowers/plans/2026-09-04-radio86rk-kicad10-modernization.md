@@ -515,13 +515,16 @@ OUT="$REPO_ROOT/verify/renders"; mkdir -p "$OUT"
 echo "rendered $OUT/$TAG-top.png"
 ```
 
-- [ ] **Step 8: Make the scripts executable and ignore build output**
+- [ ] **Step 8: Make the scripts executable**
 
 ```bash
 cd /Users/dveremeev/projects/radio-86rk
 chmod +x tools/*.sh
-printf '.build/\n.DS_Store\nKiCad/.history/\nKiCad/*.kicad_prl\nKiCad/*.lck\n' >> .gitignore
 ```
+
+`.gitignore` already exists — committed in `4431d82`, covering `.build/`, macOS junk,
+editor local history, and KiCad per-user state (`*.kicad_prl`, lock files, `fp-info-cache`,
+backups). Check it covers anything new this task writes before adding to it.
 
 - [ ] **Step 9: Prove the gate works — capture the baseline, then run it unchanged**
 
