@@ -7172,7 +7172,7 @@
 			(uuid "8858ff00-14a7-4254-b305-c51c17c04ab6")
 		)
 		(embedded_fonts no)
-		(model "pin_array/pins_array_13x2.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8945,6 +8945,17 @@
 			(uuid "96e8e697-e47b-4833-b1a0-97a3a9c148cd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Switch_Tactile_6mm_Right"
 		(layer "F.Cu")
@@ -35377,12 +35388,12 @@
 			(uuid "02ad1cd3-0898-4b52-ab68-5686fb86805a")
 		)
 		(embedded_fonts no)
-		(model "connectors/POWER_21.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
 			(scale
-				(xyz 0.8 0.8 0.8)
+				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz 0 0 0)
@@ -36949,17 +36960,6 @@
 			(uuid "1aed2637-318d-4d32-bfa9-3bef45f811f2")
 		)
 		(embedded_fonts no)
-		(model "r_mini_dins/minidin_6.wrl"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -37341,6 +37341,17 @@
 			(uuid "348fc602-3ca2-4ce2-bde4-60e2eb1a9771")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Conn_SIL6"
 		(layer "F.Cu")
@@ -37515,6 +37526,17 @@
 			(uuid "5aece8cd-272e-4bde-867a-6d3fb22b8ef2")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Conn_SIL6"
 		(layer "F.Cu")
@@ -37689,6 +37711,17 @@
 			(uuid "094d80bd-35d7-4ff5-8490-3b51422c597b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:LED_3mm"
 		(layer "F.Cu")
@@ -39530,6 +39563,17 @@
 			(uuid "770c0720-2561-4ee3-9ec2-0c5dd543e1a4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:IC_DIP14_300"
 		(layer "F.Cu")
@@ -42797,12 +42841,12 @@
 			(uuid "886c92fe-1822-4545-bb6a-435e076fb3e4")
 		)
 		(embedded_fonts no)
-		(model "connectors/POWER_21.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
 			(scale
-				(xyz 0.8 0.8 0.8)
+				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz 0 0 0)
@@ -43024,7 +43068,7 @@
 			(uuid "c524a6cf-c855-4411-a212-a27e4dc52ba6")
 		)
 		(embedded_fonts no)
-		(model "pin_array/pins_array_8x2.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -43210,6 +43254,17 @@
 			(uuid "af193560-dfc2-44f4-9973-93da37b99792")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Cap_Elec_Radial_6.3mm"
 		(layer "F.Cu")
@@ -45385,7 +45440,7 @@
 			(uuid "e73387b7-f774-43ba-9d81-23d7ec464800")
 		)
 		(embedded_fonts no)
-		(model "conn_DBxx/db9_male_pin90deg.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -49340,7 +49395,7 @@
 			(uuid "6d160f2a-2dbe-4003-af97-a2adb717722c")
 		)
 		(embedded_fonts no)
-		(model "pin_array/pins_array_8x2.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -50829,7 +50884,7 @@
 			(uuid "7fdeac05-aa28-46dd-895d-ce3591613b3a")
 		)
 		(embedded_fonts no)
-		(model "pin_array/pins_array_8x2.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -52133,7 +52188,7 @@
 			(uuid "4d7a75ce-e031-4f65-88a7-6e4ee1c64df9")
 		)
 		(embedded_fonts no)
-		(model "pin_array/pins_array_8x2.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)

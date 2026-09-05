@@ -24,3 +24,19 @@ IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.
 IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step	5.48	0
 IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step	0	0
 IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	5.48	0
+# --- Connectors, resistor arrays, misc: 15 components across 12 footprints ---
+Conn_SIL6	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step	0
+Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	0
+Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	0
+Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step	0
+Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	0
+Conn_Friction_Lock_8P_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step	0
+Conn_Power_Jack_Circular_Pads	${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step	0
+Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step	0
+Speaker_12mm	${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step	0
+DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step	0
+# --- The two KiCad does not ship. See docs/3d-model-sources.md. ---
+# J1: nearest public shape is a horizontal panel-mount coax jack.
+Conn_RCA_Right	${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step	0
+# J4: no comparable public 8-pin DIN exists; a wrong connector is worse than none.
+Conn_DIN_8pin	-	0

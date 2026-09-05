@@ -66,3 +66,43 @@ in the viewer and cannot reach the board.
 **Western parts, not Soviet.** The prototype is populated with Intel `P8255A-5`, NEC
 `8257C-5`, TI `SN74198N` and `74LS74` rather than the Soviet equivalents in the dual
 silkscreen markings, so package choices follow the Western parts.
+
+## Connectors, arrays and misc — 15 components, 12 footprints
+
+| Footprint | Refs | Model | Fidelity |
+|---|---|---|---|
+| `Conn_SIL6` | RN2–RN4 | `Resistor_THT/R_Array_SIP6` | exact pin count and pitch |
+| `Conn_SIL10` | RN1 | `Resistor_THT/R_Array_SIP10` | exact pin count and pitch |
+| `Conn_Pin_Header_4x1_2.54mm` | JP1, JP2 | `PinHeader_1x04_P2.54mm_Vertical` | exact |
+| `Conn_Pin_Header_20x1_2.54mm` | J7 | `PinHeader_1x20_P2.54mm_Vertical` | exact |
+| `Conn_Pin_Header_13x2_2.54mm_Shrouded` | J6 | `IDC-Header_2x13_P2.54mm_Vertical` | exact |
+| `Conn_Friction_Lock_8P_2.54mm` | J3 | `Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical` | exact family |
+| `Conn_Power_Jack_Circular_Pads` | J2 | `BarrelJack_CUI_PJ-063AH_Horizontal` | equivalent barrel jack |
+| `Conn_Dsub_DE9M` | J5 | `DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm` | exact |
+| `Speaker_12mm` | SP1 | `Buzzer_12x9.5RM7.6` | 12 mm body, correct pitch |
+| `DC-DC_SIP8` | U26 | `Converter_DCDC_Bothhand_CFUSxxxx_THT` | generic SIP DC-DC |
+
+`RN1`–`RN4` are SIP resistor networks, so `R_Array_SIP6`/`SIP10` are used rather than pin
+headers — same pin count and pitch, correct body.
+
+### The two KiCad does not ship
+
+Searched every installed `.3dshapes` directory including the PCM third-party libraries:
+there is no RCA, cinch or phono model, and no 8-pin DIN. (The one "DIN" hit is
+`Jack_3.5mm_Ledino_KB3SPRS`, whose *part name* contains the string.)
+
+| Ref | Footprint | Decision |
+|---|---|---|
+| J1 | `Conn_RCA_Right` | **Fallback:** `Connector_Coaxial/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal` — the nearest public shape, a horizontal panel-mount coaxial jack |
+| J4 | `Conn_DIN_8pin` | **Deliberately blank.** No comparable public 8-pin DIN exists, and a visibly wrong connector is worse than an absent one. |
+
+Both are recorded as rows in `tools/models.tsv` so the decision is visible in the data, not
+just here — J4's row has `-` as its model path, which the applier treats as "handled, no
+model" rather than an oversight.
+
+To improve either, place a sourced `.step` in `KiCad/Radio86RK.3dshapes/` and reference it
+via `${KIPRJMOD}` so a fresh clone still renders it. Manufacturer downloads or SnapEDA /
+Ultra Librarian / GrabCAD exports are all suitable; note the origin and licence here.
+
+**3D coverage after this task: 114/183.** The remaining 69 are the 68 switches (Task 7)
+and J4.
