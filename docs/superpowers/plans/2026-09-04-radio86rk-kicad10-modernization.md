@@ -1680,9 +1680,9 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 8: Refresh symbol definitions and drive ERC down
 
-> **STATUS: mostly complete.** The symbol refresh landed in `9d8e182` (ERC **243 → 101**,
-> all 142 `lib_symbol_mismatch` cleared) and the Q1/Q2 re-home in `16a7755`. What remains is
-> the 32 label collisions, Q1/Q2's stale cache, and `sym-lib-table`. Resume at Step 6.
+> **STATUS: complete.** Symbol refresh `9d8e182`, Q1/Q2 re-home `16a7755`, cache refresh
+> `cecf9bd`, vendored library and standalone proof in this task. ERC 243 → 32. The 32 label
+> collisions were measured at 91 edits and declined — see `docs/erc-exclusions.md`.
 
 **This task is schematic-only. It must never run *Update PCB from Schematic*.** That single
 rule is the difference between the two runs recorded below: one produced 170 shorts, the
@@ -1825,7 +1825,7 @@ New `pin_not_driven` / `pin_not_connected` / `unconnected_wire_endpoint` violati
 **U3 and U22** may appear as connectivity checks stop being suppressed — that is
 GitHub issue #2 becoming visible, which is correct, not a regression.
 
-- [ ] **Step 8: Vendor the `my_components` symbols so a fresh clone works**
+- [x] **Step 8: Vendor the `my_components` symbols so a fresh clone works**
 
 Copy the library wholesale. It is 2.1 MB against the 131 MB of datasheets this repo already
 carries, so trimming it to the 18 symbols actually used would save about 1.6% of
@@ -1862,7 +1862,7 @@ Switch_Tactile_Vertical`.
 > plan. The footprint side is different and does need extraction — there the *board* is the
 > geometry authority and no library holds the right data.
 
-- [ ] **Step 9: Write `KiCad/sym-lib-table`**
+- [x] **Step 9: Write `KiCad/sym-lib-table`**
 
 `my_components` is the only project-local symbol library needed; every other symbol now
 comes from KiCad's stock libraries.
@@ -1905,7 +1905,7 @@ U3 or U22 was touched.
 Add the exclusions in Eeschema (right-click → **Exclude with comment**), or under
 `erc.exclusions` in `KiCad/Radio-86RK.kicad_pro`.
 
-- [ ] **Step 11: Commit**
+- [x] **Step 11: Commit**
 
 ```bash
 git add KiCad docs/erc-exclusions.md verify
