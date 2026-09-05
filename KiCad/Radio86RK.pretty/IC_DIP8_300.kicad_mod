@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at -3.81 5.715 0)
 		(layer "F.SilkS")
-		(uuid "282fc17d-ef45-4581-a885-6d873e8811f6")
+		(uuid "051acb7c-a2c0-4f62-8bce-da7dc8b32a01")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "IC_DIP8_300"
 		(at 0 7.3025 0)
 		(layer "F.SilkS")
-		(uuid "8418fc69-361c-4c44-ba47-f8d458302adb")
+		(uuid "a131951e-327a-4905-a638-62c0fd210aaf")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "7cb12d4e-c4f6-42aa-baaa-162463fc7a41")
+		(uuid "fc0bab45-27ff-46cf-8134-df23733ce691")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "ff7ff02b-ca6f-42dc-87ad-6411339b2513")
+		(uuid "ae88164f-11c2-407a-9a06-df884cdda8d3")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "14c095bd-1b61-4040-ad88-4eceb98d1e3d")
+		(uuid "39df318f-3433-4ccf-b4c5-4a2d1f476eca")
 	)
 	(fp_line
 		(start -5.08 3.048)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "09fbfbf3-a608-413c-8a28-65397b4e2c85")
+		(uuid "418e4207-01d8-4684-a34a-7ee35a2479fe")
 	)
 	(fp_line
 		(start 5.08 -3.048)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "e4cbab00-0c3b-4626-8943-337ed6e1e436")
+		(uuid "2c95a1ba-85c5-4746-93c5-fa148cb357df")
 	)
 	(fp_line
 		(start 5.08 3.048)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "b5fcbfb9-37bc-4883-91ad-5004e94e2b9a")
+		(uuid "ccac0e5d-8530-4f56-a1fb-cb7c44fb67be")
 	)
 	(fp_arc
 		(start -5.08 -1.016)
@@ -103,7 +103,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "03d3cf9a-3823-49db-a304-77feb27e5ffa")
+		(uuid "5af7af06-79ee-4f46-b74a-189bad98c9c1")
 	)
 	(fp_arc
 		(start -4.064 0)
@@ -114,7 +114,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "3347eac5-89c9-4738-874d-c7ba29647a77")
+		(uuid "512d356f-f479-450c-b6fa-3495d4a903d6")
 	)
 	(pad "1" thru_hole rect
 		(at -3.81 3.81)
@@ -122,7 +122,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "09da147e-638c-40b1-8b3c-42814b95a982")
+		(uuid "3926a5c4-ca30-4a60-b9dd-8d3fdc0104a8")
 	)
 	(pad "2" thru_hole circle
 		(at -1.27 3.81)
@@ -130,7 +130,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "b6e8d4c8-4fd3-4eba-9009-4c87842db2bc")
+		(uuid "3e6725aa-ccbb-4d41-bf7d-9fd06b7e23cb")
 	)
 	(pad "3" thru_hole circle
 		(at 1.27 3.81)
@@ -138,7 +138,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "7db0cfa7-aeab-4e67-9f2e-725a49e8c278")
+		(uuid "da30adc5-9635-43bd-9a41-6bd446b77a4a")
 	)
 	(pad "4" thru_hole circle
 		(at 3.81 3.81)
@@ -146,7 +146,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "ef845837-72c4-4e48-933c-f14c073b5d4b")
+		(uuid "153747fa-cb54-426f-a2db-14871b0f0a55")
 	)
 	(pad "5" thru_hole circle
 		(at 3.81 -3.81)
@@ -154,7 +154,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c8e03807-4ef3-4eff-85ea-5645015f09f0")
+		(uuid "13945df1-74e7-42f7-bf24-79c793bf8e0f")
 	)
 	(pad "6" thru_hole circle
 		(at 1.27 -3.81)
@@ -162,7 +162,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "35996ca4-c1c5-44b6-be40-e9412832515a")
+		(uuid "dc1f51be-fdcd-482f-adb3-494c48f71f6a")
 	)
 	(pad "7" thru_hole circle
 		(at -1.27 -3.81)
@@ -170,7 +170,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "df4de93d-9afd-4000-8728-da2070e8f354")
+		(uuid "dc78c578-c39c-4eeb-9aad-5b3e6dd2138c")
 	)
 	(pad "8" thru_hole circle
 		(at -3.81 -3.81)
@@ -178,29 +178,29 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "1b99caa9-c0ec-48cf-9446-7e4e319ef12e")
+		(uuid "1712e3a4-3afa-4eb2-b8f2-d4897bcde458")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 		(offset
-			(xyz 0 0 0)
+			(xyz -3.81 3.81 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 270)
 		)
 	)
 	(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 		(offset
-			(xyz 0 0 5.1)
+			(xyz -3.81 3.81 5.1)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 270)
 		)
 	)
 )

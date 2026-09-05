@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 5.3975 -5.715 0)
 		(layer "F.SilkS")
-		(uuid "8e839ceb-ccad-464e-b805-2c22e48b298a")
+		(uuid "9c89db7c-8a05-4b60-92af-85a33e2430c0")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "Conn_Power_Jack_Circular_Pads"
 		(at 2.8575 -5.715 0)
 		(layer "F.SilkS")
-		(uuid "8b169e77-d5ba-4fb1-b863-2fbbe42c9c7a")
+		(uuid "efc3b42d-33dd-4729-a954-be1f1bc089b1")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "fe20744b-fb90-4418-809b-28cffa1ac26c")
+		(uuid "8671ee6d-e4ce-4cde-8899-a734662cbfea")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "dceee5c0-f9c6-43c5-b4df-67825befc27b")
+		(uuid "4f6ddb66-a3d7-4dbb-bfa0-ac21eb5bfab6")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "7513e665-f9bf-45fd-b750-24c762066e7e")
+		(uuid "9281e83f-ba75-4a88-a06b-0558f8dba6b6")
 	)
 	(fp_line
 		(start -7.69874 4.50088)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "b79cea39-24b6-4f2a-827b-30b9256cbf04")
+		(uuid "32cbe51d-6a2e-48c8-8995-0d90685c6a79")
 	)
 	(fp_line
 		(start -7.69874 4.50088)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "3f51644f-e64a-4bb6-be68-d557f5c60931")
+		(uuid "1e5b2e8c-300d-4e29-bf2c-c946453379d4")
 	)
 	(fp_line
 		(start -4.20116 -4.50088)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "7157ce99-7b02-4e29-b5c8-03b9d7be6d57")
+		(uuid "efffc681-7286-45ff-8c62-20e906610598")
 	)
 	(fp_line
 		(start 5.08 4.50088)
@@ -102,7 +102,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "ed69e6dd-d7a8-48b5-a26e-ffcb5e0b7b2d")
+		(uuid "bbb6192c-0680-43af-8bc4-e840ea8514ba")
 	)
 	(fp_line
 		(start 6.79958 -4.50088)
@@ -112,7 +112,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d79f250f-35f9-4ef2-8efe-8dca360c1b7d")
+		(uuid "dad1fd42-848f-462a-8fa8-313f055c4d8a")
 	)
 	(fp_line
 		(start 6.79958 4.50088)
@@ -122,7 +122,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "ea7849aa-25a0-46ca-8c2f-da81e9777555")
+		(uuid "90451ace-e741-4a47-bef3-c7311414ef31")
 	)
 	(pad "1" thru_hole circle
 		(at 6.20014 0)
@@ -130,7 +130,7 @@
 		(drill 3.1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c6474ad6-e05f-4844-8bd2-128bb29fbb61")
+		(uuid "2750c1e5-0236-4aa1-ac06-f73f12199f13")
 	)
 	(pad "2" thru_hole circle
 		(at 0 0)
@@ -138,7 +138,7 @@
 		(drill 2.6)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "9c4813da-d624-4b2a-bc4a-054744c30f85")
+		(uuid "b86450d9-f5c5-41da-8959-5657f44de54e")
 	)
 	(pad "3" thru_hole circle
 		(at 2.99974 4.8006)
@@ -146,18 +146,18 @@
 		(drill 2.6)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "b65e64d1-b594-4498-98af-5de0c453bf3e")
+		(uuid "f56d68f4-026f-4b7e-9ed4-1cac658ea8b4")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step"
 		(offset
-			(xyz 0 0 0)
+			(xyz 6.2001 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 90)
 		)
 	)
 )

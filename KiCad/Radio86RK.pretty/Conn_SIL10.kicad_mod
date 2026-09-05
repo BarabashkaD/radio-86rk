@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at -7.62 -2.2225 0)
 		(layer "F.SilkS")
-		(uuid "e266fdb7-5c80-46fd-9895-5bda712717d5")
+		(uuid "b58f3cf9-236b-4eb9-85f7-1ca7a2e0409d")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "Conn_SIL10"
 		(at -2.54 -2.2225 0)
 		(layer "F.SilkS")
-		(uuid "95062396-aa00-407e-a082-0d8cb85f566a")
+		(uuid "92eb547f-8b49-411b-ba4e-05201d2d41bb")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b9b4b810-f83a-4cb4-ba7c-4405346fb56b")
+		(uuid "13689601-10c5-40ce-a269-b17753eebd40")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "5cb660c2-4e91-4ca0-8f90-320aaec12300")
+		(uuid "3e370a74-3acd-47fc-84d6-8673febca13c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "f7c71317-b648-42e4-b96d-caa73645e34b")
+		(uuid "b8451bfd-2e00-4a8e-90e4-8fbcc5da7ce6")
 	)
 	(fp_line
 		(start -12.7 1.27)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d6f096f2-00b1-4d17-82fe-1f9634d47b02")
+		(uuid "60244c80-9ee9-42f2-ae8c-e593aed81a49")
 	)
 	(fp_line
 		(start -10.16 1.27)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "11636c91-867e-4273-8eb0-34cae9d8d218")
+		(uuid "4606f6d5-1cb9-4484-b1fc-375f463fd0cf")
 	)
 	(fp_line
 		(start 12.7 -1.27)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "0e2901b3-282e-42aa-81c9-78101576874d")
+		(uuid "aadb71f3-4c25-4973-8d5e-0dbaed1be46d")
 	)
 	(fp_line
 		(start 12.7 1.27)
@@ -102,7 +102,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "1c90babf-e6c5-41fd-ab80-c2149feee5ae")
+		(uuid "18b3449e-8db1-4876-8d1f-aa8e5ea094d8")
 	)
 	(pad "1" thru_hole rect
 		(at -11.43 0)
@@ -110,7 +110,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "db52f7af-623c-4fc6-805d-b09af6dfcec3")
+		(uuid "feef05fd-8119-42b3-ae43-d13bc35bc48c")
 	)
 	(pad "2" thru_hole circle
 		(at -8.89 0)
@@ -118,7 +118,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "7883e417-812e-4d5b-9d8c-58cc0bdf822c")
+		(uuid "9ed5edbf-0e86-4ee7-bfca-ee9ba84d042f")
 	)
 	(pad "3" thru_hole circle
 		(at -6.35 0)
@@ -126,7 +126,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c1fab4c5-3c1d-45ed-9e22-1fef80108cff")
+		(uuid "3132ebf1-386c-453d-a12f-56281031399e")
 	)
 	(pad "4" thru_hole circle
 		(at -3.81 0)
@@ -134,7 +134,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "47c5a3a3-ea28-413e-b08e-bcaae667a97f")
+		(uuid "4709198e-1a13-46e5-85be-ae01af5574a6")
 	)
 	(pad "5" thru_hole circle
 		(at -1.27 0)
@@ -142,7 +142,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "f5351c8c-52d0-4a90-bf0a-0ebc86a7378f")
+		(uuid "23ce27d6-b083-44f2-8d17-edeb190b2c76")
 	)
 	(pad "6" thru_hole circle
 		(at 1.27 0)
@@ -150,7 +150,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d4a03183-c4b7-4a77-8013-932e40f83e9d")
+		(uuid "51129276-791b-4fa9-8474-8ea71b95d407")
 	)
 	(pad "7" thru_hole circle
 		(at 3.81 0)
@@ -158,7 +158,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "53c5468a-6fe2-46a4-8436-36dcbeb32206")
+		(uuid "053ae088-9a88-4b10-9fb6-793888bda665")
 	)
 	(pad "8" thru_hole circle
 		(at 6.35 0)
@@ -166,7 +166,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "95346ae7-bbc3-4fa6-b6ab-7640244132aa")
+		(uuid "d6483759-a7ae-41ee-b0a3-58862e187b80")
 	)
 	(pad "9" thru_hole circle
 		(at 8.89 0)
@@ -174,7 +174,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "bd59ce55-b79e-4421-bb10-c31085f872b5")
+		(uuid "c116a951-b85d-4984-b14e-0ca96261c529")
 	)
 	(pad "10" thru_hole circle
 		(at 11.43 0)
@@ -182,12 +182,12 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "3c37f5f3-9b1a-4200-b397-8b08f58248b1")
+		(uuid "c098c26c-6313-49b9-a209-515d7407cb4b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step"
 		(offset
-			(xyz 0 0 0)
+			(xyz -11.43 0 0)
 		)
 		(scale
 			(xyz 1 1 1)

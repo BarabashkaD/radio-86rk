@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -3.175 0)
 		(layer "F.SilkS")
-		(uuid "efd8f5a9-3b54-4a84-be61-fd4952888a5f")
+		(uuid "7767de09-107e-4f66-b998-00c04f0bce1b")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "LED_3mm"
 		(at 0 -4.7625 0)
 		(layer "F.SilkS")
-		(uuid "f980304f-b762-4742-a843-7fe9aa19ae10")
+		(uuid "dff7bbc9-9480-49ac-a0c4-eb658733acb8")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "db580faa-e04a-4cba-9253-63cf56c2c669")
+		(uuid "640c2e7c-6d04-47a2-82fe-ccfdb88cbcae")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "79192c52-c8ff-411b-825a-ada408d72188")
+		(uuid "077b92c9-a136-4797-a179-618d052f64ff")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "7c97ff32-7f49-48ee-b366-4de531a92faa")
+		(uuid "9af9bc5a-b503-4b87-8e95-c6009014190b")
 	)
 	(fp_arc
 		(start -1 0)
@@ -73,7 +73,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "44d74707-b3d7-43f2-9490-a7f627bed58e")
+		(uuid "d70c0f08-cd71-40fc-9358-abe447236b8b")
 	)
 	(fp_arc
 		(start -0.5 0)
@@ -84,7 +84,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "eb2ede02-345a-47ac-9103-5a66b945abbe")
+		(uuid "77b499c3-47dd-49e1-88f9-4730f0c51c63")
 	)
 	(fp_arc
 		(start 0.5 0)
@@ -95,7 +95,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "44f1d537-0ab7-4e42-a7aa-01808423a6a0")
+		(uuid "e609408d-6fe2-4ecf-a449-4db204417fef")
 	)
 	(fp_arc
 		(start 1 0)
@@ -106,7 +106,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "1341dbc3-963d-475c-8e56-1140ac975c57")
+		(uuid "352f5202-0add-4f4a-adce-76d6ff7a8b22")
 	)
 	(fp_arc
 		(start 1.499999 1.249999)
@@ -117,7 +117,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "2df3c079-a373-4c6a-81cf-a5099487cbb6")
+		(uuid "2a4c0ed0-0180-4867-b649-96c6575b09c6")
 	)
 	(fp_circle
 		(center 0 0)
@@ -128,7 +128,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "b61a5c24-bb26-4cf0-9f7b-8c5ab2869fc9")
+		(uuid "74b4d601-c35a-4531-9332-637985eb83a7")
 	)
 	(pad "1" thru_hole rect
 		(at 1.27 0)
@@ -136,7 +136,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "a3d0c9f3-39cc-47a4-8521-fb7694cc1c0e")
+		(uuid "f7407c97-e67e-46b7-80cc-44a9d26cb800")
 	)
 	(pad "2" thru_hole circle
 		(at -1.27 0)
@@ -144,18 +144,18 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "931d1588-a7c4-4f7f-a6e4-4a1e07065522")
+		(uuid "9c4ff637-cb68-4dd0-9313-4ce01599b793")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step"
 		(offset
-			(xyz 0 0 0)
+			(xyz 1.27 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 180)
 		)
 	)
 )

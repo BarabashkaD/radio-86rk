@@ -1,53 +1,47 @@
-# footprint	model	z_offset_mm	[z_rotation_deg, optional]
-# --- Passives: 76 components across 8 footprint definitions ---
-Res_762	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step	0
-Cap_Cer_508	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step	0
-Cap_Elec_Radial_6.3mm	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step	0
-Diode_762	${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step	0
-LED_3mm	${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step	0
-Crystal_HC-49U_Vert	${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step	0
-Transistor_TO92_EBC_254	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step	0
-IC_TO220-3_Vert	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step	0
-# --- Socketed DIP ICs: socket at z=0, chip raised to the seating height ---
-# Amphenol FCI DILB -223TLF stamped-and-formed sockets: 5.1mm for 8-pin, 5.48mm otherwise.
-IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step	0	0
-IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step	5.1	0
-IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step	0	0
-IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step	5.48	0
-IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step	0	0
-IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step	5.48	0
-IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step	0	0
-IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step	5.48	0
-IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step	0	0
-IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step	5.48	0
-IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step	0	0
-IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step	5.48	0
-IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step	0	0
-IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	5.48	0
-# --- Connectors, resistor arrays, misc: 15 components across 12 footprints ---
-Conn_SIL6	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step	0
-Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	0
-Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	0
-Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step	0
-Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	0
-Conn_Friction_Lock_8P_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step	0
-Conn_Power_Jack_Circular_Pads	${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step	0
-Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step	0
-Speaker_12mm	${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step	0
-DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step	0
-# --- The two KiCad does not ship. See docs/3d-model-sources.md. ---
-# J1: nearest public shape is a horizontal panel-mount coax jack.
-Conn_RCA_Right	${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step	0
-# J4: no comparable public 8-pin DIN exists; a wrong connector is worse than none.
-Conn_DIN_8pin	-	0
-# --- Keyboard: 68 switches across 6 footprints. Footprints are the board own, not perigoso.
-CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-CHERRY_PCB_150H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-# Wide keys: switch + stabilizer composite. SW64 needs 180 deg because perigoso
-# models its 6.25u stabilizer mirrored in Y relative to this board holes.
-CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0
-CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
-CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	180
-Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	0	0
+# footprint	model	off_x	off_y	off_z	rot_z
+# Offsets and rotations are computed by tools/align_models.py: KiCad models are
+# authored in KiCad's own footprint frame, ours use different conventions.
+Res_762	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step	-3.81	0.0	0	0.0
+Cap_Cer_508	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step	-2.54	0.0	0	0.0
+Cap_Elec_Radial_6.3mm	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step	-1.25	0.0	0	0.0
+Diode_762	${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step	3.81	0.0	0	180.0
+LED_3mm	${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step	1.27	0.0	0	180.0
+Crystal_HC-49U_Vert	${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step	-2.4409	0.0	0	0.0
+Transistor_TO92_EBC_254	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step	-2.54	0.0	0	0.0
+IC_TO220-3_Vert	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step	-2.54	0.0	0	0.0
+IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step	-3.81	3.81	0	270.0
+IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step	-3.81	3.81	5.1	270.0
+IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step	-7.62	3.81	0	270.0
+IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step	-7.62	3.81	5.48	270.0
+IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step	-8.89	3.81	0	270.0
+IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step	-8.89	3.81	5.48	270.0
+IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step	-11.43	3.81	0	270.0
+IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step	-11.43	3.81	5.48	270.0
+IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step	-13.97	7.62	0	270.0
+IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step	-13.97	7.62	5.48	270.0
+IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step	-16.51	7.62	0	270.0
+IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step	-16.51	7.62	5.48	270.0
+IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step	-24.13	7.62	0	270.0
+IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	-24.13	7.62	5.48	270.0
+Conn_SIL6	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step	-6.35	0.0	0	0.0
+Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	-11.43	0.0	0	0.0
+Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	-3.81	0.0	0	270.0
+Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step	-24.13	0.0	0	270.0
+Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	-15.24	1.27	0	270.0
+Conn_Friction_Lock_8P_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step	-8.89	0.0	0	0.0
+Conn_Power_Jack_Circular_Pads	${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step	6.2001	0.0	0	90.0
+Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step	5.4864	1.4224	0	180.0
+Speaker_12mm	${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step	3.2512	0.0	0	180.0
+DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step	-8.89	0.0	0	0.0
+Conn_RCA_Right	${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step	5.08	0.0	0	180.0
+Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	2.253	3.8506	0	90.0
+# --- Keyboard: verified correct at offset 0; origins coincide with perigoso's ---
+CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_150H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	0	0	180
+# J4: no public 8-pin DIN model exists; deliberate blank
+Conn_DIN_8pin	-	0	0	0	0

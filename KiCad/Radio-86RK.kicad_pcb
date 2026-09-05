@@ -285,7 +285,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -458,7 +458,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -631,7 +631,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -804,7 +804,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -977,7 +977,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1150,7 +1150,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1323,7 +1323,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1496,7 +1496,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1669,7 +1669,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1842,7 +1842,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2015,7 +2015,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2188,7 +2188,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2361,7 +2361,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2534,7 +2534,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2707,7 +2707,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -2880,7 +2880,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3053,7 +3053,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3226,7 +3226,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3399,7 +3399,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3572,7 +3572,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3745,7 +3745,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -3918,7 +3918,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4091,7 +4091,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4264,7 +4264,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4437,7 +4437,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4610,7 +4610,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4783,7 +4783,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -5254,7 +5254,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -5725,7 +5725,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -6196,7 +6196,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -6369,7 +6369,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -6542,7 +6542,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -6709,13 +6709,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 1.27 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -7174,13 +7174,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -15.24 1.27 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -7367,7 +7367,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -7560,7 +7560,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -7753,7 +7753,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -7946,7 +7946,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8139,7 +8139,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8332,7 +8332,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8525,7 +8525,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8718,7 +8718,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8947,7 +8947,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -11.43 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9149,13 +9149,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 2.253 3.8506 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 90)
 			)
 		)
 	)
@@ -9455,24 +9455,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -8.89 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -8.89 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -9750,24 +9750,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -10068,24 +10068,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -8.89 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -8.89 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -10251,7 +10251,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -12483,7 +12483,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -14357,7 +14357,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -15686,13 +15686,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -15893,13 +15893,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -17141,13 +17141,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -20667,13 +20667,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -31114,13 +31114,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -31641,13 +31641,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -32488,13 +32488,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -33203,24 +33203,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -13.97 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -13.97 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -33653,24 +33653,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -16.51 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -16.51 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -34235,24 +34235,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -24.13 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -34641,24 +34641,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -13.97 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -13.97 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -35091,24 +35091,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -16.51 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -16.51 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -35672,24 +35672,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -24.13 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -35890,13 +35890,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -36083,13 +36083,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 5.08 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -36654,24 +36654,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -24.13 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -37236,24 +37236,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -24.13 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -37420,7 +37420,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -37851,13 +37851,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -38036,7 +38036,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -6.35 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38221,7 +38221,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -6.35 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38406,7 +38406,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -6.35 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -38573,13 +38573,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 1.27 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -38845,24 +38845,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -39426,24 +39426,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -24.13 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -39787,24 +39787,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -11.43 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -11.43 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -39971,7 +39971,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40145,7 +40145,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40258,13 +40258,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.2512 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -40530,24 +40530,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -40714,7 +40714,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -40907,7 +40907,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -41260,24 +41260,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -41543,24 +41543,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -41773,24 +41773,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.1)
+				(xyz -3.81 3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -43237,7 +43237,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -43411,7 +43411,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -43580,13 +43580,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 6.2001 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 90)
 			)
 		)
 	)
@@ -43807,7 +43807,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -8.89 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -43993,7 +43993,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -8.89 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -44464,7 +44464,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -44935,7 +44935,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45208,24 +45208,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -7.62 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -7.62 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -45690,7 +45690,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1.25 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -45908,24 +45908,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.1)
+				(xyz -3.81 3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -46179,13 +46179,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 5.4864 1.4224 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -46398,24 +46398,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.1)
+				(xyz -3.81 3.81 5.1)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -46582,7 +46582,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46775,7 +46775,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -46968,7 +46968,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -47161,7 +47161,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -47629,24 +47629,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -8.89 3.81 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -8.89 3.81 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -47812,7 +47812,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -47966,7 +47966,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.4409 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -48139,7 +48139,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -48312,7 +48312,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -48485,7 +48485,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -48978,7 +48978,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -49170,7 +49170,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -49342,7 +49342,7 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -2.54 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -49781,24 +49781,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -16.51 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -16.51 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -50145,13 +50145,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -51634,13 +51634,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -24.13 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -52949,13 +52949,13 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -3.81 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)
@@ -53388,24 +53388,24 @@
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz -16.51 7.62 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 		(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step"
 			(offset
-				(xyz 0 0 5.48)
+				(xyz -16.51 7.62 5.48)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 270)
 			)
 		)
 	)

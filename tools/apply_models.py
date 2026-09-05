@@ -1,9 +1,14 @@
 """Apply models.tsv to the vendored library AND to the board's footprint instances.
 
-TSV columns: footprint_name <TAB> model_path <TAB> z_offset_mm [<TAB> z_rotation_deg]
+TSV columns: footprint <TAB> model <TAB> off_x <TAB> off_y <TAB> off_z <TAB> rot_z
 
-The 4th column is optional and defaults to 0. Multiple rows per footprint are applied in
-order, which is how socket+chip and switch+stabilizer composites are built.
+Columns after the model are optional and default to 0. Multiple rows per footprint are
+applied in order, which is how socket+chip and switch+stabilizer composites are built.
+
+The offset and rotation matter: a KiCad 3D model is authored in the frame of the KiCad
+footprint it ships with, and our footprints use different conventions - pad 1 at the origin
+vs centred, DIP long axis along Y vs X. tools/align_models.py computes the transform that
+maps one onto the other.
 
 A model_path of "-" means "deliberately no model"; the row documents the decision and the
 footprint is still counted as handled.
@@ -31,19 +36,20 @@ for raw in open(TSV):
     if not line:
         continue
     cols = [c.strip() for c in line.split("\t") if c.strip() != ""]
-    name, path, z = cols[0], cols[1], cols[2]
-    rot = float(cols[3]) if len(cols) > 3 else 0.0
+    name, path = cols[0], cols[1]
+    vals = [float(c) for c in cols[2:6]] + [0.0] * 4
+    ox, oy, oz, rot = vals[0], vals[1], vals[2], vals[3]
     wanted.setdefault(name, [])
     if path != "-":
-        wanted[name].append((path, float(z), rot))
+        wanted[name].append((path, ox, oy, oz, rot))
 
 
 def set_models(fp, entries):
     fp.Models().clear()
-    for path, z, rot in entries:
+    for path, ox, oy, oz, rot in entries:
         m = pcbnew.FP_3DMODEL()
         m.m_Filename = path
-        m.m_Offset = pcbnew.VECTOR3D(0, 0, z)
+        m.m_Offset = pcbnew.VECTOR3D(ox, oy, oz)
         m.m_Scale = pcbnew.VECTOR3D(1, 1, 1)
         m.m_Rotation = pcbnew.VECTOR3D(0, 0, rot)
         m.m_Show = True

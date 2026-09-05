@@ -209,3 +209,32 @@ Reference images are in `verify/renders/`:
 | J4 | renders as **nothing** | known and documented — no public 8-pin DIN |
 
 All of these were checked on the current board and are correct.
+
+## Model alignment — why offsets and rotations are needed
+
+A 3D model is authored in the coordinate frame of the KiCad footprint it ships with. Our
+footprints came from a 1986 board through a different library and use different
+conventions, so a model dropped in at offset (0,0,0) lands wrong. Three distinct mismatches
+were found, all of them by looking at the render:
+
+| Mismatch | Effect | Example |
+|---|---|---|
+| KiCad puts **pad 1 at the origin**; ours are **centred** | model sits half a pitch off — one lead in a hole, one in mid-air | `Cap_Cer_508` pads at ±2.54; KiCad's at 0 and +5.0 |
+| KiCad's DIPs run their long axis along **Y**; ours along **X** | every IC appears rotated 90° | `IC_DIP40_600` is 48.26 × 15.24; KiCad's is 15.24 × 48.26 |
+| Some of ours number pads in the **opposite direction** | body reversed — a diode's cathode band at the wrong end | `Diode_762` pad 1 at +3.81; KiCad's at 0 |
+
+None of this touches copper. It is purely how the model is placed for rendering, which is
+why both gerber gates passed throughout while the render was visibly wrong.
+
+`tools/align_models.py` derives the transform from geometry rather than guessing: it takes
+the pad-1 → pad-N vector in each footprint, rotates by the angle between them, and
+translates so the model's pad 1 lands on ours. The results are written into `models.tsv` as
+explicit `off_x`, `off_y`, `off_z`, `rot_z` columns, so the data records what is applied and
+the tool records why.
+
+Of 27 footprints with stock KiCad models, **only the switches needed no correction** — and
+those were verified separately, since both libraries put the switch's centre boss at (0,0).
+
+**Automated coverage cannot catch this.** `model_coverage.py` proves a model file resolves;
+it says nothing about whether the model is placed correctly. Only the render does. See the
+validation section above.
