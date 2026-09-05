@@ -1,0 +1,10 @@
+# footprint	model	z_offset_mm	[z_rotation_deg, optional]
+# --- Passives: 76 components across 8 footprint definitions ---
+Res_762	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step	0
+Cap_Cer_508	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step	0
+Cap_Elec_Radial_6.3mm	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step	0
+Diode_762	${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step	0
+LED_3mm	${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step	0
+Crystal_HC-49U_Vert	${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step	0
+Transistor_TO92_EBC_254	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step	0
+IC_TO220-3_Vert	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step	0
