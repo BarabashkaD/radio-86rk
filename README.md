@@ -67,6 +67,30 @@ Despite the limitations, the design was fairly successful, many people have buil
 
 Check [Project Notes](Project_Notes.md) for the information about building this project
 
+## KiCad 10
+
+This fork's KiCad files have been modernized to KiCad 10 format. **The board is unchanged**:
+the gerber and drill output is identical to skiselev's v1.4, verified automatically rather
+than asserted. All footprints and symbols are vendored into the repository, so the project
+opens from a fresh clone with no external checkouts.
+
+Requires KiCad 10.0.4 and the **perigoso keyswitch library** from KiCad's Plugin and Content
+Manager, which supplies the Cherry MX switch and stabilizer 3D models.
+
+- [Modernization summary](docs/modernization-summary.md) — before/after, and how to re-verify
+- [3D model sources](docs/3d-model-sources.md) — every model choice and substitution
+- [Retained DRC violations](docs/drc-exclusions.md) — the 22 inherited from v1.4
+- [Retained ERC violations](docs/erc-exclusions.md) — the 32 bus-label warnings
+
+Verification tools live in `tools/`, with the frozen v1.4 reference in `verify/baseline/`:
+
+```bash
+tools/gerber-gate.sh --strict   # copper unchanged vs v1.4
+tools/netlist-gate.sh           # no pin moved to a different net
+tools/rules-report.sh           # ERC and DRC counts by type
+tools/render.sh mycheck         # 3D render into verify/renders/
+```
+
 ## Hardware Documentation
 
 ### Documentation for the Previous Versions
