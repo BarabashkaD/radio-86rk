@@ -1279,6 +1279,10 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 6: 3D models for connectors, arrays and misc (15 components, 12 footprints)
 
+> **STATUS: complete** — committed as `75dd53f`. 3D coverage 100 → 114/183. RCA fell back to
+> a coaxial jack and DIN-8 is deliberately blank; no model for either exists in any installed
+> library.
+
 The hardest sourcing task. KiCad ships no RCA jack and no 8-pin DIN model, so those two are
 either sourced externally into a project-local library or recorded as documented fallbacks.
 Per the spec's failure paths, a missing or approximate model is cosmetic and never blocks.
@@ -1292,7 +1296,7 @@ Per the spec's failure paths, a missing or approximate model is cosmetic and nev
 - Consumes: `tools/apply_models.py` unchanged.
 - Produces: nothing new; completes non-switch 3D coverage at 115/183.
 
-- [ ] **Step 1: Append the 10 models KiCad already ships**
+- [x] **Step 1: Append the 10 models KiCad already ships**
 
 ```
 # --- Connectors, resistor arrays, misc ---
@@ -1311,7 +1315,7 @@ DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhan
 `RN1-RN4` are SIP resistor networks, so `R_Array_SIP6`/`SIP10` are used rather than pin
 headers — same pin count and pitch, correct body.
 
-- [ ] **Step 2: Verify those 10 paths resolve**
+- [x] **Step 2: Verify those 10 paths resolve**
 
 ```bash
 source tools/kicad-env.sh
@@ -1323,7 +1327,7 @@ echo "check complete"
 
 Expected: `check complete`, no `MISSING`.
 
-- [ ] **Step 3: Source models for J1 (RCA) and J4 (8-pin DIN)**
+- [x] **Step 3: Source models for J1 (RCA) and J4 (8-pin DIN)**
 
 KiCad ships neither. Attempt, in this order, and stop at the first success:
 
@@ -1350,7 +1354,7 @@ Conn_DIN_8pin	-	0
 a right-angle RCA. There is no comparable stand-in for an 8-pin DIN, so `-` records a
 deliberate blank rather than an oversight.
 
-- [ ] **Step 4: Apply**
+- [x] **Step 4: Apply**
 
 ```bash
 "$KICAD_PY" tools/apply_models.py tools/models.tsv "$PCB" "$REPO_ROOT/KiCad/Radio86RK.pretty"
@@ -1358,7 +1362,7 @@ deliberate blank rather than an oversight.
 
 Expected: `applied to 27 footprints / 115 instances` (or `/ 114` if J4 is blank).
 
-- [ ] **Step 5: Run the gate**
+- [x] **Step 5: Run the gate**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -1366,7 +1370,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `PASS`.
 
-- [ ] **Step 6: Count 3D coverage explicitly**
+- [x] **Step 6: Count 3D coverage explicitly**
 
 ```bash
 source tools/kicad-env.sh
@@ -1383,7 +1387,7 @@ PY
 Expected: `with models: 115  without: 76`. The 76 without are the 68 `SW` (Task 9), the 7
 `HOLE` and `LOGO1` — the last 8 are permanently modelless by design.
 
-- [ ] **Step 7: Render**
+- [x] **Step 7: Render**
 
 ```bash
 tools/render.sh 06-connectors
@@ -1393,7 +1397,7 @@ Expected: every connector, resistor array, the speaker and the DC-DC module visi
 correctly oriented. Check J5 (DE9) and J2 (barrel jack) point outward at the board edge
 rather than into the board.
 
-- [ ] **Step 8: Extend `docs/3d-model-sources.md`**
+- [x] **Step 8: Extend `docs/3d-model-sources.md`**
 
 ```markdown
 ## Connectors, arrays and misc
@@ -1423,7 +1427,7 @@ libraries. Record here which branch was taken:
   an absent one.
 ```
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add tools/models.tsv docs/3d-model-sources.md KiCad verify/renders
