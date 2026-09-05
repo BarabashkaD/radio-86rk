@@ -14,6 +14,8 @@ Every task's requirements implicitly include this section.
 
 - **KiCad version floor:** 10.0.4. All file formats end at board `version 20260206`.
 - **Copper is frozen.** No pad, track, via, zone or drill hole may move. The gerber+drill gate is binary and must pass on **every** task, with no exceptions.
+- **Schematic-side tasks never write to the board.** Do not run *Update PCB from Schematic* in any task except where this plan explicitly says to. It is the mechanism by which a harmless-looking schematic edit becomes board damage — see Finding 5, where it turned a field refresh into 170 shorts and 2118 unconnected items.
+- **Never batch a GUI operation you have not measured.** Every KiCad GUI action in this plan is followed by a verification step comparing against the previous commit. Commit before starting one, so `git checkout -- KiCad/` is always the recovery.
 - **From scratch only.** No commit, footprint, symbol, model, library table or configuration is taken from `migrate2kicad10`, `sw3-official-reroute-experiment`, or any other branch. Findings from earlier attempts may inform the work only as facts independently re-verified against `master`.
 - **No absolute paths in committed files.** Every library and model URI uses `${KIPRJMOD}`, `${KICAD10_3DMODEL_DIR}` or `${KICAD10_3RD_PARTY}`.
 - **Public reuse policy, by layer:** 3D models — aggressive, on every footprint. Symbols — where pin-compatible. Footprints — **none are replaced**; all 35 are vendored from the board. See Finding 1: the spec's Cherry MX exception rested on a false premise and is not taken.
@@ -37,6 +39,34 @@ Every task's requirements implicitly include this section.
 | **Unique footprint definitions** | **35** |
 
 KiCad 10 ships `.step` files in `3dmodels`, **not** `.wrl`. Every model path below ends in `.step` (perigoso's is `.stp`).
+
+## Execution Progress (updated 2026-09-05)
+
+Parts of this plan have been executed and committed on `kicad10-modernization`. Numbers
+below are **measured**, not predicted.
+
+| Commit | What landed | Verified by |
+|---|---|---|
+| `2a7788a` | Schematics converted to KiCad 10 format (`20211123` → `20260306`) via the **GUI** | netlist identical (22971 lines); ERC 243 unchanged; DRC 91, unconnected 0, parity 0; gerbers byte-identical to v1.4 |
+| `9d8e182` | Symbol definitions refreshed from libraries — **ERC 243 → 101**, all 142 `lib_symbol_mismatch` cleared | footprints 218/218 unchanged; netlist connectivity byte-identical (6790 lines); board untouched |
+| `16a7755` | Q1/Q2 re-pointed `Device:Q_NPN_EBC` → `Transistor_BJT:Q_NPN_EBC` | netlist connectivity byte-identical; footprints intact; DRC 91, parity 0 |
+
+**Current state:** board still at format `20211014` and byte-identical to v1.4. ERC 101 =
+67 `footprint_link_issues` + 32 `same_local_global_label` + 2 `lib_symbol_mismatch`.
+DRC 91, unconnected 0, parity 0.
+
+That maps onto the tasks below as:
+
+- **Task 2** — schematic half done in `2a7788a`. The **board** half is still outstanding.
+- **Task 8** — the hard part is done (`9d8e182`, `16a7755`). What remains is the 32 label
+  collisions, Q1/Q2's stale cache, and the sym-lib-table.
+- **Task 3** — not executed here, but rehearsed end-to-end on a scratch copy: vendoring
+  produced exactly DRC 22 (17 `silk_edge_clearance` + 5 `starved_thermal`), unconnected 0,
+  parity 0, clearing all 67 `lib_footprint_issues` and both `lib_footprint_mismatch`.
+
+Everything else is unexecuted.
+
+---
 
 ## Findings That Amend the Spec
 
@@ -90,25 +120,75 @@ handled by the task named.
    vertex order defines the polygon. → Task 1 Step 3 adds `tools/gerber_canon.py`, validated
    both ways: it passes the format upgrade and catches a 1 µm pad shift in 5 files.
 
-3. **The format upgrade raises ERC by 21, and that is expected.** `kicad-cli sch upgrade`
-   surfaces 21 `different_unit_net` violations the KiCad 6 format never reported, on the
-   multi-unit 74xx logic (U16, U17, U18, U19, U20) — the same symbols already reporting
-   `lib_symbol_mismatch`. Isolated by running ERC on upgraded and un-upgraded copies with
-   identical library tables. → Task 2 expects ERC 243 → 264 rather than "unchanged", and
-   Task 8 checks whether re-homing the symbols clears them.
+3. **Use the GUI for the format conversion, not `kicad-cli sch upgrade` — they are not
+   equivalent.** The CLI leaves the embedded `lib_symbols` cache stale. Measured pin
+   definitions per sheet:
 
-4. **Gerbers embed net names.** `%TO.N,<netname>*%` appears 1155 times in `F_Cu` alone, so a
+   | Sheet | original | GUI save | `kicad-cli sch upgrade` |
+   |---|---:|---:|---:|
+   | Radio-86RK | 450 | 560 | 560 |
+   | CRT-Mem | 462 | **527** | 462 |
+   | IO | 409 | **442** | 409 |
+   | Keyboard | 360 | **372** | 360 |
+   | Power | 306 | **366** | 306 |
+   | **total** | 1987 | **2267** | 2097 |
+
+   The GUI rebuilds the cache from the current libraries, adding 280 pin definitions; the
+   CLI leaves four of five sheets untouched. Those stale definitions then manufacture **21
+   spurious `different_unit_net` ERC violations** on the multi-unit 74xx logic (U16–U20).
+   The GUI path produces none — ERC stayed at exactly 243 through conversion.
+
+   *An earlier revision of this plan recorded those 21 violations as a real finding to be
+   handled in Task 8. They were an artefact of the wrong tool.* → Task 2 uses the GUI.
+
+4. **`Update Symbols from Library` is destructive by default, and its damage reaches the
+   board.** Run with the *Update/reset Fields* options enabled and followed by *Update PCB
+   from Schematic*, it reset 8 components to their symbols' default footprints and pushed
+   that onto the board:
+
+   | Ref | Board's footprint | Overwritten with |
+   |---|---|---|
+   | RN1 | `My_Components:Conn_SIL10` | `Resistor_THT:R_Array_SIP10` |
+   | RN2–RN4 | `My_Components:Conn_SIL6` | `Resistor_THT:R_Array_SIP6` |
+   | U23, U24 | `My_Components:IC_DIP8_300` | `Package_DIP:DIP-8_W7.62mm` |
+   | U22 | `My_Components:IC_DIP16_300` | `Package_DIP:DIP-16_W7.62mm` |
+   | U25 | `My_Components:IC_TO220-3_Vert` | `Package_TO_SOT_THT:TO-220-3_Vertical` |
+
+   Result: DRC 91 → **669**, including **170 `shorting_items`**, 201 `solder_mask_bridge`
+   and **2118 unconnected items**. The replacements have the same pin *pitch* but a
+   different **origin**: RN2's pads shifted 6.35 mm, U25's a full 2.54 mm pitch, so nets
+   bound to physically different holes while the tracks stayed put. Rolled back with
+   `git checkout -- KiCad/`.
+
+   KiCad warns about this itself — *"Warning: fields "Value" and "Footprints" will be
+   therefore replaced."* → Task 8 unchecks every field option and never touches the board.
+   This is the third instance of one pattern, after the Cherry MX pad-name swap and the
+   missing stabilizer holes: a public footprint that is "the same part" and still moves
+   nets relative to copper.
+
+5. **`Device:Q_NPN_EBC` moved to `Transistor_BJT`.** Verified on 10.0.4: 0 hits in
+   `Device.kicad_sym`, 1 in `Transistor_BJT.kicad_sym`. This is the whole of the 2
+   `lib_symbol_issues`, on Q1 and Q2, and the only errors the symbol refresh reported. Pin
+   numbering is unchanged (E=1, B=2, C=3), which is what `Transistor_TO92_EBC_254` depends
+   on. → Fixed in `16a7755`.
+
+6. **Shell portability: this environment is `zsh`, which does not word-split unquoted
+   variables.** `cmd $NAMES` passes one argument, not many — silently, and the failure looks
+   like the tool not finding anything. Every step that passes a generated list to a script
+   must pipe through `xargs` rather than expand a bare variable.
+
+7. **Gerbers embed net names.** `%TO.N,<netname>*%` appears 1155 times in `F_Cu` alone, so a
    net rename changes gerber bytes without moving copper. → Task 1 builds two gate modes.
-5. **The project is in KiCad 6 format with CRLF endings.** The first save rewrites all
+8. **The project is in KiCad 6 format with CRLF endings.** The first save rewrites all
    173,936 lines. → Task 2 does that once, in isolation, gated.
-6. **3D models attach to 35 footprint definitions, not 191 instances.** → Tasks 4–6 are 35
+9. **3D models attach to 35 footprint definitions, not 191 instances.** → Tasks 4–6 are 35
    assignments, not 191.
-7. **U27 is `Transistor_TO92_EBC_254`, not a 3-pin regulator.** The spec's §3 text is wrong;
+10. **U27 is `Transistor_TO92_EBC_254`, not a 3-pin regulator.** The spec's §3 text is wrong;
    its socket table (which excludes U25/U26/U27) is right. → Task 4 gives it a TO-92 model.
-8. **F1 (a fuse) uses `Cap_Cer_508`.** Because models attach to footprints, F1 necessarily
+11. **F1 (a fuse) uses `Cap_Cer_508`.** Because models attach to footprints, F1 necessarily
    inherits the disc-capacitor model. Accepted per the 3D tolerance policy; recorded in
    `docs/3d-model-sources.md`.
-9. **KiCad ships no RCA and no 8-pin DIN model.** → Task 6 sources or records fallbacks.
+12. **KiCad ships no RCA and no 8-pin DIN model.** → Task 6 sources or records fallbacks.
 
 ## File Structure
 
@@ -464,101 +544,128 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 2: Upgrade the project files to KiCad 10 format
 
-The board is KiCad 6 format (`20211014`) with CRLF endings; the schematics are `20211123`.
-Any later edit would be against a legacy format that KiCad rewrites wholesale on first
-save, burying real changes in a 173,936-line reformat. Do the reformat once, alone, and
-prove it moved nothing.
+> **STATUS: schematic half complete** — done in the GUI and committed as `2a7788a`
+> (`20211123` → `20260306`). The **board** half is outstanding; it is still at
+> `20211014`. Steps 1–7 are marked done and record what was measured. Resume at Step 8.
+
+The board is KiCad 6 format with CRLF endings, and the schematics were. Any later edit
+would be against a legacy format that KiCad rewrites wholesale on first save, burying real
+changes in a reformat. Do the reformat once, alone, and prove it moved nothing.
+
+**Use the GUI, not `kicad-cli`.** Per Finding 3 these are not equivalent: `kicad-cli sch
+upgrade` leaves the embedded `lib_symbols` cache stale on four of five sheets, which then
+manufactures 21 spurious `different_unit_net` ERC violations. The GUI rebuilds the cache
+(1987 → 2267 pin definitions) and produces none.
 
 **Files:**
-- Modify: `KiCad/Radio-86RK.kicad_pcb`, all five `KiCad/*.kicad_sch`
+- Modify: all five `KiCad/*.kicad_sch` *(done, `2a7788a`)*, `KiCad/Radio-86RK.kicad_pro` *(done)*
+- Modify: `KiCad/Radio-86RK.kicad_pcb` *(outstanding)*
 
 **Interfaces:**
-- Consumes: `tools/gerber-gate.sh`, `tools/rules-report.sh` from Task 1.
-- Produces: board at format `20260206`; no API surface.
+- Consumes: `tools/gerber-gate.sh`, `tools/rules-report.sh`, `tools/netlist-gate.sh` from Task 1.
 
-- [ ] **Step 1: Record the pre-upgrade format versions**
+- [x] **Step 1: Record the pre-upgrade format versions**
+
+Measured: board `(kicad_pcb (version 20211014) (generator pcbnew)`, schematics
+`(kicad_sch (version 20211123) (generator eeschema)`, and 173,936 CRLF lines in the board.
+
+- [x] **Step 2: Confirm the gate passes before touching anything**
+
+- [x] **Step 3: Convert the schematics in the GUI**
+
+Open the project, open **Schematic Editor**, then **File → Save** (KiCad prompts to
+convert). Do **not** use `kicad-cli sch upgrade`.
+
+- [x] **Step 4: Verify the conversion is faithful, not just successful**
+
+Measured on `2a7788a` — this is the step that distinguishes the GUI from the CLI:
 
 ```bash
-head -1 KiCad/Radio-86RK.kicad_pcb
-head -1 KiCad/Radio-86RK.kicad_sch
+for f in Radio-86RK Radio-86RK-CRT-Mem Radio-86RK-IO Radio-86RK-Keyboard Radio-86RK-Power; do
+  printf "%-24s orig %4d  now %4d\n" "$f" \
+    "$(git show HEAD~1:KiCad/$f.kicad_sch | grep -c '(pin ')" \
+    "$(grep -c '(pin ' KiCad/$f.kicad_sch)"
+done
 ```
 
-Expected: `(kicad_pcb (version 20211014) (generator pcbnew)` and
-`(kicad_sch (version 20211123) (generator eeschema)`.
+Expected: every sheet's pin count **rises or stays equal**, totalling 1987 → 2267. A sheet
+whose count is unchanged means the cache was not rebuilt — you used the CLI.
 
-- [ ] **Step 2: Confirm the gate passes before touching anything**
+- [x] **Step 5: Netlist gate**
+
+Measured: 22971 lines, identical apart from the source path and one pair of UUIDs swapping
+order within a single net's `tstamps`. No connectivity changed.
+
+- [x] **Step 6: Rule counts**
+
+Measured: **ERC 243, unchanged**, same breakdown (142 `lib_symbol_mismatch`,
+67 `footprint_link_issues`, 32 `same_local_global_label`, 2 `lib_symbol_issues`).
+DRC 91, unconnected 0, parity 0. No `different_unit_net` — see Finding 3.
+
+- [x] **Step 7: Commit the schematic conversion** — `2a7788a`.
+
+---
+
+**Resume here.** Everything below is outstanding.
+
+- [ ] **Step 8: Confirm the board is still pristine before converting it**
+
+```bash
+tools/gerber-gate.sh --strict
+head -1 KiCad/Radio-86RK.kicad_pcb | cut -c1-45
+git status --short KiCad/Radio-86RK.kicad_pcb || echo "board unmodified"
+```
+
+Expected: `PASS`, `(kicad_pcb (version 20211014)`, and no modification. If the board is
+already dirty, stop and find out why before converting.
+
+- [ ] **Step 9: Convert the board in the GUI**
+
+Open the **PCB Editor** and **File → Save**. Close KiCad afterwards — later steps read the
+files and must not race a live session.
+
+```bash
+ls KiCad/*.lck 2>/dev/null && echo "GUI STILL OPEN" || echo "closed"
+head -2 KiCad/Radio-86RK.kicad_pcb | tr -d '\n\t' | cut -c1-45
+grep -c $'\r' KiCad/Radio-86RK.kicad_pcb || echo "CRLF gone"
+```
+
+Expected: `closed`, `version 20260206` (or later), zero CRLF lines.
+
+- [ ] **Step 10: Run the gate — the whole point of the task**
 
 ```bash
 tools/gerber-gate.sh --strict
 ```
 
-Expected: `PASS`.
+Expected: `PASS`. **This is where `gerber_canon.py` earns its place.** `kicad-cli pcb
+upgrade` was measured to rewrite the gerbers substantially — 12 of 22 files change
+byte-wise, `F_Silkscreen` drops 7 redundant aperture-select no-ops and swaps which
+diameters D12 and D13 name — while moving no geometry. Whether the GUI save reorders the
+same way is **not yet measured**; the canonical gate is correct either way.
 
-- [ ] **Step 3: Upgrade the schematic and the board**
+If it fails, `git checkout -- KiCad/Radio-86RK.kicad_pcb` and stop. A reformat that moves a
+coordinate is a KiCad bug or a wrong command.
+
+- [ ] **Step 11: Rule counts and netlist**
 
 ```bash
-source tools/kicad-env.sh
-"$KICAD_CLI" sch upgrade "$SCH"
-"$KICAD_CLI" pcb upgrade "$PCB"
+tools/netlist-gate.sh
+tools/rules-report.sh | tee verify/rules-02-board-format.txt
 ```
 
-- [ ] **Step 4: Verify the format actually changed**
+Expected: netlist `PASS`; DRC unchanged from the run before the save (91 at time of
+writing, or 22 if Task 3 has already run); unconnected 0; parity 0.
+
+- [ ] **Step 12: Commit the board conversion**
 
 ```bash
-head -3 KiCad/Radio-86RK.kicad_pcb
-grep -c $'\r' KiCad/Radio-86RK.kicad_pcb || echo "CRLF gone (grep found none)"
-```
+git add KiCad/Radio-86RK.kicad_pcb verify
+git commit -m "Convert the board to KiCad 10 format via the GUI
 
-Expected: `(kicad_pcb` with `(version 20260206)`, and zero CRLF lines.
-
-- [ ] **Step 5: Run the gate — this is the whole point of the task**
-
-```bash
-tools/gerber-gate.sh --strict
-```
-
-Expected: `PASS`. **This is the step that justifies `gerber_canon.py`'s existence.** Measured
-on this board, the upgrade rewrites the gerbers substantially — 12 of 22 files change
-byte-wise, `F_Silkscreen` loses 7 redundant aperture-select commands, and `F_Silkscreen`'s
-D12/D13 swap which diameter they name — while the drill file stays byte-identical, the
-aperture *sets* are unchanged, and every copper file holds the same multiset of drawing
-commands. None of that is a geometry change, and the canonical gate correctly reports it as
-none. A raw byte diff would fail here and at every later task.
-
-If the gate fails, `git checkout -- KiCad/` and stop: a reformat that moves a coordinate is
-a KiCad bug or a wrong command.
-
-- [ ] **Step 6: Record rule counts — ERC will go UP by 21, and that is correct**
-
-```bash
-tools/rules-report.sh | tee verify/rules-01-format-upgrade.txt
-diff verify/rules-00-baseline.txt verify/rules-01-format-upgrade.txt || true
-```
-
-Expected: DRC unchanged at 91. **ERC rises from 243 to 264**, gaining 21
-`different_unit_net` violations that the KiCad 6 format never reported. Measured on this
-board, they land on the multi-unit 74xx logic — U16 (74LS86), U17 (74LS74), U18 (74LS08),
-U19 and U20 (74LS00) — which is exactly the set of symbols already reporting
-`lib_symbol_mismatch`.
-
-That correlation is the likely cause: the cached KiCad-4-era symbol definitions carry a unit
-structure that the current libraries do not agree with, and the upgrade gave KiCad enough
-information to notice. **Task 8 is expected to clear them when it re-homes those symbols**,
-and it checks explicitly rather than assuming. Do not attempt to fix them here — this task
-changes file format only.
-
-Any *other* new violation type is not expected. Investigate before continuing.
-
-- [ ] **Step 7: Commit**
-
-```bash
-git add KiCad verify
-git commit -m "Upgrade board and schematics from KiCad 6 to KiCad 10 file format
-
-Board 20211014 -> 20260206, schematics 20211123 -> current, CRLF -> LF.
-A pure reformat: every line of the board file changes and the gerber gate
-passes byte-identical, so no copper moved. Isolated in its own commit so
-later diffs stay readable.
+A pure reformat: every line of the board file changes and the canonical
+gerber gate passes, so no copper moved. Isolated in its own commit so later
+diffs stay readable.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
@@ -567,6 +674,11 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 ---
 
 ### Task 3: Vendor the 35 footprints and make the project self-contained
+
+> **STATUS: rehearsed end-to-end on a scratch copy, not yet committed.** Every step below
+> was executed against a throwaway copy of this board and produced exactly the numbers
+> stated — DRC 22, unconnected 0, parity 0, all 67 `lib_footprint_issues` and both
+> `lib_footprint_mismatch` cleared. The predictions here are measurements.
 
 `Cherry_MX` is lost and `My_Components` currently resolves only through a sibling clone,
 so a fresh clone of this repo cannot open the board. Extract all 35 unique footprints from
@@ -711,9 +823,10 @@ produced exactly these numbers:**
 extraction reproduces the board's geometry closely enough for KiCad's own library
 comparison. `unconnected_items` and `schematic_parity` are both empty.
 
-`ERC 197` — the 67 `footprint_link_issues` clear, leaving 142 `lib_symbol_mismatch` +
-32 `same_local_global_label` + 2 `lib_symbol_issues` + the 21 `different_unit_net` that
-Task 2's format upgrade surfaced.
+**ERC drops by exactly 67** — the `footprint_link_issues` clear, because the schematic's
+footprint fields now resolve. From the current state of 101 that gives **ERC 34**
+(32 `same_local_global_label` + 2 `lib_symbol_mismatch`); once Task 8's remaining steps
+land it gives **0**. Run this task before or after those — it is independent of them.
 
 If `lib_footprint_mismatch` is **non-zero**, the extraction altered something. Diff the
 offending library footprint against its board instance before proceeding.
@@ -1484,129 +1597,251 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ---
 
-### Task 8: Re-home the drifted symbols to public libraries and drive ERC down
+### Task 8: Refresh symbol definitions and drive ERC down
 
-197 ERC violations remain: 142 `lib_symbol_mismatch`, 32 `same_local_global_label`,
-21 `different_unit_net`,
-2 `lib_symbol_issues`.
+> **STATUS: mostly complete.** The symbol refresh landed in `9d8e182` (ERC **243 → 101**,
+> all 142 `lib_symbol_mismatch` cleared) and the Q1/Q2 re-home in `16a7755`. What remains is
+> the 32 label collisions, Q1/Q2's stale cache, and `sym-lib-table`. Resume at Step 6.
 
-**Every one of these resolves through public reuse — nothing needs vendoring.** The
-mismatching symbols are *KiCad's own* stock symbols that drifted between KiCad 4 and
+**This task is schematic-only. It must never run *Update PCB from Schematic*.** That single
+rule is the difference between the two runs recorded below: one produced 170 shorts, the
+other changed no connectivity at all and cleared 142 warnings.
+
+**Everything here resolves through public reuse — nothing needs vendoring.** The
+mismatching symbols were *KiCad's own* stock symbols that drifted between KiCad 4 and
 KiCad 10 (power flags, 74xx logic, `Device:D`/`LED`), not the lost `my_components` library.
-And the single genuinely-missing symbol, `Device:Q_NPN_EBC`, was not deleted — it moved to
-`Transistor_BJT.kicad_sym`, where it still exists under the same name.
+And `Device:Q_NPN_EBC` was not deleted — it moved to `Transistor_BJT`, same name, same
+E-B-C pin numbering.
 
-This is the best possible outcome against the goal of reusing public components: the
-schematic ends up pointing at current, maintained, upstream KiCad symbols.
-
-**The risk this task must control** is a pin renumbering. Refreshing a symbol from a library
-whose pins have been renumbered would move nets to different pads — the same failure the
-Cherry MX analysis identified, arriving from the symbol side. The gerber gate cannot see it
-(the board is not edited here), so this task adds a **netlist gate**: export the netlist
-before and after, and require it to be identical.
-
-> **Spec amendment — ERC cannot honestly reach 0.**
-> The spec's Definition of Done says ERC → 0, and its Out of Scope says the U3/U22 RS-232
-> wiring defect (GitHub issue #2) stays unfixed. These conflict: the `lib_symbol_issues`
-> currently suppress KiCad's pin-connectivity checks project-wide, so resolving the symbol
-> links is exactly what makes that defect visible. The spec warns that `migrate2kicad10`
-> reached "ERC 0" by converting local labels to global, giving those pins a driver and
-> silencing the check without moving a wire.
-> **Revised target: ERC 0 apart from the issue-#2 violations, which get ERC exclusions with
-> a written reason**, exactly parallel to the DRC exclusions in Task 8.
->
-> Note that the label promotion in Step 8 is *not* that masking manoeuvre: all 32
-> collisions are address, data and control bus signals, none of them the RS-232 receiver
-> pins the defect concerns.
+> **The failure that shaped this task.** The first attempt ran *Update Symbols from Library*
+> with the *Update/reset Fields* options enabled, then *Update PCB from Schematic*. KiCad's
+> own warning describes what happens — *"Warning: fields "Value" and "Footprints" will be
+> therefore replaced."* — and it did: 8 components (RN1–RN4, U22–U25) were reset to their
+> symbols' default footprints and that was pushed onto the board. DRC went 91 → **669**,
+> with **170 `shorting_items`** and **2118 unconnected items**, because the stock footprints
+> anchor their pads at a different origin (RN2 shifted 6.35 mm, U25 a full 2.54 mm pitch).
+> Recovered with `git checkout -- KiCad/`. See Finding 4.
 
 **Files:**
-- Create: `tools/netlist-gate.sh`
-- Modify: `KiCad/sym-lib-table`, `KiCad/*.kicad_sch`, `KiCad/Radio-86RK.kicad_pro`
-- Create: `docs/erc-exclusions.md`
+- Modify: `KiCad/*.kicad_sch` *(refresh done, `9d8e182`; Q1/Q2 done, `16a7755`)*
+- Create: `KiCad/Radio86RK.kicad_sym`, `KiCad/sym-lib-table` *(outstanding)*
+- Create: `docs/erc-exclusions.md` *(outstanding)*
 
 **Interfaces:**
-- Consumes: `tools/kicad-env.sh`, `tools/rules-report.sh`, `tools/gerber-gate.sh`.
-- Produces: `tools/netlist-gate.sh [--capture]` — exit 0 if the netlist matches
-  `verify/baseline/netlist.net`, 1 otherwise. Used again by Task 9.
+- Consumes: `tools/netlist-gate.sh`, `tools/rules-report.sh`, `tools/gerber-gate.sh`.
+- Produces: `tools/vendor_symbols.py`, used only by this task.
 
-- [ ] **Step 1: Write `tools/netlist-gate.sh`**
+- [x] **Step 1: Capture the footprint assignments before touching anything**
 
-The netlist is the ground truth linking schematic to copper: if it is unchanged, no symbol
-edit can have moved a net to a different pad.
+The check that catches the destructive failure. Measured baseline: **218** footprint fields.
 
 ```bash
-#!/usr/bin/env bash
-# Export the netlist and diff it against verify/baseline/netlist.net.
-#   --capture   write the baseline instead of comparing
-set -euo pipefail
-source "$(dirname "$0")/kicad-env.sh"
-mkdir -p "$BUILD" "$REPO_ROOT/verify/baseline"
-BASE="$REPO_ROOT/verify/baseline/netlist.net"
-CUR="$BUILD/netlist.net"
-
-"$KICAD_CLI" sch export netlist --format kicadsexpr --output "$CUR.raw" "$SCH" >/dev/null
-# Drop the generation date and tool version headers; keep every component and net.
-grep -vE '^\s*\(date |^\s*\(tool ' "$CUR.raw" > "$CUR"
-
-if [ "${1:-}" = "--capture" ]; then
-  cp "$CUR" "$BASE"; echo "netlist-gate: captured baseline ($(wc -l < "$BASE" | tr -d ' ') lines)"; exit 0
-fi
-[ -f "$BASE" ] || { echo "netlist-gate: no baseline; run --capture" >&2; exit 2; }
-if diff -q "$BASE" "$CUR" >/dev/null; then
-  echo "netlist-gate: PASS - every pin maps to the same net"
-else
-  echo "netlist-gate: FAIL"; diff -u "$BASE" "$CUR" | head -60; exit 1
-fi
+grep -h -A1 '"Footprint"' KiCad/*.kicad_sch \
+  | grep -oE '"[A-Za-z_][A-Za-z0-9_]*:[^"]*"' | sort | uniq -c | sort -rn \
+  > verify/footprint-props-before.txt
 ```
 
-- [ ] **Step 2: Capture the netlist baseline and prove the gate works**
+- [x] **Step 2: Capture the netlist baseline**
 
 ```bash
-chmod +x tools/netlist-gate.sh
 tools/netlist-gate.sh --capture
-tools/netlist-gate.sh
 ```
 
-Expected: a `captured baseline` line, then `PASS`.
+- [x] **Step 3: Refresh the symbol definitions — the safe procedure**
 
-- [ ] **Step 3: Confirm the 16 drifted symbols and the one that moved**
+In Eeschema: **Tools → Update Symbols from Library…**
+
+- Scope: **Update all symbols in schematic**
+- In **Update/reset Fields**, uncheck **every** option: field text, field visibilities,
+  field sizes and styles, field positions, pin name/number visibilities, symbol attributes,
+  *Remove fields if not in library symbol*, *Reset fields if empty in library symbol*, and
+  *Update keywords and footprint filters*.
+
+With all of those off the action still does its core job — *update symbol shape and pins* —
+which is the only part wanted. Save, and **do not run *Update PCB from Schematic***.
+
+Two errors are expected and benign: `Update symbol Q1/Q2 from 'Device:Q_NPN_EBC' … symbol
+not found`. That symbol moved libraries; Step 5 fixes it.
+
+- [x] **Step 4: Verify — four checks, all measured on `9d8e182`**
+
+```bash
+grep -h -A1 '"Footprint"' KiCad/*.kicad_sch \
+  | grep -oE '"[A-Za-z_][A-Za-z0-9_]*:[^"]*"' | sort | uniq -c | sort -rn \
+  > verify/footprint-props-after.txt
+diff verify/footprint-props-before.txt verify/footprint-props-after.txt \
+  && echo "footprints intact"
+tools/netlist-gate.sh
+tools/rules-report.sh
+tools/gerber-gate.sh --strict
+```
+
+Measured: footprints **218/218 unchanged**; netlist connectivity **byte-identical**
+(6790 lines in the `(nets …)` section); **ERC 243 → 101**; DRC 91, unconnected 0, parity 0;
+gerbers byte-identical to v1.4.
+
+The only content changes are metadata refreshes from the current libraries — updated
+`ki_keywords` and `ki_fp_filters`, real datasheet URLs replacing KiCad-4-era relative
+paths, added ngspice `Sim.*` fields, and `#LOGO` → `#SYM` for the annotation-only logo
+symbol.
+
+**If the footprint diff is non-empty, stop and `git checkout -- KiCad/`.** That is the
+destructive failure recurring, and it means a field option was left checked.
+
+- [x] **Step 5: Re-home Q1/Q2 to the library that now holds their symbol** — `16a7755`
+
+```bash
+sed -i '' 's|Device:Q_NPN_EBC|Transistor_BJT:Q_NPN_EBC|g' \
+    KiCad/Radio-86RK-CRT-Mem.kicad_sch KiCad/Radio-86RK-IO.kicad_sch
+```
+
+Two occurrences per sheet — the `lib_symbols` cache key and the instance `lib_id` — so one
+substitution keeps them consistent. Verified: netlist connectivity byte-identical,
+footprints 218/218 intact, board untouched. The two violations change class from
+`lib_symbol_issues` (not found) to `lib_symbol_mismatch` (found, cache differs).
+
+---
+
+**Resume here.** ERC currently 101 = 67 `footprint_link_issues` + 32
+`same_local_global_label` + 2 `lib_symbol_mismatch`.
+
+- [ ] **Step 6: One more symbol refresh, bundled with Step 7**
+
+Q1/Q2's cache still holds the old `Device` definition under the new key. Re-running Step 3's
+procedure now finds `Transistor_BJT:Q_NPN_EBC` and rewrites it, clearing the last 2
+`lib_symbol_mismatch`.
+
+Do this in the **same Eeschema session** as Step 7 rather than as its own trip — 2 warnings
+do not justify a separate round-trip with an operation that has already broken the board
+once. Re-run Step 4's four checks afterwards.
+
+- [ ] **Step 7: Resolve the 32 `same_local_global_label` collisions**
+
+All 32 are bus and control signals carrying both a local and a global label of the same
+name — 15 address lines `A0`–`A14`, 8 data lines `D0`–`D7`, the four strobes `~{RD}`,
+`~{WR}`, `~{IOR}`, `~{MEMW}`, and `OSC`, `RESET`, `TTL_CLK`, `SPKR_ENA`, `PIT2_ENA`.
+
+In an 8080-family design these are genuinely one net each, so the fix is to **delete the
+redundant local label** and let the global one name the net. That changes no net name, so
+the netlist and the gerber `%TO.N` records are untouched.
+
+None of these are the RS-232 signals on U3/U22, so this is not the masking manoeuvre the
+design spec warns about. **Do not add or promote any label on U3 or U22.**
+
+```bash
+tools/netlist-gate.sh
+tools/gerber-gate.sh --strict
+tools/rules-report.sh | tee verify/rules-08-symbols.txt
+```
+
+Expected: netlist and gerber gates both `PASS` — deleting a redundant duplicate label
+renames nothing. If `--strict` fails, inspect the diff: every changed line must be a
+`%TO.N` record for a net you deliberately renamed.
+
+Expected ERC afterwards: **67**, all `footprint_link_issues`, which Task 3 clears.
+
+New `pin_not_driven` / `pin_not_connected` / `unconnected_wire_endpoint` violations on
+**U3 and U22** may appear as connectivity checks stop being suppressed — that is
+GitHub issue #2 becoming visible, which is correct, not a regression.
+
+- [ ] **Step 8: Vendor the `my_components` symbols so a fresh clone works**
+
+18 distinct symbols across 26 instances. Note the `xargs` — per Finding 6, `zsh` does not
+word-split unquoted variables, so `cmd $NAMES` would pass one argument.
+
+```bash
+grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sed 's/.*://;s/"//' | sort -u
+```
+
+Expected: `27C64 74198 8080A 8224 8251A 8254 8255A 8257 8275 AS6C62256 Conn_DIN-8 DE9
+DS1233 HOLE IZ0512S SN75150P SN75154P Switch_Tactile_Vertical`.
+
+Write `tools/vendor_symbols.py`:
+
+```python
+"""Copy named symbols out of a .kicad_sym library into a new project-local one.
+
+Child units live nested inside their parent's (symbol "NAME" ...) block, so extracting the
+top-level block carries the whole part. Strings are skipped wholesale while matching
+parens, so a ')' inside a quoted field cannot end a block early.
+
+Usage: vendor_symbols.py <src.kicad_sym> <dst.kicad_sym> <NAME>...
+"""
+import re, sys
+
+src, dst, names = sys.argv[1], sys.argv[2], set(sys.argv[3:])
+text = open(src, encoding="utf-8").read()
+
+# Inherit the source library's format version. The extracted symbol bodies are in that
+# format, so declaring a newer one makes KiCad refuse the file; `kicad-cli sym upgrade`
+# modernises it afterwards.
+vm = re.search(r"\(version\s+(\d+)\)", text[:400])
+version = vm.group(1) if vm else "20211014"
+
+found, i = {}, 0
+while True:
+    i = text.find('(symbol "', i)
+    if i < 0:
+        break
+    m = re.match(r'\(symbol\s+"((?:[^"\\]|\\.)*)"', text[i:])
+    if not m:
+        i += 9
+        continue
+    name = m.group(1)
+    depth, j = 0, i                       # walk to the matching ')', skipping strings
+    while j < len(text):
+        c = text[j]
+        if c == '"':
+            j += 1
+            while j < len(text) and text[j] != '"':
+                j += 2 if text[j] == "\\" else 1
+        elif c == "(":
+            depth += 1
+        elif c == ")":
+            depth -= 1
+            if depth == 0:
+                break
+        j += 1
+    if name in names and name not in found:
+        found[name] = text[i:j + 1]
+    i = j + 1
+
+missing = names - set(found)
+if missing:
+    sys.exit("ERROR: not found in %s: %s" % (src, ", ".join(sorted(missing))))
+
+with open(dst, "w", encoding="utf-8") as fh:
+    fh.write('(kicad_symbol_lib (version %s) (generator "vendor_symbols")\n' % version)
+    for name in sorted(found):
+        fh.write("\t" + found[name].replace("\n", "\n\t") + "\n")
+    fh.write(")\n")
+
+print("vendored %d symbols -> %s" % (len(found), dst))
+```
 
 ```bash
 source tools/kicad-env.sh
-tools/rules-report.sh > /dev/null
-tr ',' '\n' < .build/erc.json | grep -oE "Symbol '[^']+' (doesn't match copy in|not found in symbol) library '[^']+'" | sort -u
+grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sed 's/.*://;s/"//' | sort -u \
+  | xargs "$KICAD_PY" tools/vendor_symbols.py \
+      ../my_kicad_library/library/my_components.kicad_sym KiCad/Radio86RK.kicad_sym
+"$KICAD_CLI" sym upgrade KiCad/Radio86RK.kicad_sym
+"$KICAD_CLI" sym export svg --output .build/symcheck KiCad/Radio86RK.kicad_sym >/dev/null \
+  && echo "library parses and renders: $(ls .build/symcheck | wc -l | tr -d ' ') symbols"
 ```
 
-Expected exactly these — 15 that drifted plus one that moved:
+Expected: `vendored 18 symbols`, then 18 SVGs.
 
-| Library | Symbols |
-|---|---|
-| `power` | `+12V`, `-12V`, `-5V`, `GND`, `VCC`, `PWR_FLAG` |
-| `74xx` | `74LS00`, `74LS08`, `74LS74`, `74LS86` |
-| `Device` | `D`, `LED` |
-| `Connector` | `Barrel_Jack_Switch`, `Conn_Coaxial` |
-| `Graphic` | `Logo_Open_Hardware_Small` |
-| `Device` → **moved** | `Q_NPN_EBC` — *not found*; now lives in `Transistor_BJT` |
+> **Known open issue.** As of 2026-09-05 this script produces a file KiCad rejects with
+> *"Unable to load library"*, even though the parentheses balance and the declared version
+> matches the source. The cause has not been isolated. **Do not mark this step done until
+> `sym export svg` emits 18 files.** If it cannot be made to work, the fallback is to build
+> `Radio86RK.kicad_sym` in the KiCad Symbol Editor by importing the 18 symbols from the
+> sibling clone — slower, but it is the tool that owns the format.
 
-`Q_NPN_EBC` accounts for both `lib_symbol_issues`, one each for Q1 and Q2.
+- [ ] **Step 9: Write `KiCad/sym-lib-table`**
 
-- [ ] **Step 4: Verify the moved symbol before relying on it**
-
-```bash
-SL=/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols
-grep -c 'symbol "Q_NPN_EBC"' $SL/Device.kicad_sym || echo "absent from Device (expected)"
-grep -c 'symbol "Q_NPN_EBC"' $SL/Transistor_BJT.kicad_sym
-```
-
-Expected: absent from `Device`, present in `Transistor_BJT`. The name is unchanged, so the
-E-B-C pin order that `Transistor_TO92_EBC_254` depends on is preserved — and Step 7 proves
-it rather than assuming it.
-
-- [ ] **Step 5: Write `KiCad/sym-lib-table`**
-
-This replaces the sibling-clone table written on 2026-09-04. `my_components` is the only
-project-local symbol library still needed; it is registered against a vendored copy so a
-fresh clone works, while every other symbol comes from KiCad's stock libraries.
+`my_components` is the only project-local symbol library needed; every other symbol now
+comes from KiCad's stock libraries.
 
 ```
 (sym_lib_table
@@ -1615,127 +1850,15 @@ fresh clone works, while every other symbol comes from KiCad's stock libraries.
 )
 ```
 
-Create `KiCad/Radio86RK.kicad_sym` by copying only the symbols this project actually uses
-out of the sibling clone at `../my_kicad_library/library/my_components.kicad_sym`:
-
 ```bash
-grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sort -u
-```
-
-Copy each named symbol into `KiCad/Radio86RK.kicad_sym`, then validate:
-
-```bash
-source tools/kicad-env.sh
-"$KICAD_CLI" sym upgrade KiCad/Radio86RK.kicad_sym
-"$KICAD_CLI" sym export svg --output .build/symcheck KiCad/Radio86RK.kicad_sym >/dev/null \
-  && echo "symbol library parses and renders"
-```
-
-- [ ] **Step 6: Capture the Footprint properties before touching anything**
-
-A known KiCad footgun: symbol relink operations can reset a symbol's `Footprint` property
-to the library default, silently destroying real footprint assignments. Capture the mapping
-now so Step 9 can prove nothing was lost.
-
-```bash
-grep -h -A1 '"Footprint"' KiCad/*.kicad_sch \
-  | grep -oE '"(My_Components|Cherry_MX|Symbol):[^"]*"' \
-  | sort | uniq -c | sort -rn > verify/footprint-props-before.txt
-cat verify/footprint-props-before.txt
-```
-
-- [ ] **Step 7: Re-home Q1 and Q2, then refresh the 15 drifted symbols**
-
-First the move — a pure `lib_id` change, two occurrences:
-
-```bash
-sed -i '' 's|lib_id "Device:Q_NPN_EBC"|lib_id "Transistor_BJT:Q_NPN_EBC"|g' KiCad/*.kicad_sch
-grep -c 'Transistor_BJT:Q_NPN_EBC' KiCad/*.kicad_sch | grep -v ':0'
-```
-
-Expected: two occurrences, in whichever sheet holds Q1 and Q2.
-
-Then, in Eeschema, run **Tools → Update Symbols from Library…**, select all, and apply.
-This rewrites the embedded `lib_symbols` cache from the current stock libraries.
-
-- [ ] **Step 8: Run the netlist gate — the whole safety argument for this task**
-
-```bash
+tools/rules-report.sh
 tools/netlist-gate.sh
 ```
 
-Expected: `PASS`. **A failure means a symbol's pins were renumbered and nets have moved to
-different pads.** Revert immediately (`git checkout -- KiCad/`) and re-home that symbol by
-hand, or vendor the cached version for it alone, before continuing.
+Expected: ERC unchanged; netlist `PASS`. If ERC *rises*, the vendored library differs from
+the sibling clone and Step 8 dropped something.
 
-- [ ] **Step 9: Prove no Footprint property was clobbered**
-
-```bash
-grep -h -A1 '"Footprint"' KiCad/*.kicad_sch \
-  | grep -oE '"(My_Components|Cherry_MX|Symbol):[^"]*"' \
-  | sort | uniq -c | sort -rn > verify/footprint-props-after.txt
-diff verify/footprint-props-before.txt verify/footprint-props-after.txt \
-  && echo "all footprint assignments intact"
-```
-
-Expected: `all footprint assignments intact`. Any difference means a symbol lost its
-footprint — restore and investigate before continuing.
-
-- [ ] **Step 10: Resolve the 32 `same_local_global_label` collisions**
-
-All 32 are bus and control signals that carry both a local and a global label of the same
-name — 15 address lines `A0`–`A14`, 8 data lines `D0`–`D7`, the four strobes `~{RD}`,
-`~{WR}`, `~{IOR}`, `~{MEMW}`, and `OSC`, `RESET`, `TTL_CLK`, `SPKR_ENA`, `PIT2_ENA`.
-
-In an 8080-family design these are genuinely one net each, so the correct fix is to **delete
-the redundant local label** and let the global one name the net. That changes no net name,
-so both the netlist and the gerber `%TO.N` records are untouched.
-
-None of these are the RS-232 receiver signals on U3/U22, so this is not the masking
-manoeuvre the spec warns about. **Do not add or promote any label on U3 or U22.**
-
-- [ ] **Step 11: Run all three gates**
-
-```bash
-tools/netlist-gate.sh
-tools/gerber-gate.sh --geometry
-tools/gerber-gate.sh --strict
-```
-
-Expected: all three `PASS`. Because the fix removed duplicate labels rather than renaming
-nets, even `--strict` should pass. If `--strict` fails, inspect the diff: every changed
-line must be a `%TO.N` net-name record and nothing else, and the net names must be ones
-you deliberately changed.
-
-- [ ] **Step 12: Re-run ERC**
-
-```bash
-tools/rules-report.sh | tee verify/rules-07-symbols.txt
-```
-
-Expected: `lib_symbol_mismatch`, `lib_symbol_issues` and `same_local_global_label` all gone.
-
-**Check `different_unit_net` specifically.** The 21 of these that Task 2's format upgrade
-surfaced sit on U16, U17, U18, U19 and U20 — precisely the multi-unit 74xx symbols that
-were reporting `lib_symbol_mismatch`. The working hypothesis is that the stale cached
-symbol definitions disagree with the current libraries about unit structure, in which case
-re-homing clears them:
-
-```bash
-grep -c 'different_unit_net' .build/erc.json
-```
-
-If they are **gone**, the hypothesis held and nothing further is needed. If they **remain**,
-they are a genuine schematic defect rather than a library artefact — most likely a shared
-power pin wired to different nets across units. In that case treat them like issue #2:
-diagnose, do *not* fix by moving wires (that is a topology change), and record them in
-`docs/erc-exclusions.md` with the diagnosis. Either way, do not leave them undiagnosed.
-
-New `pin_not_driven` / `pin_not_connected` / `unconnected_wire_endpoint` violations
-on **U3 and U22** may now appear — that is issue #2 becoming visible for the first time,
-which is the correct outcome, not a regression.
-
-- [ ] **Step 13: Write `docs/erc-exclusions.md` and exclude the issue-#2 violations**
+- [ ] **Step 10: Write `docs/erc-exclusions.md` and exclude the issue-#2 violations**
 
 ```markdown
 # Retained ERC violations
@@ -1751,40 +1874,31 @@ It is **not fixed here**: correcting it requires moving wire endpoints, which is
 change, and this project's top constraint is that the board is preserved exactly. It is
 also **not silenced by relabelling** — converting these signals to global labels would give
 the pins a driver and hide the defect, which is what an earlier branch did. The 32 label
-collisions resolved in this task are address, data and control bus signals only; no label
-on U3 or U22 was touched.
-
-Each violation is excluded with this reason so a future reader sees a deliberate decision.
+collisions resolved in Step 7 are address, data and control bus signals only; no label on
+U3 or U22 was touched.
 ```
 
-Add the exclusions in Eeschema (right-click the violation → **Exclude with comment**), or
-under `erc.exclusions` in `KiCad/Radio-86RK.kicad_pro`.
+Add the exclusions in Eeschema (right-click → **Exclude with comment**), or under
+`erc.exclusions` in `KiCad/Radio-86RK.kicad_pro`.
 
-- [ ] **Step 14: Commit**
+- [ ] **Step 11: Commit**
 
 ```bash
-git add KiCad tools/netlist-gate.sh docs/erc-exclusions.md verify
-git commit -m "Re-home drifted symbols to public KiCad libraries; ERC 176 -> issue #2 only
+git add KiCad tools/vendor_symbols.py docs/erc-exclusions.md verify
+git commit -m "Finish the symbol work: labels, vendored library, ERC exclusions
 
-Every mismatching symbol turned out to be one of KiCad's own stock symbols
-that drifted since KiCad 4 - power flags, 74xx logic, Device:D/LED - not the
-lost my_components library. And Device:Q_NPN_EBC was not deleted, it moved to
-Transistor_BJT. So all 144 symbol violations resolve through public reuse
-with nothing vendored, which is the best available outcome against the goal.
+Deleted the 32 redundant local bus labels, vendored the 18 my_components
+symbols so a fresh clone resolves, and excluded the pre-existing U3/U22
+RS-232 defect with a written reason rather than masking it by relabelling.
 
-Added tools/netlist-gate.sh: refreshing a symbol whose pins were renumbered
-would move nets to different pads, and the gerber gate cannot see that
-because the board is not edited here. The netlist is identical before and
-after, so no pin moved.
-
-The 32 same_local_global_label collisions are all address/data/control bus
-signals; resolved by deleting the redundant local labels, which changes no
-net name. No label on U3 or U22 was touched, so the pre-existing RS-232
-wiring defect stays visible and is excluded with a written reason.
+Netlist connectivity unchanged; board untouched.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 ```
+
+---
+
 ### Task 9: Document the retained DRC violations as exclusions
 
 DRC stands at 22: 17 `silk_edge_clearance` and 5 `starved_thermal`. Both are properties of
@@ -1998,19 +2112,28 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 ## Task Dependency Summary
 
 ```
-1  harness + baseline
-2  format upgrade         (needs 1)    KiCad 6 -> 10 format, CRLF -> LF
-3  vendor footprints      (needs 2)    DRC 91 -> 22, ERC 243 -> 176
-4  3D passives            (needs 3)    3D  0 -> 76
-5  3D DIP sockets         (needs 4)    3D 76 -> 100
-6  3D connectors/misc     (needs 4)    3D 100 -> 115
-7  3D keyboard            (needs 4)    3D 115 -> 183
-8  re-home symbols, ERC   (needs 3)    ERC 176 -> issue-#2 only
-9  DRC exclusions         (needs 3)    DRC 22 documented
+1  harness + baseline                   OUTSTANDING
+2  format upgrade         (needs 1)     schematics DONE 2a7788a; board OUTSTANDING
+3  vendor footprints      (needs 2)     DRC 91 -> 22, ERC -> 34   (rehearsed, exact)
+4  3D passives            (needs 3)     3D  0 -> 76
+5  3D DIP sockets         (needs 4)     3D 76 -> 100
+6  3D connectors/misc     (needs 4)     3D 100 -> 115
+7  3D keyboard            (needs 4)     3D 115 -> 183
+8  refresh symbols, ERC   (needs 2)     ERC 243 -> 101 DONE 9d8e182 + 16a7755;
+                                        labels + vendored lib OUTSTANDING
+9  DRC exclusions         (needs 3)     DRC 22 documented
 10 standalone proof       (needs all)
 ```
 
-Tasks 4–7 are independent of each other and may be reordered, as may 8–9.
+Tasks 4–7 are independent of each other and may be reordered, as may 8–9. Task 8 was
+executed ahead of Task 3 without harm — it is schematic-only, so it has no dependency on
+the footprint vendoring.
+
+**Order note:** Task 1 is now partly retrospective. The harness it builds
+(`gerber_canon.py`, `netlist-gate.sh`, `rules-report.sh`) was written and validated during
+planning, and the v1.4 gerber baseline has been captured; what remains is committing those
+into `tools/` and `verify/`. Do that before Task 2's board conversion, which is the first
+outstanding step that can move copper.
 
 **No task changes copper.** `tools/gerber-gate.sh --strict` must pass on every one of them,
 with no reviewed exception and no prototype measurement anywhere in the plan. That is a
