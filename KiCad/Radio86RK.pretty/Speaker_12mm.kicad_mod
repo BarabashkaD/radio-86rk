@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at -6.35 -5.08 0)
 		(layer "F.SilkS")
-		(uuid "3f1750f3-407d-4f09-a8c4-97d80e17271d")
+		(uuid "29571215-e6f3-405d-8e8c-6549593b9757")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "Speaker_12mm"
 		(at -6.35 -6.6675 0)
 		(layer "F.SilkS")
-		(uuid "58310919-6b1b-4468-9a45-166e01983de6")
+		(uuid "0b399119-bc30-4b41-ae88-769882dc36b9")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0f5d7167-7825-4a8c-8d7b-5473bb31aa97")
+		(uuid "fba3fa7d-a9be-416b-92ea-ff173240d77c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "63108e66-bca1-42d2-a8c1-43591b2a49d2")
+		(uuid "383c49e2-50d6-43a5-a085-e48f890bafb9")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -63,12 +63,12 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "139586ba-575d-41d9-afa7-ca6fdab71f15")
+		(uuid "349cdf4a-76bd-481b-a3bf-57960d107a5a")
 	)
 	(fp_text user "+"
 		(at -6.985 0 0)
 		(layer "F.SilkS")
-		(uuid "2afa32a7-bfee-42bb-aeff-e88fcbba3bae")
+		(uuid "e999af90-5874-4799-a29b-7edcc85ba70c")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -82,7 +82,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "895a83ed-3107-4fae-a899-42a6a0372e45")
+		(uuid "c2e3457b-99f6-47c1-af0e-87cd9cc50f72")
 	)
 	(pad "2" thru_hole circle
 		(at -3.2512 0)
@@ -90,7 +90,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "cb3e699a-bbc7-412d-b09f-605ef9792cd8")
+		(uuid "02da9439-73f2-4dcf-a1de-af8be88fb354")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step"

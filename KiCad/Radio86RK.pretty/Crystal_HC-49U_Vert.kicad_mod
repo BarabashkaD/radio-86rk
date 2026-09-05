@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 2.54 -3.302 0)
 		(layer "F.SilkS")
-		(uuid "e2c8c98d-ec6c-498d-84f2-324b74b5fca0")
+		(uuid "379e5172-ef6a-4a4a-87f3-27f9a430b98b")
 		(effects
 			(font
 				(size 1.016 1.016)
@@ -19,7 +19,7 @@
 	(property "Value" "Crystal_HC-49U_Vert"
 		(at -1.905 -3.302 0)
 		(layer "F.SilkS")
-		(uuid "ec51a92f-77da-4e65-a62e-49fc512310c3")
+		(uuid "f252d8f5-74ad-4882-8884-474cf8bde4bc")
 		(effects
 			(font
 				(size 1.016 0.9144)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "f25d254f-9768-4e49-95c9-12e50ca77311")
+		(uuid "aad96529-ba63-482c-9f2e-b0d2e3363fcc")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "28b7d460-0ac3-4d4d-8c5a-697fd20c9406")
+		(uuid "95bd60c3-f080-4df8-a96e-1c6ca760605b")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -61,7 +61,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "b187b990-94c8-4cfd-b2e3-849aad4e2dc8")
+		(uuid "8c334faa-c41a-4206-a87c-9f4092b76cd9")
 	)
 	(fp_line
 		(start 3.429 -2.413)
@@ -71,7 +71,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "40b079dc-73bd-4e3f-be5d-500616ee33e4")
+		(uuid "887b0e80-e0ca-49da-92e9-e622b02f7737")
 	)
 	(fp_arc
 		(start -5.842 0)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "ab562bd3-d3ef-4177-96aa-a41a874de969")
+		(uuid "0a6ef504-d2cf-4081-990b-21c7b2349445")
 	)
 	(fp_arc
 		(start -3.429 2.413)
@@ -93,7 +93,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "6f4ce2b9-1448-4cb6-9048-a85f8b8b77ef")
+		(uuid "5cdd6660-7840-4ae9-87a0-1c3daac0c1c6")
 	)
 	(fp_arc
 		(start 3.429 -2.413)
@@ -104,7 +104,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "6f0d17cb-70a7-43d2-87a8-49a8bce89fbc")
+		(uuid "f12d6b18-9a16-4750-a672-c46e12db7eb7")
 	)
 	(fp_arc
 		(start 5.842 0)
@@ -115,7 +115,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d36b8ac0-380f-4184-8b7b-d24a39277e63")
+		(uuid "7611623b-0636-4558-889e-2ca6a67eb256")
 	)
 	(pad "1" thru_hole circle
 		(at -2.44094 0)
@@ -123,7 +123,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d96255ef-7e45-4905-baa0-9051b915dbdb")
+		(uuid "781b168f-5fb5-4f18-8a2d-a656984e70e8")
 	)
 	(pad "2" thru_hole circle
 		(at 2.44094 0)
@@ -131,7 +131,7 @@
 		(drill 0.8128)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "89f88633-1d97-49b3-891d-105404f2da9d")
+		(uuid "8dd19f4f-cd3a-44c7-8063-fe57bf0d4ff1")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step"

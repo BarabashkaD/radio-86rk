@@ -106,3 +106,56 @@ Ultra Librarian / GrabCAD exports are all suitable; note the origin and licence 
 
 **3D coverage after this task: 114/183.** The remaining 69 are the 68 switches (Task 7)
 and J4.
+
+## Keyboard — 68 switches, 6 footprints
+
+| Footprint | Refs | Model(s) | Note |
+|---|---|---|---|
+| `CHERRY_PCB_100H` | 62 keys | `SW_Cherry_MX_PCB` | perigoso, via PCM |
+| `CHERRY_PCB_125H` | SW65, SW66 | `SW_Cherry_MX_PCB` | |
+| `CHERRY_PCB_150H` | SW61 | `SW_Cherry_MX_PCB` | |
+| `CHERRY_PCB_225H` | SW11 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_2.00u` | composite |
+| `CHERRY_PCB_625H` | SW64 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_6.25u` @ 180° | composite, mirrored |
+| `Switch_Tactile_6mm_Right` | SW68 | `SW_Tactile_SPST_Angled_PTS645Vx31-2LFS` | reset switch |
+
+**The footprints are the board's own, not perigoso's.** Only the models come from perigoso.
+The design spec proposed adopting perigoso's footprints on the grounds that doing so
+"brings a 3D model", but models attach to any footprint by name, and both libraries put the
+switch's centre guide boss at (0, 0) — verified — so the model lands correctly on the
+original geometry with no offset.
+
+Keeping the board's footprints avoided a 2.286 → 2.5 mm pad growth on 67 switches, the
+compensating schematic pin swap, two clearance violations at 0.150 mm needing prototype
+measurement, and the loss of SW11/SW64's stabilizer holes. Cost: perigoso's tidier
+silkscreen and a real `F.CrtYd` courtyard. Cherry specifies hole sizes (⌀1.5 mm terminals,
+⌀4.0 mm boss, ⌀1.7 mm locating pins), not land diameter, so the board's 2.286 mm pads are
+as legitimate as perigoso's 2.5 mm.
+
+### Why SW64's stabilizer is rotated 180°
+
+The board mounts the spacebar stabilizer opposite to the 2.25u one, in the footprint's own
+frame:
+
+| | ⌀3.9878 (housing) | ⌀3.048 (wire) |
+|---|---|---|
+| Board SW11 (2.25u) | y = +8.255 | y = −6.985 |
+| perigoso `Stabilizer_2.00u` | y = +8.225 | y = −6.985 |
+| Board SW64 (6.25u) | y = **−8.255** | y = **+6.985** |
+| perigoso `Stabilizer_6.25u` | y = **+8.225** | y = **−6.985** |
+
+A 180° rotation about Z maps (x, y) → (−x, −y). Both patterns are symmetric about x = 0, so
+it acts as a pure front-to-back flip and aligns the model with the board's holes. Verified
+in `verify/renders/07-spacebar-closeup.png`: the housings sit on the board with the wire
+spanning between them. At 0° the whole assembly hangs off the board edge, 16.5 mm out.
+
+Per skiselev's README BOM, SW11 and SW64 take Cherry **G99-0742** leveling kits
+(Mouser `540-G99-0742`), and SW64 additionally uses the **wire from a G99-0226** (MX 1x8,
+`540-G99-0226`) fitted into G99-0742 housings. That hybrid is why SW64's 100.076 mm spacing
+matches no stock 6.25u part, and why perigoso's is 38 µm out and mirrored. The stabilizer
+models sit 30 µm (SW11) and 38 µm (SW64) from the board's actual hole centres — invisible in
+the viewer, and exactly what the 3D tolerance policy exists to permit.
+
+## Coverage
+
+**182 / 183.** The 7 mounting holes and the silkscreen logo are exempt. The single gap is
+**J4**, the 8-pin DIN, for which no public model exists anywhere — see above.

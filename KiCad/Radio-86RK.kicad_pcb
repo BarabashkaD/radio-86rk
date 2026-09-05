@@ -9147,12 +9147,12 @@
 			(uuid "dab9465c-79b9-4e3b-af17-bbe1b6984ea0")
 		)
 		(embedded_fonts no)
-		(model "tactile_switches/bot_tact_cv1.wrl"
+		(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step"
 			(offset
 				(xyz 0 0 0)
 			)
 			(scale
-				(xyz 1.2 1.2 1.2)
+				(xyz 1 1 1)
 			)
 			(rotate
 				(xyz 0 0 0)
@@ -10569,6 +10569,17 @@
 			(uuid "315f2c1f-a2d6-4609-bd43-bbcc18b3db18")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_225H"
 		(layer "F.Cu")
@@ -11306,6 +11317,28 @@
 			(uuid "707c5d45-f68b-4f4d-8685-fc5160151532")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -11615,6 +11648,17 @@
 			(uuid "1f75e747-322f-42d0-90c1-73e763fb384e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -11924,6 +11968,17 @@
 			(uuid "74ee83e1-8de2-4b6c-8262-aa8d97400e72")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -12233,6 +12288,17 @@
 			(uuid "af7cc8cf-199b-431e-973c-452cf01b8564")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Res_762"
 		(layer "F.Cu")
@@ -12735,6 +12801,17 @@
 			(uuid "86e8e915-8a02-4afa-9bba-f101b6dca725")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_125H"
 		(layer "F.Cu")
@@ -13044,6 +13121,17 @@
 			(uuid "8418ea60-8148-4531-bcfc-95d6b0ca1c4a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -13353,6 +13441,17 @@
 			(uuid "df7822ef-5e07-4725-81e6-6b3197140d0b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_150H"
 		(layer "F.Cu")
@@ -13662,6 +13761,17 @@
 			(uuid "478ce35e-88bb-449f-9c3f-8dfcf66ee877")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Hole_3mm"
 		(layer "F.Cu")
@@ -14052,6 +14162,17 @@
 			(uuid "b93e5089-1a84-4b10-908f-050d23f07342")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Res_762"
 		(layer "F.Cu")
@@ -14554,6 +14675,17 @@
 			(uuid "b65e221d-dcd1-4a24-9b0e-601c7a510029")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -14863,6 +14995,17 @@
 			(uuid "689f8539-7a2e-4aad-9cff-51b0c8949279")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -15172,6 +15315,17 @@
 			(uuid "d17c53ce-41e6-4ffb-9af3-a880d59a968c")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Hole_3mm"
 		(layer "F.Cu")
@@ -16057,6 +16211,17 @@
 			(uuid "5cf136ad-57f9-41bb-a011-ee30e8f0fef1")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -16366,6 +16531,17 @@
 			(uuid "82a0defc-2fc8-4180-b581-16330f4e9817")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -16675,6 +16851,17 @@
 			(uuid "8a0b0759-85f0-466b-be34-9b5bf1b11de8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Hole_3mm"
 		(layer "F.Cu")
@@ -17272,6 +17459,17 @@
 			(uuid "3f8b00df-a4ca-483f-a82f-5f2a16bbcaba")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_625H"
 		(layer "F.Cu")
@@ -18009,6 +18207,28 @@
 			(uuid "0e5eb3f5-2a79-401c-b870-9aeffc91f709")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 180)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -18318,6 +18538,17 @@
 			(uuid "5dba9c86-5299-4c1d-8ec5-dd496ff8a6d4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -18627,6 +18858,17 @@
 			(uuid "d3db683d-6f42-4cef-a51b-78d18e57470b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -18936,6 +19178,17 @@
 			(uuid "e429c771-dd16-430c-95ee-dbc6b7790122")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -19245,6 +19498,17 @@
 			(uuid "99ee9693-0030-4560-ae32-f4ad759abaa4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -19554,6 +19818,17 @@
 			(uuid "a5867908-90dc-401a-9866-69c6e6f88943")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -19863,6 +20138,17 @@
 			(uuid "75ac61e8-c863-4cdf-aeaf-944818df22cc")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -20172,6 +20458,17 @@
 			(uuid "f37d720a-4ea3-479b-8e7e-4a17e80e7226")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -20688,6 +20985,17 @@
 			(uuid "08ba073b-d7d4-4428-89e1-01d01260fa00")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -20997,6 +21305,17 @@
 			(uuid "684a6960-90f8-46c1-905a-40c23bcf9b58")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -21306,6 +21625,17 @@
 			(uuid "0e2ebc22-1a79-4655-8a9e-47f778baf1f4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -21615,6 +21945,17 @@
 			(uuid "2ec3f43e-96fb-42ef-bcfd-fe97c4bdfd0d")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -21924,6 +22265,17 @@
 			(uuid "ad873c3f-235a-4b93-b8e8-8feb316fcb3f")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -22233,6 +22585,17 @@
 			(uuid "53d06d2e-f233-4905-9f70-ab9e12fa8c7b")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -22542,6 +22905,17 @@
 			(uuid "c6756012-2e24-4971-b3da-b59a267d18cd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -22851,6 +23225,17 @@
 			(uuid "f1f3b23a-0085-4579-8ae7-0799d19f5e65")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -23160,6 +23545,17 @@
 			(uuid "8be15088-16a5-4398-b45e-e8d7be74f4c8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -23469,6 +23865,17 @@
 			(uuid "fbb3dc6d-1671-47fc-9b44-5e898a85f956")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -23778,6 +24185,17 @@
 			(uuid "e5afd425-88e7-4309-a78a-b916016075e9")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -24087,6 +24505,17 @@
 			(uuid "28900722-8a87-4ed1-bc79-3c69bc87e3b0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -24396,6 +24825,17 @@
 			(uuid "add147ad-40e1-4b66-bd90-ad6f6b1333a0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -24705,6 +25145,17 @@
 			(uuid "4d5b2164-4008-40fe-98b0-19b03381fbb7")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -25014,6 +25465,17 @@
 			(uuid "599a2174-0710-459e-b9e6-033b293d7cc8")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -25323,6 +25785,17 @@
 			(uuid "b02e6b50-3ffb-413a-88a7-3ddd238362c4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -25632,6 +26105,17 @@
 			(uuid "f69331c2-6b57-43f2-8632-f08a7f577dce")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -25941,6 +26425,17 @@
 			(uuid "3627f7f2-c76f-45de-b6e1-efd38951ac89")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -26250,6 +26745,17 @@
 			(uuid "040261d5-34d3-4668-a825-6cf8e4a29923")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -26559,6 +27065,17 @@
 			(uuid "20bad11a-5c23-42b4-aba2-02c3c38948c5")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -26868,6 +27385,17 @@
 			(uuid "d2edf640-0cdb-493b-81d8-7621c1442b36")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -27177,6 +27705,17 @@
 			(uuid "6d896dd4-9282-4d90-baef-2c8e2bd7cbff")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -27486,6 +28025,17 @@
 			(uuid "1ff1254c-9679-492b-8069-a3439a67e238")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -27795,6 +28345,17 @@
 			(uuid "cd32fa8e-a0ef-4bfa-93cc-2a2a561fab46")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -28104,6 +28665,17 @@
 			(uuid "e7fc9102-2de6-4a0b-8e15-f074e2958ebb")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -28413,6 +28985,17 @@
 			(uuid "dd56f497-8f38-4e41-bd76-1560d8c7ab3a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -28722,6 +29305,17 @@
 			(uuid "7489378f-3c3c-4fc9-9a9a-cc76cb15206e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -29031,6 +29625,17 @@
 			(uuid "f65726b9-2c6d-4e50-8add-8b8b3fc2d299")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -29340,6 +29945,17 @@
 			(uuid "aba2f603-8146-4989-8377-3f2a5d2d9ec2")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -29649,6 +30265,17 @@
 			(uuid "f0dfc447-1599-411e-a341-d3cd08846f02")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -29958,6 +30585,17 @@
 			(uuid "16112239-cb2d-4270-8fc6-f34028293f57")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -30267,6 +30905,17 @@
 			(uuid "c73fa697-5058-4fe7-8669-b3485ad1b876")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -30783,6 +31432,17 @@
 			(uuid "0b2b1b99-eb67-4e19-bcdb-f7d8fd14e651")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -31299,6 +31959,17 @@
 			(uuid "01f02f68-3790-4076-8fe1-9ed1f0f7f9e0")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -31608,6 +32279,17 @@
 			(uuid "27169c0b-1388-404d-a595-6245588da966")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -32124,6 +32806,17 @@
 			(uuid "a8125730-4f10-4bc1-8de6-4d4b1f2fede4")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:IC_DIP24_600"
 		(layer "F.Cu")
@@ -41409,6 +42102,17 @@
 			(uuid "e8dc9a5a-8292-4275-88e3-d630679c75af")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -41718,6 +42422,17 @@
 			(uuid "e79f8a2c-26cd-4f56-86af-ef666b6d6234")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -42027,6 +42742,17 @@
 			(uuid "a1d91e29-5e9a-4592-9852-48c2e4d1b326")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Cherry_MX:CHERRY_PCB_100H"
 		(layer "F.Cu")
@@ -42336,6 +43062,17 @@
 			(uuid "db518ecb-966f-47e1-ae72-e2d21a93c72e")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Cap_Cer_508"
 		(layer "F.Cu")
@@ -48066,6 +48803,17 @@
 			(uuid "e347c560-d0f5-4e70-bf0d-028f9ce1b6bd")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Transistor_TO92_EBC_254"
 		(layer "F.Cu")
@@ -51846,6 +52594,17 @@
 			(uuid "004aac81-b124-4d96-81ab-315f0a94ae1a")
 		)
 		(embedded_fonts no)
+		(model "${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "My_Components:Conn_Pin_Header_4x1_2.54mm"
 		(layer "F.Cu")

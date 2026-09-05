@@ -40,3 +40,14 @@ DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhan
 Conn_RCA_Right	${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step	0
 # J4: no comparable public 8-pin DIN exists; a wrong connector is worse than none.
 Conn_DIN_8pin	-	0
+# --- Keyboard: 68 switches across 6 footprints. Footprints are the board own, not perigoso.
+CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_150H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+# Wide keys: switch + stabilizer composite. SW64 needs 180 deg because perigoso
+# models its 6.25u stabilizer mirrored in Y relative to this board holes.
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	180
+Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	0	0
