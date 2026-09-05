@@ -3687,7 +3687,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Q_NPN_EBC"
+		(symbol "Transistor_BJT:Q_NPN_EBC"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -16123,7 +16123,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN_EBC")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 241.3 127 0)
 		(unit 1)
 		(body_style 1)
