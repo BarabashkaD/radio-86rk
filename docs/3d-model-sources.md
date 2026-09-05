@@ -265,3 +265,35 @@ pads to KiCad's 9 (an extra shield pad). Neither matters at the 3D layer.
 
 Reference renders: `validate-ic-alignment.png`, `validate-connectors.png`,
 `validate-jumpers.png`.
+
+### Polarity, verified against the netlist
+
+Placement being right does not mean *orientation* is right — a diode can sit perfectly on
+its pads with the band at the wrong end. Checked through the whole chain rather than by
+eye alone.
+
+**Diodes (D1–D9, `Diode_762`).** `Device:D` numbers pin 1 = K (cathode). Our footprint
+makes pad 1 the **square** pad at (+3.81, 0) and puts a filled silkscreen band at
+x = 0.762…1.27, on the pad-1 side — so the board's own marking agrees that pad 1 is the
+cathode. KiCad's `D_DO-35_SOD27_P7.62mm_Horizontal` also puts the cathode at pad 1, and the
+transform maps KiCad's pad 1 onto ours, so the model's band lands on the cathode.
+Confirmed in `verify/renders/validate-diodes.png`: square pad and red band on the same end.
+
+**Electrolytics (C33–C38, `Cap_Elec_Radial_6.3mm`).** Symbol `Device:C_Polarized_US`,
+pin 1 = +. Our footprint makes pad 1 the square pad and carries a `+` silkscreen at
+(−3.175, 2.54), the pad-1 side. Netlist check across all six:
+
+| Cap | pin 1 (+) | pin 2 (−) | |
+|---|---|---|---|
+| C33, C34 | VCC | GND | ✓ |
+| C35 | +12V | GND | ✓ |
+| C36 | GND | −12V | ✓ |
+| C37 | GND | −5V | ✓ |
+| C38 | video in | local net | ✓ coupling cap, not a rail |
+
+C36 and C37 look reversed relative to the others and are **correct**: on a negative rail the
+`+` terminal belongs on GND, the more positive node. Every one has pin 1 on the more
+positive net.
+
+In `verify/renders/validate-polarity.png` each can shows its pale stripe — the negative
+marking — on the side opposite the `+` silkscreen.
