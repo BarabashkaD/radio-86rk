@@ -22,7 +22,8 @@ CUR="$BUILD/netlist.nets"
 
 nofc "$KICAD_CLI" sch export netlist --format kicadsexpr \
     --output "$BUILD/netlist.raw" "$SCH" >/dev/null
-awk '/^\t\(nets/{f=1} f' "$BUILD/netlist.raw" > "$CUR"
+awk '/^\t\(nets/{f=1} f' "$BUILD/netlist.raw" \
+  | grep -v '^\s*(pintype ' > "$CUR"
 
 if [ "${1:-}" = "--capture" ]; then
   cp "$CUR" "$BASE"

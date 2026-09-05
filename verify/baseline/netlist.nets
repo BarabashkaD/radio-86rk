@@ -6,63 +6,52 @@
 			(node
 				(ref "C23")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C24")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C25")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C26")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C35")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "8")
 				(pinfunction "Pin_8_8")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "28")
 				(pinfunction "+12V_28")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U2")
 				(pin "9")
 				(pinfunction "+12V_9")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U23")
 				(pin "8")
 				(pinfunction "VDD_8")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U24")
 				(pin "8")
 				(pinfunction "VDD_8")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U26")
 				(pin "6")
 				(pinfunction "+VOUT_6")
-				(pintype "power_out")
 			)
 		)
 		(net
@@ -72,35 +61,29 @@
 			(node
 				(ref "C29")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C30")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C37")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "11")
 				(pinfunction "-5V_11")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U21")
 				(pin "4")
 				(pinfunction "V-_4")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U25")
 				(pin "3")
 				(pinfunction "VO_3")
-				(pintype "power_out")
 			)
 		)
 		(net
@@ -110,47 +93,39 @@
 			(node
 				(ref "C27")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C28")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C36")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "7")
 				(pinfunction "Pin_7_7")
-				(pintype "passive")
 			)
 			(node
 				(ref "U23")
 				(pin "5")
 				(pinfunction "VSS_5")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U24")
 				(pin "5")
 				(pinfunction "VSS_5")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U25")
 				(pin "2")
 				(pinfunction "VI_2")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U26")
 				(pin "8")
 				(pinfunction "-VOUT_8")
-				(pintype "power_out")
 			)
 		)
 		(net
@@ -161,29 +136,24 @@
 				(ref "U1")
 				(pin "36")
 				(pinfunction "A15_36")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U12")
 				(pin "9")
 				(pinfunction "O3_9")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U14")
 				(pin "6")
 				(pinfunction "E3_6")
-				(pintype "input")
 			)
 			(node
 				(ref "U19")
 				(pin "5")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "2")
-				(pintype "input")
 			)
 		)
 		(net
@@ -194,13 +164,11 @@
 				(ref "JP1")
 				(pin "3")
 				(pinfunction "Pin_3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U10")
 				(pin "23")
 				(pinfunction "A11_23")
-				(pintype "input")
 			)
 		)
 		(net
@@ -211,13 +179,11 @@
 				(ref "U7")
 				(pin "14")
 				(pinfunction "DACK2_14")
-				(pintype "output")
 			)
 			(node
 				(ref "U8")
 				(pin "6")
 				(pinfunction "DACK_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -228,17 +194,14 @@
 				(ref "U1")
 				(pin "17")
 				(pinfunction "DBIN_17")
-				(pintype "output")
 			)
 			(node
 				(ref "U16")
 				(pin "2")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -249,13 +212,11 @@
 				(ref "U7")
 				(pin "17")
 				(pinfunction "DREQ2_17")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "5")
 				(pinfunction "DRQ_5")
-				(pintype "output")
 			)
 		)
 		(net
@@ -266,13 +227,11 @@
 				(ref "U1")
 				(pin "21")
 				(pinfunction "HLDA_21")
-				(pintype "output")
 			)
 			(node
 				(ref "U7")
 				(pin "7")
 				(pinfunction "HLDA_7")
-				(pintype "input")
 			)
 		)
 		(net
@@ -283,13 +242,11 @@
 				(ref "U1")
 				(pin "13")
 				(pinfunction "HOLD_13")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "10")
 				(pinfunction "HRQ_10")
-				(pintype "output")
 			)
 		)
 		(net
@@ -300,17 +257,14 @@
 				(ref "U1")
 				(pin "16")
 				(pinfunction "INTE_16")
-				(pintype "output")
 			)
 			(node
 				(ref "U20")
 				(pin "10")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "9")
-				(pintype "input")
 			)
 		)
 		(net
@@ -321,13 +275,11 @@
 				(ref "J5")
 				(pin "8")
 				(pinfunction "P8_8")
-				(pintype "passive")
 			)
 			(node
 				(ref "U22")
 				(pin "6")
 				(pinfunction "3A_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -338,13 +290,11 @@
 				(ref "J5")
 				(pin "6")
 				(pinfunction "P6_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "U22")
 				(pin "5")
 				(pinfunction "2A_5")
-				(pintype "input")
 			)
 		)
 		(net
@@ -355,13 +305,11 @@
 				(ref "J5")
 				(pin "4")
 				(pinfunction "4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U24")
 				(pin "6")
 				(pinfunction "2Y_6")
-				(pintype "output")
 			)
 		)
 		(net
@@ -372,13 +320,11 @@
 				(ref "J6")
 				(pin "2")
 				(pinfunction "Pin_2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "4")
 				(pinfunction "PA0_4")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -389,13 +335,11 @@
 				(ref "J6")
 				(pin "4")
 				(pinfunction "Pin_4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "3")
 				(pinfunction "PA1_3")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -406,13 +350,11 @@
 				(ref "J6")
 				(pin "6")
 				(pinfunction "Pin_6_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "2")
 				(pinfunction "PA2_2")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -423,13 +365,11 @@
 				(ref "J6")
 				(pin "8")
 				(pinfunction "Pin_8_8")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "1")
 				(pinfunction "PA3_1")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -440,13 +380,11 @@
 				(ref "J6")
 				(pin "10")
 				(pinfunction "Pin_10_10")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "40")
 				(pinfunction "PA4_40")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -457,13 +395,11 @@
 				(ref "J6")
 				(pin "12")
 				(pinfunction "Pin_12_12")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "39")
 				(pinfunction "PA5_39")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -474,13 +410,11 @@
 				(ref "J6")
 				(pin "14")
 				(pinfunction "Pin_14_14")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "38")
 				(pinfunction "PA6_38")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -491,13 +425,11 @@
 				(ref "J6")
 				(pin "16")
 				(pinfunction "Pin_16_16")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "37")
 				(pinfunction "PA7_37")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -508,13 +440,11 @@
 				(ref "J6")
 				(pin "18")
 				(pinfunction "Pin_18_18")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "18")
 				(pinfunction "PB0_18")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -525,13 +455,11 @@
 				(ref "J6")
 				(pin "20")
 				(pinfunction "Pin_20_20")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "19")
 				(pinfunction "PB1_19")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -542,13 +470,11 @@
 				(ref "J6")
 				(pin "22")
 				(pinfunction "Pin_22_22")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "20")
 				(pinfunction "PB2_20")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -559,13 +485,11 @@
 				(ref "J6")
 				(pin "24")
 				(pinfunction "Pin_24_24")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "21")
 				(pinfunction "PB3_21")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -576,13 +500,11 @@
 				(ref "J6")
 				(pin "23")
 				(pinfunction "Pin_23_23")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "22")
 				(pinfunction "PB4_22")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -593,13 +515,11 @@
 				(ref "J6")
 				(pin "21")
 				(pinfunction "Pin_21_21")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "23")
 				(pinfunction "PB5_23")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -610,13 +530,11 @@
 				(ref "J6")
 				(pin "19")
 				(pinfunction "Pin_19_19")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "24")
 				(pinfunction "PB6_24")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -627,13 +545,11 @@
 				(ref "J6")
 				(pin "17")
 				(pinfunction "Pin_17_17")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "25")
 				(pinfunction "PB7_25")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -644,13 +560,11 @@
 				(ref "J6")
 				(pin "1")
 				(pinfunction "Pin_1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "14")
 				(pinfunction "PC0_14")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -661,13 +575,11 @@
 				(ref "J6")
 				(pin "3")
 				(pinfunction "Pin_3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "15")
 				(pinfunction "PC1_15")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -678,13 +590,11 @@
 				(ref "J6")
 				(pin "5")
 				(pinfunction "Pin_5_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "16")
 				(pinfunction "PC2_16")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -695,13 +605,11 @@
 				(ref "J6")
 				(pin "7")
 				(pinfunction "Pin_7_7")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "17")
 				(pinfunction "PC3_17")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -712,13 +620,11 @@
 				(ref "J6")
 				(pin "9")
 				(pinfunction "Pin_9_9")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "13")
 				(pinfunction "PC4_13")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -729,13 +635,11 @@
 				(ref "J6")
 				(pin "11")
 				(pinfunction "Pin_11_11")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "12")
 				(pinfunction "PC5_12")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -746,13 +650,11 @@
 				(ref "J6")
 				(pin "13")
 				(pinfunction "Pin_13_13")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "11")
 				(pinfunction "PC6_11")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -763,13 +665,11 @@
 				(ref "J6")
 				(pin "15")
 				(pinfunction "Pin_15_15")
-				(pintype "passive")
 			)
 			(node
 				(ref "U6")
 				(pin "10")
 				(pinfunction "PC7_10")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -779,13 +679,11 @@
 			(node
 				(ref "F1")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J6")
 				(pin "25")
 				(pinfunction "Pin_25_25")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -796,13 +694,11 @@
 				(ref "J5")
 				(pin "7")
 				(pinfunction "P7_7")
-				(pintype "passive")
 			)
 			(node
 				(ref "U23")
 				(pin "7")
 				(pinfunction "1Y_7")
-				(pintype "output")
 			)
 		)
 		(net
@@ -813,13 +709,11 @@
 				(ref "J5")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U22")
 				(pin "4")
 				(pinfunction "1A_4")
-				(pintype "input")
 			)
 		)
 		(net
@@ -830,13 +724,11 @@
 				(ref "U22")
 				(pin "13")
 				(pinfunction "1Y_13")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "3")
 				(pinfunction "RXD_3")
-				(pintype "input")
 			)
 		)
 		(net
@@ -846,13 +738,11 @@
 			(node
 				(ref "U20")
 				(pin "13")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "17")
 				(pinfunction "OUT2_17")
-				(pintype "output")
 			)
 		)
 		(net
@@ -863,13 +753,11 @@
 				(ref "J5")
 				(pin "3")
 				(pinfunction "3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U23")
 				(pin "6")
 				(pinfunction "2Y_6")
-				(pintype "output")
 			)
 		)
 		(net
@@ -880,13 +768,11 @@
 				(ref "U23")
 				(pin "3")
 				(pinfunction "2A_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "19")
 				(pinfunction "TXD_19")
-				(pintype "output")
 			)
 		)
 		(net
@@ -897,19 +783,16 @@
 				(ref "U3")
 				(pin "25")
 				(pinfunction "~{RXC}_25")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "9")
 				(pinfunction "~{TXC}_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "13")
 				(pinfunction "OUT1_13")
-				(pintype "output")
 			)
 		)
 		(net
@@ -920,13 +803,11 @@
 				(ref "U22")
 				(pin "11")
 				(pinfunction "3Y_11")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "17")
 				(pinfunction "~{CTS}_17")
-				(pintype "input")
 			)
 		)
 		(net
@@ -937,13 +818,11 @@
 				(ref "U22")
 				(pin "12")
 				(pinfunction "2Y_12")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "22")
 				(pinfunction "~{DSR}_22")
-				(pintype "input")
 			)
 		)
 		(net
@@ -954,13 +833,11 @@
 				(ref "U24")
 				(pin "3")
 				(pinfunction "2A_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "24")
 				(pinfunction "~{DTR}_24")
-				(pintype "output")
 			)
 		)
 		(net
@@ -971,13 +848,11 @@
 				(ref "U23")
 				(pin "2")
 				(pinfunction "1A_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "23")
 				(pinfunction "~{RTS}_23")
-				(pintype "output")
 			)
 		)
 		(net
@@ -988,19 +863,16 @@
 				(ref "RN4")
 				(pin "3")
 				(pinfunction "R2_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW65")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "11")
 				(pinfunction "PC6_11")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1011,12 +883,10 @@
 				(ref "D10")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R12")
 				(pin "2")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1027,12 +897,10 @@
 				(ref "D11")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R13")
 				(pin "2")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1043,19 +911,16 @@
 				(ref "RN4")
 				(pin "4")
 				(pinfunction "R3_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW66")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "12")
 				(pinfunction "PC5_12")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1066,13 +931,11 @@
 				(ref "D2")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "4")
 				(pinfunction "PA0_4")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1083,13 +946,11 @@
 				(ref "D3")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "3")
 				(pinfunction "PA1_3")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1100,13 +961,11 @@
 				(ref "D4")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "2")
 				(pinfunction "PA2_2")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1117,13 +976,11 @@
 				(ref "D5")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "1")
 				(pinfunction "PA3_1")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1134,13 +991,11 @@
 				(ref "D6")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "40")
 				(pinfunction "PA4_40")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1151,13 +1006,11 @@
 				(ref "D7")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "39")
 				(pinfunction "PA5_39")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1168,13 +1021,11 @@
 				(ref "D8")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "38")
 				(pinfunction "PA6_38")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1185,13 +1036,11 @@
 				(ref "D9")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "37")
 				(pinfunction "PA7_37")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1202,61 +1051,51 @@
 				(ref "RN2")
 				(pin "4")
 				(pinfunction "R3_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW1")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW17")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW25")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW33")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW41")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW49")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW57")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW9")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "18")
 				(pinfunction "PB0_18")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1267,61 +1106,51 @@
 				(ref "RN2")
 				(pin "5")
 				(pinfunction "R4_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW10")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW18")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW2")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW26")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW34")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW42")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW50")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW58")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "19")
 				(pinfunction "PB1_19")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1332,61 +1161,51 @@
 				(ref "RN2")
 				(pin "6")
 				(pinfunction "R5_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW11")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW19")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW27")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW3")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW35")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW43")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW51")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW59")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "20")
 				(pinfunction "PB2_20")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1397,61 +1216,51 @@
 				(ref "RN3")
 				(pin "6")
 				(pinfunction "R5_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW12")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW20")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW28")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW36")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW4")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW44")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW52")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW60")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "21")
 				(pinfunction "PB3_21")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1462,61 +1271,51 @@
 				(ref "RN3")
 				(pin "5")
 				(pinfunction "R4_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW13")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW21")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW29")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW37")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW45")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW5")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW53")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW61")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "22")
 				(pinfunction "PB4_22")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1527,61 +1326,51 @@
 				(ref "RN3")
 				(pin "4")
 				(pinfunction "R3_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW14")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW22")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW30")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW38")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW46")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW54")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW6")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW62")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "23")
 				(pinfunction "PB5_23")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1592,61 +1381,51 @@
 				(ref "RN3")
 				(pin "3")
 				(pinfunction "R2_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW15")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW23")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW31")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW39")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW47")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW55")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW63")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW7")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "24")
 				(pinfunction "PB6_24")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1657,61 +1436,51 @@
 				(ref "RN3")
 				(pin "2")
 				(pinfunction "R1_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW16")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW24")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW32")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW40")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW48")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW56")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW64")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW8")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "25")
 				(pinfunction "PB7_25")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -1722,55 +1491,46 @@
 				(ref "D2")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW1")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW2")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW3")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW4")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW5")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW6")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW7")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW8")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1781,55 +1541,46 @@
 				(ref "D3")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW10")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW11")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW12")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW13")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW14")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW15")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW16")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW9")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1840,55 +1591,46 @@
 				(ref "D4")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW17")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW18")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW19")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW20")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW21")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW22")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW23")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW24")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1899,55 +1641,46 @@
 				(ref "D5")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW25")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW26")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW27")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW28")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW29")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW30")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW31")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW32")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -1958,55 +1691,46 @@
 				(ref "D6")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW33")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW34")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW35")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW36")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW37")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW38")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW39")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW40")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -2017,55 +1741,46 @@
 				(ref "D7")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW41")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW42")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW43")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW44")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW45")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW46")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW47")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW48")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -2076,55 +1791,46 @@
 				(ref "D8")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW49")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW50")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW51")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW52")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW53")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW54")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW55")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW56")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -2135,55 +1841,46 @@
 				(ref "D9")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW57")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW58")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW59")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW60")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW61")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW62")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW63")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW64")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -2194,19 +1891,16 @@
 				(ref "RN4")
 				(pin "2")
 				(pinfunction "R1_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW67")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "10")
 				(pinfunction "PC7_10")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -2216,13 +1910,11 @@
 			(node
 				(ref "U19")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "17")
 				(pinfunction "PC3_17")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -2233,18 +1925,15 @@
 				(ref "D1")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R4")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "13")
 				(pinfunction "PC4_13")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -2254,13 +1943,11 @@
 			(node
 				(ref "R7")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U5")
 				(pin "14")
 				(pinfunction "PC0_14")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -2271,12 +1958,10 @@
 				(ref "D11")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U19")
 				(pin "2")
-				(pintype "output")
 			)
 		)
 		(net
@@ -2287,19 +1972,16 @@
 				(ref "U1")
 				(pin "23")
 				(pinfunction "READY_23")
-				(pintype "input")
 			)
 			(node
 				(ref "U2")
 				(pin "4")
 				(pinfunction "READY_4")
-				(pintype "output")
 			)
 			(node
 				(ref "U7")
 				(pin "6")
 				(pinfunction "READY_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2310,13 +1992,11 @@
 				(ref "U14")
 				(pin "11")
 				(pinfunction "O4_11")
-				(pintype "output")
 			)
 			(node
 				(ref "U8")
 				(pin "22")
 				(pinfunction "~{CS}_22")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2326,13 +2006,11 @@
 			(node
 				(ref "U18")
 				(pin "11")
-				(pintype "output")
 			)
 			(node
 				(ref "U8")
 				(pin "10")
 				(pinfunction "~{WR}_10")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2343,18 +2021,15 @@
 				(ref "U14")
 				(pin "9")
 				(pinfunction "O6_9")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "11")
 				(pinfunction "~{CS}_11")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2365,13 +2040,11 @@
 				(ref "J7")
 				(pin "5")
 				(pinfunction "Pin_5_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "U14")
 				(pin "10")
 				(pinfunction "O5_10")
-				(pintype "output")
 			)
 		)
 		(net
@@ -2382,13 +2055,11 @@
 				(ref "U14")
 				(pin "14")
 				(pinfunction "O1_14")
-				(pintype "output")
 			)
 			(node
 				(ref "U4")
 				(pin "21")
 				(pinfunction "~{CS}_21")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2399,13 +2070,11 @@
 				(ref "U14")
 				(pin "15")
 				(pinfunction "O0_15")
-				(pintype "output")
 			)
 			(node
 				(ref "U5")
 				(pin "6")
 				(pinfunction "~{CS}_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2416,13 +2085,11 @@
 				(ref "U14")
 				(pin "13")
 				(pinfunction "O2_13")
-				(pintype "output")
 			)
 			(node
 				(ref "U6")
 				(pin "6")
 				(pinfunction "~{CS}_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2432,13 +2099,11 @@
 			(node
 				(ref "U20")
 				(pin "6")
-				(pintype "output")
 			)
 			(node
 				(ref "U9")
 				(pin "20")
 				(pinfunction "~{CE}_20")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2449,12 +2114,10 @@
 				(ref "U10")
 				(pin "20")
 				(pinfunction "~{CE}_20")
-				(pintype "input")
 			)
 			(node
 				(ref "U18")
 				(pin "6")
-				(pintype "output")
 			)
 		)
 		(net
@@ -2465,13 +2128,11 @@
 				(ref "U14")
 				(pin "12")
 				(pinfunction "O3_12")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "11")
 				(pinfunction "~{CS}_11")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2482,61 +2143,51 @@
 				(ref "J7")
 				(pin "9")
 				(pinfunction "Pin_9_9")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "25")
 				(pinfunction "A0_25")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "10")
 				(pinfunction "A0_10")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "12")
 				(pinfunction "C/~{D}_12")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "19")
 				(pinfunction "A0_19")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "9")
 				(pinfunction "A0_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U6")
 				(pin "9")
 				(pinfunction "A0_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "32")
 				(pinfunction "A0_32")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "21")
 				(pinfunction "A0_21")
-				(pintype "input")
 			)
 			(node
 				(ref "U9")
 				(pin "10")
 				(pinfunction "A0_10")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2547,49 +2198,41 @@
 				(ref "J7")
 				(pin "8")
 				(pinfunction "Pin_8_8")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "26")
 				(pinfunction "A1_26")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "9")
 				(pinfunction "A1_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "20")
 				(pinfunction "A1_20")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "8")
 				(pinfunction "A1_8")
-				(pintype "input")
 			)
 			(node
 				(ref "U6")
 				(pin "8")
 				(pinfunction "A1_8")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "33")
 				(pinfunction "A1_33")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "9")
 				(pinfunction "A1_9")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2600,31 +2243,26 @@
 				(ref "J7")
 				(pin "7")
 				(pinfunction "Pin_7_7")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "27")
 				(pinfunction "A2_27")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "8")
 				(pinfunction "A2_8")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "34")
 				(pinfunction "A2_34")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "8")
 				(pinfunction "A2_8")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2635,31 +2273,26 @@
 				(ref "J7")
 				(pin "6")
 				(pinfunction "Pin_6_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "29")
 				(pinfunction "A3_29")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "7")
 				(pinfunction "A3_7")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "35")
 				(pinfunction "A3_35")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "7")
 				(pinfunction "A3_7")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2670,25 +2303,21 @@
 				(ref "U1")
 				(pin "30")
 				(pinfunction "A4_30")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "6")
 				(pinfunction "A4_6")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "37")
 				(pinfunction "A4_37")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "6")
 				(pinfunction "A4_6")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2699,25 +2328,21 @@
 				(ref "U1")
 				(pin "31")
 				(pinfunction "A5_31")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "5")
 				(pinfunction "A5_5")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "38")
 				(pinfunction "A5_38")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "5")
 				(pinfunction "A5_5")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2728,25 +2353,21 @@
 				(ref "U1")
 				(pin "32")
 				(pinfunction "A6_32")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "4")
 				(pinfunction "A6_4")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "39")
 				(pinfunction "A6_39")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "4")
 				(pinfunction "A6_4")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2757,25 +2378,21 @@
 				(ref "U1")
 				(pin "33")
 				(pinfunction "A7_33")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "3")
 				(pinfunction "A7_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "40")
 				(pinfunction "A7_40")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "3")
 				(pinfunction "A7_3")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2786,25 +2403,21 @@
 				(ref "U1")
 				(pin "34")
 				(pinfunction "A8_34")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "25")
 				(pinfunction "A8_25")
-				(pintype "input")
 			)
 			(node
 				(ref "U12")
 				(pin "12")
 				(pinfunction "O4_12")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "25")
 				(pinfunction "A8_25")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2815,25 +2428,21 @@
 				(ref "U1")
 				(pin "35")
 				(pinfunction "A9_35")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "24")
 				(pinfunction "A9_24")
-				(pintype "input")
 			)
 			(node
 				(ref "U12")
 				(pin "15")
 				(pinfunction "O5_15")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "24")
 				(pinfunction "A9_24")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2844,25 +2453,21 @@
 				(ref "U1")
 				(pin "1")
 				(pinfunction "A10_1")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "21")
 				(pinfunction "A10_21")
-				(pintype "input")
 			)
 			(node
 				(ref "U12")
 				(pin "16")
 				(pinfunction "O6_16")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "21")
 				(pinfunction "A10_21")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2873,25 +2478,21 @@
 				(ref "JP1")
 				(pin "4")
 				(pinfunction "Pin_4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "40")
 				(pinfunction "A11_40")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U12")
 				(pin "19")
 				(pinfunction "O7_19")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U9")
 				(pin "23")
 				(pinfunction "A11_23")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2902,31 +2503,26 @@
 				(ref "U1")
 				(pin "37")
 				(pinfunction "A12_37")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U10")
 				(pin "2")
 				(pinfunction "A12_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U12")
 				(pin "2")
 				(pinfunction "O0_2")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U14")
 				(pin "1")
 				(pinfunction "A0_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U9")
 				(pin "2")
 				(pinfunction "A12_2")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2937,25 +2533,21 @@
 				(ref "U1")
 				(pin "38")
 				(pinfunction "A13_38")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U12")
 				(pin "5")
 				(pinfunction "O1_5")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U14")
 				(pin "2")
 				(pinfunction "A1_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U9")
 				(pin "26")
 				(pinfunction "A13_26")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2966,25 +2558,21 @@
 				(ref "U1")
 				(pin "39")
 				(pinfunction "A14_39")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U12")
 				(pin "6")
 				(pinfunction "O2_6")
-				(pintype "tri_state")
 			)
 			(node
 				(ref "U14")
 				(pin "3")
 				(pinfunction "A2_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U9")
 				(pin "1")
 				(pinfunction "A14_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -2995,67 +2583,56 @@
 				(ref "J7")
 				(pin "11")
 				(pinfunction "Pin_11_11")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "10")
 				(pinfunction "D0_10")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "11")
 				(pinfunction "DQ0_11")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "13")
 				(pinfunction "D4_13")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "27")
 				(pinfunction "D0_27")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "8")
 				(pinfunction "D0_8")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "34")
 				(pinfunction "D0_34")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "34")
 				(pinfunction "D0_34")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "30")
 				(pinfunction "DB0_30")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "12")
 				(pinfunction "D0_12")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "11")
 				(pinfunction "DQ0_11")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3066,67 +2643,56 @@
 				(ref "J7")
 				(pin "12")
 				(pinfunction "Pin_12_12")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "9")
 				(pinfunction "D1_9")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "12")
 				(pinfunction "DQ1_12")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "14")
 				(pinfunction "D5_14")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "28")
 				(pinfunction "D1_28")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "7")
 				(pinfunction "D1_7")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "33")
 				(pinfunction "D1_33")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "33")
 				(pinfunction "D1_33")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "29")
 				(pinfunction "DB1_29")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "13")
 				(pinfunction "D1_13")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "12")
 				(pinfunction "DQ1_12")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3137,67 +2703,56 @@
 				(ref "J7")
 				(pin "13")
 				(pinfunction "Pin_13_13")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "8")
 				(pinfunction "D2_8")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "13")
 				(pinfunction "DQ2_13")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "17")
 				(pinfunction "D6_17")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "1")
 				(pinfunction "D2_1")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "6")
 				(pinfunction "D2_6")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "32")
 				(pinfunction "D2_32")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "32")
 				(pinfunction "D2_32")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "28")
 				(pinfunction "DB2_28")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "14")
 				(pinfunction "D2_14")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "13")
 				(pinfunction "DQ2_13")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3208,67 +2763,56 @@
 				(ref "J7")
 				(pin "14")
 				(pinfunction "Pin_14_14")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "7")
 				(pinfunction "D3_7")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "15")
 				(pinfunction "DQ3_15")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "18")
 				(pinfunction "D7_18")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "2")
 				(pinfunction "D3_2")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "5")
 				(pinfunction "D3_5")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "31")
 				(pinfunction "D3_31")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "31")
 				(pinfunction "D3_31")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "27")
 				(pinfunction "DB3_27")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "15")
 				(pinfunction "D3_15")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "15")
 				(pinfunction "DQ3_15")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3279,67 +2823,56 @@
 				(ref "J7")
 				(pin "15")
 				(pinfunction "Pin_15_15")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "3")
 				(pinfunction "D4_3")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "16")
 				(pinfunction "DQ4_16")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "3")
 				(pinfunction "D0_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "5")
 				(pinfunction "D4_5")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "4")
 				(pinfunction "D4_4")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "30")
 				(pinfunction "D4_30")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "30")
 				(pinfunction "D4_30")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "26")
 				(pinfunction "DB4_26")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "16")
 				(pinfunction "D4_16")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "16")
 				(pinfunction "DQ4_16")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3350,67 +2883,56 @@
 				(ref "J7")
 				(pin "18")
 				(pinfunction "Pin_18_18")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "4")
 				(pinfunction "D5_4")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "17")
 				(pinfunction "DQ5_17")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "4")
 				(pinfunction "D1_4")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "6")
 				(pinfunction "D5_6")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "3")
 				(pinfunction "D5_3")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "29")
 				(pinfunction "D5_29")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "29")
 				(pinfunction "D5_29")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "23")
 				(pinfunction "DB5_23")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "17")
 				(pinfunction "D5_17")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "17")
 				(pinfunction "DQ5_17")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3421,67 +2943,56 @@
 				(ref "J7")
 				(pin "19")
 				(pinfunction "Pin_19_19")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "5")
 				(pinfunction "D6_5")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "18")
 				(pinfunction "DQ6_18")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "7")
 				(pinfunction "D2_7")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "7")
 				(pinfunction "D6_7")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "2")
 				(pinfunction "D6_2")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "28")
 				(pinfunction "D6_28")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "28")
 				(pinfunction "D6_28")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "22")
 				(pinfunction "DB6_22")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "18")
 				(pinfunction "D6_18")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "18")
 				(pinfunction "DQ6_18")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3492,67 +3003,56 @@
 				(ref "J7")
 				(pin "20")
 				(pinfunction "Pin_20_20")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "6")
 				(pinfunction "D7_6")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U10")
 				(pin "19")
 				(pinfunction "DQ7_19")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U12")
 				(pin "8")
 				(pinfunction "D3_8")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "8")
 				(pinfunction "D7_8")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U4")
 				(pin "1")
 				(pinfunction "D7_1")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U5")
 				(pin "27")
 				(pinfunction "D7_27")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U6")
 				(pin "27")
 				(pinfunction "D7_27")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U7")
 				(pin "21")
 				(pinfunction "DB7_21")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U8")
 				(pin "19")
 				(pinfunction "D7_19")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "19")
 				(pinfunction "DQ7_19")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -3562,629 +3062,515 @@
 			(node
 				(ref "C1")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C10")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C11")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C12")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C13")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C14")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C15")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C16")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C17")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C18")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C19")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C2")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C20")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C21")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C22")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C23")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C24")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C25")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C26")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C27")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C28")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C29")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C3")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C30")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C31")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C33")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C34")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C35")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C36")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C37")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C4")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C41")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C42")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C43")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C5")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C6")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C7")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C8")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C9")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "D1")
 				(pin "2")
 				(pinfunction "A_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "D10")
 				(pin "1")
 				(pinfunction "K_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "HOLE1")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE2")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE3")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE4")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE5")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE6")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "HOLE7")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "J1")
 				(pin "2")
 				(pinfunction "Ext_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J2")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J2")
 				(pin "3")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "1")
 				(pinfunction "Pin_1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "2")
 				(pinfunction "Pin_2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "3")
 				(pinfunction "Pin_3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "0")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "3")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "8")
-				(pintype "passive")
 			)
 			(node
 				(ref "J5")
 				(pin "0")
 				(pinfunction "GND_0")
-				(pintype "passive")
 			)
 			(node
 				(ref "J5")
 				(pin "5")
 				(pinfunction "5_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "J6")
 				(pin "26")
 				(pinfunction "Pin_26_26")
-				(pintype "passive")
 			)
 			(node
 				(ref "J7")
 				(pin "1")
 				(pinfunction "Pin_1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J7")
 				(pin "2")
 				(pinfunction "Pin_2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "Q2")
 				(pin "1")
 				(pinfunction "E_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R14")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R15")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R3")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R8")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW65")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW66")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW67")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW68")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW68")
 				(pin "GND")
 				(pinfunction "GND_GND")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U1")
 				(pin "14")
 				(pinfunction "INT_14")
-				(pintype "input")
 			)
 			(node
 				(ref "U1")
 				(pin "2")
 				(pinfunction "GND_2")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U10")
 				(pin "14")
 				(pinfunction "GND_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U11")
 				(pin "14")
 				(pinfunction "GND_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U11")
 				(pin "2")
 				(pinfunction "A12_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U11")
 				(pin "22")
 				(pinfunction "~{OE}_22")
-				(pintype "input")
 			)
 			(node
 				(ref "U12")
 				(pin "10")
 				(pinfunction "GND_10")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U13")
 				(pin "12")
 				(pinfunction "GND_12")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U14")
 				(pin "4")
 				(pinfunction "E1_4")
-				(pintype "input")
 			)
 			(node
 				(ref "U14")
 				(pin "5")
 				(pinfunction "E2_5")
-				(pintype "input")
 			)
 			(node
 				(ref "U14")
 				(pin "8")
 				(pinfunction "GND_8")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U15")
 				(pin "10")
 				(pinfunction "GND_10")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U15")
 				(pin "6")
 				(pinfunction "R0(1)_6")
-				(pintype "input")
 			)
 			(node
 				(ref "U15")
 				(pin "7")
 				(pinfunction "R0(2)_7")
-				(pintype "input")
 			)
 			(node
 				(ref "U16")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U17")
 				(pin "11")
 				(pinfunction "C_11")
-				(pintype "input")
 			)
 			(node
 				(ref "U17")
 				(pin "12")
 				(pinfunction "D_12")
-				(pintype "input")
 			)
 			(node
 				(ref "U17")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U18")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U19")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U2")
 				(pin "8")
 				(pinfunction "GND_8")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U20")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U21")
 				(pin "3")
 				(pinfunction "+_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U22")
 				(pin "8")
 				(pinfunction "GND_8")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U23")
 				(pin "4")
 				(pinfunction "GND_4")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U24")
 				(pin "4")
 				(pinfunction "GND_4")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U25")
 				(pin "1")
 				(pinfunction "GND_1")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U26")
 				(pin "1")
 				(pinfunction "-VIN_1")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U26")
 				(pin "7")
 				(pinfunction "Common_7")
-				(pintype "power_out")
 			)
 			(node
 				(ref "U27")
 				(pin "1")
 				(pinfunction "GND_1")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U3")
 				(pin "4")
 				(pinfunction "GND_4")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U4")
 				(pin "12")
 				(pinfunction "GND_12")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U5")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U6")
 				(pin "7")
 				(pinfunction "GND_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U7")
 				(pin "16")
 				(pinfunction "DREQ3_16")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "18")
 				(pinfunction "DREQ1_18")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "19")
 				(pinfunction "DREQ0_19")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "20")
 				(pinfunction "GND_20")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U8")
 				(pin "20")
 				(pinfunction "GND_20")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U9")
 				(pin "14")
 				(pinfunction "GND_14")
-				(pintype "power_in")
 			)
 		)
 		(net
@@ -4194,22 +3580,18 @@
 			(node
 				(ref "C31")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C32")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R7")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R8")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4219,12 +3601,10 @@
 			(node
 				(ref "C32")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "4")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4234,22 +3614,18 @@
 			(node
 				(ref "C38")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C40")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R2")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R3")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4259,17 +3635,14 @@
 			(node
 				(ref "C39")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J4")
 				(pin "5")
-				(pintype "passive")
 			)
 			(node
 				(ref "R15")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4279,13 +3652,11 @@
 			(node
 				(ref "C44")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "Y1")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4295,18 +3666,15 @@
 			(node
 				(ref "C38")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C40")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "J1")
 				(pin "1")
 				(pinfunction "In_1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4317,13 +3685,11 @@
 				(ref "JP1")
 				(pin "1")
 				(pinfunction "Pin_1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U10")
 				(pin "1")
 				(pinfunction "VPP_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4334,13 +3700,11 @@
 				(ref "JP2")
 				(pin "1")
 				(pinfunction "Pin_1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "1")
 				(pinfunction "VPP_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4351,13 +3715,11 @@
 				(ref "JP2")
 				(pin "3")
 				(pinfunction "Pin_3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "23")
 				(pinfunction "A11_23")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4368,13 +3730,11 @@
 				(ref "JP2")
 				(pin "4")
 				(pinfunction "Pin_4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U8")
 				(pin "34")
 				(pinfunction "GPA1_34")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4385,22 +3745,18 @@
 				(ref "Q1")
 				(pin "2")
 				(pinfunction "B_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R10")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R5")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R9")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4411,12 +3767,10 @@
 				(ref "Q1")
 				(pin "1")
 				(pinfunction "E_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R2")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4427,12 +3781,10 @@
 				(ref "Q2")
 				(pin "2")
 				(pinfunction "B_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "R11")
 				(pin "2")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4442,18 +3794,15 @@
 			(node
 				(ref "C41")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "Q2")
 				(pin "3")
 				(pinfunction "C_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "R1")
 				(pin "1")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4463,13 +3812,11 @@
 			(node
 				(ref "R1")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "SP1")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4479,12 +3826,10 @@
 			(node
 				(ref "R4")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U21")
 				(pin "6")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4494,12 +3839,10 @@
 			(node
 				(ref "R5")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U19")
 				(pin "8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4509,12 +3852,10 @@
 			(node
 				(ref "R9")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U16")
 				(pin "11")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4524,12 +3865,10 @@
 			(node
 				(ref "R11")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U16")
 				(pin "8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4540,37 +3879,31 @@
 				(ref "RN1")
 				(pin "4")
 				(pinfunction "R3_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U13")
 				(pin "1")
 				(pinfunction "S0_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U13")
 				(pin "19")
 				(pinfunction "G_19")
-				(pintype "input")
 			)
 			(node
 				(ref "U13")
 				(pin "2")
 				(pinfunction "SR_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U13")
 				(pin "21")
 				(pinfunction "H_21")
-				(pintype "input")
 			)
 			(node
 				(ref "U13")
 				(pin "22")
 				(pinfunction "SL_22")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4581,19 +3914,16 @@
 				(ref "RN1")
 				(pin "5")
 				(pinfunction "R4_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "11")
 				(pinfunction "DQ0_11")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "3")
 				(pinfunction "A_3")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4604,19 +3934,16 @@
 				(ref "RN1")
 				(pin "6")
 				(pinfunction "R5_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "17")
 				(pinfunction "DQ5_17")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "17")
 				(pinfunction "F_17")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4627,19 +3954,16 @@
 				(ref "RN1")
 				(pin "7")
 				(pinfunction "R6_7")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "12")
 				(pinfunction "DQ1_12")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "5")
 				(pinfunction "B_5")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4650,19 +3974,16 @@
 				(ref "RN1")
 				(pin "8")
 				(pinfunction "R7_8")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "16")
 				(pinfunction "DQ4_16")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "15")
 				(pinfunction "E_15")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4673,19 +3994,16 @@
 				(ref "RN1")
 				(pin "9")
 				(pinfunction "R8_9")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "13")
 				(pinfunction "DQ2_13")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "7")
 				(pinfunction "C_7")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4696,19 +4014,16 @@
 				(ref "RN1")
 				(pin "10")
 				(pinfunction "R9_10")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "15")
 				(pinfunction "DQ3_15")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U13")
 				(pin "9")
 				(pinfunction "D_9")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4719,13 +4034,11 @@
 				(ref "U1")
 				(pin "22")
 				(pinfunction "PHI1_22")
-				(pintype "input")
 			)
 			(node
 				(ref "U2")
 				(pin "11")
 				(pinfunction "PHI1_11")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4736,13 +4049,11 @@
 				(ref "U1")
 				(pin "15")
 				(pinfunction "PHI2_15")
-				(pintype "input")
 			)
 			(node
 				(ref "U2")
 				(pin "10")
 				(pinfunction "PHI2_10")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4753,13 +4064,11 @@
 				(ref "U1")
 				(pin "19")
 				(pinfunction "SYNC_19")
-				(pintype "output")
 			)
 			(node
 				(ref "U2")
 				(pin "5")
 				(pinfunction "SYNC_5")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4769,13 +4078,11 @@
 			(node
 				(ref "R6")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U2")
 				(pin "3")
 				(pinfunction "RDYIN_3")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4786,13 +4093,11 @@
 				(ref "U2")
 				(pin "15")
 				(pinfunction "XTAL1_15")
-				(pintype "input")
 			)
 			(node
 				(ref "Y1")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
 			)
 		)
 		(net
@@ -4802,13 +4107,11 @@
 			(node
 				(ref "C44")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U2")
 				(pin "14")
 				(pinfunction "XTAL2_14")
-				(pintype "input")
 			)
 		)
 		(net
@@ -4818,25 +4121,21 @@
 			(node
 				(ref "C43")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SW68")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U2")
 				(pin "2")
 				(pinfunction "~{RESIN}_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U27")
 				(pin "2")
 				(pinfunction "~{RESET}_2")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4846,13 +4145,11 @@
 			(node
 				(ref "U19")
 				(pin "13")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "9")
 				(pinfunction "AEN_9")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4862,13 +4159,11 @@
 			(node
 				(ref "U16")
 				(pin "5")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "7")
 				(pinfunction "HRTC_7")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4878,13 +4173,11 @@
 			(node
 				(ref "U16")
 				(pin "13")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "36")
 				(pinfunction "RVV_36")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4894,13 +4187,11 @@
 			(node
 				(ref "U16")
 				(pin "4")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "8")
 				(pinfunction "VRTC_8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4911,13 +4202,11 @@
 				(ref "U11")
 				(pin "10")
 				(pinfunction "A0_10")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "4")
 				(pinfunction "LC0_4")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4928,13 +4217,11 @@
 				(ref "U11")
 				(pin "9")
 				(pinfunction "A1_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "3")
 				(pinfunction "LC1_3")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4945,13 +4232,11 @@
 				(ref "U11")
 				(pin "8")
 				(pinfunction "A2_8")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "2")
 				(pinfunction "LC2_2")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4962,13 +4247,11 @@
 				(ref "U11")
 				(pin "7")
 				(pinfunction "A3_7")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "23")
 				(pinfunction "CC0_23")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4979,13 +4262,11 @@
 				(ref "U11")
 				(pin "6")
 				(pinfunction "A4_6")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "24")
 				(pinfunction "CC1_24")
-				(pintype "output")
 			)
 		)
 		(net
@@ -4996,13 +4277,11 @@
 				(ref "U11")
 				(pin "5")
 				(pinfunction "A5_5")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "25")
 				(pinfunction "CC2_25")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5013,13 +4292,11 @@
 				(ref "U11")
 				(pin "4")
 				(pinfunction "A6_4")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "26")
 				(pinfunction "CC3_26")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -5030,13 +4307,11 @@
 				(ref "U11")
 				(pin "3")
 				(pinfunction "A7_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "27")
 				(pinfunction "CC4_27")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5047,13 +4322,11 @@
 				(ref "U11")
 				(pin "25")
 				(pinfunction "A8_25")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "28")
 				(pinfunction "CC5_28")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5064,13 +4337,11 @@
 				(ref "U11")
 				(pin "24")
 				(pinfunction "A9_24")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "29")
 				(pinfunction "CC6_29")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5081,13 +4352,11 @@
 				(ref "U11")
 				(pin "21")
 				(pinfunction "A10_21")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "33")
 				(pinfunction "GPA0_33")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5098,13 +4367,11 @@
 				(ref "U11")
 				(pin "20")
 				(pinfunction "~{CE}_20")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "35")
 				(pinfunction "VSP_35")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5115,13 +4382,11 @@
 				(ref "U12")
 				(pin "11")
 				(pinfunction "LE_11")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "8")
 				(pinfunction "ADSTB_8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5132,12 +4397,10 @@
 				(ref "U12")
 				(pin "1")
 				(pinfunction "OE_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U19")
 				(pin "12")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5148,19 +4411,16 @@
 				(ref "U13")
 				(pin "11")
 				(pinfunction "CLK_11")
-				(pintype "input")
 			)
 			(node
 				(ref "U15")
 				(pin "1")
 				(pinfunction "CP1..3_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U15")
 				(pin "12")
 				(pinfunction "Q0_12")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5171,13 +4431,11 @@
 				(ref "U13")
 				(pin "13")
 				(pinfunction "CLR_13")
-				(pintype "input")
 			)
 			(node
 				(ref "U17")
 				(pin "6")
 				(pinfunction "~{Q}_6")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5188,12 +4446,10 @@
 				(ref "U13")
 				(pin "16")
 				(pinfunction "QF_16")
-				(pintype "output")
 			)
 			(node
 				(ref "U19")
 				(pin "3")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5204,13 +4460,11 @@
 				(ref "U13")
 				(pin "20")
 				(pinfunction "QH_20")
-				(pintype "output")
 			)
 			(node
 				(ref "U17")
 				(pin "1")
 				(pinfunction "~{R}_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5221,18 +4475,15 @@
 				(ref "U13")
 				(pin "23")
 				(pinfunction "S1_23")
-				(pintype "input")
 			)
 			(node
 				(ref "U17")
 				(pin "3")
 				(pinfunction "C_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U18")
 				(pin "8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5243,12 +4494,10 @@
 				(ref "U14")
 				(pin "7")
 				(pinfunction "O7_7")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "2")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5259,12 +4508,10 @@
 				(ref "U15")
 				(pin "9")
 				(pinfunction "Q2_9")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "10")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5275,18 +4522,15 @@
 				(ref "U15")
 				(pin "8")
 				(pinfunction "Q3_8")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "9")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "30")
 				(pinfunction "CCLK_30")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5296,12 +4540,10 @@
 			(node
 				(ref "U16")
 				(pin "6")
-				(pintype "output")
 			)
 			(node
 				(ref "U19")
 				(pin "9")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5311,12 +4553,10 @@
 			(node
 				(ref "U16")
 				(pin "9")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "8")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5326,12 +4566,10 @@
 			(node
 				(ref "U16")
 				(pin "10")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "11")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5341,12 +4579,10 @@
 			(node
 				(ref "U16")
 				(pin "12")
-				(pintype "input")
 			)
 			(node
 				(ref "U19")
 				(pin "4")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5357,13 +4593,11 @@
 				(ref "U17")
 				(pin "2")
 				(pinfunction "D_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "37")
 				(pinfunction "LTEN_37")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5374,17 +4608,14 @@
 				(ref "U17")
 				(pin "9")
 				(pinfunction "Q_9")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "5")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "5")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5395,12 +4626,10 @@
 				(ref "U17")
 				(pin "13")
 				(pinfunction "~{R}_13")
-				(pintype "input")
 			)
 			(node
 				(ref "U19")
 				(pin "10")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5411,12 +4640,10 @@
 				(ref "U17")
 				(pin "10")
 				(pinfunction "~{S}_10")
-				(pintype "input")
 			)
 			(node
 				(ref "U20")
 				(pin "3")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5426,12 +4653,10 @@
 			(node
 				(ref "U18")
 				(pin "3")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "4")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5441,12 +4666,10 @@
 			(node
 				(ref "U19")
 				(pin "6")
-				(pintype "output")
 			)
 			(node
 				(ref "U20")
 				(pin "4")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5456,23 +4679,19 @@
 			(node
 				(ref "C39")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "C42")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R14")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "U21")
 				(pin "2")
 				(pinfunction "-_2")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5483,13 +4702,11 @@
 				(ref "U15")
 				(pin "14")
 				(pinfunction "CP0_14")
-				(pintype "input")
 			)
 			(node
 				(ref "U2")
 				(pin "12")
 				(pinfunction "OSC_12")
-				(pintype "output")
 			)
 		)
 		(net
@@ -5500,13 +4717,11 @@
 				(ref "U4")
 				(pin "16")
 				(pinfunction "GATE2_16")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "16")
 				(pinfunction "PC2_16")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -5517,19 +4732,16 @@
 				(ref "RN2")
 				(pin "2")
 				(pinfunction "R1_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U4")
 				(pin "11")
 				(pinfunction "GATE0_11")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "14")
 				(pinfunction "GATE1_14")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5540,48 +4752,40 @@
 				(ref "J7")
 				(pin "17")
 				(pinfunction "Pin_17_17")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "12")
 				(pinfunction "RESET_12")
-				(pintype "input")
 			)
 			(node
 				(ref "U19")
 				(pin "11")
-				(pintype "input")
 			)
 			(node
 				(ref "U2")
 				(pin "1")
 				(pinfunction "RESET_1")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "21")
 				(pinfunction "RESET_21")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "35")
 				(pinfunction "RESET_35")
-				(pintype "input")
 			)
 			(node
 				(ref "U6")
 				(pin "35")
 				(pinfunction "RESET_35")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "13")
 				(pinfunction "RESET_13")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5592,19 +4796,16 @@
 				(ref "RN2")
 				(pin "3")
 				(pinfunction "R2_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U23")
 				(pin "1")
 				(pinfunction "S_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U24")
 				(pin "1")
 				(pinfunction "S_1")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5614,13 +4815,11 @@
 			(node
 				(ref "U20")
 				(pin "12")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "15")
 				(pinfunction "PC1_15")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -5631,43 +4830,36 @@
 				(ref "J7")
 				(pin "16")
 				(pinfunction "Pin_16_16")
-				(pintype "passive")
 			)
 			(node
 				(ref "U2")
 				(pin "6")
 				(pinfunction "PHI2_TTL_6")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "20")
 				(pinfunction "CLK_20")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "15")
 				(pinfunction "CLK1_15")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "18")
 				(pinfunction "CLK2_18")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "9")
 				(pinfunction "CLK0_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "12")
 				(pinfunction "CLK_12")
-				(pintype "input")
 			)
 		)
 		(net
@@ -5677,416 +4869,342 @@
 			(node
 				(ref "C1")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C10")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C11")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C12")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C13")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C14")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C15")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C16")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C17")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C18")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C19")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C2")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C20")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C21")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C22")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C3")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C33")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C34")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C4")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C5")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C6")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C7")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C8")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "C9")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "F1")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J2")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "4")
 				(pinfunction "Pin_4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "5")
 				(pinfunction "Pin_5_5")
-				(pintype "passive")
 			)
 			(node
 				(ref "J3")
 				(pin "6")
 				(pinfunction "Pin_6_6")
-				(pintype "passive")
 			)
 			(node
 				(ref "J7")
 				(pin "10")
 				(pinfunction "Pin_10_10")
-				(pintype "passive")
 			)
 			(node
 				(ref "JP1")
 				(pin "2")
 				(pinfunction "Pin_2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "JP2")
 				(pin "2")
 				(pinfunction "Pin_2_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "Q1")
 				(pin "3")
 				(pinfunction "C_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "R10")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R12")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R13")
 				(pin "1")
-				(pintype "passive")
 			)
 			(node
 				(ref "R6")
 				(pin "2")
-				(pintype "passive")
 			)
 			(node
 				(ref "RN1")
 				(pin "1")
 				(pinfunction "common_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "RN2")
 				(pin "1")
 				(pinfunction "common_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "RN3")
 				(pin "1")
 				(pinfunction "common_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "RN4")
 				(pin "1")
 				(pinfunction "common_1")
-				(pintype "passive")
 			)
 			(node
 				(ref "SP1")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U1")
 				(pin "20")
 				(pinfunction "VCC_20")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U10")
 				(pin "26")
 				(pinfunction "NC_26")
-				(pintype "passive")
 			)
 			(node
 				(ref "U10")
 				(pin "27")
 				(pinfunction "~{PGM}_27")
-				(pintype "input")
 			)
 			(node
 				(ref "U10")
 				(pin "28")
 				(pinfunction "VCC_28")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U11")
 				(pin "26")
 				(pinfunction "NC_26")
-				(pintype "passive")
 			)
 			(node
 				(ref "U11")
 				(pin "27")
 				(pinfunction "~{PGM}_27")
-				(pintype "input")
 			)
 			(node
 				(ref "U11")
 				(pin "28")
 				(pinfunction "VCC_28")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U12")
 				(pin "20")
 				(pinfunction "VCC_20")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U13")
 				(pin "24")
 				(pinfunction "VCC_24")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U14")
 				(pin "16")
 				(pinfunction "VCC_16")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U15")
 				(pin "5")
 				(pinfunction "VCC_5")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U16")
 				(pin "14")
 				(pinfunction "VCC_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U17")
 				(pin "14")
 				(pinfunction "VCC_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U17")
 				(pin "4")
 				(pinfunction "~{S}_4")
-				(pintype "input")
 			)
 			(node
 				(ref "U18")
 				(pin "14")
 				(pinfunction "VCC_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U19")
 				(pin "14")
 				(pinfunction "VCC_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U2")
 				(pin "16")
 				(pinfunction "VCC_16")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U20")
 				(pin "14")
 				(pinfunction "VCC_14")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U21")
 				(pin "7")
 				(pinfunction "V+_7")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U22")
 				(pin "1")
 				(pinfunction "3T_1")
-				(pintype "input")
 			)
 			(node
 				(ref "U22")
 				(pin "15")
 				(pinfunction "VCC_15")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U22")
 				(pin "2")
 				(pinfunction "2T_2")
-				(pintype "input")
 			)
 			(node
 				(ref "U22")
 				(pin "3")
 				(pinfunction "1T_3")
-				(pintype "input")
 			)
 			(node
 				(ref "U26")
 				(pin "2")
 				(pinfunction "+VIN_2")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U27")
 				(pin "3")
 				(pinfunction "VCC_3")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U3")
 				(pin "26")
 				(pinfunction "VCC_26")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U4")
 				(pin "24")
 				(pinfunction "VCC_24")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U5")
 				(pin "26")
 				(pinfunction "VCC_26")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U6")
 				(pin "26")
 				(pinfunction "VCC_26")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U7")
 				(pin "31")
 				(pinfunction "VCC_31")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U8")
 				(pin "40")
 				(pinfunction "VCC_40")
-				(pintype "power_in")
 			)
 			(node
 				(ref "U9")
 				(pin "28")
 				(pinfunction "VCC_28")
-				(pintype "power_in")
 			)
 		)
 		(net
@@ -6096,7 +5214,6 @@
 			(node
 				(ref "J4")
 				(pin "6")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6106,7 +5223,6 @@
 			(node
 				(ref "J4")
 				(pin "7")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6117,7 +5233,6 @@
 				(ref "J5")
 				(pin "9")
 				(pinfunction "P9_9")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6128,7 +5243,6 @@
 				(ref "J5")
 				(pin "1")
 				(pinfunction "1_1")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6139,7 +5253,6 @@
 				(ref "RN4")
 				(pin "5")
 				(pinfunction "R4_5")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6150,7 +5263,6 @@
 				(ref "RN4")
 				(pin "6")
 				(pinfunction "R5_6")
-				(pintype "passive+no_connect")
 			)
 		)
 		(net
@@ -6161,7 +5273,6 @@
 				(ref "U1")
 				(pin "24")
 				(pinfunction "WAIT_24")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6172,7 +5283,6 @@
 				(ref "U2")
 				(pin "13")
 				(pinfunction "TANK_13")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6183,7 +5293,6 @@
 				(ref "U2")
 				(pin "7")
 				(pinfunction "~{STSTB}_7")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6194,7 +5303,6 @@
 				(ref "U3")
 				(pin "14")
 				(pinfunction "RXRDY_14")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6205,7 +5313,6 @@
 				(ref "U3")
 				(pin "16")
 				(pinfunction "SYNDET_16")
-				(pintype "bidirectional+no_connect")
 			)
 		)
 		(net
@@ -6216,7 +5323,6 @@
 				(ref "U3")
 				(pin "18")
 				(pinfunction "TXE_18")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6227,7 +5333,6 @@
 				(ref "U3")
 				(pin "15")
 				(pinfunction "TXRDY_15")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6238,7 +5343,6 @@
 				(ref "U4")
 				(pin "10")
 				(pinfunction "OUT0_10")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6249,7 +5353,6 @@
 				(ref "U7")
 				(pin "25")
 				(pinfunction "DACK0_25")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6260,7 +5363,6 @@
 				(ref "U7")
 				(pin "24")
 				(pinfunction "DACK1_24")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6271,7 +5373,6 @@
 				(ref "U7")
 				(pin "15")
 				(pinfunction "DACK3_15")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6282,7 +5383,6 @@
 				(ref "U7")
 				(pin "5")
 				(pinfunction "MARK_5")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6293,7 +5393,6 @@
 				(ref "U7")
 				(pin "36")
 				(pinfunction "TC_36")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6304,7 +5403,6 @@
 				(ref "U7")
 				(pin "3")
 				(pinfunction "~{MEMR}_3")
-				(pintype "tri_state+no_connect")
 			)
 		)
 		(net
@@ -6315,7 +5413,6 @@
 				(ref "U8")
 				(pin "32")
 				(pinfunction "HLGT_32")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6326,7 +5423,6 @@
 				(ref "U8")
 				(pin "31")
 				(pinfunction "IRQ_31")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6337,7 +5433,6 @@
 				(ref "U8")
 				(pin "39")
 				(pinfunction "LA0_39")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6348,7 +5443,6 @@
 				(ref "U8")
 				(pin "38")
 				(pinfunction "LA1_38")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6359,7 +5453,6 @@
 				(ref "U8")
 				(pin "1")
 				(pinfunction "LC3_1")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6370,7 +5463,6 @@
 				(ref "U8")
 				(pin "11")
 				(pinfunction "LPEN_11")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6381,7 +5473,6 @@
 				(ref "U11")
 				(pin "18")
 				(pinfunction "DQ6_18")
-				(pintype "bidirectional+no_connect")
 			)
 		)
 		(net
@@ -6392,7 +5483,6 @@
 				(ref "U11")
 				(pin "19")
 				(pinfunction "DQ7_19")
-				(pintype "bidirectional+no_connect")
 			)
 		)
 		(net
@@ -6403,7 +5493,6 @@
 				(ref "U13")
 				(pin "4")
 				(pinfunction "QA_4")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6414,7 +5503,6 @@
 				(ref "U13")
 				(pin "6")
 				(pinfunction "QB_6")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6425,7 +5513,6 @@
 				(ref "U13")
 				(pin "8")
 				(pinfunction "QC_8")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6436,7 +5523,6 @@
 				(ref "U13")
 				(pin "10")
 				(pinfunction "QD_10")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6447,7 +5533,6 @@
 				(ref "U13")
 				(pin "14")
 				(pinfunction "QE_14")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6458,7 +5543,6 @@
 				(ref "U13")
 				(pin "18")
 				(pinfunction "QG_18")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6469,7 +5553,6 @@
 				(ref "U15")
 				(pin "11")
 				(pinfunction "Q1_11")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6480,7 +5563,6 @@
 				(ref "U17")
 				(pin "5")
 				(pinfunction "Q_5")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6491,7 +5573,6 @@
 				(ref "U17")
 				(pin "8")
 				(pinfunction "~{Q}_8")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6502,7 +5583,6 @@
 				(ref "U21")
 				(pin "8")
 				(pinfunction "NC_8")
-				(pintype "no_connect")
 			)
 		)
 		(net
@@ -6513,7 +5593,6 @@
 				(ref "U21")
 				(pin "1")
 				(pinfunction "NULL_1")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6524,7 +5603,6 @@
 				(ref "U21")
 				(pin "5")
 				(pinfunction "NULL_5")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6535,7 +5613,6 @@
 				(ref "U22")
 				(pin "7")
 				(pinfunction "4A_7")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6546,7 +5623,6 @@
 				(ref "U22")
 				(pin "14")
 				(pinfunction "4T_14")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6557,7 +5633,6 @@
 				(ref "U22")
 				(pin "10")
 				(pinfunction "4Y_10")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6568,7 +5643,6 @@
 				(ref "U22")
 				(pin "9")
 				(pinfunction "R_9")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6579,7 +5653,6 @@
 				(ref "U22")
 				(pin "16")
 				(pinfunction "VDD_16")
-				(pintype "power_in+no_connect")
 			)
 		)
 		(net
@@ -6590,7 +5663,6 @@
 				(ref "U24")
 				(pin "2")
 				(pinfunction "1A_2")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6601,7 +5673,6 @@
 				(ref "U24")
 				(pin "7")
 				(pinfunction "1Y_7")
-				(pintype "output+no_connect")
 			)
 		)
 		(net
@@ -6612,7 +5683,6 @@
 				(ref "U26")
 				(pin "5")
 				(pinfunction "NC_5")
-				(pintype "no_connect")
 			)
 		)
 		(net
@@ -6623,7 +5693,6 @@
 				(ref "U26")
 				(pin "3")
 				(pinfunction "Remote_on/off_3")
-				(pintype "input+no_connect")
 			)
 		)
 		(net
@@ -6634,18 +5703,15 @@
 				(ref "RN1")
 				(pin "2")
 				(pinfunction "R1_2")
-				(pintype "passive")
 			)
 			(node
 				(ref "U18")
 				(pin "13")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "1")
 				(pinfunction "~{IOR}_1")
-				(pintype "bidirectional")
 			)
 		)
 		(net
@@ -6656,18 +5722,15 @@
 				(ref "RN1")
 				(pin "3")
 				(pinfunction "R2_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U16")
 				(pin "1")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "4")
 				(pinfunction "~{MEMW}_4")
-				(pintype "tri_state")
 			)
 		)
 		(net
@@ -6678,54 +5741,45 @@
 				(ref "J7")
 				(pin "4")
 				(pinfunction "Pin_4_4")
-				(pintype "passive")
 			)
 			(node
 				(ref "U10")
 				(pin "22")
 				(pinfunction "~{OE}_22")
-				(pintype "input")
 			)
 			(node
 				(ref "U16")
 				(pin "3")
-				(pintype "output")
 			)
 			(node
 				(ref "U3")
 				(pin "13")
 				(pinfunction "~{RD}_13")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "22")
 				(pinfunction "~{RD}_22")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "5")
 				(pinfunction "~{RD}_5")
-				(pintype "input")
 			)
 			(node
 				(ref "U6")
 				(pin "5")
 				(pinfunction "~{RD}_5")
-				(pintype "input")
 			)
 			(node
 				(ref "U8")
 				(pin "9")
 				(pinfunction "~{RD}_9")
-				(pintype "input")
 			)
 			(node
 				(ref "U9")
 				(pin "22")
 				(pinfunction "~{OE}_22")
-				(pintype "input")
 			)
 		)
 		(net
@@ -6736,54 +5790,45 @@
 				(ref "J7")
 				(pin "3")
 				(pinfunction "Pin_3_3")
-				(pintype "passive")
 			)
 			(node
 				(ref "U1")
 				(pin "18")
 				(pinfunction "~{WR}_18")
-				(pintype "output")
 			)
 			(node
 				(ref "U18")
 				(pin "12")
-				(pintype "input")
 			)
 			(node
 				(ref "U3")
 				(pin "10")
 				(pinfunction "~{WR}_10")
-				(pintype "input")
 			)
 			(node
 				(ref "U4")
 				(pin "23")
 				(pinfunction "~{WR}_23")
-				(pintype "input")
 			)
 			(node
 				(ref "U5")
 				(pin "36")
 				(pinfunction "~{WR}_36")
-				(pintype "input")
 			)
 			(node
 				(ref "U6")
 				(pin "36")
 				(pinfunction "~{WR}_36")
-				(pintype "input")
 			)
 			(node
 				(ref "U7")
 				(pin "2")
 				(pinfunction "~{IOW}_2")
-				(pintype "bidirectional")
 			)
 			(node
 				(ref "U9")
 				(pin "27")
 				(pinfunction "~{WE}_27")
-				(pintype "input")
 			)
 		)
 	)

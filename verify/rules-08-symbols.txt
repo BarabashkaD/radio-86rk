@@ -1,0 +1,6 @@
+ERC 32  errors=0 warnings=32
+       32  same_local_global_label
+DRC 22  errors=0 warnings=22
+       17  silk_edge_clearance
+        5  starved_thermal
+     unconnected=0  parity=0
