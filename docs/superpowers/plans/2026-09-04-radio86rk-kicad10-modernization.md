@@ -48,11 +48,12 @@ below are **measured**, not predicted.
 | Commit | What landed | Verified by |
 |---|---|---|
 | `de7a774` | Task 1: verification harness + frozen v1.4 baseline | both gates proven in both directions; ERC 101, DRC 91, unconnected 0, parity 0 |
+| `4f4c13c` | Board converted to KiCad 10 format (`20211014` → `20260206`) via `kicad-cli pcb upgrade` | both gerber gates PASS vs frozen v1.4 baseline; netlist PASS; ERC 101 / DRC 91 unchanged |
 | `2a7788a` | Schematics converted to KiCad 10 format (`20211123` → `20260306`) via the **GUI** | netlist identical (22971 lines); ERC 243 unchanged; DRC 91, unconnected 0, parity 0; gerbers byte-identical to v1.4 |
 | `9d8e182` | Symbol definitions refreshed from libraries — **ERC 243 → 101**, all 142 `lib_symbol_mismatch` cleared | footprints 218/218 unchanged; netlist connectivity byte-identical (6790 lines); board untouched |
 | `16a7755` | Q1/Q2 re-pointed `Device:Q_NPN_EBC` → `Transistor_BJT:Q_NPN_EBC` | netlist connectivity byte-identical; footprints intact; DRC 91, parity 0 |
 
-**Current state:** board still at format `20211014` and byte-identical to v1.4. ERC 101 =
+**Current state:** board at format `20260206`, geometry byte-identical to v1.4 under the canonical gate. ERC 101 =
 67 `footprint_link_issues` + 32 `same_local_global_label` + 2 `lib_symbol_mismatch`.
 DRC 91, unconnected 0, parity 0.
 
@@ -140,7 +141,14 @@ handled by the task named.
    The GUI path produces none — ERC stayed at exactly 243 through conversion.
 
    *An earlier revision of this plan recorded those 21 violations as a real finding to be
-   handled in Task 8. They were an artefact of the wrong tool.* → Task 2 uses the GUI.
+   handled in Task 8. They were an artefact of the wrong tool.*
+
+   **This applies to the schematic only.** A board carries no shared symbol cache — every
+   footprint is embedded per instance — so the same objection does not transfer.
+   `kicad-cli pcb upgrade` was tested against the frozen v1.4 baseline before use and the
+   canonical gate passes, so Task 2 converts the schematics in the GUI and the board with
+   the CLI. Generalising the schematic finding to the board would have cost a GUI
+   round-trip for no benefit.
 
 4. **`Update Symbols from Library` is destructive by default, and its damage reaches the
    board.** Run with the *Update/reset Fields* options enabled and followed by *Update PCB
@@ -596,9 +604,9 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 2: Upgrade the project files to KiCad 10 format
 
-> **STATUS: schematic half complete** — done in the GUI and committed as `2a7788a`
-> (`20211123` → `20260306`). The **board** half is outstanding; it is still at
-> `20211014`. Steps 1–7 are marked done and record what was measured. Resume at Step 8.
+> **STATUS: complete.** Schematics converted in the GUI (`2a7788a`, `20211123` → `20260306`);
+> board converted with `kicad-cli pcb upgrade` (`4f4c13c`, `20211014` → `20260206`). All gates
+> passed; ERC 101 and DRC 91 unchanged, unconnected 0, parity 0.
 
 The board is KiCad 6 format with CRLF endings, and the schematics were. Any later edit
 would be against a legacy format that KiCad rewrites wholesale on first save, burying real
@@ -660,7 +668,7 @@ DRC 91, unconnected 0, parity 0. No `different_unit_net` — see Finding 3.
 
 **Resume here.** Everything below is outstanding.
 
-- [ ] **Step 8: Confirm the board is still pristine before converting it**
+- [x] **Step 8: Confirm the board is still pristine before converting it**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -671,7 +679,7 @@ git status --short KiCad/Radio-86RK.kicad_pcb || echo "board unmodified"
 Expected: `PASS`, `(kicad_pcb (version 20211014)`, and no modification. If the board is
 already dirty, stop and find out why before converting.
 
-- [ ] **Step 9: Convert the board in the GUI**
+- [x] **Step 9: Convert the board in the GUI**
 
 Open the **PCB Editor** and **File → Save**. Close KiCad afterwards — later steps read the
 files and must not race a live session.
@@ -684,7 +692,7 @@ grep -c $'\r' KiCad/Radio-86RK.kicad_pcb || echo "CRLF gone"
 
 Expected: `closed`, `version 20260206` (or later), zero CRLF lines.
 
-- [ ] **Step 10: Run the gate — the whole point of the task**
+- [x] **Step 10: Run the gate — the whole point of the task**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -699,7 +707,7 @@ same way is **not yet measured**; the canonical gate is correct either way.
 If it fails, `git checkout -- KiCad/Radio-86RK.kicad_pcb` and stop. A reformat that moves a
 coordinate is a KiCad bug or a wrong command.
 
-- [ ] **Step 11: Rule counts and netlist**
+- [x] **Step 11: Rule counts and netlist**
 
 ```bash
 tools/netlist-gate.sh
@@ -709,7 +717,7 @@ tools/rules-report.sh | tee verify/rules-02-board-format.txt
 Expected: netlist `PASS`; DRC unchanged from the run before the save (91 at time of
 writing, or 22 if Task 3 has already run); unconnected 0; parity 0.
 
-- [ ] **Step 12: Commit the board conversion**
+- [x] **Step 12: Commit the board conversion**
 
 ```bash
 git add KiCad/Radio-86RK.kicad_pcb verify
