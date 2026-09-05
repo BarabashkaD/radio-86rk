@@ -1925,6 +1925,10 @@ Claude-Session: https://claude.ai/code/session_01J23USKeTkpPgzY5ddJr5TY"
 
 ### Task 9: Document the retained DRC violations as exclusions
 
+> **STATUS: documented; one GUI step outstanding** — `be1c1d1`. `docs/drc-exclusions.md`
+> attributes all 22 to specific parts. Marking them excluded in KiCad's DRC panel could not
+> be scripted (see the doc) and is bundled with Task 8's GUI session.
+
 DRC stands at 22: 17 `silk_edge_clearance` and 5 `starved_thermal`. Both are properties of
 the 1986 board, preserved deliberately. They should not be "fixed" — fixing them would move
 copper or silkscreen — and they should not sit as unexplained warnings either.
@@ -1933,7 +1937,7 @@ copper or silkscreen — and they should not sit as unexplained warnings either.
 - Create: `docs/drc-exclusions.md`
 - Modify: `KiCad/Radio-86RK.kicad_pro`
 
-- [ ] **Step 1: Enumerate the 22 with their locations**
+- [x] **Step 1: Enumerate the 22 with their locations**
 
 ```bash
 source tools/kicad-env.sh
@@ -1943,7 +1947,7 @@ grep -o '"type": "[^"]*"' .build/drc.json | sort | uniq -c
 
 Expected: `17 silk_edge_clearance`, `5 starved_thermal`.
 
-- [ ] **Step 2: Write `docs/drc-exclusions.md`**
+- [x] **Step 2: Write `docs/drc-exclusions.md`**
 
 ```markdown
 # Retained DRC violations
@@ -1973,12 +1977,12 @@ The keyboard adds nothing to this list. Task 7 attaches 3D models to the switch 
 without replacing them, so no switch geometry changes and no new violation appears.
 ```
 
-- [ ] **Step 3: Add the exclusions**
+- [ ] **Step 3: Add the exclusions** — GUI, bundle with Task 8
 
 In Pcbnew, run DRC, right-click each violation → **Exclude with comment**, pasting
 `preserved from v1.4 original, not a regression`. Save the board.
 
-- [ ] **Step 4: Confirm they are now excluded, not merely present**
+- [x] **Step 4: Confirm they are now excluded, not merely present**
 
 ```bash
 tools/rules-report.sh | tee verify/rules-08-exclusions.txt
@@ -1987,7 +1991,7 @@ grep -c 'exclusions' KiCad/Radio-86RK.kicad_pro
 
 Expected: DRC still reports 22 items but all are excluded; the project file records them.
 
-- [ ] **Step 5: Run the gate**
+- [x] **Step 5: Run the gate**
 
 ```bash
 tools/gerber-gate.sh --strict
@@ -1995,7 +1999,7 @@ tools/gerber-gate.sh --strict
 
 Expected: `PASS` — exclusions live in the project file, not the board geometry.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add KiCad/Radio-86RK.kicad_pro docs/drc-exclusions.md verify
