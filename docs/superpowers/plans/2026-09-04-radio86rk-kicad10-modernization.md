@@ -1629,7 +1629,7 @@ E-B-C pin numbering.
 
 **Interfaces:**
 - Consumes: `tools/netlist-gate.sh`, `tools/rules-report.sh`, `tools/gerber-gate.sh`.
-- Produces: `tools/vendor_symbols.py`, used only by this task.
+- Produces: nothing reusable; this task is schematic edits plus one file copy.
 
 - [x] **Step 1: Capture the footprint assignments before touching anything**
 
@@ -1746,97 +1746,40 @@ GitHub issue #2 becoming visible, which is correct, not a regression.
 
 - [ ] **Step 8: Vendor the `my_components` symbols so a fresh clone works**
 
-18 distinct symbols across 26 instances. Note the `xargs` — per Finding 6, `zsh` does not
-word-split unquoted variables, so `cmd $NAMES` would pass one argument.
-
-```bash
-grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sed 's/.*://;s/"//' | sort -u
-```
-
-Expected: `27C64 74198 8080A 8224 8251A 8254 8255A 8257 8275 AS6C62256 Conn_DIN-8 DE9
-DS1233 HOLE IZ0512S SN75150P SN75154P Switch_Tactile_Vertical`.
-
-Write `tools/vendor_symbols.py`:
-
-```python
-"""Copy named symbols out of a .kicad_sym library into a new project-local one.
-
-Child units live nested inside their parent's (symbol "NAME" ...) block, so extracting the
-top-level block carries the whole part. Strings are skipped wholesale while matching
-parens, so a ')' inside a quoted field cannot end a block early.
-
-Usage: vendor_symbols.py <src.kicad_sym> <dst.kicad_sym> <NAME>...
-"""
-import re, sys
-
-src, dst, names = sys.argv[1], sys.argv[2], set(sys.argv[3:])
-text = open(src, encoding="utf-8").read()
-
-# Inherit the source library's format version. The extracted symbol bodies are in that
-# format, so declaring a newer one makes KiCad refuse the file; `kicad-cli sym upgrade`
-# modernises it afterwards.
-vm = re.search(r"\(version\s+(\d+)\)", text[:400])
-version = vm.group(1) if vm else "20211014"
-
-found, i = {}, 0
-while True:
-    i = text.find('(symbol "', i)
-    if i < 0:
-        break
-    m = re.match(r'\(symbol\s+"((?:[^"\\]|\\.)*)"', text[i:])
-    if not m:
-        i += 9
-        continue
-    name = m.group(1)
-    depth, j = 0, i                       # walk to the matching ')', skipping strings
-    while j < len(text):
-        c = text[j]
-        if c == '"':
-            j += 1
-            while j < len(text) and text[j] != '"':
-                j += 2 if text[j] == "\\" else 1
-        elif c == "(":
-            depth += 1
-        elif c == ")":
-            depth -= 1
-            if depth == 0:
-                break
-        j += 1
-    if name in names and name not in found:
-        found[name] = text[i:j + 1]
-    i = j + 1
-
-missing = names - set(found)
-if missing:
-    sys.exit("ERROR: not found in %s: %s" % (src, ", ".join(sorted(missing))))
-
-with open(dst, "w", encoding="utf-8") as fh:
-    fh.write('(kicad_symbol_lib (version %s) (generator "vendor_symbols")\n' % version)
-    for name in sorted(found):
-        fh.write("\t" + found[name].replace("\n", "\n\t") + "\n")
-    fh.write(")\n")
-
-print("vendored %d symbols -> %s" % (len(found), dst))
-```
+Copy the library wholesale. It is 2.1 MB against the 131 MB of datasheets this repo already
+carries, so trimming it to the 18 symbols actually used would save about 1.6% of
+`Documentation/` — not worth a line of code, let alone a custom s-expression parser.
 
 ```bash
 source tools/kicad-env.sh
-grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sed 's/.*://;s/"//' | sort -u \
-  | xargs "$KICAD_PY" tools/vendor_symbols.py \
-      ../my_kicad_library/library/my_components.kicad_sym KiCad/Radio86RK.kicad_sym
+cp ../my_kicad_library/library/my_components.kicad_sym KiCad/Radio86RK.kicad_sym
 "$KICAD_CLI" sym upgrade KiCad/Radio86RK.kicad_sym
+rm -rf .build/symcheck && mkdir -p .build/symcheck
 "$KICAD_CLI" sym export svg --output .build/symcheck KiCad/Radio86RK.kicad_sym >/dev/null \
-  && echo "library parses and renders: $(ls .build/symcheck | wc -l | tr -d ' ') symbols"
+  && echo "library parses and renders: $(ls .build/symcheck | wc -l | tr -d ' ') units"
 ```
 
-Expected: `vendored 18 symbols`, then 18 SVGs.
+Verified: 502 symbols upgrade to `version 20251024` and all 671 units render.
 
-> **Known open issue.** As of 2026-09-05 this script produces a file KiCad rejects with
-> *"Unable to load library"*, even though the parentheses balance and the declared version
-> matches the source. The cause has not been isolated. **Do not mark this step done until
-> `sym export svg` emits 18 files.** If it cannot be made to work, the fallback is to build
-> `Radio86RK.kicad_sym` in the KiCad Symbol Editor by importing the 18 symbols from the
-> sibling clone — slower, but it is the tool that owns the format.
+Confirm the 18 this project uses are present:
+
+```bash
+grep -oh 'lib_id "my_components:[^"]*"' KiCad/*.kicad_sch | sed 's/.*://;s/"//' | sort -u \
+  | while read -r s; do grep -q "(symbol \"$s\"" KiCad/Radio86RK.kicad_sym || echo "MISSING: $s"; done
+echo "check complete"
+```
+
+Expected: `check complete`, no `MISSING` lines. The 18 are `27C64 74198 8080A 8224 8251A
+8254 8255A 8257 8275 AS6C62256 Conn_DIN-8 DE9 DS1233 HOLE IZ0512S SN75150P SN75154P
+Switch_Tactile_Vertical`.
+
+> **Why not extract only the 18?** An earlier draft of this plan did, via a
+> `tools/vendor_symbols.py` that hand-sliced symbol blocks out of the `.kicad_sym` file by
+> paren-matching. It produced a library KiCad rejected with *"Unable to load library"* even
+> after the format version was made to match, and the cause was never isolated. Copying the
+> file KiCad already reads is correct by construction and removes an untested tool from the
+> plan. The footprint side is different and does need extraction — there the *board* is the
+> geometry authority and no library holds the right data.
 
 - [ ] **Step 9: Write `KiCad/sym-lib-table`**
 
@@ -1884,7 +1827,7 @@ Add the exclusions in Eeschema (right-click → **Exclude with comment**), or un
 - [ ] **Step 11: Commit**
 
 ```bash
-git add KiCad tools/vendor_symbols.py docs/erc-exclusions.md verify
+git add KiCad docs/erc-exclusions.md verify
 git commit -m "Finish the symbol work: labels, vendored library, ERC exclusions
 
 Deleted the 32 redundant local bus labels, vendored the 18 my_components
