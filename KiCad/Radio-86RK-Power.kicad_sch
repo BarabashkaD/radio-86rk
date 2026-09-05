@@ -241,7 +241,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -451,7 +451,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -661,7 +661,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -871,7 +871,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1673,7 +1673,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -1883,7 +1883,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2093,7 +2093,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2303,7 +2303,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -2475,7 +2475,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74hc_hct74.pdf"
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74ls74a.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2868,7 +2868,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "74xx/74ls86.pdf"
+			(property "Datasheet" "https://www.jameco.com/Jameco/Products/ProdDS/48098.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2985,7 +2985,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3153,7 +3153,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3321,7 +3321,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3489,7 +3489,7 @@
 				)
 				(arc
 					(start -0.6096 3.81)
-					(mid 2.1929 2.5925)
+					(mid 2.1928 2.5924)
 					(end 3.81 0)
 					(stroke
 						(width 0.254)
@@ -3757,7 +3757,7 @@
 				)
 				(arc
 					(start -3.302 1.905)
-					(mid -3.9342 2.54)
+					(mid -3.9343 2.54)
 					(end -3.302 3.175)
 					(stroke
 						(width 0.254)
@@ -3769,7 +3769,7 @@
 				)
 				(arc
 					(start -3.302 1.905)
-					(mid -3.9342 2.54)
+					(mid -3.9343 2.54)
 					(end -3.302 3.175)
 					(stroke
 						(width 0.254)
@@ -5874,8 +5874,12 @@
 		)
 		(symbol "power:+12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -5936,7 +5940,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5989,8 +5993,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "+12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6010,8 +6013,12 @@
 		)
 		(symbol "power:-12V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6019,7 +6026,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -6030,7 +6037,7 @@
 				)
 			)
 			(property "Value" "-12V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6072,7 +6079,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6087,8 +6094,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-12V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6122,8 +6128,12 @@
 		)
 		(symbol "power:-5V"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6131,7 +6141,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "#PWR"
-				(at 0 2.54 0)
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -6142,7 +6152,7 @@
 				)
 			)
 			(property "Value" "-5V"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6184,7 +6194,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6199,8 +6209,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "-5V"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6234,8 +6243,12 @@
 		)
 		(symbol "power:GND"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6296,7 +6309,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6325,8 +6338,7 @@
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
-					(hide yes)
-					(name "GND"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6412,7 +6424,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "flag power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6427,7 +6439,7 @@
 				(pin power_out line
 					(at 0 0 90)
 					(length 0)
-					(name "pwr"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6461,8 +6473,12 @@
 		)
 		(symbol "power:VCC"
 			(power global)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6481,7 +6497,7 @@
 				)
 			)
 			(property "Value" "VCC"
-				(at 0 3.81 0)
+				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -6523,7 +6539,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "power-flag"
+			(property "ki_keywords" "global power"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6576,8 +6592,7 @@
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
-					(hide yes)
-					(name "VCC"
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
