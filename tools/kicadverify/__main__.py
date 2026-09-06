@@ -55,6 +55,10 @@ def main(argv=None):
         from . import netlist
         return _gate(args, report, lambda env: netlist.run(env, report))
 
+    if args.command == "rules":
+        from . import rules
+        return _gate(args, report, lambda env: rules.run(env, report))
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV

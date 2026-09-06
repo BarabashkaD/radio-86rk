@@ -244,6 +244,27 @@ def _netlist_extract():
     return True
 
 
+@check("violations are read from both the ERC and DRC document shapes")
+def _rules_shapes():
+    from . import rules as rules_mod
+    erc = {"sheets": [{"violations": [{"type": "pin_not_connected", "severity": "warning"}]},
+                      {"violations": [{"type": "pin_not_connected", "severity": "warning"},
+                                      {"type": "label_dangling", "severity": "error"}]}]}
+    drc = {"violations": [{"type": "starved_thermal", "severity": "error"}],
+           "unconnected_items": [{}, {}],
+           "schematic_parity": []}
+
+    erc_summary = rules_mod.summarise(erc)
+    assert erc_summary["total"] == 3, erc_summary
+    assert erc_summary["errors"] == 1 and erc_summary["warnings"] == 2, erc_summary
+    assert erc_summary["by_type"][0] == ("pin_not_connected", 2), erc_summary["by_type"]
+
+    drc_summary = rules_mod.summarise(drc)
+    assert drc_summary["total"] == 1 and drc_summary["errors"] == 1, drc_summary
+    assert drc_summary["unconnected"] == 2 and drc_summary["parity"] == 0, drc_summary
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
