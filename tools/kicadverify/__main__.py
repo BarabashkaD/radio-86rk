@@ -46,9 +46,30 @@ def main(argv=None):
     if args.command == "doctor":
         return _doctor(args, report)
 
+    if args.command == "gerber":
+        from . import gerber
+        mode = "geometry" if args.geometry else "strict"
+        return _gate(args, report, lambda env: gerber.run(env, report, mode))
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV
+
+
+def _gate(args, report, fn):
+    """Build the environment, run one gate, map every outcome to an exit code.
+    fn takes the Environment and returns True or False; anything that stops it
+    running raises EnvError and becomes exit 2."""
+    from . import discover
+    try:
+        env = discover.build(args)
+        ok = fn(env)
+    except discover.EnvError as exc:
+        report.error(str(exc))
+        report.finish()
+        return EXIT_ENV
+    report.finish()
+    return EXIT_OK if ok else EXIT_FAIL
 
 
 def _doctor(args, report):

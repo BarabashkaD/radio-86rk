@@ -203,6 +203,27 @@ def _version_floor():
     return True
 
 
+@check("strict mode appends X2 attributes in byte order, geometry mode drops them")
+def _strict_keeps_attributes():
+    from . import gerber as gerber_mod
+    raw = ("%FSLAX46Y46*%\n"
+           "%TO.N,GND*%\n"
+           "%TO.C,R1*%\n"
+           "%ADD10C,1.000000*%\n"
+           "D10*\n"
+           "X0Y0D03*\n"
+           "M02*\n").splitlines(True)
+    strict = gerber_mod.normalise_lines(raw, "strict")
+    geometry = gerber_mod.normalise_lines(raw, "geometry")
+    assert "%TO.C,R1*%" in strict and "%TO.N,GND*%" in strict, strict
+    assert strict.index("%TO.C,R1*%") < strict.index("%TO.N,GND*%"), \
+        "attributes must sort in byte order, not locale order: %r" % (strict,)
+    assert not any(line.startswith("%TO.") for line in geometry), geometry
+    assert any(line.startswith("FLASH|") for line in geometry), \
+        "geometry mode must keep the geometry: %r" % (geometry,)
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
