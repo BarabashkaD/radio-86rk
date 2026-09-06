@@ -26,7 +26,7 @@ IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	-2
 Conn_SIL6	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step	-6.35	0	0	0
 Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	-11.43	0	0	0
 Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	-3.81	0	0	270
-Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step	-24.13	0	0	270
+Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x20_P2.54mm_Vertical.step	-24.13	0	0	270
 Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	-15.24	-1.27	0	270
 Conn_Friction_Lock_8P_2.54mm	${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step	-0.0200	-0.4600	2.5400	180.0000	0.0000	0.0000	1.0000	1.0000	1.0000
 Conn_Power_Jack_Circular_Pads	${KIPRJMOD}/Radio86RK.3dshapes/KLDX-0202-A.step	-7.7999	-0.1900	6.7400	90.0000	-90.0000	0.0000	1.0000	1.0000	1.0000

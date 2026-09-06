@@ -48,7 +48,10 @@ SOURCE = {
     "Conn_SIL6":               ("Resistor_THT",      "R_Array_SIP6"),
     "Conn_SIL10":              ("Resistor_THT",      "R_Array_SIP10"),
     "Conn_Pin_Header_4x1_2.54mm":  ("Connector_PinHeader_2.54mm", "PinHeader_1x04_P2.54mm_Vertical"),
-    "Conn_Pin_Header_20x1_2.54mm": ("Connector_PinHeader_2.54mm", "PinHeader_1x20_P2.54mm_Vertical"),
+    # J7 is a *socket*, not a header, despite the footprint's inherited name: skiselev's BOM
+    # calls for a 3M 929850-01-20-RB, a female receptacle strip (Mouser 517-929850-01-20-RB).
+    # The socket footprint's pads are identical to the header's, so only the model changes.
+    "Conn_Pin_Header_20x1_2.54mm": ("Connector_PinSocket_2.54mm", "PinSocket_1x20_P2.54mm_Vertical"),
     "Conn_Pin_Header_13x2_2.54mm_Shrouded": ("Connector_IDC", "IDC-Header_2x13_P2.54mm_Vertical"),
     "Conn_Friction_Lock_8P_2.54mm": ("Connector_Molex", "Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical"),
     # Housed variant: our footprint does carry the connector's two mounting holes -- 3.05 mm

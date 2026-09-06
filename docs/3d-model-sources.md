@@ -74,7 +74,7 @@ silkscreen markings, so package choices follow the Western parts.
 | `Conn_SIL6` | RN2–RN4 | `Resistor_THT/R_Array_SIP6` | exact pin count and pitch |
 | `Conn_SIL10` | RN1 | `Resistor_THT/R_Array_SIP10` | exact pin count and pitch |
 | `Conn_Pin_Header_4x1_2.54mm` | JP1, JP2 | `PinHeader_1x04_P2.54mm_Vertical` | exact |
-| `Conn_Pin_Header_20x1_2.54mm` | J7 | `PinHeader_1x20_P2.54mm_Vertical` | exact |
+| `Conn_Pin_Header_20x1_2.54mm` | J7 | `PinSocket_1x20_P2.54mm_Vertical` | female — see below |
 | `Conn_Pin_Header_13x2_2.54mm_Shrouded` | J6 | `IDC-Header_2x13_P2.54mm_Vertical` | exact |
 | `Conn_Friction_Lock_8P_2.54mm` | J3 | `Radio86RK.3dshapes/640456-8` | **the real part** — see below |
 | `Conn_Power_Jack_Circular_Pads` | J2 | `Radio86RK.3dshapes/KLDX-0202-A` | **the real part** |
@@ -84,6 +84,15 @@ silkscreen markings, so package choices follow the Western parts.
 
 `RN1`–`RN4` are SIP resistor networks, so `R_Array_SIP6`/`SIP10` are used rather than pin
 headers — same pin count and pitch, correct body.
+
+**J7 is a socket, not a header, despite its footprint name.** The name
+`Conn_Pin_Header_20x1_2.54mm` is inherited from the board and cannot change without
+changing a `lib_id`, but skiselev's BOM calls for a 3M **929850-01-20-RB** — a female
+receptacle strip (Mouser 517-929850-01-20-RB) for the optional extension board. It rendered
+as 20 male pins until this was caught in a render. KiCad's `PinSocket_1x20_P2.54mm_Vertical`
+has pads identical to the header's, so only the model changed and the transform is
+unaffected. J6 and JP1/JP2 were checked against the BOM at the same time and are genuinely
+male headers.
 
 ### The seven KiCad does not ship
 
@@ -330,7 +339,7 @@ Checked numerically (does the transform map every pad?) and visually:
 |---|---|---:|---:|---|
 | J5 | `Conn_Dsub_DE9M` | 180° | 0.107 mm | housing fills the silk outline, shell past the board edge, bosses on the mounting holes |
 | J6 | `Conn_Pin_Header_13x2_2.54mm_Shrouded` | 270° | 0.000 mm | shroud opening faces up |
-| J7 | `Conn_Pin_Header_20x1_2.54mm` | 270° | 0.000 mm | |
+| J7 | `Conn_Pin_Header_20x1_2.54mm` | 270° | 0.000 mm | a socket body with a row of receptacle holes, not pins |
 | JP1, JP2 | `Conn_Pin_Header_4x1_2.54mm` | 270° | 0.000 mm | pins on pads, body within the silk outline |
 | RN1 | `Conn_SIL10` | 0° | 0.000 mm | |
 | RN2–RN4 | `Conn_SIL6` | 0° | 0.000 mm | |
