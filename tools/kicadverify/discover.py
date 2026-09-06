@@ -6,6 +6,7 @@ Linux, and there is no portable way to find it. kicad-cli is an executable, and 
 executable can be found by looking.
 """
 import glob
+import ntpath
 import os
 import subprocess
 import sys
@@ -16,6 +17,13 @@ MIN_MAJOR = 10
 class EnvError(Exception):
     """Something the harness needs is missing or ambiguous. Always exit 2:
     'I could not run the check' is a different fact from 'the board changed'."""
+
+
+def _version_key(name):
+    """Sort key for a KiCad install directory. '10.0' must outrank '9.0',
+    which a string sort gets backwards. Non-numeric parts sort low rather
+    than raising, so a stray directory cannot break discovery."""
+    return [int(part) if part.isdigit() else -1 for part in name.split(".")]
 
 
 def cli_candidates(platform, environ, listdir=os.listdir):
@@ -31,11 +39,11 @@ def cli_candidates(platform, environ, listdir=os.listdir):
     elif platform.startswith("win"):
         for base in (r"C:\Program Files\KiCad", r"C:\Program Files (x86)\KiCad"):
             try:
-                versions = sorted(listdir(base), reverse=True)   # highest version first
+                versions = sorted(listdir(base), key=_version_key, reverse=True)   # highest version first
             except OSError:
                 versions = []
             for version in versions:
-                candidates.append(os.path.join(base, version, "bin", "kicad-cli.exe"))
+                candidates.append(ntpath.join(base, version, "bin", "kicad-cli.exe"))
     else:
         candidates.extend([
             "/usr/bin/kicad-cli",

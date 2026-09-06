@@ -153,6 +153,27 @@ def _cli_order():
     return True
 
 
+@check("Windows candidates are sorted by version, not lexically, and use backslashes")
+def _windows_candidates():
+    win = discover_mod.cli_candidates(
+        "win32", {}, listdir=lambda base: ["8.0", "9.0", "10.0"])
+    windows_only = [c for c in win if c != "kicad-cli"]
+    assert windows_only, "no Windows known-location candidates produced: %r" % (win,)
+
+    # Checked first and independently of separator style, so a broken join alone
+    # cannot mask this assertion behind a lookup failure.
+    assert all("/" not in c for c in windows_only), (
+        "Windows candidates must use the declared platform's separator, not the "
+        "host's: %r" % (win,))
+
+    index_10 = win.index(next(c for c in windows_only if "10.0" in c))
+    index_9 = win.index(next(c for c in windows_only if "9.0" in c))
+    assert index_10 < index_9, (
+        "a string sort puts '9.0' before '10.0' -- version directories must be "
+        "sorted numerically, not lexically: %r" % (win,))
+    return True
+
+
 @check("two boards in a repo is an error that names both")
 def _ambiguous_project():
     try:
