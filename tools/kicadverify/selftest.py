@@ -265,6 +265,19 @@ def _rules_shapes():
     return True
 
 
+@check("meta.json records what a later capture needs to reproduce this one")
+def _meta_fields():
+    from . import baseline as baseline_mod
+    meta = baseline_mod.build_meta("10.0.4", "abc1234", "KiCad/Board.kicad_pcb", ["strict"])
+    for field in ("tool", "format", "kicad_version", "captured", "commit", "project", "modes"):
+        assert field in meta, "meta.json is missing %s: %r" % (field, meta)
+    assert meta["kicad_version"] == "10.0.4", meta
+    assert meta["commit"] == "abc1234", meta
+    assert meta["modes"] == ["strict"], meta
+    assert meta["captured"].endswith("Z"), "capture time must be UTC: %r" % meta["captured"]
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []

@@ -49,19 +49,39 @@ def main(argv=None):
     if args.command == "gerber":
         from . import gerber
         mode = "geometry" if args.geometry else "strict"
-        return _gate(args, report, lambda env: gerber.run(env, report, mode))
+        return _gate(args, report,
+                     lambda env: gerber.run(env, report, mode, _drift(env, report)))
 
     if args.command == "netlist":
         from . import netlist
-        return _gate(args, report, lambda env: netlist.run(env, report))
+        return _gate(args, report,
+                     lambda env: netlist.run(env, report, _drift(env, report)))
 
     if args.command == "rules":
         from . import rules
         return _gate(args, report, lambda env: rules.run(env, report))
 
+    if args.command == "baseline":
+        from . import baseline as baseline_mod
+        return _gate(args, report,
+                     lambda env: baseline_mod.capture(env, report, args.force))
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV
+
+
+def _drift(env, report):
+    """The version-drift suffix, and the warning that goes with it. The suffix reaches
+    an agent through the verdict line and the JSON; the warning reaches a human on
+    stderr. It is never an exit code -- it obliges the reader to check the changelog,
+    it does not decide for them."""
+    from . import baseline as baseline_mod
+    suffix = baseline_mod.drift_for(env)
+    if suffix:
+        report.warn("baseline was captured with a different major KiCad version; "
+                    "differences may be emitter changes, not board changes")
+    return suffix
 
 
 def _gate(args, report, fn):
