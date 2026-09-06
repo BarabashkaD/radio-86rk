@@ -25,7 +25,7 @@ out the X2 net/component attribute lines and piping them through the `sort`
 command:
 
 ```sh
-grep -E '^%T[OA]\.' "$f" | sort >> "$out"
+grep -E '^%T[OA]\.' "$f" | sort >> "$out" || true
 ```
 
 `sort` with no `LC_ALL` set collates under the process locale — here
@@ -297,6 +297,46 @@ not be reproduced in the other direction either. Both directions point at
 the same cause. Every other gate agrees exactly between the two
 implementations on this tree, at this commit.
 
+### The old gate's exit code, on this same run, was not one it defines
+
+The table above shows `gerber-gate(strict): FAIL` as printed text. The
+process's actual exit code for that run was **141**, not the `1` the script
+is written to return on a failed diff. The script's tail is:
+
+```sh
+if diff -r -q "$BASE" "$NORM" >/dev/null; then
+  echo "gerber-gate($MODE): PASS - board geometry unchanged"
+else
+  echo "gerber-gate($MODE): FAIL"; diff -r -u "$BASE" "$NORM" | head -80; exit 1
+fi
+```
+
+run under `set -euo pipefail` (declared near the top of the script). `head
+-80` closes its input once it has printed 80 lines; on this diff there are
+more than 80 lines of output, so `diff` receives `SIGPIPE` when it tries to
+write past that point and is killed by that signal. Under `pipefail`, the
+exit status of the pipeline is the status of the last command to fail —
+`diff`'s `141` (128 + `SIGPIPE`'s signal number 13) — and `set -e` then
+takes that non-zero pipeline status as the whole `if` block's result and
+exits the script immediately with it, never reaching the `exit 1` written
+on the same line. The printed text is correct; the process's exit code is
+an accident of how much output the diff happened to produce, not a
+decision anyone made.
+
+`141` is neither `0` (pass) nor `1` (the code this script's own author
+wrote for "the board changed") — it is `128 + 13`, the shell's generic
+encoding for "killed by SIGPIPE," and it appears here only because this
+particular failing diff happens to print more than 80 lines. A shorter
+failing diff on the very same script would have returned the intended `1`;
+a longer one returns `141` instead, for a reason that has nothing to do
+with whether the board actually changed. A caller that only checks the
+exit code — any CI step that does `gerber-gate.sh || fail-the-build` —
+cannot tell "the board changed" apart from "a pipe closed early because the
+failure report was long," from the same number alone. The rewrite's three
+exit codes (`0` pass, `1` fail, `2` could not run — see `selftest`'s "exit
+code precedence" check) exist precisely so that distinction is never left
+to how much text a particular failure happens to print.
+
 ## Housekeeping performed for this comparison
 
 - The five archived scripts (`kicad-env.sh`, `gerber_canon.py`,
@@ -320,6 +360,14 @@ $ rm -rf .build
 $ python3 tools/kicad-verify.py selftest
 ...
 PASS  selftest 21 checks passed
+```
+
+(An earlier planning note for this rewrite predicted 17 self-test checks;
+that number predates later additions to the harness's self-test suite —
+version-drift detection, JSON mode, and the `all`-command's exit-code
+precedence among them. 21 is the current, correct count, not a discrepancy.)
+
+```
 $ python3 tools/kicad-verify.py all
 [gerber] exporting gerbers
 [gerber] exporting drill
