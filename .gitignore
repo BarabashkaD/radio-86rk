@@ -1,0 +1,9 @@
+# Derived output from tools/kicad-verify.py
+.build/
+
+# Scratch workspace for the implementation process
+.superpowers/
+
+# Python cache
+__pycache__/
+*.pyc
