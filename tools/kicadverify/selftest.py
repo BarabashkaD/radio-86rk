@@ -101,6 +101,42 @@ def _json_mode():
     return True
 
 
+def _fixture(name):
+    from . import canon as canon_mod
+    return canon_mod.canon(os.path.join(FIXTURES, name))
+
+
+@check("reordering and aperture renumbering canonicalise identically")
+def _reorder_is_identical():
+    a, b = _fixture("plain.gbr"), _fixture("reordered.gbr")
+    assert a == b, "same geometry compared different:\n  %r\n  %r" % (a, b)
+    return True
+
+
+@check("a one-unit displacement canonicalises differently")
+def _displacement_is_caught():
+    a, b = _fixture("plain.gbr"), _fixture("moved.gbr")
+    assert a != b, "a moved pad compared identical: %r" % (a,)
+    return True
+
+
+@check("region fills survive verbatim and in order")
+def _region_verbatim():
+    units = _fixture("region.gbr")
+    assert len(units) == 1, "expected one region unit, got %r" % (units,)
+    assert units[0] == ("REGION|C,0.100000|"
+                        "X0Y0D02*|X1000000Y0D01*|X1000000Y1000000D01*|"
+                        "X0Y1000000D01*|X0Y0D01*"), repr(units[0])
+    return True
+
+
+@check("region vertex order is significant")
+def _region_order_matters():
+    a, b = _fixture("region.gbr"), _fixture("region-reversed.gbr")
+    assert a != b, "a reversed polygon compared identical -- a line sort would do this"
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
