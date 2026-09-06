@@ -7,3 +7,6 @@
 # Python cache
 __pycache__/
 *.pyc
+
+# macOS Finder junk; not part of this project
+.DS_Store
