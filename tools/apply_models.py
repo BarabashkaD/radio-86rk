@@ -1,9 +1,17 @@
 """Apply models.tsv to the vendored library AND to the board's footprint instances.
 
 TSV columns: footprint <TAB> model <TAB> off_x <TAB> off_y <TAB> off_z <TAB> rot_z
+             [<TAB> rot_x <TAB> rot_y <TAB> scale_x <TAB> scale_y <TAB> scale_z]
 
-Columns after the model are optional and default to 0. Multiple rows per footprint are
-applied in order, which is how socket+chip and switch+stabilizer composites are built.
+Columns after the model are optional: rotations default to 0 and scales to 1. The trailing
+five exist for manufacturer models, which — unlike KiCad's own library, where everything is
+authored Z-up in the footprint frame — arrive in whatever frame the vendor's CAD used. A
+connector exported lying on its side needs rot_x = -90; a model of a sibling part needs a
+scale. KiCad's own models never need either, which is why the first eleven years of this
+file did not have the columns.
+
+Multiple rows per footprint are applied in order, which is how socket+chip and
+switch+stabilizer composites are built.
 
 The offset and rotation matter: a KiCad 3D model is authored in the frame of the KiCad
 footprint it ships with, and our footprints use different conventions - pad 1 at the origin
@@ -37,21 +45,24 @@ for raw in open(TSV):
         continue
     cols = [c.strip() for c in line.split("\t") if c.strip() != ""]
     name, path = cols[0], cols[1]
-    vals = [float(c) for c in cols[2:6]] + [0.0] * 4
-    ox, oy, oz, rot = vals[0], vals[1], vals[2], vals[3]
+    nums = [float(c) for c in cols[2:11]]
+    off = (nums + [0.0] * 3)[0:3]                     # off_x, off_y, off_z
+    rz = (nums + [0.0] * 4)[3]                        # rot_z
+    rx, ry = (nums + [0.0] * 6)[4:6]                  # rot_x, rot_y
+    scale = nums[6:9] if len(nums) >= 9 else [1.0, 1.0, 1.0]
     wanted.setdefault(name, [])
     if path != "-":
-        wanted[name].append((path, ox, oy, oz, rot))
+        wanted[name].append((path, off, (rx, ry, rz), scale))
 
 
 def set_models(fp, entries):
     fp.Models().clear()
-    for path, ox, oy, oz, rot in entries:
+    for path, off, rot, scale in entries:
         m = pcbnew.FP_3DMODEL()
         m.m_Filename = path
-        m.m_Offset = pcbnew.VECTOR3D(ox, oy, oz)
-        m.m_Scale = pcbnew.VECTOR3D(1, 1, 1)
-        m.m_Rotation = pcbnew.VECTOR3D(0, 0, rot)
+        m.m_Offset = pcbnew.VECTOR3D(*off)
+        m.m_Scale = pcbnew.VECTOR3D(*scale)
+        m.m_Rotation = pcbnew.VECTOR3D(*rot)
         m.m_Show = True
         fp.Models().push_back(m)
 

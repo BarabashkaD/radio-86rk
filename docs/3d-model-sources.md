@@ -5,8 +5,8 @@ copper, so visually equivalent public models are preferred over exact ones. Ever
 substitution is recorded here.
 
 Models attach to footprint *definitions*, not to references, which is why 76 components are
-covered by 8 assignments. All paths use `${KICAD10_3DMODEL_DIR}` or `${KICAD10_3RD_PARTY}`
-so the project stays portable. KiCad 10 ships `.step` files, not `.wrl`.
+covered by 8 assignments. Paths use `${KICAD10_3DMODEL_DIR}`, `${KICAD10_3RD_PARTY}` or
+`${KIPRJMOD}` so the project stays portable. KiCad 10 ships `.step` files, not `.wrl`.
 
 Coverage is measured with `tools/model_coverage.py`, which counts only models whose file
 actually resolves — the board began with 109 footprints carrying KiCad-4-era references
@@ -76,36 +76,88 @@ silkscreen markings, so package choices follow the Western parts.
 | `Conn_Pin_Header_4x1_2.54mm` | JP1, JP2 | `PinHeader_1x04_P2.54mm_Vertical` | exact |
 | `Conn_Pin_Header_20x1_2.54mm` | J7 | `PinHeader_1x20_P2.54mm_Vertical` | exact |
 | `Conn_Pin_Header_13x2_2.54mm_Shrouded` | J6 | `IDC-Header_2x13_P2.54mm_Vertical` | exact |
-| `Conn_Friction_Lock_8P_2.54mm` | J3 | `Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical` | exact family |
-| `Conn_Power_Jack_Circular_Pads` | J2 | `BarrelJack_CUI_PJ-063AH_Horizontal` | equivalent barrel jack |
-| `Conn_Dsub_DE9M` | J5 | `DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm` | exact |
-| `Speaker_12mm` | SP1 | `Buzzer_12x9.5RM7.6` | 12 mm body, correct pitch |
-| `DC-DC_SIP8` | U26 | `Converter_DCDC_Bothhand_CFUSxxxx_THT` | generic SIP DC-DC |
+| `Conn_Friction_Lock_8P_2.54mm` | J3 | `Radio86RK.3dshapes/640456-8` | **the real part** — see below |
+| `Conn_Power_Jack_Circular_Pads` | J2 | `Radio86RK.3dshapes/KLDX-0202-A` | **the real part** |
+| `Conn_Dsub_DE9M` | J5 | `DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm` | housed, with mounting hardware |
+| `Speaker_12mm` | SP1 | `Radio86RK.3dshapes/AT-1224-TWT-R` | **the real part** |
+| `DC-DC_SIP8` | U26 | `Radio86RK.3dshapes/IZ0512S` | scaled sibling — see below |
 
 `RN1`–`RN4` are SIP resistor networks, so `R_Array_SIP6`/`SIP10` are used rather than pin
 headers — same pin count and pitch, correct body.
 
-### The two KiCad does not ship
+### The seven KiCad does not ship
 
-Searched every installed `.3dshapes` directory including the PCM third-party libraries:
-there is no RCA, cinch or phono model, and no 8-pin DIN. (The one "DIN" hit is
-`Jack_3.5mm_Ledino_KB3SPRS`, whose *part name* contains the string.)
+KiCad has no RCA, cinch or phono model, no 8-pin DIN, and nothing for the XP Power IZ
+series — searched every installed `.3dshapes` directory including the PCM third-party
+libraries. (The one "DIN" hit is `Jack_3.5mm_Ledino_KB3SPRS`, whose *part name* contains
+the string.) Four more parts had a stock model that was the right *category* and the wrong
+manufacturer.
 
-| Ref | Footprint | Decision |
+All seven came from the abandoned `migrate2kicad10` branch, which attacked the same problem
+from the opposite end: it replaced each footprint with a manufacturer-sourced one that
+carried its own model. Those footprint swaps moved copper and are unusable here — but a
+model does not care which footprint introduced it, and the STEP files are the real parts
+from skiselev's BOM. They are vendored into `KiCad/Radio86RK.3dshapes/` and referenced via
+`${KIPRJMOD}`, so a fresh clone renders them with nothing installed.
+
+| Ref | Part | STEP origin |
 |---|---|---|
-| J1 | `Conn_RCA_Right` | **Fallback:** `Connector_Coaxial/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal` — the nearest public shape, a horizontal panel-mount coaxial jack |
-| J4 | `Conn_DIN_8pin` | **Deliberately blank.** No comparable public 8-pin DIN exists, and a visibly wrong connector is worse than an absent one. |
+| J1 | Same Sky / CUI **RCJ-014** RCA phono | SnapEDA (`CUI_DEVICES_RCJ-014.step`) |
+| J2 | Kycon **KLDX-0202-A** 2 mm DC jack | SamacSys / Ultra Librarian (`KLDX-0202-A.STEP`) |
+| J3 | TE / AMP **640456-8** MTA-100 header | Tyco Electronics (`C-640456-8`, 2013) |
+| J4 | Same Sky / CUI **SDF-80J** DIN-8 | manufacturer (`same sky SDF-80J.STEP`) |
+| SP1 | PUI **AT-1224-TWT-R** 12 mm transducer | SamacSys, via FreeCAD/OCC |
+| SW68 | Omron **B3F-3152** tactile | manufacturer (`B3F_3152.step`) |
+| U26 | XP Power **IZ0512S** DC-DC | sibling IA0512S, scaled — below |
 
-Both are recorded as rows in `tools/models.tsv` so the decision is visible in the data, not
-just here — J4's row has `-` as its model path, which the applier treats as "handled, no
-model" rather than an oversight.
+**The models are checked against our pads before being reused.** Two libraries drawing the
+same part is a premise, not a fact, so `tools/align_models_legacy.py` brute-forces the four
+90° rotations, lands our pad 1 on theirs, and reports the worst distance from any of our
+pads to the nearest same-named pad of theirs:
 
-To improve either, place a sourced `.step` in `KiCad/Radio86RK.3dshapes/` and reference it
-via `${KIPRJMOD}` so a fresh clone still renders it. Manufacturer downloads or SnapEDA /
-Ultra Librarian / GrabCAD exports are all suitable; note the origin and licence here.
+| Footprint | fit rotation | worst pad residual |
+|---|---:|---:|
+| `DC-DC_SIP8` | 0° | 0.0000 mm |
+| `Conn_DIN_8pin` | 180° | 0.0000 mm |
+| `Conn_Friction_Lock_8P_2.54mm` | 180° | 0.0000 mm |
+| `Switch_Tactile_6mm_Right` | 180° | 0.0009 mm |
+| `Speaker_12mm` | 90° | 0.0024 mm |
+| `Conn_Power_Jack_Circular_Pads` | 0° | 0.1006 mm |
+| `Conn_RCA_Right` | 0° | 0.5800 mm |
 
-**3D coverage after this task: 114/183.** The remaining 69 are the 68 switches (Task 7)
-and J4.
+J1's 0.58 mm is a known error in the *board's* own hand-drawn footprint: measured against
+the RCJ-01 datasheet, the manufacturer's signal-to-odd-ground spacing is right and the
+board's is 0.58 mm out. It is copper, so it stays as it is; at the 3D layer it is invisible.
+
+#### U26 is the one model that is not the real part
+
+No STEP exists for the IZ0512S anywhere. The old branch substituted the manufacturer's
+model for the sibling **IA0512S** — same potted-SIP construction — and scaled it to the IZ's
+body. That is a sound approach, and its two ratios were right, but they were applied to the
+wrong axes.
+
+The branch's note orders both parts *L × H × W*: IA `19.3 × 10.1 × 6.0`, IZ
+`21.85 × 11.10 × 9.20`. The IZ figures are correct — page 1 of
+`Documentation/XP Power - DC-DC Converter - IZ Series.pdf` gives 0.86″ (21.85) long,
+0.44″ (11.10) high and 0.36″ (9.20) wide on the bottom view. But the STEP itself is authored
+Z-up, so *its* axes run L × W × H; measuring the file gives X 19.30, Y 6.09, Z −5.00…10.16.
+Stored as `(1.1321, 1.0990, 1.5333)` the height ratio lands on width and the width ratio on
+height, rendering U26 about **15.6 mm tall and 6.7 mm thick** instead of 11.10 × 9.20 — a
+brick with the right footprint and visibly wrong proportions, filling only part of the v1.4
+silkscreen outline.
+
+Corrected to `(1.1321, 1.5107, 1.0925)` in `align_models_legacy.py`'s `SCALE_FIX`, so
+re-running the tool reproduces the fix rather than the bug. The body now fills its silk
+outline. The board is designed to accept alternatives anyway (README: Traco TMR 3E, Recom
+RS3, Cincon EC3SA), so a correctly-proportioned SIP brick of the right family is a fair
+representation even though the mould is a sibling's.
+
+#### Licensing
+
+All seven are vendor-published mechanical models, redistributed from the manufacturer or
+from SnapEDA / Ultra Librarian exports of manufacturer data. They are geometry for
+documentation and rendering, carry no copper, and are not part of the fabrication output —
+the gerbers are byte-identical with or without them.
 
 ## Keyboard — 68 switches, 6 footprints
 
@@ -116,7 +168,7 @@ and J4.
 | `CHERRY_PCB_150H` | SW61 | `SW_Cherry_MX_PCB` | |
 | `CHERRY_PCB_225H` | SW11 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_2.00u` | composite |
 | `CHERRY_PCB_625H` | SW64 | `SW_Cherry_MX_PCB` + `Stabilizer_Cherry_MX_6.25u` @ 180° | composite, mirrored |
-| `Switch_Tactile_6mm_Right` | SW68 | `SW_Tactile_SPST_Angled_PTS645Vx31-2LFS` | reset switch |
+| `Switch_Tactile_6mm_Right` | SW68 | `Radio86RK.3dshapes/B3F-3152` | reset switch, the real Omron part |
 
 **The footprints are the board's own, not perigoso's.** Only the models come from perigoso.
 The design spec proposed adopting perigoso's footprints on the grounds that doing so
@@ -157,8 +209,8 @@ the viewer, and exactly what the 3D tolerance policy exists to permit.
 
 ## Coverage
 
-**182 / 183.** The 7 mounting holes and the silkscreen logo are exempt. The single gap is
-**J4**, the 8-pin DIN, for which no public model exists anywhere — see above.
+**183 / 183.** The 7 mounting holes and the silkscreen logo are exempt. Nothing is missing:
+J4, the last gap, was closed with the manufacturer's own SDF-80J model.
 
 ## Validating the render
 
@@ -205,8 +257,10 @@ Reference images are in `verify/renders/`:
 | Edge connectors J2, J5, J6 | bodies pointing **outward** past the board edge | model orientation |
 | Y1 crystal | standing upright | vertical vs horizontal model |
 | Switch row | uniform height, all flat on the board | |
-| J1 | renders as a **BNC** | known and documented — no public RCA model |
-| J4 | renders as **nothing** | known and documented — no public 8-pin DIN |
+| J1 | a yellow RCA phono jack, opening past the board edge | wrong rotation would face it inward |
+| J4 | a round DIN socket overhanging the edge, body inside its silk outline | composed transform wrong |
+| J5 | black housing filling the silk outline, bosses on the two plated mounting holes | wrong housed variant |
+| U26 | a squat brick filling its silk outline, not a tall thin one | swapped scale axes |
 
 All of these were checked on the current board and are correct.
 
@@ -242,6 +296,28 @@ the tool records why.
 Of 27 footprints with stock KiCad models, **only the switches needed no correction** — and
 those were verified separately, since both libraries put the switch's centre boss at (0,0).
 
+### Manufacturer models need two more degrees of freedom
+
+KiCad's own models are all authored Z-up in the footprint frame, so `off_x, off_y, off_z,
+rot_z` is enough for them. Vendor models are not: they arrive in whatever frame the vendor's
+CAD used — several of these are exported lying on their side and need `rot_x = -90` — and
+the U26 substitution needs a scale. `models.tsv` therefore takes five optional trailing
+columns, `rot_x rot_y sx sy sz`, defaulting to 0 and 1.
+
+The transforms for those seven are *composed*, not measured: each model already had a
+placement inside the old branch's own footprint, and our footprint differs from theirs by a
+Z rotation θ and a translation. KiCad renders a model as
+
+```
+translate(offset) . Rz(-rot_z) . Ry(-rot_y) . Rx(-rot_x) . scale
+```
+
+so pre-multiplying Rz(θ) gives `translate(Rz(θ)·offset + δ) . Rz(-(rot_z + θ)) . Ry . Rx .
+scale` — the stored Z rotations simply add, `rot_x`/`rot_y`/`scale` pass through, and the
+old offset is rotated by θ before δ is added. `tools/align_models_legacy.py` does this and
+prints the rows. J4 is the case that proves the algebra: θ = 180° over a non-zero offset and
+an X rotation, and the model lands inside its silkscreen outline to the pixel.
+
 **Automated coverage cannot catch this.** `model_coverage.py` proves a model file resolves;
 it says nothing about whether the model is placed correctly. Only the render does. See the
 validation section above.
@@ -252,16 +328,26 @@ Checked numerically (does the transform map every pad?) and visually:
 
 | Ref | Footprint | rot | worst pad error | Visual |
 |---|---|---:|---:|---|
-| J5 | `Conn_Dsub_DE9M` | 180° | 0.107 mm | shell points outward past the board edge |
+| J5 | `Conn_Dsub_DE9M` | 180° | 0.107 mm | housing fills the silk outline, shell past the board edge, bosses on the mounting holes |
 | J6 | `Conn_Pin_Header_13x2_2.54mm_Shrouded` | 270° | 0.000 mm | shroud opening faces up |
 | J7 | `Conn_Pin_Header_20x1_2.54mm` | 270° | 0.000 mm | |
 | JP1, JP2 | `Conn_Pin_Header_4x1_2.54mm` | 270° | 0.000 mm | pins on pads, body within the silk outline |
 | RN1 | `Conn_SIL10` | 0° | 0.000 mm | |
 | RN2–RN4 | `Conn_SIL6` | 0° | 0.000 mm | |
-| J3 | `Conn_Friction_Lock_8P_2.54mm` | 0° | 0.000 mm | |
+| J3 | `Conn_Friction_Lock_8P_2.54mm` | 180° | 0.000 mm | posts on pads (rotation changed with the 640456-8 model) |
 
-J5's 0.107 mm is KiCad's 2.77 vs 2.84 mm DSUB pitch variant, and our footprint carries 10
-pads to KiCad's 9 (an extra shield pad). Neither matters at the 3D layer.
+J5's 0.107 mm is KiCad's generic 2.77/2.84 mm DSUB pitch against the board's exact
+2.7432/2.8448 (0.108"/0.112"). Neither matters at the 3D layer.
+
+**J5 uses a housed variant, and our footprint does have somewhere to put the hardware.** Its
+two 3.05 mm pads named `0` at ±12.494 are the connector's plated mounting holes, sitting on
+the centreline between the pin rows — there are no *non-plated* holes, which is a different
+thing. Of KiCad's five housed right-angle DE9 models, three put their mounting holes on that
+centreline; the `EdgePinOffset4.94mm` and `EdgePinOffset14.56mm_...Offset8.20mm` variants
+put them at row-2 height instead, a real mechanical mismatch rather than a naming one. The
+three survivors differ only in how far the shell stands off the pins, and the board's near
+pin row sits 8.178 mm from the edge, so `EdgePinOffset7.70mm` is the fit and the shell
+overhangs by 0.478 mm.
 
 Reference renders: `validate-ic-alignment.png`, `validate-connectors.png`,
 `validate-jumpers.png`.

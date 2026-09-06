@@ -51,7 +51,14 @@ SOURCE = {
     "Conn_Pin_Header_20x1_2.54mm": ("Connector_PinHeader_2.54mm", "PinHeader_1x20_P2.54mm_Vertical"),
     "Conn_Pin_Header_13x2_2.54mm_Shrouded": ("Connector_IDC", "IDC-Header_2x13_P2.54mm_Vertical"),
     "Conn_Friction_Lock_8P_2.54mm": ("Connector_Molex", "Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical"),
-    "Conn_Dsub_DE9M":          ("Connector_Dsub",    "DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm"),
+    # Housed variant: our footprint does carry the connector's two mounting holes -- 3.05 mm
+    # plated, named "0", at +/-12.494 on the centreline between the pin rows -- so the
+    # hardware in this model has somewhere to land. Of the five housed variants, three put
+    # their holes on that centreline (the 4.94 and 14.56/8.20 variants put them at row-2
+    # height instead, a real mechanical mismatch); those three then differ only in how far
+    # the shell face stands off the pins, and ours sits 8.178 mm from the board edge, so
+    # 7.70 is the near fit and the shell overhangs the edge by 0.478 mm.
+    "Conn_Dsub_DE9M":          ("Connector_Dsub",    "DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm"),
     "Speaker_12mm":            ("Buzzer_Beeper",     "Buzzer_12x9.5RM7.6"),
     "Conn_Power_Jack_Circular_Pads": ("Connector_BarrelJack", "BarrelJack_CUI_PJ-063AH_Horizontal"),
     "Switch_Tactile_6mm_Right": ("Button_Switch_THT", "SW_Tactile_SPST_Angled_PTS645Vx31-2LFS"),

@@ -8,7 +8,7 @@
 | DRC violations | 91 | **22**, 0 errors, documented |
 | Unconnected items | 0 | **0** |
 | Schematic/board parity | 0 | **0** |
-| Components rendering in 3D | 0 / 183 | **182 / 183** |
+| Components rendering in 3D | 0 / 183 | **183 / 183** |
 | Gerber + drill diff vs v1.4 | — | **empty** |
 | Opens from a fresh clone | no | **yes** |
 
@@ -41,8 +41,11 @@ silkscreen cosmetics.
   stock symbols that drifted since KiCad 4, and `Device:Q_NPN_EBC` had merely moved to
   `Transistor_BJT`. Nothing needed a custom symbol.
 - **`my_components` vendored** so no sibling checkout is required.
-- **3D models on 182 of 183 components**, including socket+chip composites on all 24
-  socketed DIP ICs and switch+stabilizer composites on the two wide keys.
+- **3D models on all 183 components**, including socket+chip composites on all 24 socketed
+  DIP ICs and switch+stabilizer composites on the two wide keys. Seven parts KiCad has no
+  model for — the RCA, the DIN-8, the barrel jack, the MTA header, the speaker, the tactile
+  switch and the DC-DC brick — use manufacturer STEP files recovered from the abandoned
+  `migrate2kicad10` branch, vendored into `KiCad/Radio86RK.3dshapes/`.
 
 ## What was deliberately not done
 
@@ -50,7 +53,6 @@ silkscreen cosmetics.
 |---|---|
 | 22 DRC violations | Properties of the v1.4 board. Fixing means moving silkscreen or zone geometry. See `docs/drc-exclusions.md`. |
 | 32 ERC violations | Bus signals carrying both label scopes. Clearing them costs 91 label edits for 0 errors — measured, not estimated. See `docs/erc-exclusions.md`. |
-| J4's 3D model | No public 8-pin DIN model exists in any installed library. A visibly wrong connector is worse than none. See `docs/followup-3d-models.md`. |
 | U3/U22 RS-232 defect | Pre-existing v1.4 design defect, GitHub issue #2. Fixing it is a topology change. |
 
 ## How to verify any of this yourself

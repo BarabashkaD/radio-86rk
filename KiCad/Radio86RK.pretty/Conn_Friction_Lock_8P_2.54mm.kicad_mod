@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at -9.2075 3.4925 0)
 		(layer "F.SilkS")
-		(uuid "43a32eed-006f-4ba9-839f-1c5db6a55d21")
+		(uuid "8514bb02-0688-489c-a064-4e49ec0842e1")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "Conn_Friction_Lock_8P_2.54mm"
 		(at -2.2225 3.4925 0)
 		(layer "F.SilkS")
-		(uuid "31583452-7922-4127-addb-1f7fe73d1c1d")
+		(uuid "1ca251f1-54cf-476a-a87f-2b5751bf72d7")
 		(effects
 			(font
 				(size 1 0.8)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "126f272b-41eb-426b-80d1-9cccaa8f9c37")
+		(uuid "0e5cc5db-6a50-4fd7-a24d-e68442086278")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -43,7 +43,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b5892130-3102-45ae-8c83-7187fe5bce57")
+		(uuid "3e1398c0-dca3-451c-ac36-66ff84de21c8")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "56d4c2a9-e484-4419-8505-052f73593330")
+		(uuid "9382f7f6-a716-4653-b33b-5701e6e01cad")
 	)
 	(fp_line
 		(start -8.89 -3.175)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "7a4dd63e-9bce-4e4a-8b3c-27ad30d05d11")
+		(uuid "eef95f3c-41cd-4270-b0bb-9fd7deca2076")
 	)
 	(fp_line
 		(start -8.89 -1.905)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "9396e44f-8373-4d72-80f3-d911ea09eb1b")
+		(uuid "6737cb75-6140-41a4-a0c3-1379629f2a54")
 	)
 	(fp_line
 		(start 8.89 -1.905)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "194260cd-7b8d-4626-b86c-da8229abc74d")
+		(uuid "79dbafd4-5119-4c1b-8777-5e494911482c")
 	)
 	(fp_line
 		(start 10.16 -3.175)
@@ -102,7 +102,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "1c05476e-c732-47d3-bb96-102e90095b86")
+		(uuid "00a96f10-2242-4bf2-a301-af9ec873b02c")
 	)
 	(fp_line
 		(start 10.16 2.54)
@@ -112,7 +112,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "bf0d18e0-6d4e-429f-8664-665aa9b20e53")
+		(uuid "68d3078b-b573-4c51-953f-920c55c5b890")
 	)
 	(fp_line
 		(start 10.16 2.54)
@@ -122,7 +122,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d6e2fc81-ac9b-45ab-9b65-f3f8d632d2ef")
+		(uuid "8e2484f9-ded6-468a-b063-d733a61443e6")
 	)
 	(pad "1" thru_hole rect
 		(at -8.89 0)
@@ -130,7 +130,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "23597447-64b7-428c-9f20-e4ae48546e90")
+		(uuid "497075c7-2045-4e25-9603-6c61c4736fd6")
 	)
 	(pad "2" thru_hole circle
 		(at -6.35 0)
@@ -138,7 +138,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c18cb57a-9754-4986-aba3-8770c0e80c7b")
+		(uuid "ad28ed42-fc28-4216-bf40-c515e33dda3e")
 	)
 	(pad "3" thru_hole circle
 		(at -3.81 0)
@@ -146,7 +146,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "bc0ed96a-f65c-425b-8776-1a17716d0bf5")
+		(uuid "4447476e-8643-4f50-b564-100b15f37ec0")
 	)
 	(pad "4" thru_hole circle
 		(at -1.27 0)
@@ -154,7 +154,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "131987c7-073d-4339-bbcc-e0fa11e110fa")
+		(uuid "d5ad6d75-1203-4bfd-a3e2-bb2e2c18974f")
 	)
 	(pad "5" thru_hole circle
 		(at 1.27 0)
@@ -162,7 +162,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "2b94386c-3f3b-4c34-99d2-1728360795d0")
+		(uuid "f44d5021-3c03-42d1-8fd9-77c8922acbcb")
 	)
 	(pad "6" thru_hole circle
 		(at 3.81 0)
@@ -170,7 +170,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "ec996a89-61d8-4a31-ab32-615720f924b0")
+		(uuid "d8761b05-5136-45a8-b7ab-be8e60e5f6d9")
 	)
 	(pad "7" thru_hole circle
 		(at 6.35 0)
@@ -178,7 +178,7 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d9556515-e2f4-4868-8e48-cf0f65960f3d")
+		(uuid "0dc0f7fb-30d3-4c6b-9633-42931248bedd")
 	)
 	(pad "8" thru_hole circle
 		(at 8.89 0)
@@ -186,18 +186,18 @@
 		(drill 1.016)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "2a1b8ae2-d224-41bd-829f-19d348fb3b78")
+		(uuid "af500e7c-f9f4-46f9-b8c0-e8605441de9a")
 	)
 	(embedded_fonts no)
-	(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step"
+	(model "${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step"
 		(offset
-			(xyz -8.89 0 0)
+			(xyz -0.02 -0.46 2.54)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz 0 0 180)
 		)
 	)
 )

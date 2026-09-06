@@ -81,7 +81,7 @@ Manager, which supplies the Cherry MX switch and stabilizer 3D models.
 - [3D model sources](docs/3d-model-sources.md) — every model choice and substitution
 - [Retained DRC violations](docs/drc-exclusions.md) — the 22 inherited from v1.4
 - [Retained ERC violations](docs/erc-exclusions.md) — the 32 bus-label warnings
-- [3D model follow-ups](docs/followup-3d-models.md) — five approximate models, and optional keycaps
+- [3D model follow-ups](docs/followup-3d-models.md) — the five approximations now resolved, and optional keycaps
 
 Verification tools live in `tools/`, with the frozen v1.4 reference in `verify/baseline/`:
 

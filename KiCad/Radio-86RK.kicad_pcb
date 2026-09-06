@@ -9147,15 +9147,15 @@
 			(uuid "dab9465c-79b9-4e3b-af17-bbe1b6984ea0")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/B3F-3152.step"
 			(offset
-				(xyz 2.253 -3.8506 0)
+				(xyz -2.247 -3.8806 -0.01)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 90)
+				(xyz -90 0 180)
 			)
 		)
 	)
@@ -36081,15 +36081,15 @@
 			(uuid "02ad1cd3-0898-4b52-ab68-5686fb86805a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/RCJ-014.step"
 			(offset
-				(xyz 5.08 0 0)
+				(xyz 6.08 0 7)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 180)
+				(xyz -90 0 180)
 			)
 		)
 	)
@@ -37653,6 +37653,17 @@
 			(uuid "1aed2637-318d-4d32-bfa9-3bef45f811f2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/SDF-80J.step"
+			(offset
+				(xyz -0.01 -7.75 0.06)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "My_Components:Diode_762"
 		(layer "F.Cu")
@@ -40256,7 +40267,7 @@
 			(uuid "770c0720-2561-4ee3-9ec2-0c5dd543e1a4")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/AT-1224-TWT-R.step"
 			(offset
 				(xyz 3.2512 0 0)
 			)
@@ -40264,7 +40275,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 180)
+				(xyz 0 0 90)
 			)
 		)
 	)
@@ -43578,15 +43589,15 @@
 			(uuid "886c92fe-1822-4545-bb6a-435e076fb3e4")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/KLDX-0202-A.step"
 			(offset
-				(xyz 6.2001 0 0)
+				(xyz -7.7999 -0.19 6.74)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 90)
+				(xyz -90 0 90)
 			)
 		)
 	)
@@ -43805,15 +43816,15 @@
 			(uuid "c524a6cf-c855-4411-a212-a27e4dc52ba6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step"
 			(offset
-				(xyz -8.89 0 0)
+				(xyz -0.02 -0.46 2.54)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -43991,12 +44002,12 @@
 			(uuid "af193560-dfc2-44f4-9973-93da37b99792")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step"
+		(model "${KIPRJMOD}/Radio86RK.3dshapes/IZ0512S.step"
 			(offset
 				(xyz -8.89 0 0)
 			)
 			(scale
-				(xyz 1 1 1)
+				(xyz 1.1321 1.5107 1.0925)
 			)
 			(rotate
 				(xyz 0 0 0)
@@ -46177,7 +46188,7 @@
 			(uuid "e73387b7-f774-43ba-9d81-23d7ec464800")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm.step"
 			(offset
 				(xyz 5.4864 -1.4224 0)
 			)

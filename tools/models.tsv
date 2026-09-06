@@ -1,4 +1,4 @@
-# footprint	model	off_x	off_y	off_z	rot_z
+# footprint	model	off_x	off_y	off_z	rot_z	[rot_x	rot_y	sx	sy	sz]
 # Offsets and rotations are computed by tools/align_models.py: KiCad models are
 # authored in KiCad's own footprint frame, ours use different conventions.
 Res_762	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step	-3.81	0	0	0
@@ -28,13 +28,13 @@ Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	-11.4
 Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	-3.81	0	0	270
 Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x20_P2.54mm_Vertical.step	-24.13	0	0	270
 Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	-15.24	-1.27	0	270
-Conn_Friction_Lock_8P_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-08A_1x08_P2.54mm_Vertical.step	-8.89	0	0	0
-Conn_Power_Jack_Circular_Pads	${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_CUI_PJ-063AH_Horizontal.step	6.2001	0	0	90
-Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset9.40mm.step	5.4864	-1.4224	0	180
-Speaker_12mm	${KICAD10_3DMODEL_DIR}/Buzzer_Beeper.3dshapes/Buzzer_12x9.5RM7.6.step	3.2512	0	0	180
-DC-DC_SIP8	${KICAD10_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_Bothhand_CFUSxxxx_THT.step	-8.89	0	0	0
-Conn_RCA_Right	${KICAD10_3DMODEL_DIR}/Connector_Coaxial.3dshapes/BNC_Amphenol_B6252HB-NPP3G-50_Horizontal.step	5.08	0	0	180
-Switch_Tactile_6mm_Right	${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Tactile_SPST_Angled_PTS645Vx31-2LFS.step	2.253	-3.8506	0	90
+Conn_Friction_Lock_8P_2.54mm	${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step	-0.0200	-0.4600	2.5400	180.0000	0.0000	0.0000	1.0000	1.0000	1.0000
+Conn_Power_Jack_Circular_Pads	${KIPRJMOD}/Radio86RK.3dshapes/KLDX-0202-A.step	-7.7999	-0.1900	6.7400	90.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
+Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm.step	5.4864	-1.4224	0	180
+Speaker_12mm	${KIPRJMOD}/Radio86RK.3dshapes/AT-1224-TWT-R.step	3.2512	0.0000	0.0000	90.0000	0.0000	0.0000	1.0000	1.0000	1.0000
+DC-DC_SIP8	${KIPRJMOD}/Radio86RK.3dshapes/IZ0512S.step	-8.8900	0.0000	0.0000	0.0000	0.0000	0.0000	1.1321	1.5107	1.0925
+Conn_RCA_Right	${KIPRJMOD}/Radio86RK.3dshapes/RCJ-014.step	6.0800	0.0000	7.0000	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
+Switch_Tactile_6mm_Right	${KIPRJMOD}/Radio86RK.3dshapes/B3F-3152.step	-2.2470	-3.8806	-0.0100	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
 # --- Keyboard: verified correct at offset 0; origins coincide with perigoso's ---
 CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
 CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
@@ -43,5 +43,6 @@ CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kica
 CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0	0	0
 CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
 CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	0	0	180
-# J4: no public 8-pin DIN model exists; deliberate blank
-Conn_DIN_8pin	-	0	0	0	0
+# --- Manufacturer models recovered from the migrate2kicad10 branch ---
+# (rows are above, next to their neighbours; regenerate with tools/align_models_legacy.py)
+Conn_DIN_8pin	${KIPRJMOD}/Radio86RK.3dshapes/SDF-80J.step	-0.0100	-7.7500	0.0600	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
