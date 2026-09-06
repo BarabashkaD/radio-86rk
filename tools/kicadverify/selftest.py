@@ -26,6 +26,7 @@ def _harness_runs():
 
 
 from . import report as report_mod
+from . import canon as canon_mod
 
 
 @check("verdict line format is exactly six and nine columns")
@@ -102,7 +103,6 @@ def _json_mode():
 
 
 def _fixture(name):
-    from . import canon as canon_mod
     return canon_mod.canon(os.path.join(FIXTURES, name))
 
 
