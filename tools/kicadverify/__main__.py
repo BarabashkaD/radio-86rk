@@ -50,12 +50,12 @@ def main(argv=None):
         from . import gerber
         mode = "geometry" if args.geometry else "strict"
         return _gate(args, report,
-                     lambda env: gerber.run(env, report, mode, _drift(env, report)))
+                     lambda env: gerber.run(env, report, mode, *_drift(env, report)))
 
     if args.command == "netlist":
         from . import netlist
         return _gate(args, report,
-                     lambda env: netlist.run(env, report, _drift(env, report)))
+                     lambda env: netlist.run(env, report, *_drift(env, report)))
 
     if args.command == "rules":
         from . import rules
@@ -72,16 +72,26 @@ def main(argv=None):
 
 
 def _drift(env, report):
-    """The version-drift suffix, and the warning that goes with it. The suffix reaches
-    an agent through the verdict line and the JSON; the warning reaches a human on
-    stderr. It is never an exit code -- it obliges the reader to check the changelog,
-    it does not decide for them."""
+    """The version-drift suffix, the two version strings behind it, and the warning
+    that goes with it. All three reach an agent through the verdict line and the
+    JSON; the warning reaches a human on stderr. It is never an exit code -- it
+    obliges the reader to check the changelog, it does not decide for them.
+
+    The versions are returned whenever a baseline exists, not only when the majors
+    disagree: absent-versus-false is exactly the ambiguity structured output exists
+    to remove. When there is no baseline at all both come back None -- the caller's
+    gate raises before it would report anything, so there is nothing to decide.
+    """
     from . import baseline as baseline_mod
+    meta = baseline_mod.read_meta(env.baseline_dir)
+    if not meta:
+        return "", None, None
+    baseline_kicad = meta.get("kicad_version")
     suffix = baseline_mod.drift_for(env)
     if suffix:
         report.warn("baseline was captured with a different major KiCad version; "
                     "differences may be emitter changes, not board changes")
-    return suffix
+    return suffix, baseline_kicad, env.version
 
 
 def _gate(args, report, fn):

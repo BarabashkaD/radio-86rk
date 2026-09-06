@@ -32,7 +32,7 @@ def extract(lines):
     return out
 
 
-def run(env, report, drift=""):
+def run(env, report, drift="", baseline_kicad=None, running_kicad=None):
     raw = os.path.join(env.build_dir, "netlist.raw")
     cur = os.path.join(env.build_dir, "netlist.nets")
     base = os.path.join(env.baseline_dir, "netlist.nets")
@@ -55,11 +55,20 @@ def run(env, report, drift=""):
         raise EnvError("no netlist baseline at %s. Run: "
                        "python3 tools/kicad-verify.py baseline" % base)
 
+    # The version fields ride along whenever a baseline was found to compare
+    # against, not only when the majors disagree -- an agent should not have to
+    # infer "no drift" from an absent key.
+    extra = {}
+    if baseline_kicad is not None:
+        extra["baseline_kicad"] = baseline_kicad
+        extra["running_kicad"] = running_kicad
+        extra["version_drift"] = bool(drift)
+
     with open(base, errors="replace") as handle:
         expected = handle.readlines()
     if expected == nets:
         report.gate("netlist", True, "every pin maps to the same net%s" % drift,
-                    lines=len(nets), version_drift=bool(drift))
+                    lines=len(nets), **extra)
         return True
 
     import difflib
@@ -67,7 +76,7 @@ def run(env, report, drift=""):
                if line.startswith(("+", "-")) and not line.startswith(("+++", "---"))]
     report.gate("netlist", False,
                 "%d connectivity lines differ%s" % (len(changed), drift),
-                lines=len(nets), changed=len(changed), version_drift=bool(drift))
+                lines=len(nets), changed=len(changed), **extra)
     for line in changed[:40]:
         report.detail(line.rstrip())
     if len(changed) > 40:

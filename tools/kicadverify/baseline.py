@@ -17,7 +17,6 @@ re-derived: changing it shows up as a diff.
 import datetime
 import json
 import os
-import shutil
 import subprocess
 
 from . import gerber, netlist
@@ -28,12 +27,24 @@ FORMAT = 1
 
 
 def read_meta(baseline_dir):
-    """The captured baseline's metadata, or None if there is no baseline."""
+    """The captured baseline's metadata, or None if there is no baseline.
+
+    A meta.json that exists but will not parse is a different fact from "no
+    baseline": it is an environment problem -- the tool cannot read its own
+    metadata -- not a missing-baseline one, so it is raised as EnvError rather
+    than left to escape as a bare JSONDecodeError and be mistaken for a gate
+    reporting that the board changed.
+    """
     path = os.path.join(baseline_dir, "meta.json")
     if not os.path.exists(path):
         return None
     with open(path) as handle:
-        return json.load(handle)
+        try:
+            return json.load(handle)
+        except ValueError as exc:
+            raise EnvError(
+                "could not read %s: %s. Re-capture the baseline or restore it "
+                "from git." % (path, exc))
 
 
 def build_meta(kicad_version, commit, project, modes):
@@ -99,8 +110,7 @@ def capture(env, report, force=False):
     raw = os.path.join(env.build_dir, "gerber-raw")
     strict_dir = os.path.join(env.baseline_dir, "strict")
     gerber.export(env, report, raw)
-    if os.path.isdir(strict_dir):
-        shutil.rmtree(strict_dir)
+    # gerber.normalise removes and recreates strict_dir itself; no need to do it here too.
     count = gerber.normalise(raw, strict_dir, "strict")
     report.progress("baseline", "%d gerber and drill files captured" % count)
 

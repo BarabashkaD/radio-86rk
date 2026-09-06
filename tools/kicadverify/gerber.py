@@ -86,7 +86,7 @@ def compare(base_dir, cur_dir):
     return sorted(differing)
 
 
-def run(env, report, mode="strict", drift=""):
+def run(env, report, mode="strict", drift="", baseline_kicad=None, running_kicad=None):
     raw = os.path.join(env.build_dir, "gerber-raw")
     cur = os.path.join(env.build_dir, "gerber-" + mode)
     base = os.path.join(env.baseline_dir, mode)
@@ -99,17 +99,25 @@ def run(env, report, mode="strict", drift=""):
         raise EnvError("no %s baseline in %s. Run: "
                        "python3 tools/kicad-verify.py baseline" % (mode, base))
 
+    # The version fields ride along whenever a baseline was found to compare
+    # against, not only when the majors disagree -- an agent should not have to
+    # infer "no drift" from an absent key.
+    extra = {}
+    if baseline_kicad is not None:
+        extra["baseline_kicad"] = baseline_kicad
+        extra["running_kicad"] = running_kicad
+        extra["version_drift"] = bool(drift)
+
     differing = compare(base, cur)
     if not differing:
         report.gate("gerber", True, "%d files identical%s" % (count, drift),
-                    mode=mode, files=count, version_drift=bool(drift))
+                    mode=mode, files=count, **extra)
         return True
 
     report.gate("gerber", False,
                 "%d files differ: %s%s" % (len(differing), ", ".join(differing[:3]),
                                            drift),
-                mode=mode, files=count, differing=differing,
-                version_drift=bool(drift))
+                mode=mode, files=count, differing=differing, **extra)
     for name in differing:
         report.detail("--- %s" % name)
         _show_diff(os.path.join(base, name), os.path.join(cur, name), report)
