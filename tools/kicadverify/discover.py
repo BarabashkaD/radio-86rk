@@ -48,21 +48,53 @@ def cli_candidates(platform, environ, listdir=os.listdir):
         candidates.extend([
             "/usr/bin/kicad-cli",
             "/usr/local/bin/kicad-cli",
-            "/var/lib/flatpak/exports/bin/org.kicad.KiCad",
-            os.path.expanduser("~/.local/share/flatpak/exports/bin/org.kicad.KiCad"),
+            # The flatpak *export* wrapper (org.kicad.KiCad, bare) launches the
+            # KiCad GUI, not kicad-cli -- there is no kicad-cli export at all.
+            # "flatpak run --command=kicad-cli org.kicad.KiCad" is the form that
+            # actually runs the CLI, and it resolves system or user installs the
+            # same way, so one candidate covers both scopes. This is an argv list,
+            # not a path, because it is a command with a fixed argument, not an
+            # executable found by looking.
+            ["flatpak", "run", "--command=kicad-cli", "org.kicad.KiCad"],
             "/snap/bin/kicad.kicad-cli",
         ])
     return candidates
 
 
-def _runs(path):
+def _argv(cli):
+    """Normalise a resolved (or candidate) cli to an argv list: a bare path
+    becomes a one-element list, the flatpak form is already a list."""
+    return list(cli) if isinstance(cli, (list, tuple)) else [cli]
+
+
+def cli_display(cli):
+    """Human-readable form of a resolved kicad-cli, for progress output."""
+    return " ".join(_argv(cli))
+
+
+def _runs(candidate, timeout=10):
+    """The version string if `<candidate> version` runs and exits 0 within
+    `timeout` seconds, else None.
+
+    The timeout matters because the flatpak export wrapper some candidates
+    resolve to launches the KiCad GUI rather than kicad-cli on a host with no
+    kicad-cli on PATH: without it, discovery would block on a GUI process
+    forever instead of failing with the documented actionable message.
+    Expiry is treated the same as any other candidate that does not work --
+    not as an error -- so the search moves on to the next one.
+    """
     try:
-        proc = subprocess.Popen([path, "version"],
+        proc = subprocess.Popen(_argv(candidate) + ["version"],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out, _ = proc.communicate()
-        return proc.returncode == 0 and out.decode("utf-8", "replace").strip() or None
     except OSError:
         return None
+    try:
+        out, _ = proc.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.communicate()
+        return None
+    return proc.returncode == 0 and out.decode("utf-8", "replace").strip() or None
 
 
 def find_cli(platform=None, environ=None):
@@ -81,9 +113,13 @@ def find_cli(platform=None, environ=None):
         version = _runs(explicit)
         if version:
             return explicit, version
+        # KICAD_CLI is what the reader already set, and it is what just failed --
+        # telling them to "Set KICAD_CLI=..." again describes the problem as its
+        # own fix. Name the setting and say it did not run, not how to set it.
         raise EnvError(
-            "kicad-cli not found. Set KICAD_CLI=/path/to/kicad-cli or install KiCad %d.\n"
-            "Tried:\n  %s" % (MIN_MAJOR, explicit))
+            "KICAD_CLI is set to %s but it did not run as kicad-cli %d or newer.\n"
+            "Check that path, or unset KICAD_CLI to search the usual locations."
+            % (explicit, MIN_MAJOR))
     tried = cli_candidates(platform, environ)
     for candidate in tried:
         version = _runs(candidate)
@@ -91,7 +127,7 @@ def find_cli(platform=None, environ=None):
             return candidate, version
     raise EnvError(
         "kicad-cli not found. Set KICAD_CLI=/path/to/kicad-cli or install KiCad %d.\n"
-        "Tried:\n  %s" % (MIN_MAJOR, "\n  ".join(tried)))
+        "Tried:\n  %s" % (MIN_MAJOR, "\n  ".join(cli_display(c) for c in tried)))
 
 
 def run_cli(env, report, args, what, allow_failure=False):
@@ -102,7 +138,7 @@ def run_cli(env, report, args, what, allow_failure=False):
     violations, which is a result, not a failure to run.
     """
     from .report import scrub
-    proc = subprocess.Popen([env.cli] + args,
+    proc = subprocess.Popen(_argv(env.cli) + args,
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     _, err = proc.communicate()
     text = scrub(err.decode("utf-8", "replace"), report.verbose)

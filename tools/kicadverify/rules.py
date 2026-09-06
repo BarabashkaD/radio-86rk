@@ -49,7 +49,7 @@ def _collect(env, report, kind):
     run_cli(env, report, args, "%s" % kind.lower(), allow_failure=True)
     if not os.path.exists(path):
         raise EnvError("%s produced no report at %s" % (kind, path))
-    with open(path, errors="replace") as handle:
+    with open(path, encoding="utf-8", errors="replace") as handle:
         return summarise(json.load(handle))
 
 

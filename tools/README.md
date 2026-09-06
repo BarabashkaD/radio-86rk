@@ -54,26 +54,80 @@ Run as `python3 tools/kicad-verify.py <command>` (macOS / Linux) or
 
 | Command    | What it does |
 |------------|--------------|
-| `doctor`   | Checks the environment: is `kicad-cli` found, is it new enough, is there a project and a captured baseline. Exits `0` if everything needed is present, `2` if not. Run this first when anything else fails unexpectedly. |
-| `baseline` | Captures a new reference snapshot of the board's gerbers, drill files and netlist connectivity into `verify/baseline/`. Fails if a baseline already exists there; pass `--force` to overwrite it. |
+| `doctor`   | Checks the environment: is `kicad-cli` found, is it new enough, is there a project, and is there a baseline the gates can actually use (`strict/` and `netlist.nets` present). Exits `0` if everything needed is present, `2` if not. Run this first when anything else fails unexpectedly. |
+| `baseline` | Captures a new reference snapshot of the board's gerbers, drill files and netlist connectivity into `verify/baseline/`. Fails if a baseline already exists there; pass `--force` to overwrite it. Pass `--geometry` to instead capture (or refresh) the geometry-only baseline alongside it — see [Using `--geometry`](#using---geometry) below. |
 | `gerber`   | Exports gerbers and drill files from the current board, canonicalises them, and compares them against the committed baseline. Reports whether the copper is unchanged. |
 | `netlist`  | Exports the netlist from the current schematic and compares its connectivity (which pin is on which net) against the baseline. Reports whether the wiring is unchanged. |
-| `rules`    | Runs ERC and DRC and reports the violation counts, by type. This is informational, not pass/fail — see below. |
+| `rules`    | Runs ERC and DRC and reports the violation counts, by type. This is informational, not pass/fail — see [Why `rules` reports instead of judging](#why-rules-reports-instead-of-judging) below. |
 | `all`      | Runs `gerber`, `netlist` and `rules` in order, and prints a combined verdict. This is the one command most people want. |
-| `selftest` | Runs the harness's own internal checks (currently 21) against fixtures. Tests the tool itself, not your project — it needs no KiCad install and no board. |
+| `selftest` | Runs the harness's own internal checks (currently 22) against fixtures. Tests the tool itself, not your project — it needs no KiCad install and no board. |
 
 Useful flags, valid on every command above: `--json` (emit one JSON document
 instead of verdict lines), `--verbose` (show tool output that is normally
 filtered as noise), `--project PCB` (point at a specific `.kicad_pcb` if more
 than one exists), `--baseline-dir DIR` (use a baseline somewhere other than
-`verify/baseline`).
+`verify/baseline`). Two more flags apply to specific commands: `--force`
+(`baseline`: overwrite an existing baseline of the same mode) and `--geometry`
+(`baseline` and `gerber`: use the geometry-only baseline instead of the
+committed strict one — see below).
+
+## Verdict statuses
+
+Each gate's line on stdout begins with one of three statuses, and `--json`
+records the same value in that gate's `"status"` field:
+
+| Status | Meaning |
+|--------|---------|
+| `PASS` | The gate ran and found no difference from the baseline. |
+| `FAIL` | The gate ran and found a difference from the baseline. |
+| `INFO` | The gate ran and is reporting a count, not a verdict. Currently only `rules` (see below). An `INFO` gate never causes exit code `1`, and `all`'s combined "N of N gates passed" line does not count it either way. |
+
+## Why `rules` reports instead of judging
+
+`rules` runs ERC and DRC and prints the violation counts, by type. It always
+returns `INFO`, never `PASS` or `FAIL`, and it never affects `all`'s exit
+code.
+
+There is no baseline for rule counts to compare against, on purpose: unlike
+copper and connectivity, the number of ERC/DRC violations legitimately
+changes as a project is worked on, and a change in that count is not
+automatically a regression. It also means this repository's own current
+counts can include violations that are already understood and accepted
+rather than accidentally introduced: as of this writing, DRC reports 5
+`starved_thermal` errors, a known property of this board's thermal relief
+pattern, not something `rules` is equipped to distinguish from a genuine new
+problem. Reading the counts and the by-type breakdown, and deciding whether a
+change in them is expected, is on the person or agent running the tool.
+
+## Using `--geometry`
+
+`gerber`'s default ("strict") comparison includes the X2 net and component
+name attributes KiCad embeds in each gerber, so a net rename shows up even
+when no copper moved. `--geometry` drops those attributes and compares copper
+shape only — for a change that legitimately renames nets without moving
+anything.
+
+The geometry baseline is deliberately not committed (only `strict/` and
+`netlist.nets` are). To use it, capture it yourself into the same baseline
+directory:
+
+```
+python3 tools/kicad-verify.py baseline --geometry
+python3 tools/kicad-verify.py gerber --geometry
+```
+
+Capturing geometry never touches the committed `strict/` baseline, and
+capturing strict never touches `geometry/` — each `--force` applies only to
+the mode you are capturing. If you want to keep a geometry baseline out of
+the repository entirely (recommended, since it is deliberately uncommitted),
+point both commands at a directory outside the repo with `--baseline-dir`.
 
 ## The three exit codes, and why there are three and not two
 
 | Exit code | Meaning |
 |-----------|---------|
 | `0` | Every gate passed. Nothing changed. |
-| `1` | A gate failed. The board (or its rules count, where applicable) genuinely changed. |
+| `1` | A gate failed. The board genuinely changed. |
 | `2` | A check could not run at all — no `kicad-cli` found, no baseline captured, no board in the repository, an unexpected error. |
 
 This distinction is the single most important thing to understand about this

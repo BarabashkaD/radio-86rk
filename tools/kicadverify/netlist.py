@@ -45,7 +45,7 @@ def run(env, report, drift="", baseline_kicad=None, running_kicad=None):
              "--output", raw, env.sch],
             "sch export netlist")
 
-    with open(raw, errors="replace") as handle:
+    with open(raw, encoding="utf-8", errors="replace") as handle:
         nets = extract(handle.readlines())
     if not nets:
         # extract() itself must stay pure and reusable, so the emptiness check lives
@@ -56,7 +56,7 @@ def run(env, report, drift="", baseline_kicad=None, running_kicad=None):
         raise EnvError(
             "netlist export produced no connectivity section (no (nets marker found "
             "in %s); the export is suspect" % raw)
-    with open(cur, "w") as handle:
+    with open(cur, "w", encoding="utf-8") as handle:
         handle.writelines(nets)
     report.progress("netlist", "%d connectivity lines" % len(nets))
 
@@ -64,16 +64,17 @@ def run(env, report, drift="", baseline_kicad=None, running_kicad=None):
         raise EnvError("no netlist baseline at %s. Run: "
                        "python3 tools/kicad-verify.py baseline" % base)
 
-    # The version fields ride along whenever a baseline was found to compare
-    # against, not only when the majors disagree -- an agent should not have to
-    # infer "no drift" from an absent key.
-    extra = {}
-    if baseline_kicad is not None:
-        extra["baseline_kicad"] = baseline_kicad
-        extra["running_kicad"] = running_kicad
-        extra["version_drift"] = bool(drift)
+    # The version fields ride along on every comparison, not only when a
+    # meta.json was found to read them from: an agent should not have to infer
+    # "no drift" (or "no metadata") from an absent key, which is exactly the
+    # absent-versus-false ambiguity structured output exists to remove.
+    extra = {
+        "baseline_kicad": baseline_kicad,
+        "running_kicad": running_kicad,
+        "version_drift": bool(drift),
+    }
 
-    with open(base, errors="replace") as handle:
+    with open(base, encoding="utf-8", errors="replace") as handle:
         expected = handle.readlines()
     if expected == nets:
         report.gate("netlist", True, "every pin maps to the same net%s" % drift,

@@ -100,5 +100,5 @@ def canon_lines(lines):
 
 def canon(path):
     """Canonical units for a gerber file on disk."""
-    with open(path, errors="replace") as handle:
+    with open(path, encoding="utf-8", errors="replace") as handle:
         return canon_lines(handle)

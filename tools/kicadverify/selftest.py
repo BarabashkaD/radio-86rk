@@ -295,41 +295,109 @@ def _unexpected_exception_guard():
     """An OSError from a full disk, a malformed report, anything not raised as
     EnvError must never surface as exit 1 -- CPython's default for an uncaught
     exception -- because 1 means 'the board changed' and nothing was actually
-    checked. Constructed directly against _gate rather than by breaking a real
-    module, so this stays fast and deterministic."""
+    checked. The guard lives in main()'s dispatch now, not in each command's
+    own function, so this is exercised through main() itself rather than
+    against _gate directly."""
     import io
 
     from . import __main__ as main_mod
     from . import discover as discover_mod
-    from .report import Report
+    from . import rules as rules_mod
 
     class DummyEnv(object):
         pass
 
-    class FakeArgs(object):
-        project = None
-        baseline_dir = None
-
-    def boom(env):
+    def boom(env, report):
         raise ValueError("disk full")
 
     original_build = discover_mod.build
+    original_run = rules_mod.run
     discover_mod.build = lambda args: DummyEnv()
-    report = Report()
-    buf = io.StringIO()
-    held, sys.stderr = sys.stderr, buf
+    rules_mod.run = boom
+    out_buf, err_buf = io.StringIO(), io.StringIO()
+    held_out, held_err = sys.stdout, sys.stderr
+    sys.stdout, sys.stderr = out_buf, err_buf
     try:
-        code = main_mod._gate(FakeArgs(), report, boom)
+        code = main_mod.main(["rules"])
     finally:
-        sys.stderr = held
+        sys.stdout, sys.stderr = held_out, held_err
         discover_mod.build = original_build
+        rules_mod.run = original_run
 
     assert code == main_mod.EXIT_ENV, \
         "an unexpected exception must map to exit 2, not %r" % code
-    assert not report.failed, "an environment problem is not a gate failure"
-    joined = " ".join(report.errors)
-    assert "ValueError" in joined and "disk full" in joined, report.errors
-    assert "could not be completed" in joined, report.errors
+    assert "PASS" not in out_buf.getvalue() and "FAIL" not in out_buf.getvalue(), \
+        "an environment problem is not a gate failure: %r" % out_buf.getvalue()
+    joined = err_buf.getvalue()
+    assert "ValueError" in joined and "disk full" in joined, joined
+    assert "could not be completed" in joined, joined
+    return True
+
+
+@check("a raising read_meta reaches exit 2 through both `all` and `doctor`, "
+      "with --json still valid")
+def _read_meta_failure_maps_to_exit_2():
+    """meta.json is a committed file, so a merge conflict or a truncated
+    checkout leaving it unparsable is a realistic way to trigger this, not
+    just a theoretical one. Both `all` (via _drift) and `doctor` call
+    baseline.read_meta after discover.build has already succeeded; an
+    EnvError raised from there must reach exit 2 through main()'s guard, not
+    escape uncaught and become exit 1 by CPython's default -- and --json must
+    still emit a parseable document, not zero bytes of stdout."""
+    import io
+    import json as json_mod
+    import shutil
+    import tempfile
+
+    from . import __main__ as main_mod
+    from . import baseline as baseline_mod
+    from . import discover as discover_mod
+
+    tmp = tempfile.mkdtemp(prefix="kicadverify-selftest-")
+    try:
+        fake_baseline_dir = os.path.join(tmp, "baseline")
+        os.makedirs(os.path.join(fake_baseline_dir, "strict"))
+        with open(os.path.join(fake_baseline_dir, "netlist.nets"), "w", encoding="utf-8") as handle:
+            handle.write("")
+
+        class DummyEnv(object):
+            cli = "kicad-cli"
+            version = "10.0.4"
+            repo_root = tmp
+            pcb = os.path.join(tmp, "board.kicad_pcb")
+            sch = os.path.join(tmp, "board.kicad_sch")
+            baseline_dir = fake_baseline_dir
+            build_dir = os.path.join(tmp, ".build")
+
+        def boom(_baseline_dir):
+            raise discover_mod.EnvError("could not read meta.json: bad json")
+
+        original_build = discover_mod.build
+        original_read_meta = baseline_mod.read_meta
+        discover_mod.build = lambda args: DummyEnv()
+        baseline_mod.read_meta = boom
+        try:
+            for command in ("doctor", "all"):
+                out_buf, err_buf = io.StringIO(), io.StringIO()
+                held_out, held_err = sys.stdout, sys.stderr
+                sys.stdout, sys.stderr = out_buf, err_buf
+                try:
+                    code = main_mod.main([command, "--json"])
+                finally:
+                    sys.stdout, sys.stderr = held_out, held_err
+                assert code == main_mod.EXIT_ENV, \
+                    "%s with a raising read_meta must exit 2, got %r" % (command, code)
+                raw = out_buf.getvalue()
+                assert raw.strip(), \
+                    "%s --json produced zero bytes of stdout" % command
+                doc = json_mod.loads(raw)  # must not raise
+                assert doc.get("errors"), \
+                    "%s --json must record the read_meta failure: %r" % (command, doc)
+        finally:
+            discover_mod.build = original_build
+            baseline_mod.read_meta = original_read_meta
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
     return True
 
 

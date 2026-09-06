@@ -2,6 +2,7 @@
 returns them: gates return booleans, discovery raises EnvError, and every path
 out of main() maps to exactly one of EXIT_OK / EXIT_FAIL / EXIT_ENV."""
 import argparse
+import os
 
 from . import selftest
 from .report import Report
@@ -28,9 +29,10 @@ def build_parser():
     parser.add_argument("--baseline-dir", metavar="DIR", default=None,
                         help="baseline location (default: verify/baseline)")
     parser.add_argument("--geometry", action="store_true",
-                        help="gerber: compare geometry only, ignoring X2 net attributes")
+                        help="gerber/baseline: use the geometry-only baseline "
+                             "(ignores X2 net attributes) instead of strict")
     parser.add_argument("--force", action="store_true",
-                        help="baseline: overwrite an existing baseline")
+                        help="baseline: overwrite an existing baseline of the same mode")
     return parser
 
 
@@ -43,6 +45,32 @@ def main(argv=None):
         report.finish()
         return EXIT_OK if ok else EXIT_FAIL
 
+    # Every other command needs discover.build() and, one way or another, the
+    # baseline's meta.json -- and either can raise. This single pair is now the
+    # only place that maps "something a command needed raised" to EXIT_ENV, so
+    # every command inherits the guarantee instead of each command's function
+    # needing to remember to add it. (meta.json is committed, so a merge
+    # conflict or truncated checkout leaving it unparsable is a realistic way
+    # to hit this, not just a theoretical one.) report.finish() runs here too,
+    # so --json still yields a document even when a command never gets far
+    # enough to call it itself.
+    from . import discover
+    try:
+        return _dispatch(args, report)
+    except discover.EnvError as exc:
+        report.error(str(exc))
+        report.finish()
+        return EXIT_ENV
+    except Exception as exc:
+        _report_unexpected(report, exc)
+        report.finish()
+        return EXIT_ENV
+
+
+def _dispatch(args, report):
+    """The six non-selftest commands. Each one is free to raise EnvError (or
+    anything else): main()'s guard around this call is what turns that into
+    EXIT_ENV, not anything here."""
     if args.command == "doctor":
         return _doctor(args, report)
 
@@ -63,8 +91,9 @@ def main(argv=None):
 
     if args.command == "baseline":
         from . import baseline as baseline_mod
+        mode = "geometry" if args.geometry else "strict"
         return _gate(args, report,
-                     lambda env: baseline_mod.capture(env, report, args.force))
+                     lambda env: baseline_mod.capture(env, report, args.force, mode))
 
     if args.command == "all":
         return _all(args, report)
@@ -98,29 +127,21 @@ def _drift(env, report):
 
 
 def _gate(args, report, fn):
-    """Build the environment, run one gate, map every outcome to an exit code.
-    fn takes the Environment and returns True or False; anything that stops it
-    running raises EnvError and becomes exit 2.
+    """Build the environment and run one gate. fn takes the Environment and
+    returns True or False.
 
-    Anything else -- an OSError from a full disk, a malformed report, any exception
-    this harness did not anticipate -- also becomes exit 2, not exit 1. CPython exits
-    1 on an uncaught exception by default, and 1 means "the board changed" in this
-    tool's vocabulary; letting that default stand would make it report a copper change
-    that never happened. KeyboardInterrupt and SystemExit are BaseException, not
-    Exception, so a deliberate interrupt still propagates instead of being reported
-    as an environment problem."""
+    Anything that stops it running -- EnvError from discover, an OSError from a
+    full disk, a malformed report, any exception this harness did not
+    anticipate -- is deliberately left to propagate: main()'s guard around the
+    whole dispatch is what maps it to exit 2, not exit 1. CPython exits 1 on an
+    uncaught exception by default, and 1 means "the board changed" in this
+    tool's vocabulary; letting that default stand would make it report a
+    copper change that never happened. KeyboardInterrupt and SystemExit are
+    BaseException, not Exception, so a deliberate interrupt still propagates
+    instead of being reported as an environment problem."""
     from . import discover
-    try:
-        env = discover.build(args)
-        ok = fn(env)
-    except discover.EnvError as exc:
-        report.error(str(exc))
-        report.finish()
-        return EXIT_ENV
-    except Exception as exc:
-        _report_unexpected(report, exc)
-        report.finish()
-        return EXIT_ENV
+    env = discover.build(args)
+    ok = fn(env)
     report.finish()
     return EXIT_OK if ok else EXIT_FAIL
 
@@ -181,18 +202,15 @@ def _all(args, report):
     """Every gate, in order, with nothing skipped. A run reports everything that is
     wrong, not just the first thing -- someone fixing three problems should learn about
     all three in one run. selftest is not included: it tests the tool, not the project.
-    rules never decides the run: it has no baseline and reports rather than judges."""
+    rules never decides the run: it has no baseline and reports rather than judges.
+
+    discover.build() and _drift() (via baseline.read_meta) are both left to raise
+    rather than caught here: main()'s guard around the whole dispatch is what maps
+    that to EXIT_ENV. Only the three per-gate calls below get their own recovery,
+    via _run_one_gate, because a gate that cannot run must not stop the other gates
+    from reporting."""
     from . import discover, gerber, netlist, rules
-    try:
-        env = discover.build(args)
-    except discover.EnvError as exc:
-        report.error(str(exc))
-        report.finish()
-        return EXIT_ENV
-    except Exception as exc:
-        _report_unexpected(report, exc)
-        report.finish()
-        return EXIT_ENV
+    env = discover.build(args)
 
     drift = _drift(env, report)
 
@@ -209,9 +227,14 @@ def _all(args, report):
         report.info("all", "incomplete: %s" % ", ".join(
             "%s=%s" % pair for pair in zip(("gerber", "netlist", "rules"), outcomes)))
     else:
+        # rules has no baseline and never decides the run (see above), so it is
+        # excluded from this count: claiming it "passed" would count a gate that
+        # explicitly neither passes nor fails.
+        decisive = [outcome for name, outcome in
+                   zip(("gerber", "netlist", "rules"), outcomes) if name != "rules"]
         report.gate("all", code == EXIT_OK,
                     "%d of %d gates passed"
-                    % (outcomes.count("pass"), len(outcomes)))
+                    % (decisive.count("pass"), len(decisive)))
     report.finish()
     return code
 
@@ -221,31 +244,56 @@ def _doctor(args, report):
     KiCad missing, wrong version, no project, no baseline -- and both humans and agents
     should be able to ask once rather than infer it from a gate that failed for the
     wrong reason. Exit 0 when everything needed is present, 2 when anything is not, so
-    it works as a precondition check and not only as prose."""
-    from . import discover
-    try:
-        env = discover.build(args)
-    except discover.EnvError as exc:
-        report.error(str(exc))
-        report.gate("doctor", False, "environment incomplete")
-        report.finish()
-        return EXIT_ENV
+    it works as a precondition check and not only as prose.
 
-    report.progress("doctor", "kicad-cli   %s" % env.cli)
+    "Present" means everything a gate can actually consume -- kicad-cli, the
+    project, and the two paths every gate compares against -- not merely a
+    meta.json that no gate ever looks at. Deciding on meta.json alone let doctor
+    and a gate disagree about whether a baseline exists, in both directions: a
+    meta-only directory used to pass doctor and fail every gate, and a
+    data-only one used to fail doctor while every gate ran fine.
+
+    discover.build() and baseline.read_meta() are both left to raise rather than
+    caught here: main()'s guard around the whole dispatch is what maps that to
+    EXIT_ENV, the same as every other command."""
+    from . import discover
+    env = discover.build(args)
+
+    report.progress("doctor", "kicad-cli   %s" % discover.cli_display(env.cli))
     report.progress("doctor", "version     %s" % env.version)
     report.progress("doctor", "repository  %s" % env.repo_root)
     report.progress("doctor", "board       %s" % env.pcb)
     report.progress("doctor", "schematic   %s" % env.sch)
     report.progress("doctor", "baseline    %s" % env.baseline_dir)
 
+    strict_dir = os.path.join(env.baseline_dir, "strict")
+    nets_path = os.path.join(env.baseline_dir, "netlist.nets")
+    missing = [name for name, path in
+              (("strict", strict_dir), ("netlist.nets", nets_path))
+              if not os.path.exists(path)]
+    if missing:
+        report.error(
+            "baseline incomplete in %s: missing %s. Run: "
+            "python3 tools/kicad-verify.py baseline"
+            % (env.baseline_dir, ", ".join(missing)))
+        report.gate("doctor", False, "baseline incomplete: missing %s" % ", ".join(missing))
+        report.finish()
+        return EXIT_ENV
+
     from . import baseline as baseline_mod
     meta = baseline_mod.read_meta(env.baseline_dir)
     if meta is None:
-        report.error("no baseline in %s. Run: python3 tools/kicad-verify.py baseline"
-                     % env.baseline_dir)
-        report.gate("doctor", False, "no baseline captured")
+        # The gates do not need meta.json -- only the artefacts checked above --
+        # so its absence is a warning, not the "no baseline captured" error this
+        # used to raise. That old wording claimed there was no baseline at all
+        # when the gates could plainly use the one that is there; it just carries
+        # no version metadata for the drift check below.
+        report.warn("baseline in %s has strict/ and netlist.nets but no meta.json; "
+                    "version drift cannot be checked" % env.baseline_dir)
+        report.gate("doctor", True,
+                    "kicad-cli %s, baseline present (no metadata)" % env.version)
         report.finish()
-        return EXIT_ENV
+        return EXIT_OK
 
     from .report import drift_suffix
     suffix = drift_suffix(meta.get("kicad_version", ""), env.version)
@@ -255,7 +303,7 @@ def _doctor(args, report):
     report.gate("doctor", True,
                 "kicad-cli %s, baseline from %s%s"
                 % (env.version, meta.get("kicad_version", "?"), suffix),
-                kicad_version=env.version,
+                running_kicad=env.version,
                 baseline_kicad=meta.get("kicad_version"),
                 version_drift=bool(suffix))
     report.finish()

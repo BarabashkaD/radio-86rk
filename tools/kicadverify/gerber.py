@@ -60,13 +60,13 @@ def normalise(raw_dir, out_dir, mode):
     for name in sorted(os.listdir(raw_dir)):
         source = os.path.join(raw_dir, name)
         target = os.path.join(out_dir, name)
-        with open(source, errors="replace") as handle:
+        with open(source, encoding="utf-8", errors="replace") as handle:
             lines = handle.readlines()
         if name.endswith(".drl") or name.endswith(".gbrjob"):
             body = [line.rstrip("\r\n") for line in lines if not STAMP.search(line)]
         else:
             body = normalise_lines(lines, mode)
-        with open(target, "w") as handle:
+        with open(target, "w", encoding="utf-8") as handle:
             for line in body:
                 handle.write(line + "\n")
         count += 1
@@ -96,17 +96,19 @@ def run(env, report, mode="strict", drift="", baseline_kicad=None, running_kicad
     report.progress("gerber", "%d files canonicalised (%s)" % (count, mode))
 
     if not os.path.isdir(base):
+        flag = " --geometry" if mode == "geometry" else ""
         raise EnvError("no %s baseline in %s. Run: "
-                       "python3 tools/kicad-verify.py baseline" % (mode, base))
+                       "python3 tools/kicad-verify.py baseline%s" % (mode, base, flag))
 
-    # The version fields ride along whenever a baseline was found to compare
-    # against, not only when the majors disagree -- an agent should not have to
-    # infer "no drift" from an absent key.
-    extra = {}
-    if baseline_kicad is not None:
-        extra["baseline_kicad"] = baseline_kicad
-        extra["running_kicad"] = running_kicad
-        extra["version_drift"] = bool(drift)
+    # The version fields ride along on every comparison, not only when a
+    # meta.json was found to read them from: an agent should not have to infer
+    # "no drift" (or "no metadata") from an absent key, which is exactly the
+    # absent-versus-false ambiguity structured output exists to remove.
+    extra = {
+        "baseline_kicad": baseline_kicad,
+        "running_kicad": running_kicad,
+        "version_drift": bool(drift),
+    }
 
     differing = compare(base, cur)
     if not differing:
@@ -128,9 +130,9 @@ def _show_diff(base_path, cur_path, report, limit=20):
     """First few differing units. The full file is on disk; this is orientation."""
     import difflib
     try:
-        with open(base_path, errors="replace") as a:
+        with open(base_path, encoding="utf-8", errors="replace") as a:
             old = a.readlines()
-        with open(cur_path, errors="replace") as b:
+        with open(cur_path, encoding="utf-8", errors="replace") as b:
             new = b.readlines()
     except IOError as exc:
         report.detail(str(exc))
