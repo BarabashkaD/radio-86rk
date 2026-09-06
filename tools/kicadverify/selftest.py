@@ -278,6 +278,61 @@ def _meta_fields():
     return True
 
 
+@check("exit code precedence: environment beats failure beats pass")
+def _exit_precedence():
+    from . import __main__ as main_mod
+    assert main_mod.combine(["pass", "pass", "pass"]) == 0
+    assert main_mod.combine(["pass", "fail", "pass"]) == 1
+    assert main_mod.combine(["fail", "env", "pass"]) == 2, \
+        "not having run is a more important fact than having failed"
+    assert main_mod.combine(["env"]) == 2
+    assert main_mod.combine([]) == 0
+    return True
+
+
+@check("an unexpected exception maps to exit 2, not exit 1")
+def _unexpected_exception_guard():
+    """An OSError from a full disk, a malformed report, anything not raised as
+    EnvError must never surface as exit 1 -- CPython's default for an uncaught
+    exception -- because 1 means 'the board changed' and nothing was actually
+    checked. Constructed directly against _gate rather than by breaking a real
+    module, so this stays fast and deterministic."""
+    import io
+
+    from . import __main__ as main_mod
+    from . import discover as discover_mod
+    from .report import Report
+
+    class DummyEnv(object):
+        pass
+
+    class FakeArgs(object):
+        project = None
+        baseline_dir = None
+
+    def boom(env):
+        raise ValueError("disk full")
+
+    original_build = discover_mod.build
+    discover_mod.build = lambda args: DummyEnv()
+    report = Report()
+    buf = io.StringIO()
+    held, sys.stderr = sys.stderr, buf
+    try:
+        code = main_mod._gate(FakeArgs(), report, boom)
+    finally:
+        sys.stderr = held
+        discover_mod.build = original_build
+
+    assert code == main_mod.EXIT_ENV, \
+        "an unexpected exception must map to exit 2, not %r" % code
+    assert not report.failed, "an environment problem is not a gate failure"
+    joined = " ".join(report.errors)
+    assert "ValueError" in joined and "disk full" in joined, report.errors
+    assert "could not be completed" in joined, report.errors
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []

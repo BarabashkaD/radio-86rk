@@ -66,6 +66,9 @@ def main(argv=None):
         return _gate(args, report,
                      lambda env: baseline_mod.capture(env, report, args.force))
 
+    if args.command == "all":
+        return _all(args, report)
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV
@@ -97,7 +100,15 @@ def _drift(env, report):
 def _gate(args, report, fn):
     """Build the environment, run one gate, map every outcome to an exit code.
     fn takes the Environment and returns True or False; anything that stops it
-    running raises EnvError and becomes exit 2."""
+    running raises EnvError and becomes exit 2.
+
+    Anything else -- an OSError from a full disk, a malformed report, any exception
+    this harness did not anticipate -- also becomes exit 2, not exit 1. CPython exits
+    1 on an uncaught exception by default, and 1 means "the board changed" in this
+    tool's vocabulary; letting that default stand would make it report a copper change
+    that never happened. KeyboardInterrupt and SystemExit are BaseException, not
+    Exception, so a deliberate interrupt still propagates instead of being reported
+    as an environment problem."""
     from . import discover
     try:
         env = discover.build(args)
@@ -106,8 +117,90 @@ def _gate(args, report, fn):
         report.error(str(exc))
         report.finish()
         return EXIT_ENV
+    except Exception as exc:
+        _report_unexpected(report, exc)
+        report.finish()
+        return EXIT_ENV
     report.finish()
     return EXIT_OK if ok else EXIT_FAIL
+
+
+def _report_unexpected(report, exc, prefix=""):
+    """An exception the harness did not anticipate reaching this far. Reported
+    legibly -- the exception type and message, and a line saying the check could not
+    be completed so the board's state is unknown -- because it must map to EXIT_ENV,
+    never be mistaken for a gate that ran and found a difference. The traceback is
+    kept for --verbose only: a genuine harness bug still needs debugging, but printing
+    it by default would bury the one-line message that matters under noise."""
+    report.error("%sunexpected %s: %s" % (prefix, type(exc).__name__, exc))
+    report.error("%scheck could not be completed; the board's state is unknown"
+                 % prefix)
+    if report.verbose:
+        import traceback
+        report.detail(traceback.format_exc())
+
+
+def combine(outcomes):
+    """Final exit code for a run of several gates.
+
+    Environment problems outrank failures: 'I could not run the check' is a more
+    important fact than 'the check failed', and an agent that collapses the two will
+    report a regression that did not happen.
+    """
+    if "env" in outcomes:
+        return EXIT_ENV
+    if "fail" in outcomes:
+        return EXIT_FAIL
+    return EXIT_OK
+
+
+def _all(args, report):
+    """Every gate, in order, with nothing skipped. A run reports everything that is
+    wrong, not just the first thing -- someone fixing three problems should learn about
+    all three in one run. selftest is not included: it tests the tool, not the project.
+    rules never decides the run: it has no baseline and reports rather than judges."""
+    from . import discover, gerber, netlist, rules
+    try:
+        env = discover.build(args)
+    except discover.EnvError as exc:
+        report.error(str(exc))
+        report.finish()
+        return EXIT_ENV
+    except Exception as exc:
+        _report_unexpected(report, exc)
+        report.finish()
+        return EXIT_ENV
+
+    drift = _drift(env, report)
+
+    mode = "geometry" if args.geometry else "strict"
+    outcomes = []
+    for name, call in (("gerber", lambda: gerber.run(env, report, mode, *drift)),
+                       ("netlist", lambda: netlist.run(env, report, *drift)),
+                       ("rules", lambda: rules.run(env, report))):
+        try:
+            outcomes.append("pass" if call() else "fail")
+        except discover.EnvError as exc:
+            report.error("%s: %s" % (name, exc))
+            report.gate(name, False, "could not run")
+            outcomes.append("env")
+        except Exception as exc:
+            _report_unexpected(report, exc, prefix="%s: " % name)
+            report.gate(name, False, "could not run")
+            outcomes.append("env")
+
+    code = combine(outcomes)
+    if code == EXIT_ENV:
+        # Not a verdict on the board: a gate did not run, so there is nothing to
+        # pass or fail. Saying FAIL here would assert something that was not checked.
+        report.info("all", "incomplete: %s" % ", ".join(
+            "%s=%s" % pair for pair in zip(("gerber", "netlist", "rules"), outcomes)))
+    else:
+        report.gate("all", code == EXIT_OK,
+                    "%d of %d gates passed"
+                    % (outcomes.count("pass"), len(outcomes)))
+    report.finish()
+    return code
 
 
 def _doctor(args, report):

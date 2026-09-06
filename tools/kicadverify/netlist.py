@@ -47,6 +47,15 @@ def run(env, report, drift="", baseline_kicad=None, running_kicad=None):
 
     with open(raw, errors="replace") as handle:
         nets = extract(handle.readlines())
+    if not nets:
+        # extract() itself must stay pure and reusable, so the emptiness check lives
+        # here, at its one caller. An absent (nets marker is not an exception -- it is
+        # silently empty output -- and an empty result is never a legitimate outcome
+        # for a real board: comparing it against the baseline would report "everything
+        # changed" for a connectivity section that was simply never exported.
+        raise EnvError(
+            "netlist export produced no connectivity section (no (nets marker found "
+            "in %s); the export is suspect" % raw)
     with open(cur, "w") as handle:
         handle.writelines(nets)
     report.progress("netlist", "%d connectivity lines" % len(nets))
