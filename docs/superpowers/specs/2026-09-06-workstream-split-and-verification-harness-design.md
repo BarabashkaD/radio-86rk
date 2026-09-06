@@ -32,11 +32,37 @@ These come from the repository owner and bound every decision below.
 
 # Part 1 — The split
 
-## Archive
+## Preservation
 
-Tag the current branch `archive/kicad10-3d-2026-09-06` at `9439653` and keep it
-permanently. It is the provenance for all four workstreams; C in particular is authored
-from it.
+The work must survive the split intact, and that has to be a mechanism rather than an
+intention. Five rules, all of them checkable.
+
+**1. The archive exists as both a branch and a tag, both on `origin`.**
+`kicad10-modernization` was local-only until 2026-09-06 — 51 commits on a single machine,
+alongside the unpushed `sw3-official-reroute-experiment` branch and the `dv-finish-3d-models`
+tag. It is now pushed. At the moment the split begins, its final commit is also tagged
+`archive/kicad10-3d-2026-09-06` and that tag is pushed. Branches move; tags do not. The tag
+is created when the split starts, not before, so it captures the true final state.
+
+**2. Master is untouched until a workstream is finished and reviewed.** Each workstream is
+branched from master, developed to completion, reviewed, then merged. No partial merges, no
+staging work on master.
+
+**3. Workstream branches are not deleted after merging.** They survive until D completes.
+
+**4. The no-loss invariant.** After B merges:
+
+```
+git diff archive/kicad10-3d-2026-09-06 master -- KiCad/
+```
+
+must be **empty**. That is objective proof the board, schematics, footprints and 3D models
+came through the split byte-identical. `tools/` and `docs/` will legitimately differ — A
+rewrites the first, the split distils the second — but `KiCad/**` is the irreplaceable part,
+and it either survived unchanged or it did not.
+
+**5. The gates run on master after every merge.** Master is never left in a state where the
+copper claim is unverified.
 
 ## The four workstreams
 
@@ -68,6 +94,7 @@ Nothing in `docs/` moves to master as it stands. Of 3,216 lines, roughly 2,900 a
 |---|---:|---|
 | `superpowers/plans/2026-09-04-…` | 2174 | archive only; raw material for C |
 | `superpowers/specs/2026-09-04-…` | 348 | archive only |
+| `superpowers/specs/2026-09-06-…` (this document) | 385 | archive only; read from the tag while executing A |
 | `3d-model-sources.md` | 394 | **distilled** into B |
 | `followup-3d-models.md` | 86 | archive only; becomes D's brief |
 | `modernization-summary.md` | 76 | archive only; becomes B's PR description |
