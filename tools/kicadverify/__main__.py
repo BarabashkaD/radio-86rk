@@ -43,6 +43,55 @@ def main(argv=None):
         report.finish()
         return EXIT_OK if ok else EXIT_FAIL
 
+    if args.command == "doctor":
+        return _doctor(args, report)
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV
+
+
+def _doctor(args, report):
+    """Answer the environment question directly. Most real failures are environmental --
+    KiCad missing, wrong version, no project, no baseline -- and both humans and agents
+    should be able to ask once rather than infer it from a gate that failed for the
+    wrong reason. Exit 0 when everything needed is present, 2 when anything is not, so
+    it works as a precondition check and not only as prose."""
+    from . import discover
+    try:
+        env = discover.build(args)
+    except discover.EnvError as exc:
+        report.error(str(exc))
+        report.gate("doctor", False, "environment incomplete")
+        report.finish()
+        return EXIT_ENV
+
+    report.progress("doctor", "kicad-cli   %s" % env.cli)
+    report.progress("doctor", "version     %s" % env.version)
+    report.progress("doctor", "repository  %s" % env.repo_root)
+    report.progress("doctor", "board       %s" % env.pcb)
+    report.progress("doctor", "schematic   %s" % env.sch)
+    report.progress("doctor", "baseline    %s" % env.baseline_dir)
+
+    from . import baseline as baseline_mod
+    meta = baseline_mod.read_meta(env.baseline_dir)
+    if meta is None:
+        report.error("no baseline in %s. Run: python3 tools/kicad-verify.py baseline"
+                     % env.baseline_dir)
+        report.gate("doctor", False, "no baseline captured")
+        report.finish()
+        return EXIT_ENV
+
+    from .report import drift_suffix
+    suffix = drift_suffix(meta.get("kicad_version", ""), env.version)
+    if suffix:
+        report.warn("baseline captured with KiCad %s, running %s"
+                    % (meta.get("kicad_version"), env.version))
+    report.gate("doctor", True,
+                "kicad-cli %s, baseline from %s%s"
+                % (env.version, meta.get("kicad_version", "?"), suffix),
+                kicad_version=env.version,
+                baseline_kicad=meta.get("kicad_version"),
+                version_drift=bool(suffix))
+    report.finish()
+    return EXIT_OK

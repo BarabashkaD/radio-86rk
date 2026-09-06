@@ -137,6 +137,51 @@ def _region_order_matters():
     return True
 
 
+from . import discover as discover_mod
+
+
+@check("kicad-cli discovery order: KICAD_CLI, then PATH, then known locations")
+def _cli_order():
+    order = discover_mod.cli_candidates("darwin", {"KICAD_CLI": "/custom/kicad-cli"})
+    assert order[0] == "/custom/kicad-cli", repr(order)
+    assert "kicad-cli" in order, "PATH lookup must be tried"
+    assert any("KiCad.app" in c for c in order), "macOS known location missing: %r" % (order,)
+
+    linux = discover_mod.cli_candidates("linux", {})
+    assert linux[0] == "kicad-cli", repr(linux)
+    assert any("flatpak" in c for c in linux), "flatpak wrapper missing: %r" % (linux,)
+    return True
+
+
+@check("two boards in a repo is an error that names both")
+def _ambiguous_project():
+    try:
+        discover_mod.pick_project(["/r/a.kicad_pcb", "/r/b.kicad_pcb"])
+    except discover_mod.EnvError as exc:
+        assert "a.kicad_pcb" in str(exc) and "b.kicad_pcb" in str(exc), str(exc)
+        return True
+    raise AssertionError("two candidate boards must not be resolved silently")
+
+
+@check("no board is an error that says how to fix it")
+def _no_project():
+    try:
+        discover_mod.pick_project([])
+    except discover_mod.EnvError as exc:
+        assert "--project" in str(exc), "the error must name the flag that fixes it: %s" % exc
+        return True
+    raise AssertionError("an empty repository must not resolve to a project")
+
+
+@check("KiCad older than 10 is fatal, not a warning")
+def _version_floor():
+    assert discover_mod.check_floor("10.0.4") is None
+    assert discover_mod.check_floor("11.0.0") is None
+    message = discover_mod.check_floor("9.0.1")
+    assert message and "9.0.1" in message and "10" in message, repr(message)
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
