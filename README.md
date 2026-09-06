@@ -92,6 +92,21 @@ tools/rules-report.sh           # ERC and DRC counts by type
 tools/render.sh mycheck         # 3D render into verify/renders/
 ```
 
+### Mechanical export, for case design
+
+```bash
+tools/export-mech.sh            # STEP + placement CSV into .build/mech/
+```
+
+Writes four STEP files sharing one datum — the whole assembly, the parts needing panel
+cutouts, the switches alone, and the bare board with its mounting holes — plus a CSV giving
+every footprint's position, rotation, value and package.
+
+Keycaps are deliberately absent. A cap is a case parameter rather than a board one: its
+envelope drives the top-plate openings and the bezel height, and comparing profiles should
+cost one filename, not a re-export. `placement.csv`'s `Package` column is the cap size, so
+all 68 caps can be placed from the table.
+
 ## Hardware Documentation
 
 ### Documentation for the Previous Versions
