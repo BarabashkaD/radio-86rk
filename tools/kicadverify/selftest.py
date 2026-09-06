@@ -4,6 +4,7 @@ Each check is a zero-argument callable that returns True or raises AssertionErro
 with a message naming what differed. `kicad-verify selftest` runs all of them.
 """
 import os
+import sys
 
 FIXTURES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "fixtures")
 
@@ -51,10 +52,52 @@ def _noise_filter():
 def _drift():
     assert report_mod.drift_suffix("10.0.4", "10.0.5") == "", "patch drift must be silent"
     assert report_mod.drift_suffix("10.0.4", "10.9.9") == "", "minor drift must be silent"
+    assert report_mod.drift_suffix("unknown", "10.0.4") == "", "unparsable baseline version must not warn"
+    assert report_mod.drift_suffix("10.0.4", "") == "", "unparsable running version must not warn"
     suffix = report_mod.drift_suffix("10.0.4", "11.0.1")
     assert "VERSION-DRIFT" in suffix, repr(suffix)
     assert "baseline=10.0.4" in suffix and "running=11.0.1" in suffix, repr(suffix)
     assert "changelog" in suffix, "the warning must tell the reader what to do"
+    return True
+
+
+@check("json mode replaces verdict lines with one document")
+def _json_mode():
+    import io
+    import json as json_mod
+
+    # Test JSON mode: no verdict lines, proper document output
+    buf = io.StringIO()
+    held, sys.stdout = sys.stdout, buf
+    try:
+        rep = report_mod.Report(json_mode=True)
+        rep.gate("gerber", True, "22 files identical", files=22)
+        rep.info("rules", "ERC 413 (0 errors)")
+        rep.warn("baseline captured with a different major version")
+        rep.finish()
+    finally:
+        sys.stdout = held
+    raw = buf.getvalue()
+    assert "PASS  gerber" not in raw, "json mode must not emit verdict lines: %r" % raw
+    doc = json_mod.loads(raw)
+    statuses = [g["status"] for g in doc["gates"]]
+    assert statuses == ["PASS", "INFO"], "INFO must be a distinct third status: %r" % statuses
+    assert doc["gates"][0]["files"] == 22, "extra fields must reach the document: %r" % doc
+    assert len(doc["warnings"]) == 1, "warnings must reach the document: %r" % doc
+
+    # Test non-JSON mode: verdict lines SHOULD be present
+    buf = io.StringIO()
+    held, sys.stdout = sys.stdout, buf
+    try:
+        rep = report_mod.Report(json_mode=False)
+        rep.gate("gerber", True, "22 files identical")
+        rep.finish()
+    finally:
+        sys.stdout = held
+    raw = buf.getvalue()
+    assert "PASS  gerber" in raw, "non-json mode must emit verdict lines: %r" % raw
+    assert raw.startswith("PASS  gerber"), "verdict line must be first output: %r" % raw
+
     return True
 
 
