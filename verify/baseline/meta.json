@@ -1,0 +1,11 @@
+{
+  "captured": "2026-09-06T19:46:37Z",
+  "commit": "75e6fbe26666be87b385fc7ac34a398ca7707292",
+  "format": 1,
+  "kicad_version": "10.0.4",
+  "modes": [
+    "strict"
+  ],
+  "project": "KiCad/Radio-86RK.kicad_pcb",
+  "tool": "kicad-verify"
+}

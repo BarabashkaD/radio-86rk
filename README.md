@@ -6,6 +6,7 @@ Re-make of the Soviet Ham Radio computer published in Radio Magazine in 1986
 ## Table of Content
 * [Introduction](#introduction)
 * [Specifications](#specifications)
+* [Verification](#verification)
 * [Project Notes](#project-notes)
 * [Hardware Documentation](#hardware-documentation)
   * [Schematic and PCB Layout](#schematic-and-pcb-layout)
@@ -62,6 +63,19 @@ Despite the limitations, the design was fairly successful, many people have buil
   * DE-9 connector
 * Built-in 67-keys keyboard
 * Cassette recorder interface
+
+## Verification
+
+This repository includes a small, dependency-free harness that proves the
+board's copper, connectivity and rule counts have not changed since the
+committed baseline. Requires KiCad 10+ and Python 3.8+, no install step:
+
+```
+python3 tools/kicad-verify.py all
+```
+
+See [`tools/README.md`](tools/README.md) for the full command reference,
+exit codes, and how to reuse it on another project.
 
 ## Project Notes
 
