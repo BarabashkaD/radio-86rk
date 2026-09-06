@@ -154,6 +154,29 @@ def combine(outcomes):
     return EXIT_OK
 
 
+def _run_one_gate(report, name, call):
+    """Run one gate within `all` and record its outcome. Returns "pass", "fail" or
+    "env". Extracted from `_all` as its own seam so this recording logic can be
+    exercised directly by a check, without a full environment or the real project.
+
+    A gate that could not run is recorded with report.info, not report.gate: FAIL
+    would claim something was checked and found wrong, when nothing was checked at
+    all. An agent that reads gates[].status per gate -- a plausible pattern, since
+    the combined 'all' line is deliberately the only place that names incompleteness
+    -- must not see netlist=FAIL and report a regression that never happened."""
+    from . import discover
+    try:
+        return "pass" if call() else "fail"
+    except discover.EnvError as exc:
+        report.error("%s: %s" % (name, exc))
+        report.info(name, "could not run")
+        return "env"
+    except Exception as exc:
+        _report_unexpected(report, exc, prefix="%s: " % name)
+        report.info(name, "could not run")
+        return "env"
+
+
 def _all(args, report):
     """Every gate, in order, with nothing skipped. A run reports everything that is
     wrong, not just the first thing -- someone fixing three problems should learn about
@@ -174,20 +197,10 @@ def _all(args, report):
     drift = _drift(env, report)
 
     mode = "geometry" if args.geometry else "strict"
-    outcomes = []
-    for name, call in (("gerber", lambda: gerber.run(env, report, mode, *drift)),
-                       ("netlist", lambda: netlist.run(env, report, *drift)),
-                       ("rules", lambda: rules.run(env, report))):
-        try:
-            outcomes.append("pass" if call() else "fail")
-        except discover.EnvError as exc:
-            report.error("%s: %s" % (name, exc))
-            report.gate(name, False, "could not run")
-            outcomes.append("env")
-        except Exception as exc:
-            _report_unexpected(report, exc, prefix="%s: " % name)
-            report.gate(name, False, "could not run")
-            outcomes.append("env")
+    outcomes = [_run_one_gate(report, name, call) for name, call in
+               (("gerber", lambda: gerber.run(env, report, mode, *drift)),
+                ("netlist", lambda: netlist.run(env, report, *drift)),
+                ("rules", lambda: rules.run(env, report)))]
 
     code = combine(outcomes)
     if code == EXIT_ENV:

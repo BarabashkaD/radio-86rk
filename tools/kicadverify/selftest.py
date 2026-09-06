@@ -333,6 +333,44 @@ def _unexpected_exception_guard():
     return True
 
 
+@check("a gate that could not run inside `all` is recorded as INFO, not FAIL")
+def _incomplete_gate_is_info():
+    """`all`'s combined line already says INFO/incomplete when a gate could not run,
+    and the exit code already says 2 -- but the per-gate entry in report.gates is a
+    separate fact, and an agent that reads gates[].status directly (a plausible
+    pattern, since the combined line is the only place that names incompleteness)
+    must not see FAIL there: FAIL claims something was checked and found wrong, when
+    nothing was checked at all. Exercises _run_one_gate directly -- the seam _all was
+    split at for exactly this purpose -- rather than the exit code alone, because the
+    exit code was already correct while this status string was wrong."""
+    import io
+
+    from . import __main__ as main_mod
+    from .discover import EnvError
+    from .report import Report
+
+    def boom():
+        raise EnvError("no netlist baseline")
+
+    report = Report()
+    out_buf, err_buf = io.StringIO(), io.StringIO()
+    held_out, held_err = sys.stdout, sys.stderr
+    sys.stdout, sys.stderr = out_buf, err_buf
+    try:
+        outcome = main_mod._run_one_gate(report, "netlist", boom)
+    finally:
+        sys.stdout, sys.stderr = held_out, held_err
+    assert outcome == "env", outcome
+
+    entry = report.gates[-1]
+    assert entry["gate"] == "netlist", entry
+    assert entry["status"] == "INFO", \
+        "a gate that could not run must be recorded as INFO, not FAIL: %r" % entry
+    assert not report.failed, \
+        "a could-not-run gate must not mark the report failed: %r" % report.gates
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
