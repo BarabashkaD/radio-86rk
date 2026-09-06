@@ -51,6 +51,10 @@ def main(argv=None):
         mode = "geometry" if args.geometry else "strict"
         return _gate(args, report, lambda env: gerber.run(env, report, mode))
 
+    if args.command == "netlist":
+        from . import netlist
+        return _gate(args, report, lambda env: netlist.run(env, report))
+
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV

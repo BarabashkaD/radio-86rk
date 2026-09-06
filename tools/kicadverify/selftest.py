@@ -224,6 +224,26 @@ def _strict_keeps_attributes():
     return True
 
 
+@check("netlist extraction keeps connectivity and drops refreshable metadata")
+def _netlist_extract():
+    from . import netlist as netlist_mod
+    raw = ("(export (version \"E\")\n"
+           "\t(components\n"
+           "\t\t(comp (ref \"R1\") (datasheet \"http://example.com/changed\")))\n"
+           "\t(nets\n"
+           "\t\t(net (code \"1\") (name \"GND\")\n"
+           "\t\t\t(node (ref \"R1\") (pin \"1\")\n"
+           "\t\t\t\t(pintype \"passive\")))))\n"
+           ).splitlines(True)
+    got = netlist_mod.extract(raw)
+    text = "".join(got)
+    assert "(nets" in text, "the nets section must be kept: %r" % text
+    assert "datasheet" not in text, "everything before (nets must be dropped: %r" % text
+    assert "pintype" not in text, "pintype is metadata, not connectivity: %r" % text
+    assert "R1" in text and "GND" in text, "the actual connectivity must survive: %r" % text
+    return True
+
+
 def run(report):
     """Run every check. Returns True if all passed."""
     failed = []
