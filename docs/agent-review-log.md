@@ -27,13 +27,14 @@ having looked.
 |---|---|---|---|---|---|
 | 2026-09-06 | A · harness | Tasks 1–11, task-by-task | expensive | incl. 1 Critical (exit-code hole), 6 Important | — |
 | 2026-09-07 | A · harness | fix wave `2918cdf..e2dcbb6`, 10 items | **cheap** | 0 new; all 10 verdicted addressed | **0 so far** |
-| 2026-09-07 | C · agent-flows | `CLAUDE.md`, 5 skills, this log | **cheap** | 1 Minor: an ERC breakdown stated without its measurement marker | **0 so far** |
+| 2026-09-07 | C · agent-flows | `CLAUDE.md`, 5 skills, this log | **cheap** | 1 Minor: an ERC breakdown stated without its measurement marker | **1 Minor** (see below) |
+| 2026-09-07 | B · kicad10-3d | design spec, pre-implementation | expensive | 3 Critical, 8 Important, 7 Minor | n/a — no code yet |
 
 ## Escapes
 
 | Date | Workstream | Task | Reviewer model | Severity | What was missed | Caught by |
 |---|---|---|---|---|---|---|
-| — | — | — | — | — | *none recorded* | — |
+| 2026-09-07 | C · agent-flows | `changing-the-schematic` ERC figure | cheap | Minor | "18 warnings" for the modernization line — the real figure is 32/0, and 18/0 belongs to `migrate2kicad10`, a branch whose merge-base with the archive is `9476ec3` | B design spike, 2026-09-07 |
 
 ## Notes on open rows
 

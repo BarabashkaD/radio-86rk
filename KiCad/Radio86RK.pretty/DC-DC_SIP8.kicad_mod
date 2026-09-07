@@ -1,0 +1,165 @@
+(footprint "DC-DC_SIP8"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Footprint, SIL-9")
+	(tags "CONN SIL-9")
+	(property "Reference" "REF**"
+		(at 12.065 4.445 90)
+		(layer "F.SilkS")
+		(uuid "54e3d4a8-f6b6-4f8b-a95d-f4149653d7f5")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "DC-DC_SIP8"
+		(at 12.065 -0.635 90)
+		(layer "F.SilkS")
+		(uuid "764601a0-9838-4d03-b484-d1281ffdc31f")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b17cc15b-de28-40a5-bab8-41646b5b8d96")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d7b46639-98ca-4d62-886d-4daebf6b41e5")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -10.9 -3.2)
+		(end 10.9 -3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4f58ace6-5815-44d5-8bb9-66f46cf6970b")
+	)
+	(fp_line
+		(start -10.9 6)
+		(end -10.9 -3.2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a9d22f92-752d-48c8-ba0e-01367a07825b")
+	)
+	(fp_line
+		(start 10.9 -3.2)
+		(end 10.9 6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b354e000-8a52-409b-ad40-5808cfa03c44")
+	)
+	(fp_line
+		(start 10.9 6)
+		(end -10.9 6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "54a510c3-c4b1-4ad1-80af-bc685fee3151")
+	)
+	(pad "1" thru_hole rect
+		(at -8.89 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3ffe8251-f4c4-4afe-8d2c-870dd75d9af1")
+	)
+	(pad "2" thru_hole circle
+		(at -6.35 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1fb53e54-e099-4bf4-a197-de71774fd572")
+	)
+	(pad "3" thru_hole circle
+		(at -3.81 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "38da717e-1e73-4b4b-8672-d02211c35388")
+	)
+	(pad "5" thru_hole circle
+		(at 1.27 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "bdfbb6a4-8b2a-4517-9b85-aef7dc7e8fc0")
+	)
+	(pad "6" thru_hole circle
+		(at 3.81 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "656a0eda-369f-4055-9ec6-153ef411821b")
+	)
+	(pad "7" thru_hole circle
+		(at 6.35 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4983d0fd-aacb-4418-aef7-f566f80112f0")
+	)
+	(pad "8" thru_hole circle
+		(at 8.89 0)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c282530f-e130-4824-8de7-964d342233aa")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Radio86RK.3dshapes/IZ0512S.step"
+		(offset
+			(xyz -8.89 0 0)
+		)
+		(scale
+			(xyz 1.1321 1.5107 1.0925)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

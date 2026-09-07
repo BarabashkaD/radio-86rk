@@ -130,6 +130,88 @@ def find_cli(platform=None, environ=None):
         "Tried:\n  %s" % (MIN_MAJOR, "\n  ".join(cli_display(c) for c in tried)))
 
 
+def py_candidates(platform, environ, listdir=os.listdir):
+    """Ordered candidates for KiCad's bundled Python -- the interpreter that can import
+    pcbnew. Pure, so it can be tested without a KiCad install.
+
+    The module docstring says there is no portable way to find this interpreter. That
+    stays true of a single *rule*; what works is an ordered list plus a probe, the same
+    shape cli_candidates uses. The difference is that there is no PATH entry to fall back
+    on, because a bundled interpreter is on nobody's PATH.
+    """
+    candidates = []
+    if environ.get("KICAD_PY"):
+        candidates.append(environ["KICAD_PY"])
+
+    if platform == "darwin":
+        base = ("/Applications/KiCad/KiCad.app/Contents/Frameworks"
+                "/Python.framework/Versions")
+        try:
+            # Newest first, so 3.10 outranks 3.9. Hardcoding one version is the bug
+            # this replaces: it breaks on the release KiCad ships a newer interpreter.
+            versions = sorted(listdir(base), key=_version_key, reverse=True)
+        except OSError:
+            versions = []
+        for version in versions:
+            candidates.append(os.path.join(base, version, "bin", "python3"))
+    elif platform.startswith("win"):
+        for base in (r"C:\Program Files\KiCad", r"C:\Program Files (x86)\KiCad"):
+            try:
+                versions = sorted(listdir(base), key=_version_key, reverse=True)
+            except OSError:
+                versions = []
+            for version in versions:
+                candidates.append(ntpath.join(base, version, "bin", "python.exe"))
+    else:
+        # On Linux pcbnew is a distribution package, importable from the system
+        # interpreter -- which is why this generalises where kicad-cli discovery could
+        # not. UNVERIFIED: no Linux machine has run this. A flatpak or snap install
+        # keeps pcbnew inside the sandbox where neither path reaches it, and those
+        # installs are known to occur here -- cli_candidates carries both. KICAD_PY is
+        # the answer in that case, which is why the failure message names it.
+        candidates.extend(["python3", "/usr/bin/python3"])
+    return candidates
+
+
+def _imports_pcbnew(candidate):
+    """Whether this interpreter can import pcbnew. The only test that means anything:
+    a version string proves nothing about whether the module is present."""
+    try:
+        proc = subprocess.Popen([candidate, "-c", "import pcbnew"],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc.communicate()
+        return proc.returncode == 0
+    except OSError:
+        return False
+
+
+def find_py(platform=None, environ=None):
+    """First candidate that can import pcbnew. On failure the error names every path
+    tried, for the same reason find_cli does.
+
+    An explicit KICAD_PY is authoritative rather than merely first: falling through to
+    some other interpreter would hide the problem the reader needs to see.
+    """
+    platform = sys.platform if platform is None else platform
+    environ = os.environ if environ is None else environ
+    explicit = environ.get("KICAD_PY")
+    if explicit:
+        if _imports_pcbnew(explicit):
+            return explicit
+        raise EnvError(
+            "KICAD_PY is set to %s but it could not import pcbnew.\n"
+            "Check that path, or unset KICAD_PY to search the usual locations."
+            % explicit)
+    tried = py_candidates(platform, environ)
+    for candidate in tried:
+        if _imports_pcbnew(candidate):
+            return candidate
+    raise EnvError(
+        "no interpreter found that can import pcbnew.\n"
+        "Set KICAD_PY=/path/to/the/interpreter/KiCad/bundles.\n"
+        "Tried:\n  %s" % ("\n  ".join(tried) if tried else "(nothing)"))
+
+
 def run_cli(env, report, args, what, allow_failure=False):
     """kicad-cli with its noise filtered and its real errors kept. Lives here rather
     than in a gate because all three gates need it.

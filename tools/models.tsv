@@ -1,0 +1,48 @@
+# footprint	model	off_x	off_y	off_z	rot_z	[rot_x	rot_y	sx	sy	sz]
+# Offsets and rotations are computed by tools/align_models.py: KiCad models are
+# authored in KiCad's own footprint frame, ours use different conventions.
+Res_762	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.step	-3.81	0	0	0
+Cap_Cer_508	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step	-2.54	0	0	0
+Cap_Elec_Radial_6.3mm	${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step	-1.25	0	0	0
+Diode_762	${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step	3.81	0	0	180
+LED_3mm	${KICAD10_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.step	1.27	0	0	180
+Crystal_HC-49U_Vert	${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step	-2.4409	0	0	0
+Transistor_TO92_EBC_254	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step	-2.54	0	0	0
+IC_TO220-3_Vert	${KICAD10_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-220-3_Vertical.step	-2.54	0	0	0
+IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step	-3.81	-3.81	0	270
+IC_DIP8_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step	-3.81	-3.81	5.1	270
+IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm_Socket.step	-7.62	-3.81	0	270
+IC_DIP14_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step	-7.62	-3.81	5.48	270
+IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm_Socket.step	-8.89	-3.81	0	270
+IC_DIP16_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step	-8.89	-3.81	5.48	270
+IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm_Socket.step	-11.43	-3.81	0	270
+IC_DIP20_300	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-20_W7.62mm.step	-11.43	-3.81	5.48	270
+IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm_Socket.step	-13.97	-7.62	0	270
+IC_DIP24_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-24_W15.24mm.step	-13.97	-7.62	5.48	270
+IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm_Socket.step	-16.51	-7.62	0	270
+IC_DIP28_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-28_W15.24mm.step	-16.51	-7.62	5.48	270
+IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm_Socket.step	-24.13	-7.62	0	270
+IC_DIP40_600	${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-40_W15.24mm.step	-24.13	-7.62	5.48	270
+Conn_SIL6	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP6.step	-6.35	0	0	0
+Conn_SIL10	${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Array_SIP10.step	-11.43	0	0	0
+Conn_Pin_Header_4x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step	-3.81	0	0	270
+Conn_Pin_Header_20x1_2.54mm	${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x20_P2.54mm_Vertical.step	-24.13	0	0	270
+Conn_Pin_Header_13x2_2.54mm_Shrouded	${KICAD10_3DMODEL_DIR}/Connector_IDC.3dshapes/IDC-Header_2x13_P2.54mm_Vertical.step	-15.24	-1.27	0	270
+Conn_Friction_Lock_8P_2.54mm	${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step	-0.0200	-0.4600	2.5400	180.0000	0.0000	0.0000	1.0000	1.0000	1.0000
+Conn_Power_Jack_Circular_Pads	${KIPRJMOD}/Radio86RK.3dshapes/KLDX-0202-A.step	-7.7999	-0.1900	6.7400	90.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
+Conn_Dsub_DE9M	${KICAD10_3DMODEL_DIR}/Connector_Dsub.3dshapes/DSUB-9_Pins_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm.step	5.4864	-1.4224	0	180
+Speaker_12mm	${KIPRJMOD}/Radio86RK.3dshapes/AT-1224-TWT-R.step	3.2512	0.0000	0.0000	90.0000	0.0000	0.0000	1.0000	1.0000	1.0000
+DC-DC_SIP8	${KIPRJMOD}/Radio86RK.3dshapes/IZ0512S.step	-8.8900	0.0000	0.0000	0.0000	0.0000	0.0000	1.1321	1.5107	1.0925
+Conn_RCA_Right	${KIPRJMOD}/Radio86RK.3dshapes/RCJ-014.step	6.0800	0.0000	7.0000	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
+Switch_Tactile_6mm_Right	${KIPRJMOD}/Radio86RK.3dshapes/B3F-3152.step	-2.2470	-3.8806	-0.0100	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000
+# --- Keyboard: verified correct at offset 0; origins coincide with perigoso's ---
+CHERRY_PCB_100H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_125H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_150H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_225H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.stp	0	0	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.stp	0	0	0	0
+CHERRY_PCB_625H	${KICAD10_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6.25u.stp	0	0	0	180
+# --- Manufacturer models recovered from the migrate2kicad10 branch ---
+# (rows are above, next to their neighbours; regenerate with tools/align_models_legacy.py)
+Conn_DIN_8pin	${KIPRJMOD}/Radio86RK.3dshapes/SDF-80J.step	-0.0100	-7.7500	0.0600	180.0000	-90.0000	0.0000	1.0000	1.0000	1.0000

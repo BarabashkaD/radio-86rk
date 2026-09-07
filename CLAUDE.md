@@ -35,11 +35,13 @@ contract: [tools/README.md](tools/README.md).
 
 ## Repo map
 
-- `KiCad/` — the design: board, main schematic + 4 sub-sheets, project file, v1.4 PDFs
-- `tools/` — the verification harness, stdlib only
+- `KiCad/` — the design: board, main schematic + 4 sub-sheets, project file, v1.4 PDFs,
+  and the vendored libraries: `Radio86RK.kicad_sym`, `.pretty`, `.3dshapes`
+- `tools/` — the harness (stdlib only) plus the 3D model tools, which need KiCad's own
+  interpreter. All Python; no shell scripts.
 - `verify/baseline/` — harness reference: 22 canonicalised exports + netlist + `meta.json`
 - `gerber/` — **published** fab output: 7 `.gbr`, `NPTH.drl`, `PTH.drl`, `gerber.zip`
-- `Documentation/` — component datasheets · `Software/` — firmware · `images/` — README photos
+- `Documentation/` — datasheets · `Software/` — firmware · `images/` — photos and renders
 - `docs/` — decision records · `Project_Notes.md`, `Radio-86RK_Publications.md` — background
 
 `gerber/` and `verify/baseline/strict/` are **not comparable**: different layer sets,
@@ -53,9 +55,11 @@ merged `.drl`. Never diff one against the other.
 - **Fork.** `origin` is this fork; `upstream` is `skiselev/radio-86rk`. Each workstream
   lands as **one commit**: squash before merging, merge before pushing. Pushed history
   is not rewritten — that ordering is what lets both rules hold.
-- **Archive.** `archive/kicad10-3d-2026-09-06` holds KiCad 10 and 3D work not yet on master.
+- **3D models.** 69 of 209 model references come from the Keyswitch Kicad Library, a PCM
+  package — a declared prerequisite, not vendored. `kicad-verify.py models` says whether
+  it resolves. The gates are blind to 3D entirely; see `verifying-3d-models`.
 
 ## Skills
 
 `changing-the-schematic` · `changing-the-layout` · `kicad-scripting` ·
-`workstream-lifecycle` · `agent-review-policy`
+`verifying-3d-models` · `workstream-lifecycle` · `agent-review-policy`

@@ -1,0 +1,206 @@
+(footprint "IC_DIP8_300"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "8 pins DIL package, round pads")
+	(tags "DIP DIL DIP8 DIL8")
+	(property "Reference" "REF**"
+		(at -3.81 5.715 0)
+		(layer "F.SilkS")
+		(uuid "b34f79c3-3c4b-436f-b586-d535b84b8eae")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "IC_DIP8_300"
+		(at 0 7.3025 0)
+		(layer "F.SilkS")
+		(uuid "bc592ed4-4b68-4458-acb9-0c5b570f9c12")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "03c17f74-8854-4ed1-b324-39e4e639885d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "98c7a9db-61f3-4e9f-852f-36d2eb6758e6")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Input_Output")
+	(sheetfile "Radio-86RK-IO.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -5.08 -3.048)
+		(end 5.08 -3.048)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f2ce4c4f-2b3e-4b80-a3ba-794813481832")
+	)
+	(fp_line
+		(start -5.08 3.048)
+		(end -5.08 -3.048)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c1692491-1632-47ea-b10a-7207f63c7cf6")
+	)
+	(fp_line
+		(start 5.08 -3.048)
+		(end 5.08 3.048)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "370286d8-a6c3-4a13-95e6-3fcc4908dd28")
+	)
+	(fp_line
+		(start 5.08 3.048)
+		(end -5.08 3.048)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "094f964a-4317-4069-a053-bcaf88cea634")
+	)
+	(fp_arc
+		(start -5.08 -1.016)
+		(mid -4.36158 -0.71842)
+		(end -4.064 0)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "84055bea-0532-4e6e-ad80-cbcfa5711593")
+	)
+	(fp_arc
+		(start -4.064 0)
+		(mid -4.36158 0.71842)
+		(end -5.08 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "12498fef-837f-43da-8ef0-7e21e6c67962")
+	)
+	(pad "1" thru_hole rect
+		(at -3.81 3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "390b4fee-d3fb-4c10-b834-f6c0875a7561")
+	)
+	(pad "2" thru_hole circle
+		(at -1.27 3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f88aef90-9567-4427-92d2-bccda5fff03c")
+	)
+	(pad "3" thru_hole circle
+		(at 1.27 3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a0b69f98-5605-419a-9dfa-46e8f942ce23")
+	)
+	(pad "4" thru_hole circle
+		(at 3.81 3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4f16a4ce-3ceb-483a-97da-5d666dee06ee")
+	)
+	(pad "5" thru_hole circle
+		(at 3.81 -3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2c26ef7c-155f-467c-9607-5ecdf1eace45")
+	)
+	(pad "6" thru_hole circle
+		(at 1.27 -3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d7c135a6-2c61-44d7-aceb-6ee24614478b")
+	)
+	(pad "7" thru_hole circle
+		(at -1.27 -3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6ce06c43-7362-4a9c-9927-100ff5e38b39")
+	)
+	(pad "8" thru_hole circle
+		(at -3.81 -3.81)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d848542f-4410-4f99-9d89-eaaacc4aab2f")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm_Socket.step"
+		(offset
+			(xyz -3.81 -3.81 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 270)
+		)
+	)
+	(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-8_W7.62mm.step"
+		(offset
+			(xyz -3.81 -3.81 5.1)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 270)
+		)
+	)
+)

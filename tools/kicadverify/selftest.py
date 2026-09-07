@@ -153,6 +153,47 @@ def _cli_order():
     return True
 
 
+@check("KiCad Python discovery: KICAD_PY first, then newest bundled version")
+def _py_order():
+    override = discover_mod.py_candidates(
+        "darwin", {"KICAD_PY": "/custom/bin/py"}, listdir=lambda base: ["3.9"])
+    assert override[0] == "/custom/bin/py", repr(override)
+
+    # The archive hardcoded Versions/3.9. The bug that replaces is ordering: when
+    # KiCad ships a newer interpreter alongside, the newer one must win, and a
+    # string sort puts "3.9" above "3.10".
+    mac = discover_mod.py_candidates(
+        "darwin", {}, listdir=lambda base: ["3.9", "3.10", "Current"])
+    assert mac, "no macOS candidates produced"
+    index_310 = next(i for i, c in enumerate(mac) if "/3.10/" in c)
+    index_39 = next(i for i, c in enumerate(mac) if "/3.9/" in c)
+    assert index_310 < index_39, (
+        "a string sort puts '3.9' before '3.10' -- bundled interpreter versions "
+        "must be sorted numerically: %r" % (mac,))
+
+    # No PATH fallback: a bundled interpreter is on nobody's PATH, so a bare
+    # "python3" candidate on macOS would find the system one, which cannot
+    # import pcbnew, and report success for the wrong interpreter.
+    assert "python3" not in mac, (
+        "macOS must not fall back to PATH: %r" % (mac,))
+    return True
+
+
+@check("KiCad Python discovery survives a machine with no KiCad installed")
+def _py_no_kicad():
+    def absent(base):
+        raise OSError("no such directory")
+
+    # cli_candidates guards its listdir; py_candidates must too, or discovery
+    # raises FileNotFoundError instead of falling through to a clean EnvError.
+    for platform in ("darwin", "win32"):
+        assert discover_mod.py_candidates(platform, {}, listdir=absent) == [], (
+            "%s must yield no candidates rather than raising" % platform)
+    assert discover_mod.py_candidates("darwin", {"KICAD_PY": "/x"},
+                                      listdir=absent) == ["/x"]
+    return True
+
+
 @check("Windows candidates are sorted by version, not lexically, and use backslashes")
 def _windows_candidates():
     win = discover_mod.cli_candidates(

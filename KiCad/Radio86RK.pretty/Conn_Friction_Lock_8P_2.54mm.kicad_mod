@@ -1,0 +1,203 @@
+(footprint "Conn_Friction_Lock_8P_2.54mm"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Connector, Friction Lock, 8 Positions, 2.54mm Pitch")
+	(tags "CONN FRICTION LOCK 8P")
+	(property "Reference" "REF**"
+		(at -9.2075 3.4925 0)
+		(layer "F.SilkS")
+		(uuid "8514bb02-0688-489c-a064-4e49ec0842e1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Conn_Friction_Lock_8P_2.54mm"
+		(at -2.2225 3.4925 0)
+		(layer "F.SilkS")
+		(uuid "1ca251f1-54cf-476a-a87f-2b5751bf72d7")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.15)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0e5cc5db-6a50-4fd7-a24d-e68442086278")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3e1398c0-dca3-451c-ac36-66ff84de21c8")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -10.16 -3.175)
+		(end -10.16 2.54)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9382f7f6-a716-4653-b33b-5701e6e01cad")
+	)
+	(fp_line
+		(start -8.89 -3.175)
+		(end -8.89 -1.905)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "eef95f3c-41cd-4270-b0bb-9fd7deca2076")
+	)
+	(fp_line
+		(start -8.89 -1.905)
+		(end 8.89 -1.905)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6737cb75-6140-41a4-a0c3-1379629f2a54")
+	)
+	(fp_line
+		(start 8.89 -1.905)
+		(end 8.89 -3.175)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "79dbafd4-5119-4c1b-8777-5e494911482c")
+	)
+	(fp_line
+		(start 10.16 -3.175)
+		(end -10.16 -3.175)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "00a96f10-2242-4bf2-a301-af9ec873b02c")
+	)
+	(fp_line
+		(start 10.16 2.54)
+		(end -10.16 2.54)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "68d3078b-b573-4c51-953f-920c55c5b890")
+	)
+	(fp_line
+		(start 10.16 2.54)
+		(end 10.16 -3.175)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8e2484f9-ded6-468a-b063-d733a61443e6")
+	)
+	(pad "1" thru_hole rect
+		(at -8.89 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "497075c7-2045-4e25-9603-6c61c4736fd6")
+	)
+	(pad "2" thru_hole circle
+		(at -6.35 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ad28ed42-fc28-4216-bf40-c515e33dda3e")
+	)
+	(pad "3" thru_hole circle
+		(at -3.81 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4447476e-8643-4f50-b564-100b15f37ec0")
+	)
+	(pad "4" thru_hole circle
+		(at -1.27 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d5ad6d75-1203-4bfd-a3e2-bb2e2c18974f")
+	)
+	(pad "5" thru_hole circle
+		(at 1.27 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f44d5021-3c03-42d1-8fd9-77c8922acbcb")
+	)
+	(pad "6" thru_hole circle
+		(at 3.81 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d8761b05-5136-45a8-b7ab-be8e60e5f6d9")
+	)
+	(pad "7" thru_hole circle
+		(at 6.35 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0dc0f7fb-30d3-4c6b-9633-42931248bedd")
+	)
+	(pad "8" thru_hole circle
+		(at 8.89 0)
+		(size 1.524 1.524)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "af500e7c-f9f4-46f9-b8c0-e8605441de9a")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Radio86RK.3dshapes/640456-8.step"
+		(offset
+			(xyz -0.02 -0.46 2.54)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 180)
+		)
+	)
+)

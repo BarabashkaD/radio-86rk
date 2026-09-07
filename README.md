@@ -7,6 +7,9 @@ Re-make of the Soviet Ham Radio computer published in Radio Magazine in 1986
 * [Introduction](#introduction)
 * [Specifications](#specifications)
 * [Verification](#verification)
+* [KiCad 10](#kicad-10)
+  * [Prerequisites](#prerequisites)
+  * [Mechanical export, for case design](#mechanical-export-for-case-design)
 * [Project Notes](#project-notes)
 * [Hardware Documentation](#hardware-documentation)
   * [Schematic and PCB Layout](#schematic-and-pcb-layout)
@@ -76,6 +79,66 @@ python3 tools/kicad-verify.py all
 
 See [`tools/README.md`](tools/README.md) for the full command reference,
 exit codes, and how to reuse it on another project.
+
+## KiCad 10
+
+This fork's KiCad files have been modernized to KiCad 10 format. **The board is
+unchanged**: the gerber and drill output is identical to skiselev's v1.4, verified
+automatically rather than asserted. All footprints and symbols are vendored into the
+repository, so the project opens from a fresh clone with no external checkouts.
+
+![Radio-86RK rendered from the KiCad 10 project](images/Radio-86RK-1.4-3D-Iso-Left.jpg)
+
+The rear panel, with every external connector in one row — composite video, serial,
+parallel, cassette, sound and power:
+
+![Rear connectors](images/Radio-86RK-1.4-3D-Rear.jpg)
+
+Also rendered: [top](images/Radio-86RK-1.4-3D-Top.jpg) ·
+[from the right](images/Radio-86RK-1.4-3D-Iso-Right.jpg) ·
+[solder side](images/Radio-86RK-1.4-3D-Bottom.jpg), which carries the memory map, the
+monitor command list and the subroutine table in silkscreen.
+
+### Prerequisites
+
+* **KiCad 10.0.4** or newer.
+* The **Keyswitch Kicad Library**, v2.4, from KiCad's Plugin and Content Manager —
+  package `com.github.perigoso.keyswitch-kicad-library`, upstream
+  [github.com/kiswitch/keyswitch-kicad-library](https://github.com/kiswitch/keyswitch-kicad-library),
+  CC-BY-SA-4.0. It supplies three model files that 69 of this board's 209 model
+  references depend on: the Cherry MX switch body shared by all 67 keys, and two
+  stabilizers. Without it the board still opens, routes and exports correctly — only the
+  keyboard renders empty in the 3D view.
+
+Check that everything resolves before trusting a render:
+
+```
+python3 tools/kicad-verify.py models
+```
+
+It reports 183 / 183 footprints covered when the library is installed, and names the
+path variable responsible when it is not.
+
+- [Modernization summary](docs/modernization-summary.md) — before/after, and how to re-verify
+- [3D model sources](docs/3d-model-sources.md) — every model choice and substitution
+- [Retained DRC violations](docs/drc-exclusions.md) — the 22 inherited from v1.4
+- [Retained ERC violations](docs/erc-exclusions.md) — the 32 bus-label warnings
+- [3D model follow-ups](docs/followup-3d-models.md) — the five approximations now resolved, and optional keycaps
+
+### Mechanical export, for case design
+
+```
+python3 tools/export_mech.py            # STEP + placement CSV into .build/mech/
+```
+
+Writes four STEP files sharing one datum — the whole assembly, the parts needing panel
+cutouts, the switches alone, and the bare board with its mounting holes — plus a CSV
+giving every footprint's position, rotation, value and package.
+
+Keycaps are deliberately absent. A cap is a case parameter rather than a board one: its
+envelope drives the top-plate openings and the bezel height, and comparing profiles should
+cost one filename, not a re-export. `placement.csv`'s `Package` column is the cap size, so
+all 68 caps can be placed from the table.
 
 ## Project Notes
 

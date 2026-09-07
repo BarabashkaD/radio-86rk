@@ -1,0 +1,169 @@
+(footprint "Cap_Cer_508"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Ceramic Capacitor, 5.08mm lead spacing")
+	(tags "Cap_Cer_508")
+	(property "Reference" "REF**"
+		(at 2.54 -1.905 0)
+		(layer "F.SilkS")
+		(uuid "2fb47244-db93-4598-9853-661900bfe837")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Cap_Cer_508"
+		(at -1.905 -1.905 0)
+		(layer "F.SilkS")
+		(uuid "4c6bb52a-4e80-4f6e-88c0-f39666fa433c")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c7251dd7-6487-4537-907b-33133c8c3026")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "28adf370-4ae6-4155-ae6a-8870e1dc56d4")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.556 0.508)
+		(end -3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "76531a4d-1821-47d3-a937-dd8c7ce0fef0")
+	)
+	(fp_line
+		(start -3.048 -1.016)
+		(end 3.048 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "08166866-d0bf-4a4e-bbbb-16774c9cba65")
+	)
+	(fp_line
+		(start -3.048 1.016)
+		(end 3.048 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1bc40b94-ba1b-404a-b854-af1a3e96adaa")
+	)
+	(fp_line
+		(start 3.556 0.508)
+		(end 3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d82ac80e-b1a7-47a6-be56-2c8633abf54d")
+	)
+	(fp_arc
+		(start -3.556 -0.508)
+		(mid -3.40721 -0.86721)
+		(end -3.048 -1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5dc92ff8-90e7-4412-93e1-c5d555c3877a")
+	)
+	(fp_arc
+		(start -3.048 1.016)
+		(mid -3.40721 0.86721)
+		(end -3.556 0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "92382b6d-327b-4c86-b1cc-00231bb94939")
+	)
+	(fp_arc
+		(start 3.048 -1.016)
+		(mid 3.40721 -0.86721)
+		(end 3.556 -0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "26978af9-a41c-4be0-b712-f92f46445e5c")
+	)
+	(fp_arc
+		(start 3.556 0.508)
+		(mid 3.40721 0.86721)
+		(end 3.048 1.016)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "193bc547-3115-4e6a-bf97-a6613f1be29d")
+	)
+	(pad "1" thru_hole circle
+		(at -2.54 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ac5e8134-1c63-4b11-8819-aa80e210911c")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 1.397 1.397)
+		(drill 0.8128)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "75b5cac5-8fba-48ff-9fdf-b6a4aa8dfd22")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
+		(offset
+			(xyz -2.54 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
