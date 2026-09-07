@@ -59,8 +59,10 @@ Run as `python3 tools/kicad-verify.py <command>` (macOS / Linux) or
 | `gerber`   | Exports gerbers and drill files from the current board, canonicalises them, and compares them against the committed baseline. Reports whether the copper is unchanged. |
 | `netlist`  | Exports the netlist from the current schematic and compares its connectivity (which pin is on which net) against the baseline. Reports whether the wiring is unchanged. |
 | `rules`    | Runs ERC and DRC and reports the violation counts, by type. This is informational, not pass/fail — see [Why `rules` reports instead of judging](#why-rules-reports-instead-of-judging) below. |
+| `models`   | Reports which 3D model references resolve on this machine: how many footprints have a model KiCad can find, which do not, and which KiCad path variable is responsible when one cannot be resolved at all. Informational, like `rules`. Needs no `pcbnew` and no `kicad-cli` — it reads the board as text, so it still answers on a machine where KiCad is not set up, which is where the question usually arises. |
 | `all`      | Runs `gerber`, `netlist` and `rules` in order, and prints a combined verdict. This is the one command most people want. |
-| `selftest` | Runs the harness's own internal checks (currently 22) against fixtures. Tests the tool itself, not your project — it needs no KiCad install and no board. |
+| `run`      | `run <script> [args]` executes a script under the interpreter that can import `pcbnew` — the four model tools in `tools/` need it and no plain interpreter provides it. A passthrough: the script's stdout, stderr and exit code are its own, and no verdict line is written. Set `KICAD_PY` to override discovery. |
+| `selftest` | Runs the harness's own internal checks (currently 24) against fixtures. Tests the tool itself, not your project — it needs no KiCad install and no board. |
 
 Useful flags, valid on every command above: `--json` (emit one JSON document
 instead of verdict lines), `--verbose` (show tool output that is normally
@@ -74,13 +76,15 @@ committed strict one — see below).
 ## Verdict statuses
 
 Each gate's line on stdout begins with one of three statuses, and `--json`
-records the same value in that gate's `"status"` field:
+records the same value in that gate's `"status"` field. The one exception is
+`run`, which writes no verdict line at all: it is a passthrough, so its stdout
+belongs to the script it launched and its exit code is that script's.
 
 | Status | Meaning |
 |--------|---------|
 | `PASS` | The gate ran and found no difference from the baseline. |
 | `FAIL` | The gate ran and found a difference from the baseline. |
-| `INFO` | The gate ran and is reporting a count, not a verdict. Currently only `rules` (see below). An `INFO` gate never causes exit code `1`, and `all`'s combined "N of N gates passed" line does not count it either way. |
+| `INFO` | The gate ran and is reporting a count, not a verdict. `rules` (see below) and `models`. An `INFO` gate never causes exit code `1`, and `all`'s combined "N of N gates passed" line does not count it either way. |
 
 ## Why `rules` reports instead of judging
 

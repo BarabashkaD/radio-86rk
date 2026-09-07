@@ -19,3 +19,17 @@ __pycache__/
 
 # Local Claude Code configuration; per-machine, not part of the project
 .claude/settings.local.json
+
+# KiCad backups, locks and autosaves; local to a checkout, never project data
+*-backups/
+*.lck
+~*.lck
+fp-info-cache
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_pro-bak
+
+# 3D renders are build output: regenerate with tools/render.py, never commit.
+# The four in images/ are deliberate and are not covered by this.
+verify/renders/

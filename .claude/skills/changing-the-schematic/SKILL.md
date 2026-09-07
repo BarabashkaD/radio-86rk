@@ -54,19 +54,27 @@ fail, and that failure is the evidence your change took effect.
 
 This is the trap most likely to waste an hour.
 
-| Branch | ERC | Verified |
+| Where | ERC | Verified |
 |---|---|---|
-| `master` | **413 warnings, 0 errors** | measured 2026-09-07 |
-| the modernization line | 18 warnings, 0 errors after remediation | **project notes only, not re-verified** |
+| **master, now** | **32 warnings, 0 errors** — all `same_local_global_label` | measured 2026-09-07 |
+| master before workstream B | 413 warnings, 0 errors | measured 2026-09-07 |
+| `migrate2kicad10` | 18 warnings, 0 errors | a different, abandoned branch |
 
-Both figures are correct for their own branch. Master carries 413 because it predates the
-remediation. The breakdown, from the same measured run on 2026-09-07: 210
-`footprint_link_issues`, 142 `lib_symbol_mismatch`, 32 `same_local_global_label`, 29
-`lib_symbol_issues`. Reproduce it any time with `python3 tools/kicad-verify.py rules`.
+**Expect 32.** All of them are bus signals carrying a local and a global label of the same
+name; `docs/erc-exclusions.md` argues each one out and shows that clearing them costs 91
+label edits for zero errors. If you see 32, you have found nothing.
 
-If you are on master and see 413, you have found nothing — that is the expected reading.
+The 413 reading belongs to the pre-B board, whose 210 `footprint_link_issues`, 142
+`lib_symbol_mismatch` and 29 `lib_symbol_issues` were artifacts of unresolved library
+links. Vendoring the libraries fixed them for real; only the 32 remain.
 
-Never quote one of these numbers without naming the branch it came from.
+The 18 figure is the one most likely to mislead, so it is recorded here rather than left
+out: it belongs to `migrate2kicad10`, whose merge-base with this line is `9476ec3` — the
+two never met. It is 18 rather than 32 because that branch converted local labels to
+global, which is also what **masked the U3/U22 defect** there. Do not treat it as a target.
+
+Reproduce any of this with `python3 tools/kicad-verify.py rules`. Never quote one of these
+numbers without naming where it came from.
 
 ## What `kicad-cli` will not do for you
 

@@ -1,0 +1,79 @@
+(footprint "Hole_3mm"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Mounting Hole, 3mm")
+	(tags "HOLE 3MM")
+	(property "Reference" "REF**"
+		(at 0 -3.175 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "9d3fb2a0-141e-452e-b409-7b168392dd32")
+		(effects
+			(font
+				(size 1.016 1.016)
+				(thickness 0.2032)
+			)
+		)
+	)
+	(property "Value" "Hole_3mm"
+		(at 0 3.175 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "759703e9-338c-4605-b7f9-3316c510da9f")
+		(effects
+			(font
+				(size 1.016 0.9144)
+				(thickness 0.2032)
+				(italic yes)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fad2c306-1521-4c49-8ee2-e2ad3dccd2fc")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "983f14cf-dcdb-4ede-944e-15d3ed91c6b0")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Power")
+	(sheetfile "Radio-86RK-Power.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center 0 0)
+		(end 0 -2.286)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "37d1a842-84ee-48c9-9fc8-3fd736084b31")
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 4.064 4.064)
+		(drill 3.048)
+		(layers "*.Cu" "*.Mask" "F.SilkS")
+		(remove_unused_layers no)
+		(uuid "115d549b-642c-45e3-972d-670ef33142b5")
+	)
+	(embedded_fonts no)
+)

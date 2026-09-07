@@ -11,7 +11,8 @@ EXIT_OK = 0     # every gate passed
 EXIT_FAIL = 1   # a gate failed: the board changed
 EXIT_ENV = 2    # could not run the check, or the command line was wrong
 
-COMMANDS = ("doctor", "baseline", "gerber", "netlist", "rules", "all", "selftest")
+COMMANDS = ("doctor", "baseline", "gerber", "netlist", "rules", "models", "all",
+            "run", "selftest")
 
 
 def build_parser():
@@ -36,7 +37,43 @@ def build_parser():
     return parser
 
 
+def _run_under_kicad_python(rest):
+    """`run <script> [args]` -- execute a script under the interpreter that can import
+    pcbnew, which the four model tools need and no plain interpreter provides.
+
+    A deliberate exception to the reporting contract in tools/README.md: this is a
+    passthrough, so stdout and stderr belong to the child and no verdict line is
+    written, and the child's exit code is returned as-is rather than being mapped to
+    EXIT_OK / EXIT_FAIL / EXIT_ENV. Only a failure to *find* an interpreter is this
+    command's own verdict, and that is EXIT_ENV like any other could-not-run.
+    """
+    import subprocess
+    import sys
+
+    from . import discover
+    if not rest:
+        sys.stderr.write("run: name a script, e.g. run tools/align_models.py\n")
+        return EXIT_ENV
+    try:
+        interpreter = discover.find_py()
+    except discover.EnvError as exc:
+        sys.stderr.write(str(exc) + "\n")
+        return EXIT_ENV
+    return subprocess.call([interpreter] + list(rest))
+
+
 def main(argv=None):
+    import sys
+    argv = list(sys.argv[1:] if argv is None else argv)
+
+    # Intercepted before argparse, not modelled as a positional. A trailing
+    # nargs=REMAINDER would swallow this tool's own options -- `doctor --json`
+    # parses as command="doctor" with "--json" captured as script arguments, so
+    # --json silently stops working. The selftest for JSON output catches it,
+    # which is how this was found. `run` owns everything after itself.
+    if argv and argv[0] == "run":
+        return _run_under_kicad_python(argv[1:])
+
     args = build_parser().parse_args(argv)
     report = Report(json_mode=args.json, verbose=args.verbose)
 
@@ -95,12 +132,31 @@ def _dispatch(args, report):
         return _gate(args, report,
                      lambda env: baseline_mod.capture(env, report, args.force, mode))
 
+    if args.command == "models":
+        return _models(args, report)
+
     if args.command == "all":
         return _all(args, report)
 
     report.error("%s is not implemented yet" % args.command)
     report.finish()
     return EXIT_ENV
+
+
+def _models(args, report):
+    """`models` deliberately does not call discover.build(): that finds kicad-cli first
+    and raises EnvError if it is absent, and a machine with no KiCad is exactly where
+    you most want to know which 3D models are missing. It needs the board file and
+    nothing else."""
+    from . import discover, models
+    root = discover.find_repo_root()
+    pcb, _sch = discover.find_project(root, getattr(args, "project", None))
+    covered, target, exempt, unresolved = models.report_models(pcb, report)
+    report.info("models", "%d / %d footprints covered%s"
+                % (covered, target,
+                   ", %d variables unresolved" % unresolved if unresolved else ""))
+    report.finish()
+    return EXIT_OK
 
 
 def _drift(env, report):

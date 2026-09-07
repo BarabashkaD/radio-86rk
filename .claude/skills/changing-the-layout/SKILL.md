@@ -56,9 +56,27 @@ concluding anything.
 This is general KiCad behaviour rather than something measured on this board, and is
 flagged as a caution to check, not a fact to quote.
 
-Related: master's DRC legitimately reports **5 `starved_thermal` errors** (measured
-2026-09-07, out of 212 violations). They are pre-existing. Seeing them does not mean you
-broke something.
+## The DRC figures, and one number that lies
+
+Master reports **22 violations, 0 errors** (measured 2026-09-07): 17 `silk_edge_clearance`
+and 5 `starved_thermal`. Seeing them does not mean you broke something. Both sets are
+inherited from skiselev's v1.4 — the `v1.4` tag and `upstream/master` are the same commit,
+`c5e9cb7`, so anything present there is the original design's, not this fork's.
+`docs/drc-exclusions.md` argues each one out.
+
+**"0 errors" is not what it looks like.** Before workstream B the same board read 212
+violations with 5 errors. Two different things happened:
+
+| | Before | Now | What changed |
+|---|---:|---:|---|
+| `lib_footprint_issues` | 190 | 0 | genuinely fixed by vendoring the libraries |
+| `silk_edge_clearance` | 17 | 17 | nothing |
+| `starved_thermal` | 5 errors | 5 **warnings** | **severity reclassified in the project file — not fixed** |
+
+The five starved thermals are still there. `Radio-86RK.kicad_pro` sets
+`"starved_thermal": "warning"`; master previously left it unset, where KiCad's default is
+`error`. Fixing them for real would mean moving copper, which is a board change and needs
+question 2 answered accordingly.
 
 ## Recapturing the baseline
 

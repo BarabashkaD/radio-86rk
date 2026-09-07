@@ -25,22 +25,39 @@ The harness deliberately avoids the whole problem. From `tools/kicadverify/disco
 ### There is no discovery mechanism on master, on purpose
 
 `discover.py` resolves `kicad-cli` only. `KICAD_PY` is referenced nowhere in the
-repository. This is not an oversight — as the comment above says, no portable way to find
-KiCad's Python exists, so the harness was built to need none.
+repository. That was true when the harness was written: it needs no `pcbnew`, so it could
+decline the problem entirely.
 
-**Consequence: if you write the next `pcbnew` script, you must bring your own way to
-locate the interpreter.** The archive pinned it for macOS in `tools/kicad-env.sh`:
+**Master now solves it.** `discover.py` carries `py_candidates()` and `find_py()`, built
+the way `kicad-cli` discovery already was: an ordered candidate list plus a probe. There
+is no single portable *rule*, but a list is portable enough. The probe is the only test
+that means anything, because a version string proves nothing about whether the module is
+there:
 
 ```
-/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/3.9/bin/python3
+<candidate> -c "import pcbnew"      ->  exit 0
 ```
 
-That path is macOS-specific and version-specific. On Linux, KiCad's Python is a
-distribution package and the layout differs by distro. Do not assume the macOS path works
-anywhere else, and do not present a hardcoded path as portable.
+Use it through the harness rather than re-implementing it:
 
-Four scripts in the archive need it — `align_models.py`, `align_models_legacy.py`,
-`apply_models.py`, `model_coverage.py` — and they arrive on master with workstream B.
+```
+python3 tools/kicad-verify.py run tools/align_models.py
+```
+
+`run` finds the interpreter and executes the script under it, passing stdout, stderr and
+the exit code straight through. `KICAD_PY` overrides discovery and is authoritative when
+set: if it fails, that is reported rather than silently falling through to some other
+interpreter that would hide the problem.
+
+On macOS the candidates are globbed from `Python.framework/Versions`, newest first,
+rather than pinned — the archive hardcoded `3.9`, which breaks the release KiCad ships a
+newer one. **The Linux branch is unverified**: no Linux machine has run it. There
+`pcbnew` is a distribution package importable from the system interpreter, which is why
+it generalises at all, but a flatpak or snap install keeps it inside the sandbox where no
+path reaches it. `KICAD_PY` is the answer in that case, and the failure message says so.
+
+Four scripts need it: `align_models.py`, `align_models_legacy.py`, `apply_models.py` and
+`vendor_footprints.py`.
 
 ## What the gates see
 

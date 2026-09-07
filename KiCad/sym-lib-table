@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "my_components")(type "KiCad")(uri "${KIPRJMOD}/Radio86RK.kicad_sym")(options "")(descr "skiselev/my_kicad_library, vendored so a fresh clone resolves without a sibling checkout"))
+)
