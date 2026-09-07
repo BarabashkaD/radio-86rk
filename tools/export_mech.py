@@ -30,6 +30,7 @@ Usage: tools/export_mech.py [outdir]        (default: .build/mech)
 Needs kicad-cli, not pcbnew, so any Python 3.8+ runs it directly.
 """
 import argparse
+import csv
 import os
 import sys
 
@@ -55,6 +56,49 @@ STEPS = [
 
 def _size(path):
     return "%.1f MB" % (os.path.getsize(path) / 1048576.0)
+
+
+def _repair_placement_csv(path):
+    """Rewrite kicad-cli's position CSV so a quote in a legend cannot break it.
+
+    `kicad-cli pcb export pos --format csv` does not escape a double quote
+    inside the Value field. This board has one: SW19's legend is `2 "`, which
+    kicad-cli emits as
+
+        "SW19","2 "","CHERRY_PCB_100H",28.650000,-117.550000,0.000000,top
+
+    No CSV reader can parse that. Python's csv module does not raise on it
+    either -- it silently shifts the row's remaining fields, so SW19's Package
+    reads as its X coordinate and every consumer filtering on the Package
+    column drops the row without a word. That made the board look like it had
+    66 switches instead of 67, and 61 1u keys instead of 62.
+
+    The schema is fixed at Ref,Val,Package,PosX,PosY,Rot,Side. Ref, Package
+    and the four trailing fields never contain a comma or a quote, so parsing
+    from the RIGHT is unambiguous no matter what the Value holds. Re-emitting
+    through csv.writer then escapes the Value correctly.
+
+    Returns the number of data rows rewritten.
+    """
+    with open(path) as handle:
+        lines = handle.read().splitlines()
+    if not lines:
+        return 0
+    header, body = lines[0], [ln for ln in lines[1:] if ln.strip()]
+
+    rows = []
+    for line in body:
+        head, pos_x, pos_y, rot, side = line.rsplit(",", 4)
+        head, package = head.rsplit('","', 1)
+        ref, value = head.split('","', 1)
+        rows.append([ref.lstrip('"'), value, package.rstrip('"'),
+                     pos_x, pos_y, rot, side])
+
+    with open(path, "w", newline="") as handle:
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerow(header.split(","))
+        writer.writerows(rows)
+    return len(rows)
 
 
 def main(argv=None):
@@ -100,8 +144,10 @@ def main(argv=None):
                           "--side", "front", "--use-drill-file-origin",
                           "--output", placement, env.pcb],
                          "pcb export pos")
-        with open(placement) as handle:
-            switches = sum(1 for line in handle if line.startswith('"SW'))
+        _repair_placement_csv(placement)
+        with open(placement, newline="") as handle:
+            switches = sum(1 for row in csv.DictReader(handle)
+                           if row["Ref"].startswith("SW"))
         report.detail("  %-16s %9s   (%d switches)"
                       % ("placement.csv", _size(placement), switches))
     except discover.EnvError as exc:
